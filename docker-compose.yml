@@ -1,11 +1,11 @@
-
 services:
+
   postgres:
     image: postgres:15
     container_name: cdc-postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD:  postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: telecom
     command:
       - postgres
@@ -16,25 +16,18 @@ services:
       - -c
       - max_replication_slots=10
     ports:
-      - "5432:5432"        # change to "5433:5432" if 5432 is already used on your PC
+      - "5432:5432"
     volumes:
       - ./postgres/init:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data
     networks:
       - lakehouse
 
-volumes:
-  postgres_data:
-
-networks:
-  lakehouse:
-    driver: bridge
-
-
   kafka:
     image: apache/kafka:3.8.0
     container_name: kafka
-    ports: ["9092:9092"]
+    ports:
+      - "9092:9092"
     environment:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
@@ -47,15 +40,29 @@ networks:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+    networks:
+      - lakehouse
 
   connect:
     image: quay.io/debezium/connect:2.7
     container_name: connect
-    depends_on: [kafka, postgres]
-    ports: ["8083:8083"]
+    depends_on:
+      - kafka
+      - postgres
+    ports:
+      - "8083:8083"
     environment:
       BOOTSTRAP_SERVERS: kafka:29092
       GROUP_ID: connect-1
       CONFIG_STORAGE_TOPIC: connect_configs
       OFFSET_STORAGE_TOPIC: connect_offsets
       STATUS_STORAGE_TOPIC: connect_status
+    networks:
+      - lakehouse
+
+volumes:
+  postgres_data:
+
+networks:
+  lakehouse:
+    driver: bridge
