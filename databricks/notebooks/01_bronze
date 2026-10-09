@@ -1,0 +1,67 @@
+from pyspark.sql import functions as F
+from delta.tables import DeltaTable
+
+RAW_DIR = "/Volumes/datasentinel/bronze/raw"
+SOURCE_PATH = f"{RAW_DIR}/*.jsonl"
+TARGET_TABLE = "datasentinel.bronze.cdc_events"
+
+# Stop early with a clear message if the bridge has not uploaded anything yet.
+files = [f for f in dbutils.fs.ls(RAW_DIR) if f.name.endswith(".jsonl")]
+assert files, "No .jsonl files in the Volume yet. Run bridge.py first."
+print(f"Found {len(files)} files in the Volume")
+
+# Read raw CDC events from the Volume.
+raw_df = spark.read.json(SOURCE_PATH)
+
+# Add ingestion metadata (_metadata.file_path replaces input_file_name, which Unity Catalog does not support).
+bronze_df = (
+    raw_df
+    .withColumn("_source_file", F.col("_metadata.file_path"))
+    .withColumn("_bronze_ingested_at", F.current_timestamp())
+    .dropDuplicates(["topic", "partition", "offset"])
+)
+
+# Create the table on the first run.
+if not spark.catalog.tableExists(TARGET_TABLE):
+    (
+        bronze_df.write
+        .format("delta")
+        .mode("overwrite")
+        .saveAsTable(TARGET_TABLE)
+    )
+else:
+    # Insert only Kafka events not already stored.
+    target = DeltaTable.forName(spark, TARGET_TABLE)
+
+    (
+        target.alias("t")
+        .merge(
+            bronze_df.alias("s"),
+            """
+            t.topic = s.topic
+            AND t.partition = s.partition
+            AND t.offset = s.offset
+            """
+        )
+        .whenNotMatchedInsertAll()
+        .execute()
+    )
+
+print("Bronze table row count:")
+print(spark.table(TARGET_TABLE).count())
+
+print("Rows per topic:")
+display(
+    spark.table(TARGET_TABLE)
+    .groupBy("topic").count().orderBy("topic")
+)
+
+print("Latest 10 events:")
+display(
+    spark.table(TARGET_TABLE)
+    .select("topic", "partition", "offset", "key",
+            F.get_json_object("value", "$.op").alias("op"),
+            "_source_file")
+    .orderBy(F.col("_bronze_ingested_at").desc())
+    .limit(10)
+)
