@@ -1,0 +1,48 @@
+
+from pyspark.sql import functions as F
+from delta.tables import DeltaTable
+
+SOURCE_PATH = "/Volumes/datasentinel/bronze/raw/*.jsonl"
+TARGET_TABLE = "datasentinel.bronze.cdc_events"
+
+# Read raw CDC events from the Volume.
+raw_df = spark.read.json(SOURCE_PATH)
+
+# Add ingestion metadata.
+bronze_df = (
+    raw_df
+    .withColumn("_source_file", F.input_file_name())
+    .withColumn("_bronze_ingested_at", F.current_timestamp())
+    .dropDuplicates(["topic", "partition", "offset"])
+)
+
+# Create the table on the first run.
+if not spark.catalog.tableExists(TARGET_TABLE):
+    (
+        bronze_df.write
+        .format("delta")
+        .mode("overwrite")
+        .saveAsTable(TARGET_TABLE)
+    )
+else:
+    # Insert only Kafka events not already stored.
+    target = DeltaTable.forName(spark, TARGET_TABLE)
+
+    (
+        target.alias("t")
+        .merge(
+            bronze_df.alias("s"),
+            """
+            t.topic = s.topic
+            AND t.partition = s.partition
+            AND t.offset = s.offset
+            """
+        )
+        .whenNotMatchedInsertAll()
+        .execute()
+    )
+
+print("Bronze table row count:")
+spark.table(TARGET_TABLE).count()
+
+display(spark.table(TARGET_TABLE).limit(10))
