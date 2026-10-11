@@ -1,0 +1,13 @@
+# Copy to dbt/profiles.yml (git-ignored) and run dbt with --profiles-dir . from the dbt folder.
+# Offline: `dbt parse` works with the placeholder defaults below; it never connects.
+datasentinel:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: datasentinel
+      schema: gold
+      host: "{{ env_var('DATABRICKS_HOST', 'offline.cloud.databricks.com') | replace('https://', '') }}"
+      http_path: "{{ env_var('DATABRICKS_HTTP_PATH', '/sql/1.0/warehouses/offline') }}"
+      token: "{{ env_var('DATABRICKS_TOKEN', 'offline') }}"
+      threads: 4

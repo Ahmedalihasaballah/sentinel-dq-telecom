@@ -1,0 +1,65 @@
+version: 2
+
+# Tables written by the Databricks notebooks (40-42 Silver, 10/30-32 monitoring). dbt only reads them.
+sources:
+  - name: silver
+    database: datasentinel
+    schema: silver
+    description: Validated, deduplicated, PII-masked data. Raw msisdn/email/names are replaced by *_hash / *_masked / *_initial.
+    tables:
+      # SCD2 dimensions (40_silver_scd2): valid_from, valid_to, is_current, <table>_sk, attr_hash, src_row_id, _loaded_at
+      - name: dim_customer
+        description: CRM customer history (SCD2), one row per version.
+        columns:
+          - name: dim_customer_sk
+            tests: [unique, not_null]
+          - name: customer_id
+            tests: [not_null]
+      - name: dim_plan
+        description: Plan history (SCD2), one row per version.
+        columns:
+          - name: dim_plan_sk
+            tests: [unique, not_null]
+          - name: plan_id
+            tests: [not_null]
+      - name: dim_billing_account
+        description: Billing account history (SCD2), one row per version.
+        columns:
+          - name: dim_billing_account_sk
+            tests: [unique, not_null]
+          - name: account_id
+            tests: [not_null]
+
+      # Identity map CRM <-> billing (42_customer_xref). Ids are strings; orphans have one side null.
+      - name: customer_xref
+        description: One row per matched customer/account pair plus one row per orphan on either side.
+
+      # Facts and events (41_silver_facts): latest version per business key
+      - name: billing_invoices
+        description: Invoices from billing CDC (system of record).
+      - name: billing_invoice_lines
+        description: Invoice lines from billing CDC.
+      - name: billing_payments
+        description: Payments from billing CDC.
+      - name: invoices_file
+        description: Monthly invoice batch files (compared against CDC in recon).
+      - name: payments_file
+        description: Monthly payment batch files (compared against CDC in recon).
+      - name: network_cdr
+        description: Network call detail records. Linked to customers through msisdn_hash.
+      - name: partner_usage
+        description: Partner usage records. Linked to customers through msisdn_hash.
+      - name: app_events
+        description: Mobile app events from Kafka.
+
+  - name: monitoring
+    database: datasentinel
+    schema: monitoring
+    description: Data quality results and incidents written by the quality notebooks.
+    tables:
+      - name: dq_results
+        description: One row per check per run.
+      - name: incidents
+        description: One row per DQ incident (open or closed).
+      - name: dq_rules
+        description: Rule catalogue loaded from the contracts.

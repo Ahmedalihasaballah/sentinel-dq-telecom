@@ -1,0 +1,215 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: Calendar, one row per day.
+    columns:
+      - name: date_key
+        description: yyyymmdd as int, the FK used by every fact.
+        tests: [unique, not_null]
+      - name: date_day
+        tests: [unique, not_null]
+
+  - name: dim_customer
+    description: CRM customer, SCD2 (one row per version). PII is hashed/masked.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [customer_id, valid_from]
+    columns:
+      - name: customer_sk
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ACTIVE, SUSPENDED, CHURNED]
+      - name: is_current
+        tests: [not_null]
+
+  - name: dim_plan
+    description: Plan, SCD2 (one row per version).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [plan_id, valid_from]
+    columns:
+      - name: plan_sk
+        tests: [unique, not_null]
+      - name: plan_id
+        tests: [not_null]
+      - name: monthly_fee
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0.01
+
+  - name: dim_account
+    description: Billing account, SCD2, with its CRM customer_id from customer_xref (null if unmatched).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [account_id, valid_from]
+    columns:
+      - name: account_sk
+        tests: [unique, not_null]
+      - name: account_id
+        tests: [not_null]
+      - name: customer_id
+        description: Null when the account has no CRM match (orphan); the recon layer reports those.
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+              config:
+                severity: warn
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [OPEN, CLOSED, SUSPENDED]
+
+  - name: dim_network_cell
+    description: Cells seen in the CDRs (type 1; no cell reference feed yet).
+    columns:
+      - name: cell_sk
+        tests: [unique, not_null]
+      - name: cell_id
+        tests: [unique, not_null]
+
+  # ---------------------------------------------------------------- facts
+  # FK tests are warnings: an unmatched key is a data issue to report (recon does), not a reason to stop the build.
+
+  - name: fact_invoice
+    description: One row per invoice (billing CDC). Dimension keys are the versions valid at issue time.
+    columns:
+      - name: invoice_sk
+        tests: [unique, not_null]
+      - name: invoice_id
+        tests: [unique, not_null]
+      - name: account_sk
+        tests:
+          - relationships:
+              arguments: {to: ref('dim_account'), field: account_sk}
+              config: {severity: warn}
+      - name: customer_sk
+        tests:
+          - relationships:
+              arguments: {to: ref('dim_customer'), field: customer_sk}
+              config: {severity: warn}
+      - name: date_key
+        tests:
+          - relationships:
+              arguments: {to: ref('dim_date'), field: date_key}
+              config: {severity: warn}
+      - name: total_amount
+        tests:
+          - dbt_utils.accepted_range:
+              arguments: {min_value: 0}
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ISSUED, PAID, OVERDUE, CANCELLED]
+
+  - name: fact_invoice_line
+    description: One row per invoice line.
+    columns:
+      - name: line_sk
+        tests: [unique, not_null]
+      - name: invoice_sk
+        tests:
+          - relationships:
+              arguments: {to: ref('fact_invoice'), field: invoice_sk}
+              config: {severity: warn}
+      - name: line_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: [PLAN_FEE, DATA_OVERAGE, VOICE, ROAMING]
+
+  - name: fact_payment
+    description: One row per payment. net_collected_amount is + for PAID, - for REFUNDED, 0 for FAILED.
+    columns:
+      - name: payment_sk
+        tests: [unique, not_null]
+      - name: payment_id
+        tests: [unique, not_null]
+      - name: invoice_sk
+        tests:
+          - relationships:
+              arguments: {to: ref('fact_invoice'), field: invoice_sk}
+              config: {severity: warn}
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [PAID, FAILED, REFUNDED]
+
+  - name: fact_usage
+    description: One row per CDR. Customer resolved through msisdn_hash at event time.
+    columns:
+      - name: usage_sk
+        tests: [unique, not_null]
+      - name: customer_sk
+        tests:
+          - not_null:
+              config: {severity: warn}
+      - name: cell_sk
+        tests: [not_null]
+      - name: event_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: [VOICE, SMS, DATA]
+
+  - name: fact_partner_usage
+    description: One row per partner usage record.
+    columns:
+      - name: partner_usage_sk
+        tests: [unique, not_null]
+      - name: customer_sk
+        tests:
+          - not_null:
+              config: {severity: warn}
+
+  - name: fact_reconciliation
+    description: One row per reconciliation record, matched or not. is_exception marks the ones that need action.
+    columns:
+      - name: recon_fact_sk
+        tests: [unique, not_null]
+      - name: is_exception
+        tests: [not_null]
+
+  - name: fact_dq_incident
+    description: One row per incident (data quality and reconciliation).
+    columns:
+      - name: incident_sk
+        tests: [unique, not_null]
+      - name: severity
+        tests:
+          - accepted_values:
+              arguments:
+                values: [critical, high, medium, low, info]
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [OPEN, RESOLVED]
+
+  # ---------------------------------------------------------------- marts
+
+  - name: customer_360
+    description: One row per current customer with billing, usage, app and data-issue totals.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: revenue_assurance
+    description: One row per month. Invoiced vs collected, collection gap and revenue leakage found by reconciliation.
+    columns:
+      - name: year_month
+        tests: [unique, not_null]

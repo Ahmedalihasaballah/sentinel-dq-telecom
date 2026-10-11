@@ -1,0 +1,61 @@
+version: 2
+
+# Every recon_* model has the same leading columns (see recon_results) plus its own detail columns.
+# difference_amount = actual - expected. is_exception marks records that need action.
+
+models:
+  - name: recon_invoice_vs_payment
+    description: Invoiced vs collected per invoice; orphan payments as extra rows.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [record_id]
+    columns:
+      - name: match_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [MATCHED, OPEN, UNPAID, UNDERPAID, OVERPAID, PAYMENT_FAILED, CANCELLED, PAID_CANCELLED, ORPHAN_PAYMENT]
+
+  - name: recon_batch_vs_cdc
+    description: Monthly batch files vs billing CDC, for invoices and payments.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [check_name, record_id]
+    columns:
+      - name: match_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: [MATCHED, MISSING_IN_CDC, MISSING_IN_FILE, AMOUNT_MISMATCH, ACCOUNT_MISMATCH, INVOICE_MISMATCH, STATUS_MISMATCH]
+
+  - name: recon_usage_vs_billing
+    description: Network and partner usage vs what was billed, per MSISDN and month.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [check_name, record_id]
+
+  - name: recon_crm_vs_network
+    description: Network activity vs CRM status and billing accounts, per MSISDN.
+    columns:
+      - name: record_id
+        tests: [unique, not_null]
+
+  - name: recon_results
+    description: All reconciliation checks in one shape.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [check_name, record_id]
+    columns:
+      - name: is_exception
+        tests: [not_null]
+
+  - name: incidents
+    description: DQ incidents from monitoring plus one open incident per reconciliation exception type.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [incident_source, incident_id]
