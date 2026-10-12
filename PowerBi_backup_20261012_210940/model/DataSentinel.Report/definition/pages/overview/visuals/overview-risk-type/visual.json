@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "overview-risk-type",
+  "position": {
+    "x": 968,
+    "y": 206,
+    "z": 11,
+    "width": 932,
+    "height": 420,
+    "tabOrder": 11
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_revenue_assurance"
+                    }
+                  },
+                  "Property": "leak_type"
+                }
+              },
+              "queryRef": "mart_revenue_assurance.leak_type",
+              "nativeQueryRef": "leak_type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Function": 0,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mart_revenue_assurance"
+                        }
+                      },
+                      "Property": "amount_at_risk_eur"
+                    }
+                  }
+                }
+              },
+              "queryRef": "Sum(mart_revenue_assurance.amount_at_risk_eur)",
+              "nativeQueryRef": "Sum of amount_at_risk_eur"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Function": 0,
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "mart_revenue_assurance"
+                      }
+                    },
+                    "Property": "amount_at_risk_eur"
+                  }
+                }
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'EUR at risk by leak type'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

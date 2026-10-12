@@ -1,0 +1,181 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "profile-plan",
+  "position": {
+    "x": 494,
+    "y": 70,
+    "z": 70,
+    "width": 458,
+    "height": 990,
+    "tabOrder": 70
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_name"
+                }
+              },
+              "queryRef": "mart_customer_360.plan_name",
+              "nativeQueryRef": "plan_name",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "monthly_fee"
+                }
+              },
+              "queryRef": "mart_customer_360.monthly_fee",
+              "nativeQueryRef": "monthly_fee",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_data_gb"
+                }
+              },
+              "queryRef": "mart_customer_360.plan_data_gb",
+              "nativeQueryRef": "plan_data_gb",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_voice_minutes"
+                }
+              },
+              "queryRef": "mart_customer_360.plan_voice_minutes",
+              "nativeQueryRef": "plan_voice_minutes",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "invoices"
+                }
+              },
+              "queryRef": "mart_customer_360.invoices",
+              "nativeQueryRef": "invoices",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "billed_eur"
+                }
+              },
+              "queryRef": "mart_customer_360.billed_eur",
+              "nativeQueryRef": "billed_eur",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "paid_eur"
+                }
+              },
+              "queryRef": "mart_customer_360.paid_eur",
+              "nativeQueryRef": "paid_eur",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "unpaid_eur"
+                }
+              },
+              "queryRef": "mart_customer_360.unpaid_eur",
+              "nativeQueryRef": "unpaid_eur",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "last_payment_at"
+                }
+              },
+              "queryRef": "mart_customer_360.last_payment_at",
+              "nativeQueryRef": "last_payment_at",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Plan and billing'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

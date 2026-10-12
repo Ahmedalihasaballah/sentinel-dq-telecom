@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "revenue-trend",
+  "position": {
+    "width": 600,
+    "y": 170,
+    "z": 0,
+    "x": 1300,
+    "tabOrder": 0,
+    "height": 330
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Function": 0,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mart_revenue_assurance_trend"
+                        }
+                      },
+                      "Property": "amount_at_risk_eur"
+                    }
+                  }
+                }
+              },
+              "queryRef": "Sum(mart_revenue_assurance_trend.amount_at_risk_eur)",
+              "nativeQueryRef": "Sum of amount_at_risk_eur"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_revenue_assurance_trend"
+                    }
+                  },
+                  "Property": "run_ts"
+                }
+              },
+              "queryRef": "mart_revenue_assurance_trend.run_ts",
+              "nativeQueryRef": "run_ts",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_revenue_assurance_trend"
+                    }
+                  },
+                  "Property": "check_id"
+                }
+              },
+              "queryRef": "mart_revenue_assurance_trend.check_id",
+              "nativeQueryRef": "check_id",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'EUR at risk per run by check'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "howCreated": "Copilot"
+}

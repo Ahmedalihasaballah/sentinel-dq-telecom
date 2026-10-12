@@ -30,11 +30,11 @@ table _Measures
 		lineageTag: 9d2b3069-dec2-45ee-8ce7-a364a441f4c0
 
 	measure 'EUR At Risk' = CALCULATE ( SUM ( mart_revenue_assurance[amount_at_risk_eur] ), mart_revenue_assurance[is_data_defect] = TRUE () )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: e5a2093c-c38f-4bb0-8b3a-98a224c08410
 
 	measure 'Gross EUR At Risk' = SUM ( mart_revenue_assurance[amount_at_risk_eur] )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: ae0d603a-77f4-4647-aede-7a15b12e3caf
 
 	measure 'Mismatched Rows' = SUM ( mart_revenue_assurance[rows_mismatched] )
@@ -50,15 +50,15 @@ table _Measures
 		lineageTag: 1cb7cae3-2f5e-460f-ac35-4d2f6f81bf95
 
 	measure 'Billed EUR' = SUM ( mart_customer_360[billed_eur] )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: 75518911-0d5c-442b-b0e4-b576b0c1a5a8
 
 	measure 'Paid EUR' = SUM ( mart_customer_360[paid_eur] )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: 026d8cf6-1907-453c-bff3-8f06ca4e7052
 
 	measure 'Unpaid EUR' = SUM ( mart_customer_360[unpaid_eur] )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: bbf807ea-c369-4a4b-94e3-4d90cc5a25fc
 
 	measure 'Collection Rate' = DIVIDE ( [Paid EUR], [Billed EUR] )
@@ -90,11 +90,11 @@ table _Measures
 		lineageTag: 7455539b-cd96-4097-98f8-15c5e48f266d
 
 	measure 'Partner Cost EUR' = SUM ( mart_partner_usage[amount_eur] )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: 4912c3b8-e5c1-43d3-931a-a3ff7b7cbb14
 
 	measure 'Unknown Partner Cost EUR' = SUM ( mart_partner_usage[amount_unknown_customer_eur] )
-		formatString: #,0.00
+		formatString: € #,0
 		lineageTag: 4cde703d-35b1-4a82-bb20-bf353f78377c
 
 	measure 'Oldest Quarantine Age Days' =
@@ -130,73 +130,287 @@ table _Measures
 		formatString: 0.00%
 		lineageTag: d28867b5-f19d-46b3-898c-1d3bf299564e
 
-	/// Sketch bar colours (orange, grey, gold, pink, blue) by position.
-	measure 'Color Leak Type' =
-			VAR r = RANKX ( ALLSELECTED ( mart_revenue_assurance[leak_type] ), [Gross EUR At Risk],, DESC, DENSE )
-			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+	/// UI: report helper
+	measure 'UI Records Delta' =
+			VAR maxD = CALCULATE ( MAX ( mart_network_daily[usage_date] ), ALLSELECTED ( mart_network_daily ) )
+			VAR cur = CALCULATE ( [Network Records], mart_network_daily[usage_date] > maxD - 7, mart_network_daily[usage_date] <= maxD )
+			VAR prev = CALCULATE ( [Network Records], mart_network_daily[usage_date] > maxD - 14, mart_network_daily[usage_date] <= maxD - 7 )
+			VAR d = DIVIDE ( cur - prev, prev )
+			RETURN IF ( ISBLANK ( d ), "no prior week", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs last week" )
 		isHidden
 
-	/// Sketch colours for P1..P4 in order.
-	measure 'Color Priority' =
-			VAR r = SWITCH ( SELECTEDVALUE ( mart_incidents[priority] ), "P1", 1, "P2", 2, "P3", 3, "P4", 4, 5 )
-			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+	/// UI: report helper
+	measure 'UI Voice Delta' =
+			VAR maxD = CALCULATE ( MAX ( mart_network_daily[usage_date] ), ALLSELECTED ( mart_network_daily ) )
+			VAR cur = CALCULATE ( [Voice Minutes], mart_network_daily[usage_date] > maxD - 7, mart_network_daily[usage_date] <= maxD )
+			VAR prev = CALCULATE ( [Voice Minutes], mart_network_daily[usage_date] > maxD - 14, mart_network_daily[usage_date] <= maxD - 7 )
+			VAR d = DIVIDE ( cur - prev, prev )
+			RETURN IF ( ISBLANK ( d ), "no prior week", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs last week" )
 		isHidden
 
-	/// Sketch bar colours (orange, grey, gold, pink, blue) by position.
-	measure 'Color Unpaid Plan' =
-			VAR r = RANKX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Unpaid EUR],, DESC, DENSE )
-			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+	/// UI: report helper
+	measure 'UI Data Delta' =
+			VAR maxD = CALCULATE ( MAX ( mart_network_daily[usage_date] ), ALLSELECTED ( mart_network_daily ) )
+			VAR cur = CALCULATE ( [Data GB], mart_network_daily[usage_date] > maxD - 7, mart_network_daily[usage_date] <= maxD )
+			VAR prev = CALCULATE ( [Data GB], mart_network_daily[usage_date] > maxD - 14, mart_network_daily[usage_date] <= maxD - 7 )
+			VAR d = DIVIDE ( cur - prev, prev )
+			RETURN IF ( ISBLANK ( d ), "no prior week", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs last week" )
 		isHidden
 
-	/// Sketch bar colours (orange, grey, gold, pink, blue) by position.
-	measure 'Color App Version' =
-			VAR r = RANKX ( ALLSELECTED ( mart_app_usage[app_version] ), [App Events],, DESC, DENSE )
-			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+	/// UI: report helper
+	measure 'UI Drop Delta' =
+			VAR maxD = CALCULATE ( MAX ( mart_network_daily[usage_date] ), ALLSELECTED ( mart_network_daily ) )
+			VAR cur = CALCULATE ( [Drop Rate], mart_network_daily[usage_date] > maxD - 7, mart_network_daily[usage_date] <= maxD )
+			VAR prev = CALCULATE ( [Drop Rate], mart_network_daily[usage_date] > maxD - 14, mart_network_daily[usage_date] <= maxD - 7 )
+			RETURN IF ( ISBLANK ( prev ), "no prior week", IF ( cur >= prev, "▲ ", "▼ " ) & FORMAT ( ABS ( cur - prev ) * 100, "0.0" ) & " pt vs last week" )
 		isHidden
 
-	/// Sketch colours for the status / city / plan drill-down chart.
-	measure 'Color Customer Breakdown' =
-			VAR r =
-				SWITCH (
-					TRUE (),
-					ISINSCOPE ( mart_customer_360[plan_name] ), RANKX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Customer Count],, DESC, DENSE ),
-					ISINSCOPE ( mart_customer_360[city] ), RANKX ( ALLSELECTED ( mart_customer_360[city] ), [Customer Count],, DESC, DENSE ),
-					RANKX ( ALLSELECTED ( mart_customer_360[status] ), [Customer Count],, DESC, DENSE )
-				)
-			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+	/// UI: report helper
+	measure 'UI Partner Status' = IF ( [Unknown Partner Cost EUR] > 0, "needs matching", "all matched" )
 		isHidden
 
-	/// Sketch horizontal bars: the two worst in pink, the rest grey.
-	measure 'Color Pass Rate Dataset' =
-			IF ( RANKX ( ALLSELECTED ( mart_dq_health[dataset] ), [DQ Pass Rate],, ASC, DENSE ) <= 2, "#F6CDD1", "#E5E6EA" )
+	/// UI: report helper
+	measure 'UI Days Network' = FORMAT ( DISTINCTCOUNT ( mart_network_daily[usage_date] ), "0" ) & " days"
 		isHidden
 
-	/// Sketch horizontal bars: the two worst in pink, the rest grey.
-	measure 'Color Team Workload' =
-			IF ( RANKX ( ALLSELECTED ( mart_incidents[team] ), [Open Incidents],, DESC, DENSE ) <= 2, "#F6CDD1", "#E5E6EA" )
+	/// UI: report helper
+	measure 'UI Days App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[event_date] ), "0" ) & " days"
 		isHidden
 
-	/// Sketch horizontal bars: the two worst in pink, the rest grey.
-	measure 'Color Worst Cell' =
-			IF ( RANKX ( ALLSELECTED ( mart_cell_quality[cell_id] ), [Cell Drop Rate],, DESC, DENSE ) <= 2, "#F6CDD1", "#E5E6EA" )
+	/// UI: report helper
+	measure 'UI Versions App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[app_version] ), "0" ) & " versions"
 		isHidden
 
-	/// Sketch matrix: pink when the pass rate is below 95 %, green otherwise.
+	/// UI: report helper
+	measure 'UI Months Partner' = FORMAT ( DISTINCTCOUNT ( mart_partner_usage[period_start] ), "0" ) & " months"
+		isHidden
+
+	/// UI: report helper
+	measure 'Crash Share Track' =
+			VAR mx = MAXX ( ALLSELECTED ( mart_app_usage[app_version] ), [Crash Share] )
+			RETURN IF ( NOT ISBLANK ( [Crash Share] ), mx * 1.08 - [Crash Share] )
+		isHidden
+
+	/// UI: report helper
+	measure 'Color Crash Share' = IF ( RANKX ( ALLSELECTED ( mart_app_usage[app_version] ), [Crash Share],, DESC, DENSE ) = 1, "#D9363E", "#2F6FDB" )
+		isHidden
+
+	/// UI: report helper
+	measure 'Cell Drop Track' =
+			VAR mx = MAXX ( ALLSELECTED ( mart_cell_quality[cell_id] ), [Cell Drop Rate] )
+			RETURN IF ( NOT ISBLANK ( [Cell Drop Rate] ), mx * 1.08 - [Cell Drop Rate] )
+		isHidden
+
+	/// UI: report helper
+	measure 'App Events K' = DIVIDE ( [App Events], 1000 )
+		formatString: #,0
+		isHidden
+
+	/// UI: report helper
+	measure 'Network Records M' = DIVIDE ( [Network Records], 1000000 )
+		formatString: 0.0
+		isHidden
+
+	/// UI: report helper
+	measure 'Partner Cost K' = DIVIDE ( [Partner Cost EUR], 1000 )
+		formatString: € #,0
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Open 7d' =
+			VAR maxD = CALCULATE ( MAX ( mart_incidents[opened_at] ), ALLSELECTED ( mart_incidents ) )
+			VAR n = CALCULATE ( [Incident Count], mart_incidents[opened_at] > maxD - 7 )
+			RETURN FORMAT ( n, "0" ) & " opened in last 7 days"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI SLA Policy' = "P1 1h · P2 4h · P3 24h · P4 72h"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Quarantine Datasets' = FORMAT ( DISTINCTCOUNT ( mart_quarantine[dataset] ), "0" ) & " datasets affected"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Active Share' = FORMAT ( DIVIDE ( [Active Customers], [Customer Count] ), "0%" ) & " of customers"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Unpaid Owe' =
+			VAR n = CALCULATE ( [Customer Count], mart_customer_360[unpaid_eur] > 0 )
+			RETURN FORMAT ( n, "#,0" ) & " customers owe"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI DQ Delta' =
+			VAR maxD = CALCULATE ( MAX ( mart_dq_trend[run_date] ), ALLSELECTED ( mart_dq_trend ) )
+			VAR prevD = CALCULATE ( MAX ( mart_dq_trend[run_date] ), ALLSELECTED ( mart_dq_trend ), mart_dq_trend[run_date] < maxD )
+			VAR cur = CALCULATE ( [DQ Trend Pass Rate], mart_dq_trend[run_date] = maxD )
+			VAR prev = CALCULATE ( [DQ Trend Pass Rate], mart_dq_trend[run_date] = prevD )
+			RETURN IF ( ISBLANK ( prev ), "latest run", IF ( cur >= prev, "▲ ", "▼ " ) & FORMAT ( ABS ( cur - prev ) * 100, "0.0" ) & " pt vs previous run" )
+		isHidden
+
+	/// UI: report helper
+	measure 'Failing Rules' = CALCULATE ( COUNTROWS ( mart_dq_health ), mart_dq_health[status] <> "PASS" )
+		formatString: #,0
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Rules Total' = "of " & FORMAT ( COUNTROWS ( mart_dq_health ), "#,0" ) & " rules checked"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Oldest Note' = "waiting in quarantine"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Runs DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_trend[run_date] ), "0" ) & " days"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Datasets DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_health[dataset] ), "0" ) & " datasets"
+		isHidden
+
+	/// UI: report helper
+	measure 'Pass Rate Track' = IF ( NOT ISBLANK ( [DQ Pass Rate] ), 1 - [DQ Pass Rate] )
+		formatString: 0.0%
+		isHidden
+
+	/// UI: report helper
+	measure 'Color Pass Rate' = IF ( [DQ Pass Rate] < 0.95, "#D9363E", "#2F6FDB" )
+		isHidden
+
+	/// UI: report helper
 	measure 'Color Matrix' =
 			VAR v = [DQ Trend Pass Rate]
-			RETURN IF ( NOT ISBLANK ( v ), IF ( v < 0.95, "#F6CDD1", "#D9F0E0" ) )
+			RETURN SWITCH ( TRUE (), ISBLANK ( v ), BLANK (), v < 0.9, "#FBD5D5", v < 0.98, "#FDECC8", "#D7F2E3" )
 		isHidden
 
-	/// Red only for failures (PDF design rule); the status word stays visible.
-	measure 'Color DQ Status' = IF ( SELECTEDVALUE ( mart_dq_health[status] ) IN { "FAIL", "FAILED" }, "#E57373" )
+	/// UI: report helper
+	measure 'Color DQ Status' = IF ( SELECTEDVALUE ( mart_dq_health[status] ) IN { "FAIL", "FAILED" }, "#FDE2E2" )
 		isHidden
 
-	/// Red only for failures (PDF design rule); the status word stays visible.
-	measure 'Color Recon Status' = IF ( SELECTEDVALUE ( mart_revenue_assurance[status] ) IN { "FAIL", "FAILED" }, "#E57373" )
+	/// UI: report helper
+	measure 'Font DQ Status' = IF ( SELECTEDVALUE ( mart_dq_health[status] ) IN { "FAIL", "FAILED" }, "#B42318", "#111827" )
 		isHidden
 
-	/// Red only for failures (PDF design rule); the status word stays visible.
-	measure 'Color SLA Status' = IF ( SELECTEDVALUE ( mart_incidents[sla_status] ) IN { "BREACHED" }, "#E57373" )
+	/// UI: report helper
+	measure 'UI Risk Delta' =
+			VAR lastT = CALCULATE ( MAX ( mart_revenue_assurance_trend[run_ts] ), ALLSELECTED ( mart_revenue_assurance_trend ) )
+			VAR prevT = CALCULATE ( MAX ( mart_revenue_assurance_trend[run_ts] ), ALLSELECTED ( mart_revenue_assurance_trend ), mart_revenue_assurance_trend[run_ts] < lastT )
+			VAR cur = CALCULATE ( SUM ( mart_revenue_assurance_trend[amount_at_risk_eur] ), mart_revenue_assurance_trend[run_ts] = lastT )
+			VAR prev = CALCULATE ( SUM ( mart_revenue_assurance_trend[amount_at_risk_eur] ), mart_revenue_assurance_trend[run_ts] = prevT )
+			VAR d = DIVIDE ( cur - prev, prev )
+			RETURN IF ( ISBLANK ( d ), "latest run", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs previous run" )
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Gross Note' = "gross: R3 and R6 overlap"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Defect Note' = "excludes R10 unpaid invoices"
+		isHidden
+
+	/// UI: report helper
+	measure 'Checks Failing' = CALCULATE ( COUNTROWS ( mart_revenue_assurance ), mart_revenue_assurance[status] = "FAIL" )
+		formatString: #,0
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Checks Total' = "of " & FORMAT ( COUNTROWS ( mart_revenue_assurance ), "0" ) & " checks"
+		isHidden
+
+	/// UI: report helper
+	measure 'Cases To Investigate' = COUNTROWS ( mart_recon_mismatches )
+		formatString: #,0
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Latest Run' = "latest reconciliation run"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Runs Recon' = FORMAT ( DISTINCTCOUNT ( mart_revenue_assurance_trend[run_id] ), "0" ) & " runs"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Mismatch Checks' =
+			VAR n = CALCULATE ( COUNTROWS ( mart_revenue_assurance ), mart_revenue_assurance[rows_mismatched] > 0 )
+			RETURN "across " & FORMAT ( n, "0" ) & " checks"
+		isHidden
+
+	/// UI: report helper
+	measure 'Leak Risk Track' =
+			VAR mx = MAXX ( ALLSELECTED ( mart_revenue_assurance[leak_type] ), [Gross EUR At Risk] )
+			RETURN IF ( NOT ISBLANK ( [Gross EUR At Risk] ), mx * 1.08 - [Gross EUR At Risk] )
+		isHidden
+
+	/// UI: report helper
+	measure 'Recon Risk Run' = SUM ( mart_revenue_assurance_trend[amount_at_risk_eur] )
+		formatString: € #,0
+		isHidden
+
+	/// UI: report helper
+	measure 'Color Recon Status' = IF ( SELECTEDVALUE ( mart_revenue_assurance[status] ) IN { "FAIL", "FAILED" }, "#FDE2E2" )
+		isHidden
+
+	/// UI: report helper
+	measure 'Font Recon Status' = IF ( SELECTEDVALUE ( mart_revenue_assurance[status] ) IN { "FAIL", "FAILED" }, "#B42318", "#111827" )
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Resolved Share' =
+			VAR resolved = CALCULATE ( [Incident Count], mart_incidents[status] = "RESOLVED" )
+			RETURN FORMAT ( DIVIDE ( [Resolved In SLA], resolved ), "0%" ) & " of resolved"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Ack Note' = "minutes to acknowledge"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Incidents Total' = FORMAT ( [Incident Count], "#,0" ) & " incidents"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Teams' = FORMAT ( DISTINCTCOUNT ( mart_incidents[team] ), "0" ) & " teams"
+		isHidden
+
+	/// UI: report helper
+	measure 'Team Workload Track' =
+			VAR mx = MAXX ( ALLSELECTED ( mart_incidents[team] ), [Open Incidents] )
+			RETURN IF ( NOT ISBLANK ( [Open Incidents] ), mx * 1.08 - [Open Incidents] )
+		isHidden
+
+	/// UI: report helper
+	measure 'Color SLA Status' = IF ( SELECTEDVALUE ( mart_incidents[sla_status] ) IN { "BREACHED" }, "#FDE2E2" )
+		isHidden
+
+	/// UI: report helper
+	measure 'Font SLA Status' = IF ( SELECTEDVALUE ( mart_incidents[sla_status] ) IN { "BREACHED" }, "#B42318", "#111827" )
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Invoices' = FORMAT ( SUM ( mart_customer_360[invoices] ), "#,0" ) & " invoices"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Collected' = FORMAT ( [Collection Rate], "0%" ) & " collected"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Plans' = FORMAT ( DISTINCTCOUNT ( mart_customer_360[plan_name] ), "0" ) & " plans"
+		isHidden
+
+	/// UI: report helper
+	measure 'UI Customers Shown' = FORMAT ( [Customer Count], "#,0" ) & " customers"
+		isHidden
+
+	/// UI: report helper
+	measure 'Unpaid Plan Track' =
+			VAR mx = MAXX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Unpaid EUR] )
+			RETURN IF ( NOT ISBLANK ( [Unpaid EUR] ), mx * 1.08 - [Unpaid EUR] )
 		isHidden
 
 	column MeasureHost

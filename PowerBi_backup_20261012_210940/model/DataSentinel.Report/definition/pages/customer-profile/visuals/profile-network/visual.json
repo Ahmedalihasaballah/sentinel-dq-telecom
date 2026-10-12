@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "profile-network",
+  "position": {
+    "x": 968,
+    "y": 70,
+    "z": 71,
+    "width": 458,
+    "height": 990,
+    "tabOrder": 71
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "voice_minutes_used"
+                }
+              },
+              "queryRef": "mart_customer_360.voice_minutes_used",
+              "nativeQueryRef": "voice_minutes_used",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "sms_count"
+                }
+              },
+              "queryRef": "mart_customer_360.sms_count",
+              "nativeQueryRef": "sms_count",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "data_mb_used"
+                }
+              },
+              "queryRef": "mart_customer_360.data_mb_used",
+              "nativeQueryRef": "data_mb_used",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "dropped_calls"
+                }
+              },
+              "queryRef": "mart_customer_360.dropped_calls",
+              "nativeQueryRef": "dropped_calls",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "last_network_activity_at"
+                }
+              },
+              "queryRef": "mart_customer_360.last_network_activity_at",
+              "nativeQueryRef": "last_network_activity_at",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Network use'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

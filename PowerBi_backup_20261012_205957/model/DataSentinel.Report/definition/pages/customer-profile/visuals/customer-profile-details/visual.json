@@ -1,0 +1,452 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "customer-profile-details",
+  "position": {
+    "width": 1880,
+    "y": 80,
+    "z": 0,
+    "x": 20,
+    "tabOrder": 0,
+    "height": 960
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "customer_id"
+                }
+              },
+              "nativeQueryRef": "customer_id",
+              "active": true,
+              "queryRef": "mart_customer_360.customer_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "name_masked"
+                }
+              },
+              "nativeQueryRef": "name_masked",
+              "active": true,
+              "queryRef": "mart_customer_360.name_masked"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "email_masked"
+                }
+              },
+              "nativeQueryRef": "email_masked",
+              "active": true,
+              "queryRef": "mart_customer_360.email_masked"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "msisdn_masked"
+                }
+              },
+              "nativeQueryRef": "msisdn_masked",
+              "active": true,
+              "queryRef": "mart_customer_360.msisdn_masked"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "city"
+                }
+              },
+              "nativeQueryRef": "city",
+              "active": true,
+              "queryRef": "mart_customer_360.city"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "country"
+                }
+              },
+              "nativeQueryRef": "country",
+              "active": true,
+              "queryRef": "mart_customer_360.country"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "status"
+                }
+              },
+              "nativeQueryRef": "status",
+              "active": true,
+              "queryRef": "mart_customer_360.status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "created_at"
+                }
+              },
+              "nativeQueryRef": "created_at",
+              "active": true,
+              "queryRef": "mart_customer_360.created_at"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_name"
+                }
+              },
+              "nativeQueryRef": "plan_name",
+              "active": true,
+              "queryRef": "mart_customer_360.plan_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "monthly_fee"
+                }
+              },
+              "nativeQueryRef": "monthly_fee",
+              "active": true,
+              "queryRef": "mart_customer_360.monthly_fee"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_data_gb"
+                }
+              },
+              "nativeQueryRef": "plan_data_gb",
+              "active": true,
+              "queryRef": "mart_customer_360.plan_data_gb"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_voice_minutes"
+                }
+              },
+              "nativeQueryRef": "plan_voice_minutes",
+              "active": true,
+              "queryRef": "mart_customer_360.plan_voice_minutes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "invoices"
+                }
+              },
+              "nativeQueryRef": "invoices",
+              "active": true,
+              "queryRef": "mart_customer_360.invoices"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "billed_eur"
+                }
+              },
+              "nativeQueryRef": "billed_eur",
+              "active": true,
+              "queryRef": "mart_customer_360.billed_eur"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "paid_eur"
+                }
+              },
+              "nativeQueryRef": "paid_eur",
+              "active": true,
+              "queryRef": "mart_customer_360.paid_eur"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "unpaid_eur"
+                }
+              },
+              "nativeQueryRef": "unpaid_eur",
+              "active": true,
+              "queryRef": "mart_customer_360.unpaid_eur"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "last_payment_at"
+                }
+              },
+              "nativeQueryRef": "last_payment_at",
+              "active": true,
+              "queryRef": "mart_customer_360.last_payment_at"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "voice_minutes_used"
+                }
+              },
+              "nativeQueryRef": "voice_minutes_used",
+              "active": true,
+              "queryRef": "mart_customer_360.voice_minutes_used"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "sms_count"
+                }
+              },
+              "nativeQueryRef": "sms_count",
+              "active": true,
+              "queryRef": "mart_customer_360.sms_count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "data_mb_used"
+                }
+              },
+              "nativeQueryRef": "data_mb_used",
+              "active": true,
+              "queryRef": "mart_customer_360.data_mb_used"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "dropped_calls"
+                }
+              },
+              "nativeQueryRef": "dropped_calls",
+              "active": true,
+              "queryRef": "mart_customer_360.dropped_calls"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "last_network_activity_at"
+                }
+              },
+              "nativeQueryRef": "last_network_activity_at",
+              "active": true,
+              "queryRef": "mart_customer_360.last_network_activity_at"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "app_events"
+                }
+              },
+              "nativeQueryRef": "app_events",
+              "active": true,
+              "queryRef": "mart_customer_360.app_events"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "app_crashes"
+                }
+              },
+              "nativeQueryRef": "app_crashes",
+              "active": true,
+              "queryRef": "mart_customer_360.app_crashes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_changes"
+                }
+              },
+              "nativeQueryRef": "plan_changes",
+              "active": true,
+              "queryRef": "mart_customer_360.plan_changes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "last_login_at"
+                }
+              },
+              "nativeQueryRef": "last_login_at",
+              "active": true,
+              "queryRef": "mart_customer_360.last_login_at"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "partner_amount_eur"
+                }
+              },
+              "nativeQueryRef": "partner_amount_eur",
+              "active": true,
+              "queryRef": "mart_customer_360.partner_amount_eur"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Customer Profile - Drill through by customer_id'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true
+  },
+  "howCreated": "Copilot"
+}

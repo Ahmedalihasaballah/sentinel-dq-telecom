@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "profile-app",
+  "position": {
+    "x": 1442,
+    "y": 70,
+    "z": 72,
+    "width": 458,
+    "height": 990,
+    "tabOrder": 72
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "app_events"
+                }
+              },
+              "queryRef": "mart_customer_360.app_events",
+              "nativeQueryRef": "app_events",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "app_crashes"
+                }
+              },
+              "queryRef": "mart_customer_360.app_crashes",
+              "nativeQueryRef": "app_crashes",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "plan_changes"
+                }
+              },
+              "queryRef": "mart_customer_360.plan_changes",
+              "nativeQueryRef": "plan_changes",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "last_login_at"
+                }
+              },
+              "queryRef": "mart_customer_360.last_login_at",
+              "nativeQueryRef": "last_login_at",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_customer_360"
+                    }
+                  },
+                  "Property": "partner_amount_eur"
+                }
+              },
+              "queryRef": "mart_customer_360.partner_amount_eur",
+              "nativeQueryRef": "partner_amount_eur",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'App and partner'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

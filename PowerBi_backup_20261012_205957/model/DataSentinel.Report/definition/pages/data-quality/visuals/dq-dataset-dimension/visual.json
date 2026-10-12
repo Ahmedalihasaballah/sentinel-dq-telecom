@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "dq-dataset-dimension",
+  "position": {
+    "width": 610,
+    "y": 130,
+    "z": 0,
+    "x": 655,
+    "tabOrder": 0,
+    "height": 340
+  },
+  "visual": {
+    "visualType": "matrix",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Function": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "mart_dq_trend"
+                        }
+                      },
+                      "Property": "pass_rate"
+                    }
+                  }
+                }
+              },
+              "queryRef": "Average(mart_dq_trend.pass_rate)",
+              "nativeQueryRef": "Average of pass_rate"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_dq_trend"
+                    }
+                  },
+                  "Property": "dimension"
+                }
+              },
+              "queryRef": "mart_dq_trend.dimension",
+              "nativeQueryRef": "dimension",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "mart_dq_trend"
+                    }
+                  },
+                  "Property": "dataset"
+                }
+              },
+              "queryRef": "mart_dq_trend.dataset",
+              "nativeQueryRef": "dataset",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pass rate by dataset and dimension'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "howCreated": "Copilot"
+}

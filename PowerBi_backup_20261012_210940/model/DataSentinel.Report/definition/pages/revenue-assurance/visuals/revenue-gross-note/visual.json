@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "revenue-gross-note",
+  "position": {
+    "x": 20,
+    "y": 182,
+    "z": 31,
+    "width": 920,
+    "height": 30,
+    "tabOrder": 31
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Note: checks R3 and R6 overlap, so the total EUR at risk is gross.",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#5C6B7A",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
