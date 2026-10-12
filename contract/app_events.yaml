@@ -5,7 +5,7 @@ description: One row per mobile app event, streamed from Kafka topic app.events
 glossary: [App event, App event type, Customer ID in events]
 source:
   kind: json
-  table: datasentinel.bronze.app_events_raw
+  table: data_sentinel.bronze.app_events_raw
 columns:
   - {name: event_id, type: string, required: true}
   - {name: customer_id, type: bigint, required: true}
@@ -24,5 +24,5 @@ monitors:
   freshness: {type: stream, max_delay_minutes: 1440}
   volume: {min_rows: 1}
 lineage:
-  upstream: [datasentinel.bronze.app_events_raw]
-  downstream: [datasentinel.silver.fact_app_events]
+  upstream: [data_sentinel.bronze.app_events_raw]
+  downstream: [data_sentinel.silver.fact_app_events]

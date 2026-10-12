@@ -5,7 +5,7 @@ description: Monthly billing invoice files (file copy of the invoices, compared 
 glossary: [Invoice, Plan fee (PLAN_FEE), Data overage (DATA_OVERAGE), Invoice total]
 source:
   kind: csv
-  table: datasentinel.bronze.billing_invoices_raw
+  table: data_sentinel.bronze.billing_invoices_raw
   file_source: billing_invoices
 columns:
   - {name: invoice_id, type: bigint, required: true}
@@ -39,5 +39,5 @@ monitors:
   distribution:
     - {name: avg_total_amount, expr: "avg(try_cast(total_amount AS double))", ratio_to_median: [0.7, 1.5]}
 lineage:
-  upstream: [datasentinel.bronze.billing_invoices_raw]
-  downstream: [datasentinel.silver.fact_invoice]
+  upstream: [data_sentinel.bronze.billing_invoices_raw]
+  downstream: [data_sentinel.silver.fact_invoice]

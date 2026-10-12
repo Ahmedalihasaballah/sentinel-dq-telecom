@@ -5,7 +5,7 @@ description: One row per invoice change event from Postgres billing.invoices
 glossary: [Invoice, Billing period, Invoice total]
 source:
   kind: cdc
-  table: datasentinel.bronze.cdc_events
+  table: data_sentinel.bronze.cdc_events
   topic: telecom.billing.invoices
   key: [invoice_id]
 columns:
@@ -27,5 +27,5 @@ rules:
 monitors:
   freshness: {type: stream, max_delay_minutes: 1440}
 lineage:
-  upstream: [datasentinel.bronze.cdc_events]
-  downstream: [datasentinel.silver.fact_invoice]
+  upstream: [data_sentinel.bronze.cdc_events]
+  downstream: [data_sentinel.silver.fact_invoice]

@@ -4,7 +4,7 @@ kafka mode : sends events to the Kafka topic app.events (bridge.py then uploads 
     python app_event_producer.py kafka --rate 20 --total 500
 file mode  : writes one JSON-lines file in the same envelope the bridge uses (fallback without Kafka)
     python app_event_producer.py file --date 2026-10-07 --rows 3000 --out data/landing/app_events
-    then upload that folder to /Volumes/datasentinel/bronze/raw/app_events/
+    then upload that folder to /Volumes/data_sentinel/bronze/raw/app_events/
 
 Defects injected (for the quality gate):
   completeness  customer_id null (~2%)        uniqueness  repeated event_id (~1%)

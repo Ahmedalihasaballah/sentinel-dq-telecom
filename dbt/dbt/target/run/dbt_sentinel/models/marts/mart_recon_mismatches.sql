@@ -1,0 +1,24 @@
+
+  
+    
+        create or replace table `data_sentinel`.`gold`.`mart_recon_mismatches`
+      
+      
+    using delta
+  
+      
+      
+      
+      
+      
+      
+      
+      as
+      -- Dashboard 2: the individual mismatches of the latest run (what the billing team investigates).
+with last_run as (
+    select run_id from `data_sentinel`.`monitoring`.`recon_results` order by run_ts desc limit 1
+)
+select m.check_id, m.entity_type, m.entity_key, m.value_a, m.value_b, m.diff, m.amount_at_risk_eur, m.reason, m.run_id
+from `data_sentinel`.`monitoring`.`recon_mismatches` m
+join last_run l on m.run_id = l.run_id
+  

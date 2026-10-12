@@ -5,7 +5,7 @@ description: One row per customer change event (snapshot, insert, update) from P
 glossary: [Customer, Customer status, MSISDN]
 source:
   kind: cdc
-  table: datasentinel.bronze.cdc_events
+  table: data_sentinel.bronze.cdc_events
   topic: telecom.crm.customers
   key: [customer_id]
 columns:
@@ -27,7 +27,7 @@ rules:
   - {id: CUST_ID_NOT_NULL, type: not_null, column: customer_id, dimension: completeness, severity: critical, action: reject}
   - {id: CUST_MSISDN_FORMAT, type: regex, column: msisdn, pattern: "^[+]316[0-9]{8}$", dimension: validity, severity: high, action: autofix}
   - {id: CUST_EMAIL_PRESENT, type: not_null, column: email, dimension: completeness, severity: low, action: flag}
-  - {id: CUST_EMAIL_FORMAT, type: regex, column: email, pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,}$", dimension: validity, severity: medium, action: autofix}
+  - {id: CUST_EMAIL_FORMAT, type: regex, column: email, pattern: '^[^\sA-Z@]+@[a-z0-9.-]+[.][a-z]{2,}$', dimension: validity, severity: medium, action: autofix}
   - {id: CUST_STATUS_DOMAIN, type: domain, column: status, values: [ACTIVE, SUSPENDED, CHURNED], dimension: domain, severity: high, action: reject}
   - {id: CUST_CREATED_NOT_FUTURE, type: not_future, column: created_at, dimension: timeliness, severity: medium, action: reject}
   - id: CUST_DUPLICATE
@@ -55,5 +55,5 @@ fixes:
 monitors:
   freshness: {type: stream, max_delay_minutes: 1440}
 lineage:
-  upstream: [datasentinel.bronze.cdc_events]
-  downstream: [datasentinel.silver.dim_customer, datasentinel.silver.customer_xref]
+  upstream: [data_sentinel.bronze.cdc_events]
+  downstream: [data_sentinel.silver.dim_customer, data_sentinel.silver.customer_xref]

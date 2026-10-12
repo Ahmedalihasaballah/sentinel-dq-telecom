@@ -5,7 +5,7 @@ description: Monthly partner usage files (roaming and international calls)
 glossary: [Partner usage record, Roaming, International call, Partner amount, Currency]
 source:
   kind: csv
-  table: datasentinel.bronze.partner_usage_raw
+  table: data_sentinel.bronze.partner_usage_raw
   file_source: partner
 columns:
   - {name: partner_record_id, type: string, required: true}
@@ -28,5 +28,5 @@ monitors:
   distribution:
     - {name: avg_amount, expr: "avg(try_cast(amount AS double))", ratio_to_median: [0.5, 2.0]}
 lineage:
-  upstream: [datasentinel.bronze.partner_usage_raw]
-  downstream: [datasentinel.silver.fact_partner_usage]
+  upstream: [data_sentinel.bronze.partner_usage_raw]
+  downstream: [data_sentinel.silver.fact_partner_usage]

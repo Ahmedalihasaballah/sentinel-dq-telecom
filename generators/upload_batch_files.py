@@ -5,7 +5,7 @@
 
 Expected local layout:  <src>/network/*.csv, <src>/billing_invoices/*.csv,
                         <src>/billing_payments/*.csv, <src>/partner/*.csv
-Target:                 /Volumes/datasentinel/bronze/raw/batch/<source>/<file>
+Target:                 /Volumes/data_sentinel/bronze/raw/batch/<source>/<file>
 Re-running is safe: files with the same name are overwritten.
 """
 import argparse

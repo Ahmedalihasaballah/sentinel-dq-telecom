@@ -73,7 +73,7 @@ edges = ns["edges_from_contracts"](contracts)
 vt = ns["validated_table"](contracts["network_cdr"])
 impact = ns["impacted_tables"](vt, edges)
 print(f"\nlineage: {len(edges)} edges; network_cdr validated feeds {impact}")
-if "datasentinel.silver.fact_usage" not in impact:
+if "data_sentinel.silver.fact_usage" not in impact:
     print("    - lineage impact check failed")
     failures += 1
 

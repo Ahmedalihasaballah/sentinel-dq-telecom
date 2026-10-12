@@ -1,7 +1,7 @@
 """Kafka -> Databricks Volume bridge.
 
-CDC topics (telecom.*)  -> /Volumes/datasentinel/bronze/raw/cdc_<time>.jsonl        (read by 01_bronze)
-App events (app.events) -> /Volumes/datasentinel/bronze/raw/app_events/app_events_<time>.jsonl  (read by 02_bronze_app_events)
+CDC topics (telecom.*)  -> /Volumes/data_sentinel/bronze/raw/cdc_<time>.jsonl        (read by 01_bronze)
+App events (app.events) -> /Volumes/data_sentinel/bronze/raw/app_events/app_events_<time>.jsonl  (read by 02_bronze_app_events)
 
 Every line is one Kafka message wrapped in an envelope. "value" is kept as the raw message text.
 """
@@ -19,7 +19,7 @@ from kafka import KafkaConsumer
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-log = logging.getLogger("datasentinel-bridge")
+log = logging.getLogger("data_sentinel-bridge")
 
 HOST = os.getenv("DATABRICKS_HOST", "").rstrip("/")
 TOKEN = os.getenv("DATABRICKS_TOKEN", "")
@@ -100,7 +100,7 @@ def main():
     consumer = KafkaConsumer(
         *TOPICS,
         bootstrap_servers=KAFKA_BOOTSTRAP.split(","),
-        group_id="datasentinel-bridge",
+        group_id="data_sentinel-bridge",
         enable_auto_commit=False,
         auto_offset_reset="earliest",
         consumer_timeout_ms=1000,

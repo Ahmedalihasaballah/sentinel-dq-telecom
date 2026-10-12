@@ -5,7 +5,7 @@ description: One row per call, SMS or data session (daily CDR files)
 glossary: [CDR, Event type, Call duration, Data volume, Cell, Call result]
 source:
   kind: csv
-  table: datasentinel.bronze.network_cdr_raw
+  table: data_sentinel.bronze.network_cdr_raw
   file_source: network
 columns:
   - {name: cdr_id, type: string, required: true}
@@ -34,5 +34,5 @@ monitors:
     - {name: avg_data_mb, expr: "avg(try_cast(data_mb AS double))", where: "event_type = 'DATA'", ratio_to_median: [0.5, 3.0]}
     - {name: drop_rate, expr: "avg(CASE WHEN call_result = 'DROPPED' THEN 1.0 ELSE 0.0 END)", where: "event_type = 'VOICE'", abs_diff_to_median: 0.15}
 lineage:
-  upstream: [datasentinel.bronze.network_cdr_raw]
-  downstream: [datasentinel.silver.fact_usage]
+  upstream: [data_sentinel.bronze.network_cdr_raw]
+  downstream: [data_sentinel.silver.fact_usage]

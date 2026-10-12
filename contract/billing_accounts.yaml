@@ -5,7 +5,7 @@ description: One row per billing account change event from Postgres billing.acco
 glossary: [Billing account, Account reference, MSISDN]
 source:
   kind: cdc
-  table: datasentinel.bronze.cdc_events
+  table: data_sentinel.bronze.cdc_events
   topic: telecom.billing.accounts
   key: [account_id]
 columns:
@@ -33,5 +33,5 @@ fixes:
 monitors:
   freshness: {type: stream, max_delay_minutes: 1440}
 lineage:
-  upstream: [datasentinel.bronze.cdc_events]
-  downstream: [datasentinel.silver.customer_xref]
+  upstream: [data_sentinel.bronze.cdc_events]
+  downstream: [data_sentinel.silver.customer_xref]

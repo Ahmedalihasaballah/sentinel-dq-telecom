@@ -5,7 +5,7 @@ description: One row per invoice line change event from Postgres billing.invoice
 glossary: [Invoice line, Plan fee (PLAN_FEE), Data overage (DATA_OVERAGE)]
 source:
   kind: cdc
-  table: datasentinel.bronze.cdc_events
+  table: data_sentinel.bronze.cdc_events
   topic: telecom.billing.invoice_lines
   key: [line_id]
 columns:
@@ -23,5 +23,5 @@ rules:
 monitors:
   freshness: {type: stream, max_delay_minutes: 1440}
 lineage:
-  upstream: [datasentinel.bronze.cdc_events]
-  downstream: [datasentinel.silver.fact_invoice]
+  upstream: [data_sentinel.bronze.cdc_events]
+  downstream: [data_sentinel.silver.fact_invoice]

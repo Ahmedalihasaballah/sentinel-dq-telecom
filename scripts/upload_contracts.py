@@ -2,7 +2,7 @@
 
   python tools/upload_contracts.py            (run from the quality_phase folder, needs .env with DATABRICKS_HOST and DATABRICKS_TOKEN)
 
-Run notebook 10_quality_setup first, so the volume datasentinel.monitoring.contracts exists.
+Run notebook 10_quality_setup first, so the volume data_sentinel.monitoring.contracts exists.
 """
 
 import dns_fix  # noqa: F401

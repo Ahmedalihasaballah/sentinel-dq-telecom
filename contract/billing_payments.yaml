@@ -5,7 +5,7 @@ description: One row per payment change event from Postgres billing.payments
 glossary: [Payment, Payment method, Unpaid invoice]
 source:
   kind: cdc
-  table: datasentinel.bronze.cdc_events
+  table: data_sentinel.bronze.cdc_events
   topic: telecom.billing.payments
   key: [payment_id]
 columns:
@@ -27,5 +27,5 @@ rules:
 monitors:
   freshness: {type: stream, max_delay_minutes: 1440}
 lineage:
-  upstream: [datasentinel.bronze.cdc_events]
-  downstream: [datasentinel.silver.fact_payment]
+  upstream: [data_sentinel.bronze.cdc_events]
+  downstream: [data_sentinel.silver.fact_payment]
