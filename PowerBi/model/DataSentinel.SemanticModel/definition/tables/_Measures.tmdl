@@ -1,0 +1,212 @@
+table _Measures
+	lineageTag: 1722df40-649b-4611-abb0-2a3e30f24623
+
+	measure 'DQ Pass Rate' = 1 - DIVIDE ( SUM ( mart_dq_health[rows_failed] ), SUM ( mart_dq_health[rows_checked] ) )
+		formatString: 0.00%
+		lineageTag: b25fe907-db8e-4bdb-ade4-7fbf4418d16d
+
+	measure 'Quarantined Rows' = SUM ( mart_quarantine[rows] )
+		formatString: #,0
+		lineageTag: 95accd14-77af-472a-ae74-2fd1b1a54a3c
+
+	measure 'Open Incidents' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[status] = "OPEN" )
+		formatString: #,0
+		lineageTag: e2e6284e-128e-463c-b375-bcb66443d7e6
+
+	measure 'SLA Breached' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[sla_status] = "BREACHED" )
+		formatString: #,0
+		lineageTag: 3bd93f46-75a3-4a04-a696-d7cc5676c603
+
+	measure 'Incident Count' = COUNTROWS ( mart_incidents )
+		formatString: #,0
+		lineageTag: 71423f10-cb8e-4c84-9970-23f0418dbf39
+
+	measure 'Resolved In SLA' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[status] = "RESOLVED", mart_incidents[sla_status] = "RESOLVED_IN_SLA" )
+		formatString: #,0
+		lineageTag: b51e6a71-e5a3-4a81-93bb-2a1ee7983b46
+
+	measure 'Avg Minutes To Ack' = AVERAGE ( mart_incidents[minutes_to_ack] )
+		formatString: #,0.0
+		lineageTag: 9d2b3069-dec2-45ee-8ce7-a364a441f4c0
+
+	measure 'EUR At Risk' = CALCULATE ( SUM ( mart_revenue_assurance[amount_at_risk_eur] ), mart_revenue_assurance[is_data_defect] = TRUE () )
+		formatString: #,0.00
+		lineageTag: e5a2093c-c38f-4bb0-8b3a-98a224c08410
+
+	measure 'Gross EUR At Risk' = SUM ( mart_revenue_assurance[amount_at_risk_eur] )
+		formatString: #,0.00
+		lineageTag: ae0d603a-77f4-4647-aede-7a15b12e3caf
+
+	measure 'Mismatched Rows' = SUM ( mart_revenue_assurance[rows_mismatched] )
+		formatString: #,0
+		lineageTag: c869487b-6a5f-49b1-b811-9e078685e7fa
+
+	measure 'Active Customers' = CALCULATE ( COUNTROWS ( mart_customer_360 ), mart_customer_360[status] = "ACTIVE" )
+		formatString: #,0
+		lineageTag: 7afa42b3-1e74-4e40-9af7-66f0883befe7
+
+	measure 'Customer Count' = DISTINCTCOUNT ( mart_customer_360[customer_id] )
+		formatString: #,0
+		lineageTag: 1cb7cae3-2f5e-460f-ac35-4d2f6f81bf95
+
+	measure 'Billed EUR' = SUM ( mart_customer_360[billed_eur] )
+		formatString: #,0.00
+		lineageTag: 75518911-0d5c-442b-b0e4-b576b0c1a5a8
+
+	measure 'Paid EUR' = SUM ( mart_customer_360[paid_eur] )
+		formatString: #,0.00
+		lineageTag: 026d8cf6-1907-453c-bff3-8f06ca4e7052
+
+	measure 'Unpaid EUR' = SUM ( mart_customer_360[unpaid_eur] )
+		formatString: #,0.00
+		lineageTag: bbf807ea-c369-4a4b-94e3-4d90cc5a25fc
+
+	measure 'Collection Rate' = DIVIDE ( [Paid EUR], [Billed EUR] )
+		formatString: 0.00%
+		lineageTag: fbaad7ee-4125-446b-a822-8a4c76aacd68
+
+	measure 'Network Records' = SUM ( mart_network_daily[records] )
+		formatString: #,0
+		lineageTag: 57fbb111-a3e1-4dc6-8a59-1dbcae1f5739
+
+	measure 'Voice Minutes' = CALCULATE ( SUM ( mart_network_daily[minutes] ), mart_network_daily[event_type] = "VOICE" )
+		formatString: #,0
+		lineageTag: e558fb28-c67b-44ff-9d18-28a370745cbc
+
+	measure 'Data GB' = DIVIDE ( SUM ( mart_network_daily[data_mb] ), 1024 )
+		formatString: #,0.00
+		lineageTag: 529743a7-85dc-4a66-9f56-e453ef4073ff
+
+	measure 'Drop Rate' =
+			DIVIDE (
+				CALCULATE ( SUM ( mart_network_daily[dropped] ), mart_network_daily[event_type] = "VOICE" ),
+				CALCULATE ( SUM ( mart_network_daily[records] ), mart_network_daily[event_type] = "VOICE" )
+			)
+		formatString: 0.00%
+		lineageTag: 40bfd148-c350-41ce-a1f8-821e258226d6
+
+	measure 'App Events' = SUM ( mart_app_usage[events] )
+		formatString: #,0
+		lineageTag: 7455539b-cd96-4097-98f8-15c5e48f266d
+
+	measure 'Partner Cost EUR' = SUM ( mart_partner_usage[amount_eur] )
+		formatString: #,0.00
+		lineageTag: 4912c3b8-e5c1-43d3-931a-a3ff7b7cbb14
+
+	measure 'Unknown Partner Cost EUR' = SUM ( mart_partner_usage[amount_unknown_customer_eur] )
+		formatString: #,0.00
+		lineageTag: 4cde703d-35b1-4a82-bb20-bf353f78377c
+
+	measure 'Oldest Quarantine Age Days' =
+			VAR OldestAt = MIN ( mart_quarantine[oldest_quarantined_at] )
+			RETURN IF ( NOT ISBLANK ( OldestAt ), DATEDIFF ( OldestAt, NOW (), DAY ) )
+		formatString: #,0
+		lineageTag: 90835392-1f10-454e-a490-9e141018911a
+
+	measure 'Crash Share' =
+			DIVIDE (
+				CALCULATE ( SUM ( mart_app_usage[events] ), mart_app_usage[event_type] = "crash" ),
+				SUM ( mart_app_usage[events] )
+			)
+		formatString: 0.00%
+		lineageTag: e54032c6-d69a-4511-81db-c3a5cee9e17e
+
+	measure 'DQ Trend Pass Rate' = 1 - DIVIDE ( SUM ( mart_dq_trend[rows_failed] ), SUM ( mart_dq_trend[rows_checked] ) )
+		formatString: 0.00%
+		lineageTag: db13c30c-e8e7-4bed-8dba-33fd128ed954
+
+	measure 'Voice Calls' = SUM ( mart_cell_quality[voice_calls] )
+		formatString: #,0
+		lineageTag: 475b6783-6e1d-4072-96b8-9a3981c42dd2
+
+	/// Drop rate for cells with at least 20 voice calls, so one-call cells do not top the chart.
+	measure 'Cell Drop Rate' =
+			VAR Calls = SUM ( mart_cell_quality[voice_calls] )
+			RETURN IF ( Calls >= 20, DIVIDE ( SUM ( mart_cell_quality[dropped_calls] ), Calls ) )
+		formatString: 0.00%
+		lineageTag: aa10b245-1a69-434c-a693-f903f4e7cca4
+
+	measure 'Partner Cost Unknown Share' = DIVIDE ( [Unknown Partner Cost EUR], [Partner Cost EUR] )
+		formatString: 0.00%
+		lineageTag: d28867b5-f19d-46b3-898c-1d3bf299564e
+
+	/// Sketch bar colours (orange, grey, gold, pink, blue) by position.
+	measure 'Color Leak Type' =
+			VAR r = RANKX ( ALLSELECTED ( mart_revenue_assurance[leak_type] ), [Gross EUR At Risk],, DESC, DENSE )
+			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+		isHidden
+
+	/// Sketch colours for P1..P4 in order.
+	measure 'Color Priority' =
+			VAR r = SWITCH ( SELECTEDVALUE ( mart_incidents[priority] ), "P1", 1, "P2", 2, "P3", 3, "P4", 4, 5 )
+			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+		isHidden
+
+	/// Sketch bar colours (orange, grey, gold, pink, blue) by position.
+	measure 'Color Unpaid Plan' =
+			VAR r = RANKX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Unpaid EUR],, DESC, DENSE )
+			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+		isHidden
+
+	/// Sketch bar colours (orange, grey, gold, pink, blue) by position.
+	measure 'Color App Version' =
+			VAR r = RANKX ( ALLSELECTED ( mart_app_usage[app_version] ), [App Events],, DESC, DENSE )
+			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+		isHidden
+
+	/// Sketch colours for the status / city / plan drill-down chart.
+	measure 'Color Customer Breakdown' =
+			VAR r =
+				SWITCH (
+					TRUE (),
+					ISINSCOPE ( mart_customer_360[plan_name] ), RANKX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Customer Count],, DESC, DENSE ),
+					ISINSCOPE ( mart_customer_360[city] ), RANKX ( ALLSELECTED ( mart_customer_360[city] ), [Customer Count],, DESC, DENSE ),
+					RANKX ( ALLSELECTED ( mart_customer_360[status] ), [Customer Count],, DESC, DENSE )
+				)
+			RETURN SWITCH ( MOD ( r - 1, 5 ), 0, "#C98B4C", 1, "#E5E6EA", 2, "#E2B341", 3, "#F6CDD1", "#2061A8" )
+		isHidden
+
+	/// Sketch horizontal bars: the two worst in pink, the rest grey.
+	measure 'Color Pass Rate Dataset' =
+			IF ( RANKX ( ALLSELECTED ( mart_dq_health[dataset] ), [DQ Pass Rate],, ASC, DENSE ) <= 2, "#F6CDD1", "#E5E6EA" )
+		isHidden
+
+	/// Sketch horizontal bars: the two worst in pink, the rest grey.
+	measure 'Color Team Workload' =
+			IF ( RANKX ( ALLSELECTED ( mart_incidents[team] ), [Open Incidents],, DESC, DENSE ) <= 2, "#F6CDD1", "#E5E6EA" )
+		isHidden
+
+	/// Sketch horizontal bars: the two worst in pink, the rest grey.
+	measure 'Color Worst Cell' =
+			IF ( RANKX ( ALLSELECTED ( mart_cell_quality[cell_id] ), [Cell Drop Rate],, DESC, DENSE ) <= 2, "#F6CDD1", "#E5E6EA" )
+		isHidden
+
+	/// Sketch matrix: pink when the pass rate is below 95 %, green otherwise.
+	measure 'Color Matrix' =
+			VAR v = [DQ Trend Pass Rate]
+			RETURN IF ( NOT ISBLANK ( v ), IF ( v < 0.95, "#F6CDD1", "#D9F0E0" ) )
+		isHidden
+
+	/// Red only for failures (PDF design rule); the status word stays visible.
+	measure 'Color DQ Status' = IF ( SELECTEDVALUE ( mart_dq_health[status] ) IN { "FAIL", "FAILED" }, "#E57373" )
+		isHidden
+
+	/// Red only for failures (PDF design rule); the status word stays visible.
+	measure 'Color Recon Status' = IF ( SELECTEDVALUE ( mart_revenue_assurance[status] ) IN { "FAIL", "FAILED" }, "#E57373" )
+		isHidden
+
+	/// Red only for failures (PDF design rule); the status word stays visible.
+	measure 'Color SLA Status' = IF ( SELECTEDVALUE ( mart_incidents[sla_status] ) IN { "BREACHED" }, "#E57373" )
+		isHidden
+
+	column MeasureHost
+		dataType: string
+		isHidden
+		lineageTag: 5d2a1421-b621-4790-8a07-c9c8015e5f7f
+		summarizeBy: none
+		sourceColumn: MeasureHost
+
+	partition _Measures = m
+		mode: import
+		source = #table(type table [MeasureHost = text], {})
+
