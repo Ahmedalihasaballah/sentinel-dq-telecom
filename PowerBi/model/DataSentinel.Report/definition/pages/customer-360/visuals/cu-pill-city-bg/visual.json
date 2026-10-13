@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-pill-city-bg",
   "position": {
     "x": 1320,
     "y": 62,
-    "z": 283,
-    "width": 210,
+    "z": 10000,
     "height": 44,
-    "tabOrder": 283
+    "width": 210,
+    "tabOrder": 32000
   },
   "visual": {
     "visualType": "shape",

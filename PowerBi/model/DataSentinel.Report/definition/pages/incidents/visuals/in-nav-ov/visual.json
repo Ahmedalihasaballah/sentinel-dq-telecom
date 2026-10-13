@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-nav-ov",
   "position": {
     "x": 80,
     "y": 136,
-    "z": 50198,
-    "width": 232,
+    "z": 50000,
     "height": 44,
-    "tabOrder": 198
+    "width": 232,
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "shape",

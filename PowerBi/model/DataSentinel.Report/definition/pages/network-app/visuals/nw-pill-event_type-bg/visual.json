@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-pill-event_type-bg",
   "position": {
-    "x": 1020,
-    "y": 62,
-    "z": 352,
-    "width": 190,
-    "height": 44,
-    "tabOrder": 352
+    "x": 1000,
+    "y": 61.702127659574472,
+    "z": 13000,
+    "height": 44.680851063829792,
+    "width": 217.02127659574469,
+    "tabOrder": 35000
   },
   "visual": {
     "visualType": "shape",

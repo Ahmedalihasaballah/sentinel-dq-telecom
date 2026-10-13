@@ -3,6 +3,7 @@
   "displayName": "Customer 360: menu open",
   "name": "cu-menu-open",
   "options": {
+    "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
       "cu-panel",
       "cu-logo-bg",
@@ -27,12 +28,11 @@
       "cu-gold-bg",
       "cu-gold-text"
     ],
-    "applyOnlyToTargetVisuals": true,
     "suppressActiveSection": true,
     "suppressData": true
   },
   "explorationState": {
-    "version": "1.3",
+    "version": "1.0",
     "activeSection": "customer-360",
     "sections": {
       "customer-360": {

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-pill-priority-bg",
   "position": {
-    "x": 920,
-    "y": 62,
-    "z": 225,
-    "width": 190,
+    "x": 810.52366935742089,
+    "y": 62.347826086956509,
+    "z": 16000,
     "height": 44,
-    "tabOrder": 225
+    "width": 190,
+    "tabOrder": 38000
   },
   "visual": {
     "visualType": "shape",

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-panel",
   "position": {
     "x": 64,
     "y": 0,
-    "z": 50320,
-    "width": 264,
+    "z": 50000,
     "height": 1080,
-    "tabOrder": 320
+    "width": 264,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "shape",

@@ -3,6 +3,7 @@
   "displayName": "Revenue Assurance: menu open",
   "name": "ra-menu-open",
   "options": {
+    "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
       "ra-panel",
       "ra-logo-bg",
@@ -27,12 +28,11 @@
       "ra-gold-bg",
       "ra-gold-text"
     ],
-    "applyOnlyToTargetVisuals": true,
     "suppressActiveSection": true,
     "suppressData": true
   },
   "explorationState": {
-    "version": "1.3",
+    "version": "1.0",
     "activeSection": "revenue-assurance",
     "sections": {
       "revenue-assurance": {

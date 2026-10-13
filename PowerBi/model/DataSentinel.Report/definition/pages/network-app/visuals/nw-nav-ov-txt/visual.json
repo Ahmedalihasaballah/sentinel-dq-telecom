@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-nav-ov-txt",
   "position": {
     "x": 96,
     "y": 147,
-    "z": 50327,
-    "width": 208,
+    "z": 57000,
     "height": 24,
-    "tabOrder": 327
+    "width": 208,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "textbox",

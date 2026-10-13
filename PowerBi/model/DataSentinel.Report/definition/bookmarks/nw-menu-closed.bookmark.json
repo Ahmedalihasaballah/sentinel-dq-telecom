@@ -3,6 +3,7 @@
   "displayName": "Network & App: menu closed",
   "name": "nw-menu-closed",
   "options": {
+    "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
       "nw-panel",
       "nw-logo-bg",
@@ -27,12 +28,11 @@
       "nw-gold-bg",
       "nw-gold-text"
     ],
-    "applyOnlyToTargetVisuals": true,
     "suppressActiveSection": true,
     "suppressData": true
   },
   "explorationState": {
-    "version": "1.3",
+    "version": "1.0",
     "activeSection": "network-app",
     "sections": {
       "network-app": {

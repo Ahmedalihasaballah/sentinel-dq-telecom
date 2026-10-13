@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-footer",
   "position": {
     "x": 94,
     "y": 1046,
-    "z": 228,
-    "width": 900,
+    "z": 19000,
     "height": 22,
-    "tabOrder": 228
+    "width": 900,
+    "tabOrder": 41000
   },
   "visual": {
     "visualType": "textbox",

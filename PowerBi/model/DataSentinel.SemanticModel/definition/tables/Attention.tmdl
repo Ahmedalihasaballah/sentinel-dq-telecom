@@ -1,34 +1,40 @@
 table Attention
+	lineageTag: a902424e-22f0-479b-8285-05cbfd9038c5
 
 	column Area
 		dataType: string
+		lineageTag: 7b13f1eb-ce1a-45d3-b5bb-2a09b2523044
 		summarizeBy: none
 		sourceColumn: [Area]
 
 	column Item
 		dataType: string
+		lineageTag: abf3442f-d77c-4ee2-9741-2f23061976be
 		summarizeBy: none
 		sourceColumn: [Item]
 
 	column Issue
 		dataType: string
+		lineageTag: 0a52dbb0-9fe8-446b-bc0f-b9df169901c1
 		summarizeBy: none
 		sourceColumn: [Issue]
 
 	column Severity
 		dataType: int64
+		lineageTag: e8918d7e-21cb-4b34-800b-8b0b7c6503be
 		summarizeBy: none
 		sourceColumn: [Severity]
 
 	column Priority
 		dataType: string
+		lineageTag: d4da0a92-2035-4ec7-a230-7af89ed53656
 		summarizeBy: none
 		sourceColumn: [Priority]
 		sortByColumn: Severity
 
 	partition Attention = calculated
 		mode: import
-		source = ```
+		source =
 				VAR dq =
 				    SELECTCOLUMNS (
 				        FILTER ( mart_dq_health, mart_dq_health[status] <> "PASS" ),
@@ -56,4 +62,4 @@ table Attention
 				VAR all_items = UNION ( dq, inc, rec )
 				RETURN
 				    ADDCOLUMNS ( all_items, "Priority", SWITCH ( [Severity], 1, "Critical", 2, "High", 3, "Medium", "Low" ) )
-				```
+

@@ -3,6 +3,7 @@
   "displayName": "Incidents: menu open",
   "name": "in-menu-open",
   "options": {
+    "applyOnlyToTargetVisuals": true,
     "targetVisualNames": [
       "in-panel",
       "in-logo-bg",
@@ -27,12 +28,11 @@
       "in-gold-bg",
       "in-gold-text"
     ],
-    "applyOnlyToTargetVisuals": true,
     "suppressActiveSection": true,
     "suppressData": true
   },
   "explorationState": {
-    "version": "1.3",
+    "version": "1.0",
     "activeSection": "incidents",
     "sections": {
       "incidents": {

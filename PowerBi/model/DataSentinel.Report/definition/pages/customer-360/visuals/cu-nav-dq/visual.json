@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-nav-dq",
   "position": {
     "x": 80,
     "y": 184,
-    "z": 50264,
-    "width": 232,
+    "z": 54000,
     "height": 44,
-    "tabOrder": 264
+    "width": 232,
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "shape",

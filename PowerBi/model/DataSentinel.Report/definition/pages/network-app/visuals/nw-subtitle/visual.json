@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-subtitle",
   "position": {
     "x": 94,
     "y": 80,
-    "z": 343,
-    "width": 900,
+    "z": 4000,
     "height": 24,
-    "tabOrder": 343
+    "width": 900,
+    "tabOrder": 26000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,12 +22,11 @@
                     "value": "Where do calls drop, how does the app behave, and what does partner traffic cost?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#4B5563"
+                      "fontSize": "14pt",
+                      "color": "#4b5563"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

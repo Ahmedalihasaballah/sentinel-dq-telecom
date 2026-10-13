@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dq-pill-dataset-label",
   "position": {
-    "x": 1266,
-    "y": 74,
-    "z": 99,
-    "width": 110,
+    "x": 1130.8510638297873,
+    "y": 73.404255319148945,
+    "z": 11000,
     "height": 22,
-    "tabOrder": 99
+    "width": 110,
+    "tabOrder": 33000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,12 +22,11 @@
                     "value": "Dataset",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#4B5563"
+                      "fontSize": "12pt",
+                      "color": "#4b5563"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

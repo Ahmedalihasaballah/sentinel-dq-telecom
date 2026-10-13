@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-breached-label",
   "position": {
     "x": 716,
     "y": 134,
-    "z": 236,
-    "width": 548,
+    "z": 27000,
     "height": 22,
-    "tabOrder": 236
+    "width": 548,
+    "tabOrder": 49000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,21 +22,20 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#D9363E"
+                      "fontSize": "14pt",
+                      "color": "#d9363e"
                     }
                   },
                   {
                     "value": "Breached",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#374151",
-                      "fontWeight": "bold"
+                      "fontSize": "14pt",
+                      "color": "#374151"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

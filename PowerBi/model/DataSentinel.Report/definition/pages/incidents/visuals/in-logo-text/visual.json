@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-logo-text",
   "position": {
     "x": 136,
     "y": 33,
-    "z": 50193,
-    "width": 150,
+    "z": 45000,
     "height": 32,
-    "tabOrder": 193
+    "width": 150,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "textbox",

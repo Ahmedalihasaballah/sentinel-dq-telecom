@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-nav-label",
   "position": {
     "x": 90,
     "y": 106,
-    "z": 50260,
-    "width": 200,
+    "z": 50000,
     "height": 20,
-    "tabOrder": 260
+    "width": 200,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "textbox",
