@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-partner-value",
   "position": {
-    "x": 1594,
+    "x": 1554,
     "y": 156,
-    "z": 411,
-    "width": 175,
+    "z": 446,
+    "width": 199,
     "height": 50,
-    "tabOrder": 411
+    "tabOrder": 446
   },
   "visual": {
     "visualType": "multiRowCard",

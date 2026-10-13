@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cp-logo-icon",
   "position": {
-    "x": 26,
+    "x": 86,
     "y": 33,
-    "z": 328,
+    "z": 50356,
     "width": 40,
     "height": 30,
-    "tabOrder": 328
+    "tabOrder": 356
   },
   "visual": {
     "visualType": "textbox",
@@ -122,5 +122,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

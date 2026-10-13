@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-trend",
   "position": {
-    "x": 1370,
+    "x": 1302,
     "y": 368,
-    "z": 68,
-    "width": 516,
+    "z": 73,
+    "width": 584,
     "height": 318,
-    "tabOrder": 68
+    "tabOrder": 73
   },
   "visual": {
     "visualType": "lineChart",

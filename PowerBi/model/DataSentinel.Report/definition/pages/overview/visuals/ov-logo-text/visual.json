@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-logo-text",
   "position": {
-    "x": 76,
+    "x": 136,
     "y": 33,
-    "z": 3,
-    "width": 180,
+    "z": 50006,
+    "width": 150,
     "height": 32,
-    "tabOrder": 3
+    "tabOrder": 6
   },
   "visual": {
     "visualType": "textbox",
@@ -123,5 +123,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

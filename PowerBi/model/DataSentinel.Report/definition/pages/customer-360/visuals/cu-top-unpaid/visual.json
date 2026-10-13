@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-top-unpaid",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 604,
-    "z": 324,
-    "width": 784,
+    "z": 349,
+    "width": 886,
     "height": 420,
-    "tabOrder": 324
+    "tabOrder": 349
   },
   "visual": {
     "visualType": "tableEx",

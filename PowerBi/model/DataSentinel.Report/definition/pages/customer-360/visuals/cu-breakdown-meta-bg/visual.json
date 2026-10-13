@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-breakdown-meta-bg",
   "position": {
-    "x": 1328,
+    "x": 1277,
     "y": 270,
-    "z": 318,
+    "z": 343,
     "width": 140,
     "height": 30,
-    "tabOrder": 318
+    "tabOrder": 343
   },
   "visual": {
     "visualType": "shape",

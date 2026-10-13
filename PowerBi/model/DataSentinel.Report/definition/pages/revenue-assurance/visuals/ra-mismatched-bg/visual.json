@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-mismatched-bg",
   "position": {
-    "x": 941,
+    "x": 819,
     "y": 120,
-    "z": 175,
-    "width": 302,
+    "z": 190,
+    "width": 342,
     "height": 118,
-    "tabOrder": 175
+    "tabOrder": 190
   },
   "visual": {
     "visualType": "shape",

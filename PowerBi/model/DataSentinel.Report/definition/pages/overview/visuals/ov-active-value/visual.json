@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-active-value",
   "position": {
-    "x": 1112,
+    "x": 1010,
     "y": 276,
-    "z": 55,
-    "width": 358,
+    "z": 60,
+    "width": 409,
     "height": 50,
-    "tabOrder": 55
+    "tabOrder": 60
   },
   "visual": {
     "visualType": "multiRowCard",

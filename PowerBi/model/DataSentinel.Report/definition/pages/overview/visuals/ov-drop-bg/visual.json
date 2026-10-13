@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-bg",
   "position": {
-    "x": 1504,
+    "x": 1453,
     "y": 240,
-    "z": 57,
-    "width": 382,
+    "z": 62,
+    "width": 433,
     "height": 108,
-    "tabOrder": 57
+    "tabOrder": 62
   },
   "visual": {
     "visualType": "shape",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-subtitle",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 80,
-    "z": 282,
+    "z": 307,
     "width": 900,
     "height": 24,
-    "tabOrder": 282
+    "tabOrder": 307
   },
   "visual": {
     "visualType": "textbox",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-value",
   "position": {
-    "x": 1514,
+    "x": 1463,
     "y": 276,
-    "z": 59,
-    "width": 222,
+    "z": 64,
+    "width": 251,
     "height": 50,
-    "tabOrder": 59
+    "tabOrder": 64
   },
   "visual": {
     "visualType": "multiRowCard",

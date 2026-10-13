@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-problems",
   "position": {
-    "x": 1102,
+    "x": 1000,
     "y": 604,
-    "z": 325,
-    "width": 784,
+    "z": 350,
+    "width": 886,
     "height": 420,
-    "tabOrder": 325
+    "tabOrder": 350
   },
   "visual": {
     "visualType": "tableEx",

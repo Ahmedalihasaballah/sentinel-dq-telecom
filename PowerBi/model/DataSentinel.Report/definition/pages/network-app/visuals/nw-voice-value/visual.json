@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-voice-value",
   "position": {
-    "x": 630,
+    "x": 466,
     "y": 156,
-    "z": 396,
-    "width": 175,
+    "z": 431,
+    "width": 199,
     "height": 50,
-    "tabOrder": 396
+    "tabOrder": 431
   },
   "visual": {
     "visualType": "multiRowCard",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-attention-meta",
   "position": {
-    "x": 1191,
+    "x": 1123,
     "y": 720,
-    "z": 73,
+    "z": 78,
     "width": 132,
     "height": 26,
-    "tabOrder": 73
+    "tabOrder": 78
   },
   "visual": {
     "visualType": "card",

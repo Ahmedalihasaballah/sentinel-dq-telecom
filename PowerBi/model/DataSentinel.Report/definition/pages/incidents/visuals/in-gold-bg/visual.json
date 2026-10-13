@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-gold-bg",
   "position": {
-    "x": 18,
+    "x": 82,
     "y": 962,
-    "z": 213,
+    "z": 50233,
     "width": 228,
     "height": 92,
-    "tabOrder": 213
+    "tabOrder": 233
   },
   "visual": {
     "visualType": "shape",
@@ -144,5 +144,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-gold-bg",
   "position": {
-    "x": 18,
+    "x": 82,
     "y": 962,
-    "z": 18,
+    "z": 50023,
     "width": 228,
     "height": 92,
-    "tabOrder": 18
+    "tabOrder": 23
   },
   "visual": {
     "visualType": "shape",
@@ -144,5 +144,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

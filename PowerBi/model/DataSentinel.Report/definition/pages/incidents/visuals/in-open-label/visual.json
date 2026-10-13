@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-open-label",
   "position": {
-    "x": 316,
+    "x": 112,
     "y": 134,
-    "z": 234,
-    "width": 346,
+    "z": 254,
+    "width": 397,
     "height": 22,
-    "tabOrder": 234
+    "tabOrder": 254
   },
   "visual": {
     "visualType": "textbox",

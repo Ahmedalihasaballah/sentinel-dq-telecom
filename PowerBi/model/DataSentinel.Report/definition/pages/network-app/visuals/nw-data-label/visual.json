@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-data-label",
   "position": {
-    "x": 959,
+    "x": 837,
     "y": 134,
-    "z": 400,
-    "width": 266,
+    "z": 435,
+    "width": 306,
     "height": 22,
-    "tabOrder": 400
+    "tabOrder": 435
   },
   "visual": {
     "visualType": "textbox",

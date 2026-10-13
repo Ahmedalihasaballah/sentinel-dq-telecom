@@ -9,7 +9,9 @@ stored as text files, so they diff and merge in Git like code.
 2. Click **Refresh**. When asked, sign in to Databricks with a **personal access token**
    (server `dbc-21b8c56c-c07d.cloud.databricks.com`, your SQL warehouse HTTP path).
    The token stays on your machine; it is never written to these files.
-3. The report opens on **Network & App**. Use the left sidebar to move between pages.
+3. The report opens on **Network & App**. Click **☰** on the left strip to open the page menu and
+   **✕** to close it. In Power BI Desktop, hold **Ctrl** while clicking; in the published report a
+   plain click works. The menu is driven by the `… : menu open / menu closed` bookmarks.
 
 Local caches (`.pbi/cache.abf`, `.pbi/localSettings.json`) are ignored by Git, so the first refresh
 on a new machine loads the data from Databricks.

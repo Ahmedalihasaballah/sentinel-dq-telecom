@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-unpaid-bg",
   "position": {
-    "x": 1263,
+    "x": 1181,
     "y": 120,
-    "z": 308,
-    "width": 302,
+    "z": 333,
+    "width": 342,
     "height": 118,
-    "tabOrder": 308
+    "tabOrder": 333
   },
   "visual": {
     "visualType": "shape",

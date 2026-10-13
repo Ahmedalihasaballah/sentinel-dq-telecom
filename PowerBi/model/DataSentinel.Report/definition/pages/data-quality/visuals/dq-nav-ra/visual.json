@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-nav-ra",
   "position": {
-    "x": 16,
+    "x": 80,
     "y": 232,
-    "z": 88,
+    "z": 50098,
     "width": 232,
     "height": 44,
-    "tabOrder": 88
+    "tabOrder": 98
   },
   "visual": {
     "visualType": "shape",
@@ -146,5 +146,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

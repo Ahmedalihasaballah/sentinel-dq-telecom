@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-active-bg",
   "position": {
-    "x": 1584,
+    "x": 1544,
     "y": 120,
-    "z": 312,
-    "width": 302,
+    "z": 337,
+    "width": 342,
     "height": 118,
-    "tabOrder": 312
+    "tabOrder": 337
   },
   "visual": {
     "visualType": "shape",

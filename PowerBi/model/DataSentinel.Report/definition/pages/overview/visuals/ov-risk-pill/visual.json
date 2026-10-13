@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-pill",
   "position": {
-    "x": 316,
+    "x": 112,
     "y": 328,
-    "z": 47,
-    "width": 198,
+    "z": 52,
+    "width": 227,
     "height": 24,
-    "tabOrder": 47
+    "tabOrder": 52
   },
   "visual": {
     "visualType": "card",

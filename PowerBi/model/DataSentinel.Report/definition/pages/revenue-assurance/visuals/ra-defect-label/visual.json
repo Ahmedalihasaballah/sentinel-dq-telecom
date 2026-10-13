@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-defect-label",
   "position": {
-    "x": 638,
+    "x": 474,
     "y": 134,
-    "z": 172,
-    "width": 266,
+    "z": 187,
+    "width": 306,
     "height": 22,
-    "tabOrder": 172
+    "tabOrder": 187
   },
   "visual": {
     "visualType": "textbox",

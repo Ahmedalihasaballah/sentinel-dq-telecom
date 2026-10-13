@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-records-spark",
   "position": {
-    "x": 477,
+    "x": 297,
     "y": 154,
-    "z": 393,
-    "width": 109,
+    "z": 428,
+    "width": 126,
     "height": 72,
-    "tabOrder": 393
+    "tabOrder": 428
   },
   "visual": {
     "visualType": "lineChart",

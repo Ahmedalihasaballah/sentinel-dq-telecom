@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-mismatched-label",
   "position": {
-    "x": 959,
+    "x": 837,
     "y": 134,
-    "z": 176,
-    "width": 266,
+    "z": 191,
+    "width": 306,
     "height": 22,
-    "tabOrder": 176
+    "tabOrder": 191
   },
   "visual": {
     "visualType": "textbox",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-unpaid-plan-meta",
   "position": {
-    "x": 930,
+    "x": 828,
     "y": 272,
-    "z": 322,
+    "z": 347,
     "width": 132,
     "height": 26,
-    "tabOrder": 322
+    "tabOrder": 347
   },
   "visual": {
     "visualType": "card",

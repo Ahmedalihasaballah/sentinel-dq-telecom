@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-trend",
   "position": {
-    "x": 1102,
+    "x": 1000,
     "y": 258,
-    "z": 190,
-    "width": 784,
+    "z": 205,
+    "width": 886,
     "height": 326,
-    "tabOrder": 190
+    "tabOrder": 205
   },
   "visual": {
     "visualType": "areaChart",

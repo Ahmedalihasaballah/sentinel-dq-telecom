@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-app-events-meta-bg",
   "position": {
-    "x": 658,
+    "x": 522,
     "y": 616,
-    "z": 424,
+    "z": 459,
     "width": 140,
     "height": 30,
-    "tabOrder": 424
+    "tabOrder": 459
   },
   "visual": {
     "visualType": "shape",

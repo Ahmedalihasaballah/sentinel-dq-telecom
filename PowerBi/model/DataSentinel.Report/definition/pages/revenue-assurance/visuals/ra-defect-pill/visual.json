@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-defect-pill",
   "position": {
-    "x": 638,
+    "x": 474,
     "y": 208,
-    "z": 174,
+    "z": 189,
     "width": 250,
     "height": 24,
-    "tabOrder": 174
+    "tabOrder": 189
   },
   "visual": {
     "visualType": "card",

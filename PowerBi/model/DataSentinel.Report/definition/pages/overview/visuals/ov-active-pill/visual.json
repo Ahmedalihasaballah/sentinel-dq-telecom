@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-active-pill",
   "position": {
-    "x": 1120,
+    "x": 1018,
     "y": 328,
-    "z": 56,
+    "z": 61,
     "width": 250,
     "height": 24,
-    "tabOrder": 56
+    "tabOrder": 61
   },
   "visual": {
     "visualType": "card",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-open-pill",
   "position": {
-    "x": 1120,
+    "x": 1018,
     "y": 208,
-    "z": 38,
-    "width": 198,
+    "z": 43,
+    "width": 227,
     "height": 24,
-    "tabOrder": 38
+    "tabOrder": 43
   },
   "visual": {
     "visualType": "card",

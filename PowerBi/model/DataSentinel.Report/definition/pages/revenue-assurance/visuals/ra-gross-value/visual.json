@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-gross-value",
   "position": {
-    "x": 308,
+    "x": 104,
     "y": 156,
-    "z": 168,
-    "width": 175,
+    "z": 183,
+    "width": 199,
     "height": 50,
-    "tabOrder": 168
+    "tabOrder": 183
   },
   "visual": {
     "visualType": "multiRowCard",

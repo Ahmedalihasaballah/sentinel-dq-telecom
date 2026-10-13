@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pass-label",
   "position": {
-    "x": 316,
+    "x": 112,
     "y": 134,
-    "z": 110,
-    "width": 346,
+    "z": 120,
+    "width": 397,
     "height": 22,
-    "tabOrder": 110
+    "tabOrder": 120
   },
   "visual": {
     "visualType": "textbox",

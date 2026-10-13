@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-team",
   "position": {
-    "x": 834,
+    "x": 698,
     "y": 258,
-    "z": 251,
-    "width": 516,
+    "z": 271,
+    "width": 584,
     "height": 326,
-    "tabOrder": 251
+    "tabOrder": 271
   },
   "visual": {
     "visualType": "barChart",

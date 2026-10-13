@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-priority",
   "position": {
-    "x": 1363,
+    "x": 1295,
     "y": 706,
-    "z": 74,
-    "width": 523,
+    "z": 79,
+    "width": 591,
     "height": 318,
-    "tabOrder": 74
+    "tabOrder": 79
   },
   "visual": {
     "visualType": "columnChart",

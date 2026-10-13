@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-gold-text",
   "position": {
-    "x": 34,
+    "x": 98,
     "y": 976,
-    "z": 373,
+    "z": 50408,
     "width": 198,
     "height": 70,
-    "tabOrder": 373
+    "tabOrder": 408
   },
   "visual": {
     "visualType": "textbox",
@@ -136,5 +136,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

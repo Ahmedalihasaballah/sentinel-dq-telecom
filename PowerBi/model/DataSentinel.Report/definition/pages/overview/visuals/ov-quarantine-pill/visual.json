@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-quarantine-pill",
   "position": {
-    "x": 718,
+    "x": 565,
     "y": 208,
-    "z": 34,
+    "z": 39,
     "width": 250,
     "height": 24,
-    "tabOrder": 34
+    "tabOrder": 39
   },
   "visual": {
     "visualType": "card",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-records-value",
   "position": {
-    "x": 308,
+    "x": 104,
     "y": 156,
-    "z": 391,
-    "width": 175,
+    "z": 426,
+    "width": 199,
     "height": 50,
-    "tabOrder": 391
+    "tabOrder": 426
   },
   "visual": {
     "visualType": "multiRowCard",

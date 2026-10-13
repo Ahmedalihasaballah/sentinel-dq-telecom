@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-failing-bg",
   "position": {
-    "x": 700,
+    "x": 547,
     "y": 120,
-    "z": 114,
-    "width": 382,
+    "z": 124,
+    "width": 433,
     "height": 118,
-    "tabOrder": 114
+    "tabOrder": 124
   },
   "visual": {
     "visualType": "shape",

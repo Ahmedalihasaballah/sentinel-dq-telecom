@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-logo-icon",
   "position": {
-    "x": 26,
+    "x": 86,
     "y": 33,
-    "z": 356,
+    "z": 50389,
     "width": 40,
     "height": 30,
-    "tabOrder": 356
+    "tabOrder": 389
   },
   "visual": {
     "visualType": "textbox",
@@ -122,5 +122,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-open-bg",
   "position": {
-    "x": 1102,
+    "x": 1000,
     "y": 120,
-    "z": 35,
-    "width": 382,
+    "z": 40,
+    "width": 433,
     "height": 108,
-    "tabOrder": 35
+    "tabOrder": 40
   },
   "visual": {
     "visualType": "shape",

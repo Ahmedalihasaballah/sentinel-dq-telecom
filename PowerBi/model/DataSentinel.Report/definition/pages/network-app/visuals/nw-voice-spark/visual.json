@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-voice-spark",
   "position": {
-    "x": 799,
+    "x": 659,
     "y": 154,
-    "z": 398,
-    "width": 109,
+    "z": 433,
+    "width": 126,
     "height": 72,
-    "tabOrder": 398
+    "tabOrder": 433
   },
   "visual": {
     "visualType": "lineChart",

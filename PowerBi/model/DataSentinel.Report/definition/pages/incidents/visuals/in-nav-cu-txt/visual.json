@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-nav-cu-txt",
   "position": {
-    "x": 32,
+    "x": 96,
     "y": 339,
-    "z": 209,
+    "z": 50229,
     "width": 208,
     "height": 24,
-    "tabOrder": 209
+    "tabOrder": 229
   },
   "visual": {
     "visualType": "textbox",
@@ -131,5 +131,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-spark",
   "position": {
-    "x": 1730,
+    "x": 1708,
     "y": 274,
-    "z": 61,
-    "width": 142,
+    "z": 66,
+    "width": 164,
     "height": 72,
-    "tabOrder": 61
+    "tabOrder": 66
   },
   "visual": {
     "visualType": "lineChart",

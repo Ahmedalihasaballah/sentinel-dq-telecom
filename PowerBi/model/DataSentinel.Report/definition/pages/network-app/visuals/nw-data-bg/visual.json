@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-data-bg",
   "position": {
-    "x": 941,
+    "x": 819,
     "y": 120,
-    "z": 399,
-    "width": 302,
+    "z": 434,
+    "width": 342,
     "height": 118,
-    "tabOrder": 399
+    "tabOrder": 434
   },
   "visual": {
     "visualType": "shape",

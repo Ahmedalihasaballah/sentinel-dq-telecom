@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pass-pill",
   "position": {
-    "x": 316,
+    "x": 112,
     "y": 208,
-    "z": 112,
-    "width": 198,
+    "z": 122,
+    "width": 227,
     "height": 24,
-    "tabOrder": 112
+    "tabOrder": 122
   },
   "visual": {
     "visualType": "card",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-resolved-label",
   "position": {
-    "x": 1120,
+    "x": 1018,
     "y": 134,
-    "z": 243,
-    "width": 346,
+    "z": 263,
+    "width": 397,
     "height": 22,
-    "tabOrder": 243
+    "tabOrder": 263
   },
   "visual": {
     "visualType": "textbox",

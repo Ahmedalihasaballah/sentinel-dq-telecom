@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-open-spark",
   "position": {
-    "x": 1328,
+    "x": 1255,
     "y": 154,
-    "z": 39,
-    "width": 142,
+    "z": 44,
+    "width": 164,
     "height": 72,
-    "tabOrder": 39
+    "tabOrder": 44
   },
   "visual": {
     "visualType": "lineChart",

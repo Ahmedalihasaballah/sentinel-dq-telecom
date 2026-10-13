@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "profile-1",
   "position": {
-    "x": 700,
+    "x": 547,
     "y": 120,
-    "z": 351,
-    "width": 382,
+    "z": 381,
+    "width": 433,
     "height": 904,
-    "tabOrder": 351
+    "tabOrder": 381
   },
   "visual": {
     "visualType": "multiRowCard",

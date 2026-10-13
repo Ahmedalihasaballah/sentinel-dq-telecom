@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-records-pill",
   "position": {
-    "x": 316,
+    "x": 112,
     "y": 208,
-    "z": 392,
-    "width": 151,
+    "z": 427,
+    "width": 175,
     "height": 24,
-    "tabOrder": 392
+    "tabOrder": 427
   },
   "visual": {
     "visualType": "card",

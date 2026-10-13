@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-nav-label",
   "position": {
-    "x": 30,
+    "x": 90,
     "y": 106,
-    "z": 199,
+    "z": 50219,
     "width": 200,
     "height": 20,
-    "tabOrder": 199
+    "tabOrder": 219
   },
   "visual": {
     "visualType": "textbox",
@@ -123,5 +123,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

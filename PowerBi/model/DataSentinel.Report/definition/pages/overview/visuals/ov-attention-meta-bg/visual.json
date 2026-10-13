@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-attention-meta-bg",
   "position": {
-    "x": 1187,
+    "x": 1119,
     "y": 718,
-    "z": 72,
+    "z": 77,
     "width": 140,
     "height": 30,
-    "tabOrder": 72
+    "tabOrder": 77
   },
   "visual": {
     "visualType": "shape",

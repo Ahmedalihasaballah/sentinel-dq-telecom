@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-defect-bg",
   "position": {
-    "x": 620,
+    "x": 456,
     "y": 120,
-    "z": 171,
-    "width": 302,
+    "z": 186,
+    "width": 342,
     "height": 118,
-    "tabOrder": 171
+    "tabOrder": 186
   },
   "visual": {
     "visualType": "shape",

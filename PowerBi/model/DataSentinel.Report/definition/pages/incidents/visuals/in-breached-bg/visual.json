@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-breached-bg",
   "position": {
-    "x": 700,
+    "x": 547,
     "y": 120,
-    "z": 238,
-    "width": 382,
+    "z": 258,
+    "width": 433,
     "height": 118,
-    "tabOrder": 238
+    "tabOrder": 258
   },
   "visual": {
     "visualType": "shape",

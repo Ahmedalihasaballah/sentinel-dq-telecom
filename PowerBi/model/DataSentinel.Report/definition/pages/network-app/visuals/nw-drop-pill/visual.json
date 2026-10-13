@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-drop-pill",
   "position": {
-    "x": 1281,
+    "x": 1199,
     "y": 208,
-    "z": 407,
-    "width": 151,
+    "z": 442,
+    "width": 175,
     "height": 24,
-    "tabOrder": 407
+    "tabOrder": 442
   },
   "visual": {
     "visualType": "card",

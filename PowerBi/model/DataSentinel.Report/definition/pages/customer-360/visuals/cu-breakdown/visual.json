@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-breakdown",
   "position": {
-    "x": 1102,
+    "x": 1000,
     "y": 258,
-    "z": 317,
-    "width": 382,
+    "z": 342,
+    "width": 433,
     "height": 326,
-    "tabOrder": 317
+    "tabOrder": 342
   },
   "visual": {
     "visualType": "barChart",

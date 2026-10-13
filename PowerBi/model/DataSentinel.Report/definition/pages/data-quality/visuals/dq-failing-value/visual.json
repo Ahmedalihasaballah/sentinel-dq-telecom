@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-failing-value",
   "position": {
-    "x": 710,
+    "x": 557,
     "y": 156,
-    "z": 116,
-    "width": 358,
+    "z": 126,
+    "width": 409,
     "height": 50,
-    "tabOrder": 116
+    "tabOrder": 126
   },
   "visual": {
     "visualType": "multiRowCard",

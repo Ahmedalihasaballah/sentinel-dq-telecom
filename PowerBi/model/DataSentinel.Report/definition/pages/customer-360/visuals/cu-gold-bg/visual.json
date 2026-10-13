@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-gold-bg",
   "position": {
-    "x": 18,
+    "x": 82,
     "y": 962,
-    "z": 279,
+    "z": 50304,
     "width": 228,
     "height": 92,
-    "tabOrder": 279
+    "tabOrder": 304
   },
   "visual": {
     "visualType": "shape",
@@ -144,5 +144,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

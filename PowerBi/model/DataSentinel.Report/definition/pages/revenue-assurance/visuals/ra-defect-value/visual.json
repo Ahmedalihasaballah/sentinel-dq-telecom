@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-defect-value",
   "position": {
-    "x": 630,
+    "x": 466,
     "y": 156,
-    "z": 173,
-    "width": 278,
+    "z": 188,
+    "width": 318,
     "height": 50,
-    "tabOrder": 173
+    "tabOrder": 188
   },
   "visual": {
     "visualType": "multiRowCard",

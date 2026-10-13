@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-failing-rules",
   "position": {
-    "x": 841,
+    "x": 705,
     "y": 604,
-    "z": 136,
-    "width": 1045,
+    "z": 146,
+    "width": 1181,
     "height": 420,
-    "tabOrder": 136
+    "tabOrder": 146
   },
   "visual": {
     "visualType": "tableEx",

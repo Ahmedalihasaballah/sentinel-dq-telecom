@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-quarantine-meta",
   "position": {
-    "x": 669,
+    "x": 533,
     "y": 618,
-    "z": 135,
+    "z": 145,
     "width": 132,
     "height": 26,
-    "tabOrder": 135
+    "tabOrder": 145
   },
   "visual": {
     "visualType": "card",

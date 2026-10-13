@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-unpaid-pill",
   "position": {
-    "x": 1281,
+    "x": 1199,
     "y": 208,
-    "z": 311,
+    "z": 336,
     "width": 250,
     "height": 24,
-    "tabOrder": 311
+    "tabOrder": 336
   },
   "visual": {
     "visualType": "card",

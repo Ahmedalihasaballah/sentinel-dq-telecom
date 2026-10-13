@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-oldest-bg",
   "position": {
-    "x": 1504,
+    "x": 1453,
     "y": 120,
-    "z": 122,
-    "width": 382,
+    "z": 132,
+    "width": 433,
     "height": 118,
-    "tabOrder": 122
+    "tabOrder": 132
   },
   "visual": {
     "visualType": "shape",

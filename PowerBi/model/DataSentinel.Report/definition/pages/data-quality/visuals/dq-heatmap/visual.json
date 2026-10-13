@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-heatmap",
   "position": {
-    "x": 736,
+    "x": 588,
     "y": 258,
-    "z": 129,
-    "width": 732,
+    "z": 139,
+    "width": 829,
     "height": 326,
-    "tabOrder": 129
+    "tabOrder": 139
   },
   "visual": {
     "visualType": "pivotTable",

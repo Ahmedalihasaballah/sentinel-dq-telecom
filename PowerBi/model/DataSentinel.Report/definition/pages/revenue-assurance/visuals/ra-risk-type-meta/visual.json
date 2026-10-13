@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-risk-type-meta",
   "position": {
-    "x": 930,
+    "x": 828,
     "y": 272,
-    "z": 189,
+    "z": 204,
     "width": 132,
     "height": 26,
-    "tabOrder": 189
+    "tabOrder": 204
   },
   "visual": {
     "visualType": "card",

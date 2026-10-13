@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-oldest-value",
   "position": {
-    "x": 1514,
+    "x": 1463,
     "y": 156,
-    "z": 124,
-    "width": 358,
+    "z": 134,
+    "width": 409,
     "height": 50,
-    "tabOrder": 124
+    "tabOrder": 134
   },
   "visual": {
     "visualType": "multiRowCard",

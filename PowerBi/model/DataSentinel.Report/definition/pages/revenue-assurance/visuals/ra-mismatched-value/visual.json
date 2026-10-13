@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-mismatched-value",
   "position": {
-    "x": 951,
+    "x": 829,
     "y": 156,
-    "z": 177,
-    "width": 278,
+    "z": 192,
+    "width": 318,
     "height": 50,
-    "tabOrder": 177
+    "tabOrder": 192
   },
   "visual": {
     "visualType": "multiRowCard",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-active-label",
   "position": {
-    "x": 1602,
+    "x": 1562,
     "y": 134,
-    "z": 313,
-    "width": 266,
+    "z": 338,
+    "width": 306,
     "height": 22,
-    "tabOrder": 313
+    "tabOrder": 338
   },
   "visual": {
     "visualType": "textbox",

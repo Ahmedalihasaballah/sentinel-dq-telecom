@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-quarantine-label",
   "position": {
-    "x": 718,
+    "x": 565,
     "y": 134,
-    "z": 32,
-    "width": 346,
+    "z": 37,
+    "width": 397,
     "height": 22,
-    "tabOrder": 32
+    "tabOrder": 37
   },
   "visual": {
     "visualType": "textbox",

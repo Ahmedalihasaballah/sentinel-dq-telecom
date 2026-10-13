@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-failing-value",
   "position": {
-    "x": 1273,
+    "x": 1191,
     "y": 156,
-    "z": 181,
-    "width": 278,
+    "z": 196,
+    "width": 318,
     "height": 50,
-    "tabOrder": 181
+    "tabOrder": 196
   },
   "visual": {
     "visualType": "multiRowCard",

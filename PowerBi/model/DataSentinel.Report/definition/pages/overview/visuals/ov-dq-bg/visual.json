@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-dq-bg",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 120,
-    "z": 26,
-    "width": 382,
+    "z": 31,
+    "width": 433,
     "height": 108,
-    "tabOrder": 26
+    "tabOrder": 31
   },
   "visual": {
     "visualType": "shape",

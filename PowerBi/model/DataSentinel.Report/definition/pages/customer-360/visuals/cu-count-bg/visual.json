@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-count-bg",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 120,
-    "z": 296,
-    "width": 302,
+    "z": 321,
+    "width": 342,
     "height": 118,
-    "tabOrder": 296
+    "tabOrder": 321
   },
   "visual": {
     "visualType": "shape",

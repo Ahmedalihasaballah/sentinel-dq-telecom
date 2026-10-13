@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-count-label",
   "position": {
-    "x": 316,
+    "x": 112,
     "y": 134,
-    "z": 297,
-    "width": 266,
+    "z": 322,
+    "width": 306,
     "height": 22,
-    "tabOrder": 297
+    "tabOrder": 322
   },
   "visual": {
     "visualType": "textbox",

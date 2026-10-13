@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-data-spark",
   "position": {
-    "x": 1120,
+    "x": 1021,
     "y": 154,
-    "z": 403,
-    "width": 109,
+    "z": 438,
+    "width": 126,
     "height": 72,
-    "tabOrder": 403
+    "tabOrder": 438
   },
   "visual": {
     "visualType": "lineChart",

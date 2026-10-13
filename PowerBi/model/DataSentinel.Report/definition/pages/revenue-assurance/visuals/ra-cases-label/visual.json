@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-cases-label",
   "position": {
-    "x": 1602,
+    "x": 1562,
     "y": 134,
-    "z": 184,
-    "width": 266,
+    "z": 199,
+    "width": 306,
     "height": 22,
-    "tabOrder": 184
+    "tabOrder": 199
   },
   "visual": {
     "visualType": "textbox",

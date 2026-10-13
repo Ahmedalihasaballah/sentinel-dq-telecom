@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-type-meta-bg",
   "position": {
-    "x": 1194,
+    "x": 1126,
     "y": 380,
-    "z": 66,
+    "z": 71,
     "width": 140,
     "height": 30,
-    "tabOrder": 66
+    "tabOrder": 71
   },
   "visual": {
     "visualType": "shape",

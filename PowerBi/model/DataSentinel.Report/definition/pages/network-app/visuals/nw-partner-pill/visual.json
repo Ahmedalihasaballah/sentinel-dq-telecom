@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-partner-pill",
   "position": {
-    "x": 1602,
+    "x": 1562,
     "y": 208,
-    "z": 412,
-    "width": 151,
+    "z": 447,
+    "width": 175,
     "height": 24,
-    "tabOrder": 412
+    "tabOrder": 447
   },
   "visual": {
     "visualType": "card",

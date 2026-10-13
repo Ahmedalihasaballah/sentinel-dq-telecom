@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-paid-value",
   "position": {
-    "x": 951,
+    "x": 829,
     "y": 156,
-    "z": 306,
-    "width": 278,
+    "z": 331,
+    "width": 318,
     "height": 50,
-    "tabOrder": 306
+    "tabOrder": 331
   },
   "visual": {
     "visualType": "multiRowCard",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-count-value",
   "position": {
-    "x": 308,
+    "x": 104,
     "y": 156,
-    "z": 298,
-    "width": 278,
+    "z": 323,
+    "width": 318,
     "height": 50,
-    "tabOrder": 298
+    "tabOrder": 323
   },
   "visual": {
     "visualType": "multiRowCard",

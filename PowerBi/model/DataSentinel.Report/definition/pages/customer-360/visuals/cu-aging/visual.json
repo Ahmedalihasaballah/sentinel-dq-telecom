@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-aging",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 258,
-    "z": 316,
-    "width": 382,
+    "z": 341,
+    "width": 433,
     "height": 326,
-    "tabOrder": 316
+    "tabOrder": 341
   },
   "visual": {
     "visualType": "columnChart",

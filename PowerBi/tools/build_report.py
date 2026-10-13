@@ -30,8 +30,9 @@ PILLS = {  # background, text
 VIS_SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json"
 PAGE_SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json"
 
-SIDEBAR_W = 264
-X0, X1 = 298, 1886
+STRIP_W = 64      # always-visible menu strip with the ☰ button
+SIDEBAR_W = 264   # slide-out menu panel, hidden until ☰ is clicked (bookmarks)
+X0, X1 = STRIP_W + 30, 1886
 W = X1 - X0
 GAP = 20
 KPI_Y, KPI_H = 120, 118
@@ -210,7 +211,33 @@ def put(page, name, pos, visual, filters=None):
            "visual": visual}
     if filters:
         doc["filterConfig"] = {"filters": filters}
+    if PANEL_MODE:  # menu panel: hidden by default, drawn above the page, toggled by bookmarks
+        doc["isHidden"] = True
+        doc["position"]["z"] = 50000 + z
+        PANEL.setdefault(page, []).append((name, visual["visualType"]))
     VISUALS.append((page, name, doc))
+
+
+PANEL_MODE = False
+PANEL = {}
+
+
+def bookmark_name(page, state):
+    return f"{CODE[page]}-menu-{state}"
+
+
+def click_layer(page, name, pos, link):
+    """Invisible clickable area; link = ('PageNavigation', page) or ('Bookmark', bookmark name)."""
+    kind, target = link
+    key = "navigationSection" if kind == "PageNavigation" else "bookmark"
+    put(page, name, pos, {
+        "visualType": "shape",
+        "objects": {"shape": [{"properties": {"tileShape": lit("'rectangle'")}}],
+                    "fill": [{"properties": {"show": lit("false")}}],
+                    "outline": OFF()},
+        "visualContainerObjects": {
+            "visualLink": [{"properties": {"show": lit("true"), "type": lit(s(kind)), key: lit(s(target))}}],
+            "background": OFF(), "border": OFF(), "dropShadow": OFF(), "title": OFF(), "visualHeader": OFF()}})
 
 
 def query(buckets, sort=None, displays=None):
@@ -353,41 +380,45 @@ def sample_pill(page, pos):
 
 
 def nav_button(page, target, label, icon, y, active):
-    x, w, h = 16, SIDEBAR_W - 32, 44
+    x, w, h = STRIP_W + 16, SIDEBAR_W - 32, 44
     if active:
         shape(page, f"{page}-nav-{target}-bg", (x, y, w, h), NAV_ACTIVE_BG, radius="8D")
     textbox(page, f"{page}-nav-{target}-txt", (x + 16, y + 11, w - 24, 24),
             [(f"{icon}   ", {"fontSize": "11pt", "color": WHITE if active else NAV_ICON}),
              (label, {"fontSize": "11pt", "color": WHITE if active else NAV_TEXT, "fontWeight": "bold"})])
-    put(page, f"{page}-nav-{target}", (x, y, w, h), {
-        "visualType": "shape",
-        "objects": {"shape": [{"properties": {"tileShape": lit("'rectangle'")}}],
-                    "fill": [{"properties": {"show": lit("false")}}],
-                    "outline": OFF()},
-        "visualContainerObjects": {
-            "visualLink": [{"properties": {"show": lit("true"), "type": lit("'PageNavigation'"),
-                                           "navigationSection": lit(s(target))}}],
-            "background": OFF(), "border": OFF(), "dropShadow": OFF(), "title": OFF(), "visualHeader": OFF()}})
+    click_layer(page, f"{page}-nav-{target}", (x, y, w, h), ("PageNavigation", target))
 
 
 def chrome(page, title, subtitle, number=None, pills=()):
-    """Sidebar, title block, filter pills, sample-data pill, footer."""
-    shape(page, f"{page}-sidebar", (0, 0, SIDEBAR_W, 1080), NAV_BG, radius="0D")
-    shape(page, f"{page}-logo-bg", (26, 28, 40, 40), BLUE, radius="10D")
-    textbox(page, f"{page}-logo-icon", (26, 33, 40, 30), [("◈", {"fontSize": "15pt", "color": WHITE})],
+    """Menu strip with ☰, slide-out menu panel (hidden), title block, filter pills, sample-data pill, footer."""
+    global PANEL_MODE
+    # Always visible: the narrow navy strip and the ☰ button that opens the panel
+    shape(page, f"{page}-strip", (0, 0, STRIP_W, 1080), NAV_BG, radius="0D")
+    textbox(page, f"{page}-menu-icon", (0, 22, STRIP_W, 36), [("☰", {"fontSize": "18pt", "color": "#C3CCDA"})],
             align="center")
-    textbox(page, f"{page}-logo-text", (76, 33, 180, 32),
+    click_layer(page, f"{page}-menu-open", (8, 16, STRIP_W - 16, 44), ("Bookmark", bookmark_name(page, "open")))
+
+    # Slide-out panel: same navy, logo, page links, Gold layer note, ✕ to close
+    PANEL_MODE = True
+    px = STRIP_W
+    shape(page, f"{page}-panel", (px, 0, SIDEBAR_W, 1080), NAV_BG, radius="0D", lifted=True)
+    shape(page, f"{page}-logo-bg", (px + 22, 28, 40, 40), BLUE, radius="10D")
+    textbox(page, f"{page}-logo-icon", (px + 22, 33, 40, 30), [("◈", {"fontSize": "15pt", "color": WHITE})],
+            align="center")
+    textbox(page, f"{page}-logo-text", (px + 72, 33, 150, 32),
             [("DataSentinel", {"fontSize": "15pt", "fontWeight": "bold", "color": WHITE})])
-    textbox(page, f"{page}-nav-label", (30, 106, 200, 20),
+    textbox(page, f"{page}-menu-x", (px + SIDEBAR_W - 44, 30, 30, 30), [("✕", {"fontSize": "14pt", "color": "#C3CCDA"})],
+            align="center")
+    click_layer(page, f"{page}-menu-close", (px + SIDEBAR_W - 48, 24, 40, 40), ("Bookmark", bookmark_name(page, "closed")))
+    textbox(page, f"{page}-nav-label", (px + 26, 106, 200, 20),
             [("REPORT", {"fontSize": "9pt", "fontWeight": "bold", "color": "#7C8BA8"})])
     for i, (target, label, icon) in enumerate(NAV):
-        y = 136 + i * 48
-        active = target == page
-        nav_button(page, target, label, icon, y, active)
-    shape(page, f"{page}-gold-bg", (18, 962, SIDEBAR_W - 36, 92), "#E9EEF7", radius="10D")
-    textbox(page, f"{page}-gold-text", (34, 976, SIDEBAR_W - 66, 70), [], paragraphs=[
+        nav_button(page, target, label, icon, 136 + i * 48, target == page)
+    shape(page, f"{page}-gold-bg", (px + 18, 962, SIDEBAR_W - 36, 92), "#E9EEF7", radius="10D")
+    textbox(page, f"{page}-gold-text", (px + 34, 976, SIDEBAR_W - 66, 70), [], paragraphs=[
         [("Gold layer", {"fontSize": "10pt", "fontWeight": "bold", "color": TEXT})],
         [("12 mart tables · refresh after each pipeline run", {"fontSize": "9pt", "color": SUB})]])
+    PANEL_MODE = False
 
     textbox(page, f"{page}-title", (X0, 32, 900, 40), [(title, {"fontSize": "21pt", "fontWeight": "bold",
                                                                 "color": TEXT})])
@@ -802,6 +833,32 @@ for page, name, doc in VISUALS:
 dump(os.path.join(PAGES, "pages.json"), {
     "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
     "pageOrder": [n for n, _ in PAGE_META], "activePageName": "network-app"})
+
+# Bookmarks: per page, "menu open" shows the panel visuals and "menu closed" hides them.
+# They touch only the panel visuals, keep the current page and leave filters/data alone.
+BOOKMARKS = os.path.join(DEF, "bookmarks")
+shutil.rmtree(BOOKMARKS, ignore_errors=True)
+items = []
+for page, display in PAGE_META:
+    panel = PANEL.get(page, [])
+    if not panel:
+        continue
+    for state in ("open", "closed"):
+        bname = bookmark_name(page, state)
+        visual_state = lambda vt: {"visualType": vt, **({} if state == "open" else {"display": {"mode": "hidden"}})}
+        dump(os.path.join(BOOKMARKS, f"{bname}.bookmark.json"), {
+            "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+            "displayName": f"{display}: menu {state}",
+            "name": bname,
+            "options": {"targetVisualNames": [n for n, _ in panel], "applyOnlyToTargetVisuals": True,
+                        "suppressActiveSection": True, "suppressData": True},
+            "explorationState": {"version": "1.3", "activeSection": page,
+                                 "sections": {page: {"visualContainers": {
+                                     n: {"singleVisual": visual_state(vt)} for n, vt in panel}}}}})
+        items.append({"name": bname})
+dump(os.path.join(BOOKMARKS, "bookmarks.json"), {
+    "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+    "items": items})
 
 theme_src = os.path.join(ROOT, "..", "theme", "sentinel_theme.json")
 reg_dir = os.path.join(REPORT, "StaticResources", "RegisteredResources")

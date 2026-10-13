@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pass-value",
   "position": {
-    "x": 308,
+    "x": 104,
     "y": 156,
-    "z": 111,
-    "width": 222,
+    "z": 121,
+    "width": 251,
     "height": 50,
-    "tabOrder": 111
+    "tabOrder": 121
   },
   "visual": {
     "visualType": "multiRowCard",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-nav-cu",
   "position": {
-    "x": 16,
+    "x": 80,
     "y": 328,
-    "z": 15,
+    "z": 50020,
     "width": 232,
     "height": 44,
-    "tabOrder": 15
+    "tabOrder": 20
   },
   "visual": {
     "visualType": "shape",
@@ -146,5 +146,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }
