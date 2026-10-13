@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-menu-x",
   "position": {
     "x": 284,
     "y": 30,
-    "z": 50217,
-    "width": 30,
+    "z": 46000,
     "height": 30,
-    "tabOrder": 217
+    "width": 30,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "textbox",

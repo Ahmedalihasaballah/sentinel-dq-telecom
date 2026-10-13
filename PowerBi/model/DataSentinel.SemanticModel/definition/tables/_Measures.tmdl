@@ -21,7 +21,7 @@ table _Measures
 		formatString: #,0
 		lineageTag: 71423f10-cb8e-4c84-9970-23f0418dbf39
 
-	measure 'Resolved In SLA' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[status] = "RESOLVED", mart_incidents[sla_status] = "RESOLVED_IN_SLA" )
+	measure 'Resolved In SLA' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[status] = "RESOLVED", mart_incidents[sla_status] = "RESOLVED_IN_SLA" ) + 0
 		formatString: #,0
 		lineageTag: b51e6a71-e5a3-4a81-93bb-2a1ee7983b46
 
@@ -138,7 +138,7 @@ table _Measures
 			VAR d = DIVIDE ( cur - prev, prev )
 			RETURN IF ( ISBLANK ( d ), "no prior week", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs last week" )
 		isHidden
-		lineageTag: 5f936f1b-17b1-4984-b0af-72d88a5823c0
+		lineageTag: 53eede22-c5f2-4985-a0e8-ffe8d693cdbf
 
 	/// UI: report helper
 	measure 'UI Voice Delta' =
@@ -148,7 +148,7 @@ table _Measures
 			VAR d = DIVIDE ( cur - prev, prev )
 			RETURN IF ( ISBLANK ( d ), "no prior week", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs last week" )
 		isHidden
-		lineageTag: 556df7df-8aa7-4813-ac49-f7a87e293059
+		lineageTag: c5a6daa9-568d-47a8-a896-9985b87f5594
 
 	/// UI: report helper
 	measure 'UI Data Delta' =
@@ -158,7 +158,7 @@ table _Measures
 			VAR d = DIVIDE ( cur - prev, prev )
 			RETURN IF ( ISBLANK ( d ), "no prior week", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs last week" )
 		isHidden
-		lineageTag: c39445ab-580c-4c6d-80ba-2f486b8062cf
+		lineageTag: e0380ce7-3253-4e0e-8cee-c1b79be48e5b
 
 	/// UI: report helper
 	measure 'UI Drop Delta' =
@@ -167,64 +167,64 @@ table _Measures
 			VAR prev = CALCULATE ( [Drop Rate], mart_network_daily[usage_date] > maxD - 14, mart_network_daily[usage_date] <= maxD - 7 )
 			RETURN IF ( ISBLANK ( prev ), "no prior week", IF ( cur >= prev, "▲ ", "▼ " ) & FORMAT ( ABS ( cur - prev ) * 100, "0.0" ) & " pt vs last week" )
 		isHidden
-		lineageTag: 0ac398b5-8b3e-43df-a707-18cace8d7345
+		lineageTag: 0394be7e-295f-47f7-bb57-bef4245f7ad4
 
 	/// UI: report helper
 	measure 'UI Partner Status' = IF ( [Unknown Partner Cost EUR] > 0, "needs matching", "all matched" )
 		isHidden
-		lineageTag: 70f9afdd-4853-438e-a615-fe52926f849b
+		lineageTag: d94b4c83-3eea-4ab1-8a07-523d7ea0626b
 
 	/// UI: report helper
 	measure 'UI Days Network' = FORMAT ( DISTINCTCOUNT ( mart_network_daily[usage_date] ), "0" ) & IF ( DISTINCTCOUNT ( mart_network_daily[usage_date] ) = 1, " day", " days" )
 		isHidden
-		lineageTag: 42a580f1-3cc3-47a4-9b39-69c2f6ece34c
+		lineageTag: 5e87718b-6d67-4c3b-af21-2f4a0cdeb287
 
 	/// UI: report helper
 	measure 'UI Days App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[event_date] ), "0" ) & IF ( DISTINCTCOUNT ( mart_app_usage[event_date] ) = 1, " day", " days" )
 		isHidden
-		lineageTag: 1209280a-e77f-49ae-983b-02cdb874465e
+		lineageTag: 2760bfbd-a172-4984-8616-d5bab4a65219
 
 	/// UI: report helper
 	measure 'UI Versions App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[app_version] ), "0" ) & IF ( DISTINCTCOUNT ( mart_app_usage[app_version] ) = 1, " version", " versions" )
 		isHidden
-		lineageTag: 243992e3-bf9d-4dd6-845f-6cd679f97b42
+		lineageTag: 797b85e1-0ac7-4bd9-a348-7ab36618d010
 
 	/// UI: report helper
 	measure 'UI Months Partner' = FORMAT ( DISTINCTCOUNT ( mart_partner_usage[period_start] ), "0" ) & IF ( DISTINCTCOUNT ( mart_partner_usage[period_start] ) = 1, " month", " months" )
 		isHidden
-		lineageTag: cce495cb-ba46-4066-9008-8e5212b72295
+		lineageTag: 31eafb88-cf83-4c72-b8b8-e09ee0f5c47f
 
 	/// UI: report helper
 	measure 'Crash Share Track' =
 			VAR mx = MAXX ( ALLSELECTED ( mart_app_usage[app_version] ), [Crash Share] )
 			RETURN IF ( NOT ISBLANK ( [Crash Share] ), mx * 1.08 - [Crash Share] )
 		isHidden
-		lineageTag: cac5339e-dbb9-41ef-85dd-2cbcb5d4529e
+		lineageTag: 168991ab-7c6d-4ad8-95df-f61d5bece299
 
 	/// UI: report helper
 	measure 'Cell Drop Track' =
 			VAR mx = MAXX ( ALLSELECTED ( mart_cell_quality[cell_id] ), [Cell Drop Rate] )
 			RETURN IF ( NOT ISBLANK ( [Cell Drop Rate] ), mx * 1.08 - [Cell Drop Rate] )
 		isHidden
-		lineageTag: 28b6ab48-4140-4006-8917-db54db000799
+		lineageTag: 71786241-88ce-43f0-9eae-cd9ac7848df0
 
 	/// UI: report helper
 	measure 'App Events K' = DIVIDE ( [App Events], 1000 )
 		formatString: #,0
 		isHidden
-		lineageTag: a780fe43-2eaf-44eb-934a-57e61f48ef15
+		lineageTag: 55990bb7-f43b-49bf-8247-fae44e3c1838
 
 	/// UI: report helper
 	measure 'Network Records M' = DIVIDE ( [Network Records], 1000000 )
 		formatString: 0.0
 		isHidden
-		lineageTag: 56b49afa-bd6b-4d5a-90f1-858eced76f4e
+		lineageTag: cc6b9565-e6b1-4da7-ba27-0ec7f95dd7bc
 
 	/// UI: report helper
 	measure 'Partner Cost K' = DIVIDE ( [Partner Cost EUR], 1000 )
 		formatString: € #,0
 		isHidden
-		lineageTag: 5f461897-238a-45b4-a6fd-94c9761f1a19
+		lineageTag: 7b6564f8-2770-44e2-8b70-6051a316223f
 
 	/// UI: report helper
 	measure 'UI Open 7d' =
@@ -232,29 +232,29 @@ table _Measures
 			VAR n = CALCULATE ( [Incident Count], mart_incidents[opened_at] > maxD - 7 )
 			RETURN FORMAT ( n, "0" ) & " opened in last 7 days"
 		isHidden
-		lineageTag: aa532a58-3037-4edb-904b-1865bb89d36d
+		lineageTag: 75c6afb3-b9c5-4590-9f93-19350ac392fa
 
 	/// UI: report helper
 	measure 'UI SLA Policy' = "P1 1h · P2 4h · P3 24h · P4 72h"
 		isHidden
-		lineageTag: 092a2187-483e-4ede-8f60-739934f8aafb
+		lineageTag: 8a9d9c6f-dd92-45e0-b589-f3aa12847c3e
 
 	/// UI: report helper
 	measure 'UI Quarantine Datasets' = FORMAT ( DISTINCTCOUNT ( mart_quarantine[dataset] ), "0" ) & " datasets affected"
 		isHidden
-		lineageTag: c2768989-0dc1-4e82-a9cd-7689c8b4215a
+		lineageTag: 379571cd-e24b-40a9-9603-0476663f754d
 
 	/// UI: report helper
 	measure 'UI Active Share' = FORMAT ( DIVIDE ( [Active Customers], [Customer Count] ), "0%" ) & " of customers"
 		isHidden
-		lineageTag: e0c4b47e-7bf9-47a9-b0de-0240104bc481
+		lineageTag: 87a59f3f-8ef0-43cc-9044-1db57ed5b939
 
 	/// UI: report helper
 	measure 'UI Unpaid Owe' =
 			VAR n = CALCULATE ( [Customer Count], mart_customer_360[unpaid_eur] > 0 )
 			RETURN FORMAT ( n, "#,0" ) & " customers owe"
 		isHidden
-		lineageTag: 6f9d6593-5edc-4422-ae82-e28d185a9a50
+		lineageTag: dd4e4a12-0033-4af1-992c-b6dcfc884e0f
 
 	/// UI: report helper
 	measure 'UI DQ Delta' =
@@ -264,61 +264,61 @@ table _Measures
 			VAR prev = CALCULATE ( [DQ Trend Pass Rate], mart_dq_trend[run_date] = prevD )
 			RETURN IF ( ISBLANK ( prev ), "latest run", IF ( cur >= prev, "▲ ", "▼ " ) & FORMAT ( ABS ( cur - prev ) * 100, "0.0" ) & " pt vs previous run" )
 		isHidden
-		lineageTag: 4feb3f41-e7d8-4d0e-a04b-18a423671714
+		lineageTag: 57d0cdb9-4e8e-4f34-a11b-8b48baf6cd90
 
 	/// UI: report helper
 	measure 'Failing Rules' = CALCULATE ( COUNTROWS ( mart_dq_health ), mart_dq_health[status] <> "PASS" )
 		formatString: #,0
 		isHidden
-		lineageTag: aaaf7030-590c-41a7-bec3-4e0eda87bf5f
+		lineageTag: c53795e5-899c-4dfd-8827-6d186a0736e1
 
 	/// UI: report helper
 	measure 'UI Rules Total' = "of " & FORMAT ( COUNTROWS ( mart_dq_health ), "#,0" ) & " rules checked"
 		isHidden
-		lineageTag: b9236c76-1dee-47b0-bfb9-808cfcab8aad
+		lineageTag: 1f6eb14a-735a-4648-ba01-f0bfa315a5b8
 
 	/// UI: report helper
 	measure 'UI Oldest Note' = "waiting in quarantine"
 		isHidden
-		lineageTag: 877286ce-4f22-4534-8fde-6fe7094e7286
+		lineageTag: daabd4b9-06fc-4fb8-a5e8-f974fd9e9b32
 
 	/// UI: report helper
 	measure 'UI Runs DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_trend[run_date] ), "0" ) & IF ( DISTINCTCOUNT ( mart_dq_trend[run_date] ) = 1, " day", " days" )
 		isHidden
-		lineageTag: 23ef4f7f-e9d2-4e35-ac81-989088d83497
+		lineageTag: a04e4dc4-f748-4b12-a8aa-6fb393fbe010
 
 	/// UI: report helper
 	measure 'UI Datasets DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_health[dataset] ), "0" ) & IF ( DISTINCTCOUNT ( mart_dq_health[dataset] ) = 1, " dataset", " datasets" )
 		isHidden
-		lineageTag: c7002828-993c-42c6-9da1-b00206590bca
+		lineageTag: bdf9e836-45a9-45fa-91dc-fa1c0924aefb
 
 	/// UI: report helper
 	measure 'Pass Rate Track' = IF ( NOT ISBLANK ( [DQ Pass Rate] ), 1 - [DQ Pass Rate] )
 		formatString: 0.0%
 		isHidden
-		lineageTag: ba0f7a3d-1fd2-47ff-a68d-1f1c3e010a38
+		lineageTag: cf9cc545-db8c-4903-8041-d56f6e43434b
 
 	/// UI: report helper
 	measure 'Color Pass Rate' = IF ( [DQ Pass Rate] < 0.95, "#D9363E", "#2F6FDB" )
 		isHidden
-		lineageTag: 77b81545-aca4-4d3b-b085-97134959876e
+		lineageTag: 8d0473bc-ded6-4740-bdb4-dd5df7e67bff
 
 	/// UI: report helper
 	measure 'Color Matrix' =
 			VAR v = [DQ Trend Pass Rate]
 			RETURN SWITCH ( TRUE (), ISBLANK ( v ), BLANK (), v < 0.9, "#FBD5D5", v < 0.98, "#FDECC8", "#D7F2E3" )
 		isHidden
-		lineageTag: e80bfbed-86a6-4132-9831-4d04714b0105
+		lineageTag: 0708dd5e-e695-47b1-961e-f8860361a23b
 
 	/// UI: report helper
 	measure 'Color DQ Status' = IF ( SELECTEDVALUE ( mart_dq_health[status] ) IN { "FAIL", "FAILED" }, "#FDE2E2" )
 		isHidden
-		lineageTag: 44c50088-97ff-420b-a885-8bba748a51e4
+		lineageTag: 6d9a49a0-122b-4047-a7d0-d47d6d2ce0e2
 
 	/// UI: report helper
 	measure 'Font DQ Status' = IF ( SELECTEDVALUE ( mart_dq_health[status] ) IN { "FAIL", "FAILED" }, "#B42318", "#111827" )
 		isHidden
-		lineageTag: a1677c2b-a91b-4998-bab9-e6083b62dc5f
+		lineageTag: d5b2f66d-0eb8-4a2c-b109-c335829f1dc9
 
 	/// UI: report helper
 	measure 'UI Risk Delta' =
@@ -329,394 +329,436 @@ table _Measures
 			VAR d = DIVIDE ( cur - prev, prev )
 			RETURN IF ( ISBLANK ( d ), "latest run", IF ( d >= 0, "▲ ", "▼ " ) & FORMAT ( ABS ( d ), "0%" ) & " vs previous run" )
 		isHidden
-		lineageTag: a9462928-c993-4920-9ce4-896f5806bfa8
+		lineageTag: de565eb7-7872-4526-b478-0de6d9ddcef6
 
 	/// UI: report helper
 	measure 'UI Gross Note' = "gross: R3 and R6 overlap"
 		isHidden
-		lineageTag: ab69ef46-c9e9-4f83-b40d-513d34f6360c
+		lineageTag: 02bd3f0b-5931-46c5-b025-573d30fa1ad3
 
 	/// UI: report helper
 	measure 'UI Defect Note' = "excludes R10 unpaid invoices"
 		isHidden
-		lineageTag: ee06aaff-f1c2-47e4-8c75-acdab18cb933
+		lineageTag: 721308eb-1075-4692-8e71-da0589159cad
 
 	/// UI: report helper
 	measure 'Checks Failing' = CALCULATE ( COUNTROWS ( mart_revenue_assurance ), mart_revenue_assurance[status] = "FAIL" )
 		formatString: #,0
 		isHidden
-		lineageTag: 513ee759-b82e-4d18-b392-569b22d7df3e
+		lineageTag: 2e2c9bd3-9a86-4d74-8291-142cefaf0412
 
 	/// UI: report helper
 	measure 'UI Checks Total' = "of " & FORMAT ( COUNTROWS ( mart_revenue_assurance ), "0" ) & " checks"
 		isHidden
-		lineageTag: 0aa14307-d1fd-4617-9b24-303d0a698f5d
+		lineageTag: 9c0bc9ec-c693-414c-abbc-e571b43223f8
 
 	/// UI: report helper
 	measure 'Cases To Investigate' = COUNTROWS ( mart_recon_mismatches )
 		formatString: #,0
 		isHidden
-		lineageTag: 141a7c68-ef44-41da-ade2-bd06da0c37ef
+		lineageTag: c64a5f43-5d4d-4701-8f4d-49d0e3f520f0
 
 	/// UI: report helper
 	measure 'UI Latest Run' = "latest reconciliation run"
 		isHidden
-		lineageTag: 7efddcfb-44da-44e8-98bd-1bc4f8b8189a
+		lineageTag: 3077b469-942b-4b8a-9fc6-cd666a81cd5f
 
 	/// UI: report helper
 	measure 'UI Runs Recon' = FORMAT ( DISTINCTCOUNT ( mart_revenue_assurance_trend[run_id] ), "0" ) & IF ( DISTINCTCOUNT ( mart_revenue_assurance_trend[run_id] ) = 1, " run", " runs" )
 		isHidden
-		lineageTag: c92d37ab-c973-4214-93c8-859828903166
+		lineageTag: bee6d5c9-1fa1-4d34-be26-d2e351fb785c
 
 	/// UI: report helper
 	measure 'UI Mismatch Checks' =
 			VAR n = CALCULATE ( COUNTROWS ( mart_revenue_assurance ), mart_revenue_assurance[rows_mismatched] > 0 )
 			RETURN "across " & FORMAT ( n, "0" ) & " checks"
 		isHidden
-		lineageTag: ba0c0a60-8f5a-4356-8900-ab5902a97596
+		lineageTag: 12fb5e38-9678-4b80-a176-fd947d2be9fd
 
 	/// UI: report helper
 	measure 'Leak Risk Track' =
 			VAR mx = MAXX ( ALLSELECTED ( mart_revenue_assurance[leak_type] ), [Gross EUR At Risk] )
 			RETURN IF ( NOT ISBLANK ( [Gross EUR At Risk] ), mx * 1.08 - [Gross EUR At Risk] )
 		isHidden
-		lineageTag: ab97c4a9-d511-461b-bf8c-c88682c8aa2f
+		lineageTag: c01b403a-6c4b-4df9-81ee-fd0619408ce7
 
 	/// UI: report helper
 	measure 'Recon Risk Run' = SUM ( mart_revenue_assurance_trend[amount_at_risk_eur] )
 		formatString: € #,0
 		isHidden
-		lineageTag: 9e447bca-0733-417d-a830-a668971911e8
+		lineageTag: 7d24e445-f3c3-4ba2-8a18-7853fb437937
 
 	/// UI: report helper
 	measure 'Color Recon Status' = IF ( SELECTEDVALUE ( mart_revenue_assurance[status] ) IN { "FAIL", "FAILED" }, "#FDE2E2" )
 		isHidden
-		lineageTag: 24a24c32-a8ce-4dd3-a27d-cff5f6cbfccb
+		lineageTag: 67902c0a-75bd-4e0b-a639-58e6cd646d7a
 
 	/// UI: report helper
 	measure 'Font Recon Status' = IF ( SELECTEDVALUE ( mart_revenue_assurance[status] ) IN { "FAIL", "FAILED" }, "#B42318", "#111827" )
 		isHidden
-		lineageTag: e03c9289-d898-4632-adb8-6fc249c8b5f4
+		lineageTag: c82497f4-ff38-4f41-b4a3-0752e29d14e0
 
 	/// UI: report helper
 	measure 'UI Resolved Share' =
 			VAR resolved = CALCULATE ( [Incident Count], mart_incidents[status] = "RESOLVED" )
 			RETURN FORMAT ( DIVIDE ( [Resolved In SLA], resolved ), "0%" ) & " of resolved"
 		isHidden
-		lineageTag: 56c5b6b3-5334-403d-b233-6713daf0c641
+		lineageTag: d1dca1bf-78d3-460c-911b-c6f87a8ad324
 
 	/// UI: report helper
 	measure 'UI Ack Note' = "minutes to acknowledge"
 		isHidden
-		lineageTag: 6a0fd8c8-f11c-4b36-a28e-4281aa8f5d90
+		lineageTag: fbccec62-3f62-4eb9-9e56-8bdc35a9e14a
 
 	/// UI: report helper
 	measure 'UI Incidents Total' = FORMAT ( [Incident Count], "#,0" ) & " incidents"
 		isHidden
-		lineageTag: c322705d-1313-47d1-b33e-8069663d25db
+		lineageTag: 8196e0bf-26f4-4507-98f0-3555817fa93c
 
 	/// UI: report helper
 	measure 'UI Teams' = FORMAT ( DISTINCTCOUNT ( mart_incidents[team] ), "0" ) & IF ( DISTINCTCOUNT ( mart_incidents[team] ) = 1, " team", " teams" )
 		isHidden
-		lineageTag: 4530dfec-6df1-418a-83c0-bafa187715e9
+		lineageTag: 0434eea3-b0ab-4da0-90dc-2b89ccb2c361
 
 	/// UI: report helper
 	measure 'Team Workload Track' =
 			VAR mx = MAXX ( ALLSELECTED ( mart_incidents[team] ), [Open Incidents] )
 			RETURN IF ( NOT ISBLANK ( [Open Incidents] ), mx * 1.08 - [Open Incidents] )
 		isHidden
-		lineageTag: 85163f50-785b-4e98-b4ac-8bdcfada75f6
+		lineageTag: f1e9dab5-58e9-4c25-936b-eeb3eabe34c3
 
 	/// UI: report helper
 	measure 'Color SLA Status' = IF ( SELECTEDVALUE ( mart_incidents[sla_status] ) IN { "BREACHED" }, "#FDE2E2" )
 		isHidden
-		lineageTag: 90d11f5b-a5bf-4e86-9bb1-357d03b975cb
+		lineageTag: 274a988d-b360-4878-beac-321d5bb215d6
 
 	/// UI: report helper
 	measure 'Font SLA Status' = IF ( SELECTEDVALUE ( mart_incidents[sla_status] ) IN { "BREACHED" }, "#B42318", "#111827" )
 		isHidden
-		lineageTag: b2cc7783-9bf9-4ea1-a8ae-d52cd433d492
+		lineageTag: 871f7cfd-cea4-496f-929e-377b9bc88f8b
 
 	/// UI: report helper
 	measure 'UI Invoices' = FORMAT ( SUM ( mart_customer_360[invoices] ), "#,0" ) & " invoices"
 		isHidden
-		lineageTag: e795f453-b122-4d36-8a61-e9d193ebf27e
+		lineageTag: d42afe56-831f-4b60-8d12-ea9b0a346ccb
 
 	/// UI: report helper
 	measure 'UI Collected' = FORMAT ( [Collection Rate], "0%" ) & " collected"
 		isHidden
-		lineageTag: a9708201-c94b-4017-9a61-987067e2d52d
+		lineageTag: 8126db6a-f35f-4bbf-baeb-db80e09da292
 
 	/// UI: report helper
 	measure 'UI Plans' = FORMAT ( DISTINCTCOUNT ( mart_customer_360[plan_name] ), "0" ) & IF ( DISTINCTCOUNT ( mart_customer_360[plan_name] ) = 1, " plan", " plans" )
 		isHidden
-		lineageTag: 84f5be08-61d0-49f1-b70b-0ba59ba6151f
+		lineageTag: c67b3ffd-8699-454e-b3b9-804ca68ce31b
 
 	/// UI: report helper
 	measure 'UI Customers Shown' = FORMAT ( [Customer Count], "#,0" ) & " customers"
 		isHidden
-		lineageTag: 53c5ecd1-2050-45dd-a516-5edb773bbf66
+		lineageTag: 7bd41dd1-46a2-418e-ac38-569e4746e35c
 
 	/// UI: report helper
 	measure 'Unpaid Plan Track' =
 			VAR mx = MAXX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Unpaid EUR] )
 			RETURN IF ( NOT ISBLANK ( [Unpaid EUR] ), mx * 1.08 - [Unpaid EUR] )
 		isHidden
-		lineageTag: 51854b9e-031c-4ef3-927b-5e160f66114b
+		lineageTag: 72212fca-1f6f-4e2b-b5fa-4a012ec4123e
 
 	/// UI5: BI review
 	measure 'Target DQ Pass' = 0.98
 		formatString: 0%
 		isHidden
-		lineageTag: 9c59bbda-1165-4727-99d6-5c791632cd60
+		lineageTag: f003614b-3550-403c-ac96-69e70191ac3c
 
 	/// UI5: BI review
 	measure 'Target Drop Rate' = 0.02
 		formatString: 0.0%
 		isHidden
-		lineageTag: f2200063-097f-47a8-aec3-778ac3c37643
+		lineageTag: 5e73097e-b962-478d-bfcf-e85f2d267713
 
 	/// UI5: BI review
 	measure 'Target SLA Compliance' = 0.95
 		formatString: 0%
 		isHidden
-		lineageTag: 097d6ce9-4469-4dac-b4b8-e40d1f7c5e2d
+		lineageTag: 5a0496d4-8962-44ac-b3c3-0c6c96758ae8
 
 	/// UI5: BI review
 	measure 'Target Collection' = 0.95
 		formatString: 0%
 		isHidden
-		lineageTag: 3df7ea43-e90b-4038-9ca4-52851c7c5c8a
+		lineageTag: 6fbf7d87-0961-4f71-aa86-ed7bf9e8d487
 
 	/// UI5: BI review
 	measure 'Limit Crash Share' = 0.02
 		formatString: 0.0%
 		isHidden
-		lineageTag: 41de4d97-fe7b-4faf-99d9-f3b8653e50c1
+		lineageTag: dbd37641-7272-4207-881f-4a445f36e484
 
 	/// UI5: BI review
 	measure 'SLA Compliance' = DIVIDE ( [Resolved In SLA], CALCULATE ( [Incident Count], mart_incidents[status] = "RESOLVED" ) )
 		formatString: 0%
 		isHidden
-		lineageTag: 6d23e0d9-3dca-4ccb-afb5-3760a9e9d2bc
+		lineageTag: 17c8cd92-208b-4c4b-9beb-961418503faf
 
 	/// UI5: BI review
 	measure 'UI DQ Pill Level' = VAR v = [DQ Pass Rate] RETURN SWITCH ( TRUE (), ISBLANK ( v ), -1, v >= [Target DQ Pass], 0, v >= 0.95, 1, 2 )
 		isHidden
-		lineageTag: 465e6563-8653-4db8-989c-cc12a6964f14
+		lineageTag: 690944af-c150-4dd2-81dd-2015ca315bc5
 
 	/// UI5: BI review
 	measure 'UI DQ Pill' = SWITCH ( [UI DQ Pill Level], 0, "✓ On target (98%)", 1, "! Below 98% target", 2, "✕ Under 95%, critical", "no data" )
 		isHidden
-		lineageTag: d75153ff-ea2c-4435-957a-a263ed23c7b8
+		lineageTag: 39620040-2db1-4993-8560-03b58a100688
 
 	/// UI5: BI review
 	measure 'UI DQ Pill Bg' = SWITCH ( [UI DQ Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: 22c403b6-ced4-45b6-9743-70c996634092
+		lineageTag: 3e65d825-74e8-4d2e-8f72-3488fda534d2
 
 	/// UI5: BI review
 	measure 'UI DQ Pill Fg' = SWITCH ( [UI DQ Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: 7060728c-9809-41ed-81c6-560e5e61e469
+		lineageTag: f2fcee0e-fad7-4fd8-9974-87db58fa40bc
 
 	/// UI5: BI review
 	measure 'UI SLA Pill Level' = IF ( [SLA Breached] > 0, 2, 0 )
 		isHidden
-		lineageTag: aef7271a-cefe-440b-9995-ca696338d57b
+		lineageTag: 2f50488b-7d9b-48ea-b3a3-6e4960c73be4
 
 	/// UI5: BI review
 	measure 'UI SLA Pill' = IF ( [SLA Breached] > 0, "✕ Deadline missed, act now", "✓ No deadline missed" )
 		isHidden
-		lineageTag: fbe1426e-a715-44fc-be1d-151f07256c52
+		lineageTag: 7898de32-fe6d-46e8-9ea9-18e4c7535032
 
 	/// UI5: BI review
 	measure 'UI SLA Pill Bg' = SWITCH ( [UI SLA Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: 595db9f1-bd1d-4ff8-850f-53f593180d8e
+		lineageTag: 975a4a53-188b-47a3-b113-a4006df5408e
 
 	/// UI5: BI review
 	measure 'UI SLA Pill Fg' = SWITCH ( [UI SLA Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: cb841c05-09fa-48f2-8b4c-586a504836e1
+		lineageTag: d4aa198a-bbe2-4477-9f15-a89e407c7d6c
 
 	/// UI5: BI review
 	measure 'UI Drop Pill Level' = VAR v = [Drop Rate] RETURN SWITCH ( TRUE (), ISBLANK ( v ), -1, v <= [Target Drop Rate], 0, v <= 0.03, 1, 2 )
 		isHidden
-		lineageTag: 5bc82b8e-2103-416f-ac66-5c04665bb7b2
+		lineageTag: 2c67cddb-d36b-428e-a02a-0e5b4d7053e3
 
 	/// UI5: BI review
 	measure 'UI Drop Pill' = SWITCH ( [UI Drop Pill Level], 0, "✓ Within 2% limit", 1, "! Above 2% limit", 2, "✕ Above 3%, critical", "no data" )
 		isHidden
-		lineageTag: ab08e39c-2868-45d0-9eb3-f5ec1b3d0171
+		lineageTag: 13fd1462-b80d-4271-b3f7-bf6733973dde
 
 	/// UI5: BI review
 	measure 'UI Drop Pill Bg' = SWITCH ( [UI Drop Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: d121b6b6-9b59-40dd-979e-7a6a6eaefe8a
+		lineageTag: 855a8ee7-6f01-4bea-9675-d494b9dba92d
 
 	/// UI5: BI review
 	measure 'UI Drop Pill Fg' = SWITCH ( [UI Drop Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: c1b8eefd-0d4a-4613-866e-4188da58b84c
+		lineageTag: 050e5e79-6c18-4331-9b8b-416b718a28ac
 
 	/// UI5: BI review
 	measure 'UI Collection Pill Level' = VAR c = [Collection Rate] RETURN SWITCH ( TRUE (), ISBLANK ( c ), -1, c >= [Target Collection], 0, c >= 0.85, 1, 2 )
 		isHidden
-		lineageTag: 64c03931-4107-449e-b969-8ab3c89945db
+		lineageTag: 4d4c1c79-5006-456d-917c-f985b447b956
 
 	/// UI5: BI review
 	measure 'UI Collection Pill' = FORMAT ( [Collection Rate], "0%" ) & " collected, target 95%"
 		isHidden
-		lineageTag: d86a695b-2bd3-4b22-bf5c-376b8dd61353
+		lineageTag: 1bb3f641-1386-4431-a61b-1dc08b7dd515
 
 	/// UI5: BI review
 	measure 'UI Collection Pill Bg' = SWITCH ( [UI Collection Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: ddc55fb5-e5a4-4307-98d3-b5b5597f6a09
+		lineageTag: bb33dc67-69cf-42e1-a9ca-e76a1bb43480
 
 	/// UI5: BI review
 	measure 'UI Collection Pill Fg' = SWITCH ( [UI Collection Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: d744b601-ea88-43b9-9097-bae6593d992f
+		lineageTag: 0ebacf2b-c599-4963-bc0a-9e3c2294f726
 
 	/// UI5: BI review
 	measure 'UI Compliance Pill Level' = VAR c = [SLA Compliance] RETURN SWITCH ( TRUE (), ISBLANK ( c ), -1, c >= [Target SLA Compliance], 0, c >= 0.85, 1, 2 )
 		isHidden
-		lineageTag: d4d48c50-b6c0-44ff-9247-15c3c1aba2f1
+		lineageTag: 4f1374da-577c-4aa8-bf3f-d0bda719918f
 
 	/// UI5: BI review
 	measure 'UI Compliance Pill' = IF ( ISBLANK ( [SLA Compliance] ), "none resolved yet", FORMAT ( [SLA Compliance], "0%" ) & " in SLA, target 95%" )
 		isHidden
-		lineageTag: 3168ba2d-25a0-4ef6-90a6-9777f85be14b
+		lineageTag: 0d742e89-c794-455f-b538-83c03372004d
 
 	/// UI5: BI review
 	measure 'UI Compliance Pill Bg' = SWITCH ( [UI Compliance Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: 60a8c57f-58ff-4ad4-904a-fdfa7d77bbd1
+		lineageTag: beead842-29fe-4e7a-a9a6-3c91ed135373
 
 	/// UI5: BI review
 	measure 'UI Compliance Pill Fg' = SWITCH ( [UI Compliance Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: dd9c6458-5dca-4eaa-b9ae-340cc834bb03
+		lineageTag: ea8ad83f-ca10-4ee2-97e3-3033b29e88c9
 
 	/// UI5: BI review
 	measure 'UI Quarantine Pill Level' = IF ( [Quarantined Rows] > 0, 1, 0 )
 		isHidden
-		lineageTag: 79aa8e47-fd08-4e90-9bf9-7dfc57196d44
+		lineageTag: e3351eed-4d8e-4b4b-bf5c-6c65c5396a2f
 
 	/// UI5: BI review
 	measure 'UI Quarantine Pill' = IF ( [Quarantined Rows] > 0, "! " & FORMAT ( DISTINCTCOUNT ( mart_quarantine[dataset] ), "0" ) & " datasets affected", "✓ Quarantine empty" )
 		isHidden
-		lineageTag: 5b31bf54-5410-4bd6-bcb9-fa1e51931dae
+		lineageTag: b0d309b9-a230-4cd7-8c04-80e85b1d9110
 
 	/// UI5: BI review
 	measure 'UI Quarantine Pill Bg' = SWITCH ( [UI Quarantine Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: 3942b77a-f64a-4534-b289-f7d11804c16b
+		lineageTag: 4320cb3e-3fe3-4dc8-9f64-ddcc78ca9ee5
 
 	/// UI5: BI review
 	measure 'UI Quarantine Pill Fg' = SWITCH ( [UI Quarantine Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: 57d1e2d8-2925-4c49-bf1e-8439e61594a0
+		lineageTag: 1dcc1e2d-76aa-4346-927a-2c255d3a488b
 
 	/// UI5: BI review
 	measure 'UI Failing Pill Level' = IF ( [Failing Rules] > 0, 2, 0 )
 		isHidden
-		lineageTag: b867a1f3-53d2-4180-b18b-a18eae7c6219
+		lineageTag: 56b2d8db-1da1-4874-b69a-c19f42152679
 
 	/// UI5: BI review
 	measure 'UI Failing Pill' = IF ( [Failing Rules] > 0, "✕ " & [UI Rules Total], "✓ All rules pass" )
 		isHidden
-		lineageTag: 4b2749d7-3b6e-4893-95f7-04575cad9e93
+		lineageTag: 0cf15274-80e2-4db4-9179-cdd9351f0231
 
 	/// UI5: BI review
 	measure 'UI Failing Pill Bg' = SWITCH ( [UI Failing Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: f88c0199-3d92-4912-94c5-607fa7eedb78
+		lineageTag: 862fcf0b-f149-4009-8d17-85e8d5e8a921
 
 	/// UI5: BI review
 	measure 'UI Failing Pill Fg' = SWITCH ( [UI Failing Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: d4a028b0-1b3f-4114-a030-250cbd314aa2
+		lineageTag: eb001b81-fa64-4e84-82bb-1237b05a059f
 
 	/// UI5: BI review
 	measure 'UI Defect Pill Level' = IF ( [EUR At Risk] > 0, 2, 0 )
 		isHidden
-		lineageTag: 26f10f70-e2f1-44b9-86bd-e4c3ab93b5b9
+		lineageTag: 4582b6e7-9caa-4bb1-8815-cb06007b4a5e
 
 	/// UI5: BI review
 	measure 'UI Defect Pill' = IF ( [EUR At Risk] > 0, "✕ Leakage to investigate", "✓ No data-defect leakage" )
 		isHidden
-		lineageTag: a3aa951d-39c9-4d08-9343-168e0bf9a126
+		lineageTag: fe46e4cb-e12b-487c-8875-48d58b6c37ca
 
 	/// UI5: BI review
 	measure 'UI Defect Pill Bg' = SWITCH ( [UI Defect Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: 5a85a96a-e078-4cae-b709-c4001f4eac01
+		lineageTag: b891d76d-8b72-4893-aeff-169d6d49e2ad
 
 	/// UI5: BI review
 	measure 'UI Defect Pill Fg' = SWITCH ( [UI Defect Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: 1d57df80-accf-4ca7-a74b-66f1ad81d562
+		lineageTag: 8f6dab10-57ac-4b77-a2ac-aca0ca939d9e
 
 	/// UI5: BI review
 	measure 'UI Partner Pill Level' = IF ( [Unknown Partner Cost EUR] > 0, 1, 0 )
 		isHidden
-		lineageTag: 37c4a97e-83e6-41ee-8299-f07bc339bb59
+		lineageTag: 73c298f0-9a91-475f-9297-669c317c28a7
 
 	/// UI5: BI review
 	measure 'UI Partner Pill' = IF ( [Unknown Partner Cost EUR] > 0, "! Needs matching", "✓ All matched" )
 		isHidden
-		lineageTag: 6596ce48-ca0f-42e6-8e8c-a5978797dc8b
+		lineageTag: 60895fb5-7ac2-49f5-b21c-c4fc49d2e05a
 
 	/// UI5: BI review
 	measure 'UI Partner Pill Bg' = SWITCH ( [UI Partner Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
 		isHidden
-		lineageTag: 97199b93-9f3f-4df4-8514-fe47040ab7fc
+		lineageTag: 81fc8e51-aa0c-4ee4-9022-06764225eb22
 
 	/// UI5: BI review
 	measure 'UI Partner Pill Fg' = SWITCH ( [UI Partner Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
 		isHidden
-		lineageTag: 541db66f-9a18-486a-bcaf-e6aac6e5c4cd
+		lineageTag: 140b6933-9b96-4647-a113-d771d3b8295b
 
 	/// UI5: BI review
 	measure 'Color Crash Share' = IF ( [Crash Share] > [Limit Crash Share], "#D9363E", "#2F6FDB" )
 		isHidden
-		lineageTag: ae1ea3f6-f397-4e5f-9fc1-567b3d643851
+		lineageTag: 61aced99-c483-4f6a-ba58-bbfde97c0373
 
 	/// UI5: BI review
 	measure 'Color Aging' =
 			SWITCH ( MAX ( mart_customer_360[payment_age_order] ),
 				1, "#F9C4A8", 2, "#F4996F", 3, "#F06A35", 4, "#C2461A", "#8C2F10" )
 		isHidden
-		lineageTag: c2c64202-05f5-41f4-af0e-d6ae211d5e53
+		lineageTag: 46ae216d-c156-42e5-9b06-c3852f80f8ef
 
 	/// UI5: BI review
 	measure 'Color Attention' = IF ( SELECTEDVALUE ( Attention[Severity] ) <= 1, "#FDE2E2", IF ( SELECTEDVALUE ( Attention[Severity] ) = 2, "#FDF1D6" ) )
 		isHidden
-		lineageTag: ae3cf898-6619-482e-824e-927496465014
+		lineageTag: 64e2b9d0-df02-4f66-9980-9b0c1d6c3980
 
 	/// UI5: BI review
 	measure 'Font Attention' = SWITCH ( SELECTEDVALUE ( Attention[Severity] ), 1, "#B42318", 2, "#92600A", "#111827" )
 		isHidden
-		lineageTag: d6e4b51b-f759-49d5-a7ec-648bd85aa52c
+		lineageTag: 4a5c5e8d-1f2e-444b-9cde-9342dac39a33
 
 	/// UI5: BI review
 	measure 'UI Attention Count' = FORMAT ( COUNTROWS ( Attention ), "0" ) & " open items"
 		isHidden
-		lineageTag: 04178805-5ae2-4fea-b1bb-9040dd643ebc
+		lineageTag: b8a9ea3d-96ce-484b-a38b-d971cc406679
 
 	/// UI6: BI review
 	measure 'DQ Failure Rate' = DIVIDE ( SUM ( mart_dq_health[rows_failed] ), SUM ( mart_dq_health[rows_checked] ) )
 		formatString: 0.00%
 		isHidden
-		lineageTag: 6b5a893a-acda-436c-8b3f-b9ea24f2e7af
+		lineageTag: 5dcf6436-6a3f-4323-a397-25a560b50b2a
 
 	/// UI6: BI review
 	measure 'Color Failure' = IF ( [DQ Failure Rate] > 1 - [Target DQ Pass], "#D9363E", "#2F6FDB" )
 		isHidden
-		lineageTag: f2da310d-561b-481e-b3b5-c9c6156c24f3
+		lineageTag: dc0dd40e-0762-47cc-be4b-7629a9fa68c7
+
+	/// UI7: aggregate view
+	measure 'Attention Items' = COUNTROWS ( Attention )
+		formatString: #,0
+		isHidden
+		lineageTag: e100be41-5f8c-44d7-b30c-1c37d606cce3
+
+	/// UI7: aggregate view
+	measure 'Rows Failed' = CALCULATE ( SUM ( mart_dq_health[rows_failed] ), mart_dq_health[status] <> "PASS" )
+		formatString: #,0
+		isHidden
+		lineageTag: 14a1357d-f042-4425-b2fe-3d77fe3f0ef3
+
+	/// UI7: aggregate view
+	measure 'Case EUR' = SUM ( mart_recon_mismatches[amount_at_risk_eur] )
+		formatString: € #,0
+		isHidden
+		lineageTag: 4e465f5f-8ad9-42a2-bc70-47e61c40b78a
+
+	/// UI7: aggregate view
+	measure 'Avg Open Hours' = CALCULATE ( AVERAGE ( mart_incidents[open_hours] ), mart_incidents[status] <> "RESOLVED" )
+		formatString: #,0.0
+		isHidden
+		lineageTag: 49e2895d-740f-4e23-af99-d0bacec41483
+
+	/// UI7: aggregate view
+	measure 'Customers With Dropped Calls' = CALCULATE ( [Customer Count], mart_customer_360[dropped_calls] > 0 )
+		formatString: #,0
+		isHidden
+		lineageTag: ffc4b8b3-56ed-4b4e-974a-def8526bbba5
+
+	/// UI7: aggregate view
+	measure 'Customers With App Crashes' = CALCULATE ( [Customer Count], mart_customer_360[app_crashes] > 0 )
+		formatString: #,0
+		isHidden
+		lineageTag: 7fc45c9a-1993-4697-90e7-a3bd38a7fd99
+
+	/// UI7: aggregate view
+	measure 'Customers With Plan Changes' = CALCULATE ( [Customer Count], mart_customer_360[plan_changes] > 0 )
+		formatString: #,0
+		isHidden
+		lineageTag: 1dfbe36f-e105-4e50-aff5-826722adeff2
 
 	column MeasureHost
 		dataType: string

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-unpaid-label",
   "position": {
-    "x": 1199,
+    "x": 1471,
     "y": 134,
-    "z": 334,
-    "width": 306,
+    "z": 31000,
     "height": 22,
-    "tabOrder": 334
+    "width": 397,
+    "tabOrder": 53000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,21 +22,20 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#F06A35"
+                      "fontSize": "14pt",
+                      "color": "#f06a35"
                     }
                   },
                   {
                     "value": "Unpaid EUR",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#374151",
-                      "fontWeight": "bold"
+                      "fontSize": "14pt",
+                      "color": "#374151"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

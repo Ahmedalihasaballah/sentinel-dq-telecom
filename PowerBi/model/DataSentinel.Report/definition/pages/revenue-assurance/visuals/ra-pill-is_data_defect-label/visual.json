@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "ra-pill-is_data_defect-label",
   "position": {
-    "x": 1476,
-    "y": 74,
-    "z": 177,
-    "width": 110,
-    "height": 22,
-    "tabOrder": 177
+    "x": 1475.7961783439489,
+    "y": 73.885350318471339,
+    "z": 8000,
+    "height": 22.292993630573246,
+    "width": 150.31847133757961,
+    "tabOrder": 30000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,12 +22,11 @@
                     "value": "Defect or business",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#4B5563"
+                      "fontSize": "12pt",
+                      "color": "#4b5563"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

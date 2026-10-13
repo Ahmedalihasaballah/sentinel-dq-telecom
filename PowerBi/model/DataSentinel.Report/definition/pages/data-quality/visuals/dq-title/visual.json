@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dq-title",
   "position": {
     "x": 94,
     "y": 32,
-    "z": 107,
-    "width": 900,
+    "z": 3000,
     "height": 40,
-    "tabOrder": 107
+    "width": 900,
+    "tabOrder": 25000
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,13 @@
                   {
                     "value": "Data Quality",
                     "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "21pt",
                       "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "24pt",
                       "color": "#111827"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-pill-priority-label",
   "position": {
-    "x": 936,
-    "y": 74,
-    "z": 249,
-    "width": 110,
+    "x": 826.52366935742089,
+    "y": 74.34782608695653,
+    "z": 17000,
     "height": 22,
-    "tabOrder": 249
+    "width": 110,
+    "tabOrder": 39000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,12 +22,11 @@
                     "value": "Priority",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#4B5563"
+                      "fontSize": "12pt",
+                      "color": "#4b5563"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

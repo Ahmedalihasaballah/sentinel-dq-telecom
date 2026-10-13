@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dq-pill-dimension",
   "position": {
-    "x": 1604,
-    "y": 64,
-    "z": 113,
-    "height": 40,
-    "width": 144,
-    "tabOrder": 113
+    "x": 1536.1702127659576,
+    "y": 63.829787234042556,
+    "z": 9000,
+    "height": 40.425531914893618,
+    "width": 211.70212765957447,
+    "tabOrder": 31000
   },
   "visual": {
     "visualType": "slicer",

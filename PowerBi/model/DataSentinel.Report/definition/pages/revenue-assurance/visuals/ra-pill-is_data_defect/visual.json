@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "ra-pill-is_data_defect",
   "position": {
     "x": 1626,
     "y": 64,
-    "z": 178,
+    "z": 9000,
     "height": 40,
     "width": 122,
-    "tabOrder": 178
+    "tabOrder": 31000
   },
   "visual": {
     "visualType": "slicer",

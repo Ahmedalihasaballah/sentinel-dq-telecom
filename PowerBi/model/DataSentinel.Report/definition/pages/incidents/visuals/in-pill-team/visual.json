@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-pill-team",
   "position": {
-    "x": 1174,
-    "y": 64,
-    "z": 247,
+    "x": 1064.1130047389981,
+    "y": 64.761225944403989,
+    "z": 15000,
     "height": 40,
-    "width": 134,
-    "tabOrder": 247
+    "width": 179.13043478260872,
+    "tabOrder": 37000
   },
   "visual": {
     "visualType": "slicer",

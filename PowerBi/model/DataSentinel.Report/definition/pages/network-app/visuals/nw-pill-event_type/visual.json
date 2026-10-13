@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-pill-event_type",
   "position": {
-    "x": 1122,
-    "y": 64,
-    "z": 421,
-    "height": 40,
-    "width": 76,
-    "tabOrder": 421
+    "x": 1102.1276595744682,
+    "y": 68.085106382978722,
+    "z": 15000,
+    "height": 40.425531914893618,
+    "width": 105.31914893617022,
+    "tabOrder": 37000
   },
   "visual": {
     "visualType": "slicer",
@@ -90,6 +90,11 @@
               }
             }
           }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
         }
       ]
     },

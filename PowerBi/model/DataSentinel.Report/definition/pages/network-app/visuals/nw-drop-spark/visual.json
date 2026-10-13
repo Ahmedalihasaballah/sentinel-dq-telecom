@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-drop-spark",
   "position": {
-    "x": 1384,
+    "x": 1255,
     "y": 154,
-    "z": 443,
+    "z": 32000,
     "height": 72,
-    "width": 126,
-    "tabOrder": 443
+    "width": 164,
+    "tabOrder": 54000
   },
   "visual": {
     "visualType": "lineChart",

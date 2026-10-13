@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "ra-sample-bg",
   "position": {
     "x": 1770,
     "y": 62,
-    "z": 174,
-    "width": 116,
+    "z": 5000,
     "height": 44,
-    "tabOrder": 174
+    "width": 116,
+    "tabOrder": 27000
   },
   "visual": {
     "visualType": "shape",

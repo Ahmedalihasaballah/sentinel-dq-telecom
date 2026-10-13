@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-partner-label",
   "position": {
-    "x": 1562,
+    "x": 1471,
     "y": 134,
-    "z": 445,
-    "width": 306,
+    "z": 34000,
     "height": 22,
-    "tabOrder": 445
+    "width": 397,
+    "tabOrder": 56000
   },
   "visual": {
     "visualType": "textbox",
@@ -21,22 +21,22 @@
                   {
                     "value": "● ",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#F2B33D"
+                      "fontSize": "14pt",
+                      "color": "#f2b33d"
                     }
                   },
                   {
                     "value": "Partner cost, unknown customer",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#374151",
-                      "fontWeight": "bold"
+                      "fontSize": "14pt",
+                      "color": "#374151"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

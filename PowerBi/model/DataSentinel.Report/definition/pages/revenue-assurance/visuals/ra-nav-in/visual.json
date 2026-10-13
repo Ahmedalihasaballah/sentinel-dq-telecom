@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "ra-nav-in",
   "position": {
     "x": 80,
     "y": 280,
-    "z": 50165,
-    "width": 232,
+    "z": 52000,
     "height": 44,
-    "tabOrder": 165
+    "width": 232,
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "shape",

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-pill-city",
   "position": {
     "x": 1374,
     "y": 64,
-    "z": 315,
+    "z": 12000,
     "height": 40,
     "width": 144,
-    "tabOrder": 315
+    "tabOrder": 34000
   },
   "visual": {
     "visualType": "slicer",

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-count-bg",
   "position": {
     "x": 94,
     "y": 120,
-    "z": 321,
-    "width": 342,
+    "z": 18000,
     "height": 118,
-    "tabOrder": 321
+    "width": 433,
+    "tabOrder": 40000
   },
   "visual": {
     "visualType": "shape",

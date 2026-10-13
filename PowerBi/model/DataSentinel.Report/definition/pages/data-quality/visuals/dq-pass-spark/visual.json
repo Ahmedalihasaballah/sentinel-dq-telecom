@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dq-pass-spark",
   "position": {
-    "x": 349,
+    "x": 437,
     "y": 154,
-    "z": 123,
+    "z": 19000,
     "height": 72,
-    "width": 164,
-    "tabOrder": 123
+    "width": 227,
+    "tabOrder": 41000
   },
   "visual": {
     "visualType": "lineChart",

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-billed-label",
   "position": {
-    "x": 474,
+    "x": 565,
     "y": 134,
-    "z": 326,
-    "width": 306,
+    "z": 23000,
     "height": 22,
-    "tabOrder": 326
+    "width": 397,
+    "tabOrder": 45000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,21 +22,20 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#6B5BD6"
+                      "fontSize": "14pt",
+                      "color": "#6b5bd6"
                     }
                   },
                   {
                     "value": "Billed EUR",
                     "textStyle": {
+                      "fontWeight": "bold",
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
-                      "color": "#374151",
-                      "fontWeight": "bold"
+                      "fontSize": "14pt",
+                      "color": "#374151"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

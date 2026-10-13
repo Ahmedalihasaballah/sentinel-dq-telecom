@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-partner-spark",
   "position": {
-    "x": 1746,
+    "x": 1708,
     "y": 154,
-    "z": 448,
+    "z": 37000,
     "height": 72,
-    "width": 126,
-    "tabOrder": 448
+    "width": 164,
+    "tabOrder": 59000
   },
   "visual": {
     "visualType": "lineChart",

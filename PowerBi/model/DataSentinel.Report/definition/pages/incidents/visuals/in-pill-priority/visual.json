@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-pill-priority",
   "position": {
-    "x": 1006,
-    "y": 64,
-    "z": 250,
+    "x": 896.52366935742089,
+    "y": 64.34782608695653,
+    "z": 18000,
     "height": 40,
     "width": 92,
-    "tabOrder": 250
+    "tabOrder": 40000
   },
   "visual": {
     "visualType": "slicer",

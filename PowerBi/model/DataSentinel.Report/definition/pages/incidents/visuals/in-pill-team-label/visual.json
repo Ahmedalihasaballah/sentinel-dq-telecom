@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "in-pill-team-label",
   "position": {
-    "x": 1136,
-    "y": 74,
-    "z": 246,
-    "width": 110,
+    "x": 1019.0239099421341,
+    "y": 74.183891660726147,
+    "z": 14000,
     "height": 22,
-    "tabOrder": 246
+    "width": 110,
+    "tabOrder": 36000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,12 +22,11 @@
                     "value": "Team",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#4B5563"
+                      "fontSize": "12pt",
+                      "color": "#4b5563"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "nw-pill-app_version",
   "position": {
     "x": 1330,
     "y": 64,
-    "z": 418,
+    "z": 12000,
     "height": 40,
     "width": 78,
-    "tabOrder": 418
+    "tabOrder": 34000
   },
   "visual": {
     "visualType": "slicer",

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dq-pill-dimension-label",
   "position": {
-    "x": 1526,
-    "y": 74,
-    "z": 112,
-    "width": 110,
+    "x": 1460.6382978723404,
+    "y": 73.404255319148945,
+    "z": 8000,
     "height": 22,
-    "tabOrder": 112
+    "width": 110,
+    "tabOrder": 30000
   },
   "visual": {
     "visualType": "textbox",
@@ -22,12 +22,11 @@
                     "value": "Dimension",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#4B5563"
+                      "fontSize": "12pt",
+                      "color": "#4b5563"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "left"
+                ]
               }
             ]
           }

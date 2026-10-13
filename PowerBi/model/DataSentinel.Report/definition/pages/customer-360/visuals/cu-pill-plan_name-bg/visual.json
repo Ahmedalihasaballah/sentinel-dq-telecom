@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cu-pill-plan_name-bg",
   "position": {
     "x": 1540,
     "y": 62,
-    "z": 310,
-    "width": 220,
+    "z": 7000,
     "height": 44,
-    "tabOrder": 310
+    "width": 220,
+    "tabOrder": 29000
   },
   "visual": {
     "visualType": "shape",

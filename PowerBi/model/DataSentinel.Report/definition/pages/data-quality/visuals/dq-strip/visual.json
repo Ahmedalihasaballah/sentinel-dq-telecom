@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dq-strip",
   "position": {
     "x": 0,
     "y": 0,
-    "z": 82,
-    "width": 64,
+    "z": 0,
     "height": 1080,
-    "tabOrder": 82
+    "width": 64,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "shape",
