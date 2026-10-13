@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-trend",
   "position": {
-    "x": 298,
-    "y": 718,
-    "z": 63,
-    "width": 1588,
-    "height": 306,
-    "tabOrder": 63
+    "x": 1370,
+    "y": 368,
+    "z": 68,
+    "width": 516,
+    "height": 318,
+    "tabOrder": 68
   },
   "visual": {
-    "visualType": "areaChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -46,7 +46,23 @@
                 }
               },
               "queryRef": "_Measures.Drop Rate",
-              "nativeQueryRef": "Drop Rate"
+              "nativeQueryRef": "Drop Rate",
+              "displayName": "Drop rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Target Drop Rate"
+                }
+              },
+              "queryRef": "_Measures.Target Drop Rate",
+              "nativeQueryRef": "Target Drop Rate",
+              "displayName": "Limit"
             }
           ]
         }
@@ -99,7 +115,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -128,7 +144,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B1B3D'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
                 }
               }
             }
@@ -186,7 +262,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "14D"
                 }
               }
             },
@@ -213,7 +289,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Voice calls only'"
+                  "Value": "'Voice calls, vs 2% limit'"
                 }
               }
             },
@@ -231,7 +307,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -244,28 +320,28 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             }
@@ -280,7 +356,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -332,25 +408,23 @@
           "selector": {
             "metadata": "_Measures.Drop Rate"
           }
-        }
-      ],
-      "lineStyles": [
+        },
         {
           "properties": {
-            "strokeWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
-            "showMarker": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9CA3AF'"
+                    }
+                  }
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "_Measures.Target Drop Rate"
           }
         }
       ]

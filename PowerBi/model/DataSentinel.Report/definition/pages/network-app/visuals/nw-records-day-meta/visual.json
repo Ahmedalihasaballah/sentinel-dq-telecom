@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-records-day-meta",
   "position": {
-    "x": 624,
-    "y": 268,
-    "z": 361,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 361
+    "x": 662,
+    "y": 272,
+    "z": 416,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 416
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }

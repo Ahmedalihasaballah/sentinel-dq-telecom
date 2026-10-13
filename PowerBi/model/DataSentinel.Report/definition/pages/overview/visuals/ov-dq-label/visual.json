@@ -3,11 +3,11 @@
   "name": "ov-dq-label",
   "position": {
     "x": 316,
-    "y": 132,
-    "z": 22,
+    "y": 134,
+    "z": 27,
     "width": 346,
     "height": 22,
-    "tabOrder": 22
+    "tabOrder": 27
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#2F6FDB"
                     }
                   },
                   {
                     "value": "DQ pass rate",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

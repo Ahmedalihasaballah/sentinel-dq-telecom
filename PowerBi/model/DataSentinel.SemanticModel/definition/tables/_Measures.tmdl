@@ -130,6 +130,51 @@ table _Measures
 		formatString: 0.00%
 		lineageTag: d28867b5-f19d-46b3-898c-1d3bf299564e
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/// UI: report helper
 	measure 'UI Records Delta' =
 			VAR maxD = CALCULATE ( MAX ( mart_network_daily[usage_date] ), ALLSELECTED ( mart_network_daily ) )
@@ -170,19 +215,19 @@ table _Measures
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Days Network' = FORMAT ( DISTINCTCOUNT ( mart_network_daily[usage_date] ), "0" ) & " days"
+	measure 'UI Days Network' = FORMAT ( DISTINCTCOUNT ( mart_network_daily[usage_date] ), "0" ) & IF ( DISTINCTCOUNT ( mart_network_daily[usage_date] ) = 1, " day", " days" )
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Days App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[event_date] ), "0" ) & " days"
+	measure 'UI Days App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[event_date] ), "0" ) & IF ( DISTINCTCOUNT ( mart_app_usage[event_date] ) = 1, " day", " days" )
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Versions App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[app_version] ), "0" ) & " versions"
+	measure 'UI Versions App' = FORMAT ( DISTINCTCOUNT ( mart_app_usage[app_version] ), "0" ) & IF ( DISTINCTCOUNT ( mart_app_usage[app_version] ) = 1, " version", " versions" )
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Months Partner' = FORMAT ( DISTINCTCOUNT ( mart_partner_usage[period_start] ), "0" ) & " months"
+	measure 'UI Months Partner' = FORMAT ( DISTINCTCOUNT ( mart_partner_usage[period_start] ), "0" ) & IF ( DISTINCTCOUNT ( mart_partner_usage[period_start] ) = 1, " month", " months" )
 		isHidden
 
 	/// UI: report helper
@@ -191,9 +236,6 @@ table _Measures
 			RETURN IF ( NOT ISBLANK ( [Crash Share] ), mx * 1.08 - [Crash Share] )
 		isHidden
 
-	/// UI: report helper
-	measure 'Color Crash Share' = IF ( RANKX ( ALLSELECTED ( mart_app_usage[app_version] ), [Crash Share],, DESC, DENSE ) = 1, "#D9363E", "#2F6FDB" )
-		isHidden
 
 	/// UI: report helper
 	measure 'Cell Drop Track' =
@@ -220,7 +262,7 @@ table _Measures
 	measure 'UI Open 7d' =
 			VAR maxD = CALCULATE ( MAX ( mart_incidents[opened_at] ), ALLSELECTED ( mart_incidents ) )
 			VAR n = CALCULATE ( [Incident Count], mart_incidents[opened_at] > maxD - 7 )
-			RETURN FORMAT ( n, "0" ) & " opened in last 7 days"
+			RETURN FORMAT ( n, "0" ) & " opened in last 7 days" 
 		isHidden
 
 	/// UI: report helper
@@ -238,7 +280,7 @@ table _Measures
 	/// UI: report helper
 	measure 'UI Unpaid Owe' =
 			VAR n = CALCULATE ( [Customer Count], mart_customer_360[unpaid_eur] > 0 )
-			RETURN FORMAT ( n, "#,0" ) & " customers owe"
+			RETURN FORMAT ( n, "#,0" ) & " customers owe" 
 		isHidden
 
 	/// UI: report helper
@@ -264,11 +306,11 @@ table _Measures
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Runs DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_trend[run_date] ), "0" ) & " days"
+	measure 'UI Runs DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_trend[run_date] ), "0" ) & IF ( DISTINCTCOUNT ( mart_dq_trend[run_date] ) = 1, " day", " days" )
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Datasets DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_health[dataset] ), "0" ) & " datasets"
+	measure 'UI Datasets DQ' = FORMAT ( DISTINCTCOUNT ( mart_dq_health[dataset] ), "0" ) & IF ( DISTINCTCOUNT ( mart_dq_health[dataset] ) = 1, " dataset", " datasets" )
 		isHidden
 
 	/// UI: report helper
@@ -331,13 +373,13 @@ table _Measures
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Runs Recon' = FORMAT ( DISTINCTCOUNT ( mart_revenue_assurance_trend[run_id] ), "0" ) & " runs"
+	measure 'UI Runs Recon' = FORMAT ( DISTINCTCOUNT ( mart_revenue_assurance_trend[run_id] ), "0" ) & IF ( DISTINCTCOUNT ( mart_revenue_assurance_trend[run_id] ) = 1, " run", " runs" )
 		isHidden
 
 	/// UI: report helper
 	measure 'UI Mismatch Checks' =
 			VAR n = CALCULATE ( COUNTROWS ( mart_revenue_assurance ), mart_revenue_assurance[rows_mismatched] > 0 )
-			RETURN "across " & FORMAT ( n, "0" ) & " checks"
+			RETURN "across " & FORMAT ( n, "0" ) & " checks" 
 		isHidden
 
 	/// UI: report helper
@@ -362,7 +404,7 @@ table _Measures
 	/// UI: report helper
 	measure 'UI Resolved Share' =
 			VAR resolved = CALCULATE ( [Incident Count], mart_incidents[status] = "RESOLVED" )
-			RETURN FORMAT ( DIVIDE ( [Resolved In SLA], resolved ), "0%" ) & " of resolved"
+			RETURN FORMAT ( DIVIDE ( [Resolved In SLA], resolved ), "0%" ) & " of resolved" 
 		isHidden
 
 	/// UI: report helper
@@ -374,7 +416,7 @@ table _Measures
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Teams' = FORMAT ( DISTINCTCOUNT ( mart_incidents[team] ), "0" ) & " teams"
+	measure 'UI Teams' = FORMAT ( DISTINCTCOUNT ( mart_incidents[team] ), "0" ) & IF ( DISTINCTCOUNT ( mart_incidents[team] ) = 1, " team", " teams" )
 		isHidden
 
 	/// UI: report helper
@@ -400,7 +442,7 @@ table _Measures
 		isHidden
 
 	/// UI: report helper
-	measure 'UI Plans' = FORMAT ( DISTINCTCOUNT ( mart_customer_360[plan_name] ), "0" ) & " plans"
+	measure 'UI Plans' = FORMAT ( DISTINCTCOUNT ( mart_customer_360[plan_name] ), "0" ) & IF ( DISTINCTCOUNT ( mart_customer_360[plan_name] ) = 1, " plan", " plans" )
 		isHidden
 
 	/// UI: report helper
@@ -411,6 +453,211 @@ table _Measures
 	measure 'Unpaid Plan Track' =
 			VAR mx = MAXX ( ALLSELECTED ( mart_customer_360[plan_name] ), [Unpaid EUR] )
 			RETURN IF ( NOT ISBLANK ( [Unpaid EUR] ), mx * 1.08 - [Unpaid EUR] )
+		isHidden
+
+	/// UI5: BI review
+	measure 'Target DQ Pass' = 0.98
+		formatString: 0%
+		isHidden
+
+	/// UI5: BI review
+	measure 'Target Drop Rate' = 0.02
+		formatString: 0.0%
+		isHidden
+
+	/// UI5: BI review
+	measure 'Target SLA Compliance' = 0.95
+		formatString: 0%
+		isHidden
+
+	/// UI5: BI review
+	measure 'Target Collection' = 0.95
+		formatString: 0%
+		isHidden
+
+	/// UI5: BI review
+	measure 'Limit Crash Share' = 0.02
+		formatString: 0.0%
+		isHidden
+
+	/// UI5: BI review
+	measure 'SLA Compliance' = DIVIDE ( [Resolved In SLA], CALCULATE ( [Incident Count], mart_incidents[status] = "RESOLVED" ) )
+		formatString: 0%
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI DQ Pill Level' = VAR v = [DQ Pass Rate] RETURN SWITCH ( TRUE (), ISBLANK ( v ), -1, v >= [Target DQ Pass], 0, v >= 0.95, 1, 2 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI DQ Pill' = SWITCH ( [UI DQ Pill Level], 0, "✓ On target (98%)", 1, "! Below 98% target", 2, "✕ Under 95%, critical", "no data" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI DQ Pill Bg' = SWITCH ( [UI DQ Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI DQ Pill Fg' = SWITCH ( [UI DQ Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI SLA Pill Level' = IF ( [SLA Breached] > 0, 2, 0 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI SLA Pill' = IF ( [SLA Breached] > 0, "✕ Deadline missed, act now", "✓ No deadline missed" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI SLA Pill Bg' = SWITCH ( [UI SLA Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI SLA Pill Fg' = SWITCH ( [UI SLA Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Drop Pill Level' = VAR v = [Drop Rate] RETURN SWITCH ( TRUE (), ISBLANK ( v ), -1, v <= [Target Drop Rate], 0, v <= 0.03, 1, 2 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Drop Pill' = SWITCH ( [UI Drop Pill Level], 0, "✓ Within 2% limit", 1, "! Above 2% limit", 2, "✕ Above 3%, critical", "no data" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Drop Pill Bg' = SWITCH ( [UI Drop Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Drop Pill Fg' = SWITCH ( [UI Drop Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Collection Pill Level' = VAR c = [Collection Rate] RETURN SWITCH ( TRUE (), ISBLANK ( c ), -1, c >= [Target Collection], 0, c >= 0.85, 1, 2 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Collection Pill' = FORMAT ( [Collection Rate], "0%" ) & " collected, target 95%"
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Collection Pill Bg' = SWITCH ( [UI Collection Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Collection Pill Fg' = SWITCH ( [UI Collection Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Compliance Pill Level' = VAR c = [SLA Compliance] RETURN SWITCH ( TRUE (), ISBLANK ( c ), -1, c >= [Target SLA Compliance], 0, c >= 0.85, 1, 2 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Compliance Pill' = IF ( ISBLANK ( [SLA Compliance] ), "none resolved yet", FORMAT ( [SLA Compliance], "0%" ) & " in SLA, target 95%" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Compliance Pill Bg' = SWITCH ( [UI Compliance Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Compliance Pill Fg' = SWITCH ( [UI Compliance Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Quarantine Pill Level' = IF ( [Quarantined Rows] > 0, 1, 0 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Quarantine Pill' = IF ( [Quarantined Rows] > 0, "! " & FORMAT ( DISTINCTCOUNT ( mart_quarantine[dataset] ), "0" ) & " datasets affected", "✓ Quarantine empty" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Quarantine Pill Bg' = SWITCH ( [UI Quarantine Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Quarantine Pill Fg' = SWITCH ( [UI Quarantine Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Failing Pill Level' = IF ( [Failing Rules] > 0, 2, 0 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Failing Pill' = IF ( [Failing Rules] > 0, "✕ " & [UI Rules Total], "✓ All rules pass" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Failing Pill Bg' = SWITCH ( [UI Failing Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Failing Pill Fg' = SWITCH ( [UI Failing Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Defect Pill Level' = IF ( [EUR At Risk] > 0, 2, 0 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Defect Pill' = IF ( [EUR At Risk] > 0, "✕ Leakage to investigate", "✓ No data-defect leakage" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Defect Pill Bg' = SWITCH ( [UI Defect Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Defect Pill Fg' = SWITCH ( [UI Defect Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Partner Pill Level' = IF ( [Unknown Partner Cost EUR] > 0, 1, 0 )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Partner Pill' = IF ( [Unknown Partner Cost EUR] > 0, "! Needs matching", "✓ All matched" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Partner Pill Bg' = SWITCH ( [UI Partner Pill Level], 0, "#E3F6EE", 1, "#FDF1D6", 2, "#FDE2E2", "#F1F3F6" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Partner Pill Fg' = SWITCH ( [UI Partner Pill Level], 0, "#0F7A53", 1, "#92600A", 2, "#B42318", "#4B5563" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'Color Crash Share' = IF ( [Crash Share] > [Limit Crash Share], "#D9363E", "#2F6FDB" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'Color Aging' =
+			SWITCH ( MAX ( mart_customer_360[payment_age_order] ),
+				1, "#F9C4A8", 2, "#F4996F", 3, "#F06A35", 4, "#C2461A", "#8C2F10" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'Color Attention' = IF ( SELECTEDVALUE ( Attention[Severity] ) <= 1, "#FDE2E2", IF ( SELECTEDVALUE ( Attention[Severity] ) = 2, "#FDF1D6" ) )
+		isHidden
+
+	/// UI5: BI review
+	measure 'Font Attention' = SWITCH ( SELECTEDVALUE ( Attention[Severity] ), 1, "#B42318", 2, "#92600A", "#111827" )
+		isHidden
+
+	/// UI5: BI review
+	measure 'UI Attention Count' = FORMAT ( COUNTROWS ( Attention ), "0" ) & " open items"
+		isHidden
+
+	/// UI6: BI review
+	measure 'DQ Failure Rate' = DIVIDE ( SUM ( mart_dq_health[rows_failed] ), SUM ( mart_dq_health[rows_checked] ) )
+		formatString: 0.00%
+		isHidden
+
+	/// UI6: BI review
+	measure 'Color Failure' = IF ( [DQ Failure Rate] > 1 - [Target DQ Pass], "#D9363E", "#2F6FDB" )
 		isHidden
 
 	column MeasureHost

@@ -4,13 +4,13 @@
   "position": {
     "x": 298,
     "y": 604,
-    "z": 114,
+    "z": 133,
     "width": 523,
     "height": 420,
-    "tabOrder": 114
+    "tabOrder": 133
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -36,22 +36,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
-                  "Function": 0,
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_quarantine"
-                        }
-                      },
-                      "Property": "rows"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
-                  }
+                  },
+                  "Property": "Quarantined Rows"
                 }
               },
-              "queryRef": "Sum(mart_quarantine.rows)",
-              "nativeQueryRef": "Sum of rows"
+              "queryRef": "_Measures.Quarantined Rows",
+              "nativeQueryRef": "Quarantined Rows"
             }
           ]
         },
@@ -74,6 +69,24 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Quarantined Rows"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -123,7 +136,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -152,7 +165,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B1B3D'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
                 }
               }
             }
@@ -210,7 +283,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "14D"
                 }
               }
             },
@@ -237,7 +310,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Rows, by quarantine status'"
+                  "Value": "'Rows waiting, by quarantine status, most first'"
                 }
               }
             },
@@ -255,7 +328,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -268,28 +341,28 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             }
@@ -338,7 +411,30 @@
           }
         }
       ],
-      "dataPoint": []
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

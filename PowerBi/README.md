@@ -1,31 +1,47 @@
-# DataSentinel Power BI project
+# DataSentinel Power BI report
 
-Open `model/DataSentinel.pbip` in Power BI Desktop. The PBIP references the
-`DataSentinel.Report` and `DataSentinel.SemanticModel` folders.
+A Power BI project (PBIP) on the 12 Gold marts in `data_sentinel.gold`. The report and model are
+stored as text files, so they diff and merge in Git like code.
 
-## Current state
+## Open it
 
-- The semantic model contains schema definitions for the 12 `mart_*` tables
-  and the `Measures` table.
-- The supplied DAX measures are defined in `Measures`.
-- The report has six pages in the requested order: Overview, Data Quality,
-  Revenue Assurance, Incidents, Customer 360, and Network and App. A seventh
-  hidden drill-through page provides the customer profile.
-- Report visuals are defined for the cards, charts, slicers, and tables in the
-  supplied page specification. Overview KPI cards navigate to their detail
-  pages. Customer IDs support drill-through to the hidden profile page.
-- Mart partitions navigate to their corresponding tables in the configured
-  Databricks catalog and schema.
-- No relationships are defined because the reporting marts are already shaped
-  for their pages and the specification says no joins are needed.
+1. Pull the repo and open `PowerBi/model/DataSentinel.pbip` in Power BI Desktop (2.13x or later).
+2. Click **Refresh**. When asked, sign in to Databricks with a **personal access token**
+   (server `dbc-21b8c56c-c07d.cloud.databricks.com`, your SQL warehouse HTTP path).
+   The token stays on your machine; it is never written to these files.
+3. The report opens on **Network & App**. Use the left sidebar to move between pages.
 
-## Required to load data
+Local caches (`.pbi/cache.abf`, `.pbi/localSettings.json`) are ignored by Git, so the first refresh
+on a new machine loads the data from Databricks.
 
-Authenticate with the Databricks connector through Power BI's local sign-in
-flow, then refresh the model and validate source column types. The mart health
-data determines the exact status values to exclude from the failing-checks
-table; do not apply that filter until values are verified. After refresh, set
-the unpaid-customer table to Top N 20 and apply a minimum voice-call threshold
-to the cell chart so low-volume cells do not dominate the ranking. Add the
-status-specific red/blue formatting and the matrix pass-rate color scale in
-Desktop after confirming the loaded values; status labels are already present.
+## Pages
+
+| Page | Question it answers |
+|---|---|
+| Overview | Is today's data healthy, and what needs attention first? |
+| Data Quality | Which datasets and rules fail, is it improving, how many rows wait in quarantine? |
+| Revenue Assurance | How many EUR leak between systems, where, and which cases to investigate? |
+| Incidents | Who owns each incident, how late is it, does the team meet its deadlines? |
+| Customer 360 | Who has paid, who owes money, which customers have problems? |
+| Network & App | Where do calls drop, how does the app behave, what does partner traffic cost? |
+| Customer profile | Hidden drill-through: right-click a customer → Drill through. |
+
+## Business targets
+
+KPI cards show a status pill (✓ on target, ! below, ✕ critical). The thresholds are measures in
+`_Measures`, so they can be changed in one place: `Target DQ Pass` (98%), `Target Drop Rate` (2%),
+`Target SLA Compliance` (95%), `Target Collection` (95%), `Limit Crash Share` (2%).
+
+## Regenerate the design
+
+The files in `model/` are the finished report; you only need the scripts to rebuild or change the design.
+
+```bash
+# Power BI Desktop must be closed
+python PowerBi/tools/build_model.py    # measures, Attention table, ageing columns, theme
+python PowerBi/tools/build_report.py   # every report page
+```
+
+Both scripts are idempotent and use only the Python standard library. `build_report.py` rewrites
+all page folders, so make layout changes in the script, not by hand in Desktop, or they will be lost
+on the next run.

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-trend-meta",
   "position": {
-    "x": 1696,
-    "y": 268,
-    "z": 164,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 164
+    "x": 1734,
+    "y": 272,
+    "z": 192,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 192
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }

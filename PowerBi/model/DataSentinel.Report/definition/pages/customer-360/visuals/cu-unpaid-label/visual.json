@@ -3,11 +3,11 @@
   "name": "cu-unpaid-label",
   "position": {
     "x": 1281,
-    "y": 132,
-    "z": 268,
+    "y": 134,
+    "z": 309,
     "width": 266,
     "height": 22,
-    "tabOrder": 268
+    "tabOrder": 309
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#F06A35"
                     }
                   },
                   {
                     "value": "Unpaid EUR",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

@@ -3,11 +3,11 @@
   "name": "in-breached-label",
   "position": {
     "x": 718,
-    "y": 132,
-    "z": 206,
+    "y": 134,
+    "z": 239,
     "width": 346,
     "height": 22,
-    "tabOrder": 206
+    "tabOrder": 239
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#D9363E"
                     }
                   },
                   {
                     "value": "Breached",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

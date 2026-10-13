@@ -12,3 +12,8 @@ dbt/profiles.yml
 .vscode/
 .DS_Store
 *.pbix
+
+# Power BI local files (per machine)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+PowerBi_backup*/

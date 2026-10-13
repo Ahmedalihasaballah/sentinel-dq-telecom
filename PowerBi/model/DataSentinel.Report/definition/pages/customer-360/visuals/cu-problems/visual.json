@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-problems",
   "position": {
     "x": 1102,
     "y": 604,
-    "z": 281,
-    "height": 420,
+    "z": 325,
     "width": 784,
-    "tabOrder": 281
+    "height": 420,
+    "tabOrder": 325
   },
   "visual": {
     "visualType": "tableEx",
@@ -33,6 +33,7 @@
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -42,18 +43,17 @@
                       },
                       "Property": "dropped_calls"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_customer_360.dropped_calls)",
               "nativeQueryRef": "Sum of dropped_calls",
-              "active": false,
               "displayName": "dropped_calls"
             },
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -63,18 +63,17 @@
                       },
                       "Property": "app_crashes"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_customer_360.app_crashes)",
               "nativeQueryRef": "Sum of app_crashes",
-              "active": false,
               "displayName": "app_crashes"
             },
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -84,13 +83,11 @@
                       },
                       "Property": "plan_changes"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_customer_360.plan_changes)",
               "nativeQueryRef": "Sum of plan_changes",
-              "active": false,
               "displayName": "plan_changes"
             },
             {
@@ -131,6 +128,7 @@
           {
             "field": {
               "Aggregation": {
+                "Function": 0,
                 "Expression": {
                   "Column": {
                     "Expression": {
@@ -140,8 +138,7 @@
                     },
                     "Property": "dropped_calls"
                   }
-                },
-                "Function": 0
+                }
               }
             },
             "direction": "Descending"
@@ -149,9 +146,6 @@
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "values": []
     },
     "visualContainerObjects": {
       "background": [
@@ -200,7 +194,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -229,7 +223,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B1B3D'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
                 }
               }
             }
@@ -287,7 +341,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "14D"
                 }
               }
             },
@@ -332,7 +386,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -345,28 +399,44 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "values": [],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

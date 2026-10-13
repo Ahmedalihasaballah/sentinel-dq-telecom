@@ -3,11 +3,11 @@
   "name": "ov-unpaid-pill",
   "position": {
     "x": 718,
-    "y": 326,
-    "z": 47,
-    "width": 210,
+    "y": 328,
+    "z": 52,
+    "width": 250,
     "height": 24,
-    "tabOrder": 47
+    "tabOrder": 52
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Unpaid Owe"
+                  "Property": "UI Collection Pill"
                 }
               },
-              "queryRef": "_Measures.UI Unpaid Owe",
-              "nativeQueryRef": "UI Unpaid Owe"
+              "queryRef": "_Measures.UI Collection Pill",
+              "nativeQueryRef": "UI Collection Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FCEFC7'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Collection Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FCEFC7'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Collection Pill Bg"
                     }
                   }
                 }
@@ -218,8 +228,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#7A5A00'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Collection Pill Fg"
                     }
                   }
                 }
@@ -228,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

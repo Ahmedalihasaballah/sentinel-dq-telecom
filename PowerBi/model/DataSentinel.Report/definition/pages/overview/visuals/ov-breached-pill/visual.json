@@ -3,11 +3,11 @@
   "name": "ov-breached-pill",
   "position": {
     "x": 1522,
-    "y": 206,
-    "z": 38,
-    "width": 210,
+    "y": 208,
+    "z": 43,
+    "width": 250,
     "height": 24,
-    "tabOrder": 38
+    "tabOrder": 43
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI SLA Policy"
+                  "Property": "UI SLA Pill"
                 }
               },
-              "queryRef": "_Measures.UI SLA Policy",
-              "nativeQueryRef": "UI SLA Policy"
+              "queryRef": "_Measures.UI SLA Pill",
+              "nativeQueryRef": "UI SLA Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FDE2E2'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI SLA Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FDE2E2'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI SLA Pill Bg"
                     }
                   }
                 }
@@ -218,8 +228,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#B42318'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI SLA Pill Fg"
                     }
                   }
                 }
@@ -228,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

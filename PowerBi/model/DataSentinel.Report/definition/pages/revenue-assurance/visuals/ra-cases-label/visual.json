@@ -3,11 +3,11 @@
   "name": "ra-cases-label",
   "position": {
     "x": 1602,
-    "y": 132,
-    "z": 158,
+    "y": 134,
+    "z": 184,
     "width": 266,
     "height": 22,
-    "tabOrder": 158
+    "tabOrder": 184
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#2F6FDB"
                     }
                   },
                   {
                     "value": "Cases to investigate",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

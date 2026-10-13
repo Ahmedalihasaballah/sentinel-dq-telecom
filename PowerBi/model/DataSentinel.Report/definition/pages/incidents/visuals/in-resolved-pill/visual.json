@@ -3,11 +3,11 @@
   "name": "in-resolved-pill",
   "position": {
     "x": 1120,
-    "y": 206,
-    "z": 212,
-    "width": 210,
+    "y": 208,
+    "z": 245,
+    "width": 250,
     "height": 24,
-    "tabOrder": 212
+    "tabOrder": 245
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Resolved Share"
+                  "Property": "UI Compliance Pill"
                 }
               },
-              "queryRef": "_Measures.UI Resolved Share",
-              "nativeQueryRef": "UI Resolved Share"
+              "queryRef": "_Measures.UI Compliance Pill",
+              "nativeQueryRef": "UI Compliance Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E3F6EE'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Compliance Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E3F6EE'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Compliance Pill Bg"
                     }
                   }
                 }
@@ -191,8 +201,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#0F7A53'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Compliance Pill Fg"
                     }
                   }
                 }
@@ -201,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

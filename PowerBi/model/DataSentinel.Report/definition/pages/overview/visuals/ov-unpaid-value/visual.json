@@ -3,14 +3,14 @@
   "name": "ov-unpaid-value",
   "position": {
     "x": 710,
-    "y": 274,
-    "z": 46,
-    "width": 352,
+    "y": 276,
+    "z": 51,
+    "width": 358,
     "height": 50,
-    "tabOrder": 46
+    "tabOrder": 51
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "multiRowCard",
     "query": {
       "queryState": {
         "Values": {
@@ -62,7 +62,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -200,7 +200,7 @@
           }
         }
       ],
-      "labels": [
+      "dataLabels": [
         {
           "properties": {
             "color": {
@@ -217,41 +217,34 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "27D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "24D"
                 }
               }
             },
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
+                  "Value": "'Segoe UI Bold'"
                 }
               }
             }
           }
         }
       ],
-      "wordWrap": [
+      "card": [
         {
           "properties": {
-            "show": {
+            "barShow": {
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

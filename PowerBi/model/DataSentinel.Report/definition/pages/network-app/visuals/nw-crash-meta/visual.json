@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-crash-meta",
   "position": {
-    "x": 1160,
-    "y": 614,
-    "z": 369,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 369
+    "x": 1198,
+    "y": 618,
+    "z": 428,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 428
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }

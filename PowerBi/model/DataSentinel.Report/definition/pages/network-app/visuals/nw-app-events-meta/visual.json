@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-app-events-meta",
   "position": {
-    "x": 624,
-    "y": 614,
-    "z": 367,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 367
+    "x": 662,
+    "y": 618,
+    "z": 425,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 425
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }

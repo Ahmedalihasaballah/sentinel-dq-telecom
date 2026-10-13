@@ -3,11 +3,11 @@
   "name": "cu-unpaid-pill",
   "position": {
     "x": 1281,
-    "y": 206,
-    "z": 270,
-    "width": 166,
+    "y": 208,
+    "z": 311,
+    "width": 250,
     "height": 24,
-    "tabOrder": 270
+    "tabOrder": 311
   },
   "visual": {
     "visualType": "card",
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FDF1D6'"
+                      "Value": "'#F1F3F6'"
                     }
                   }
                 }
@@ -80,7 +80,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FDF1D6'"
+                      "Value": "'#F1F3F6'"
                     }
                   }
                 }
@@ -192,7 +192,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#92600A'"
+                      "Value": "'#4B5563'"
                     }
                   }
                 }
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

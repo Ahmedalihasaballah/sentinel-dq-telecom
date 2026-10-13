@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-drop-day-meta",
   "position": {
-    "x": 1160,
-    "y": 268,
-    "z": 363,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 363
+    "x": 1198,
+    "y": 272,
+    "z": 419,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 419
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }

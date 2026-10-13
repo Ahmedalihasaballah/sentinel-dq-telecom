@@ -3,11 +3,11 @@
   "name": "in-resolved-label",
   "position": {
     "x": 1120,
-    "y": 132,
-    "z": 210,
+    "y": 134,
+    "z": 243,
     "width": 346,
     "height": 22,
-    "tabOrder": 210
+    "tabOrder": 243
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#1FAE7A"
                     }
                   },
                   {
                     "value": "Resolved in SLA",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

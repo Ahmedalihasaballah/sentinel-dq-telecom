@@ -4,13 +4,13 @@
   "position": {
     "x": 298,
     "y": 368,
-    "z": 57,
+    "z": 62,
     "width": 516,
-    "height": 330,
-    "tabOrder": 57
+    "height": 318,
+    "tabOrder": 62
   },
   "visual": {
-    "visualType": "areaChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -46,7 +46,23 @@
                 }
               },
               "queryRef": "_Measures.DQ Trend Pass Rate",
-              "nativeQueryRef": "DQ Trend Pass Rate"
+              "nativeQueryRef": "DQ Trend Pass Rate",
+              "displayName": "Pass rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Target DQ Pass"
+                }
+              },
+              "queryRef": "_Measures.Target DQ Pass",
+              "nativeQueryRef": "Target DQ Pass",
+              "displayName": "Target"
             }
           ]
         }
@@ -99,7 +115,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -128,7 +144,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B1B3D'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
                 }
               }
             }
@@ -186,7 +262,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "14D"
                 }
               }
             },
@@ -213,7 +289,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Gate rules, all datasets'"
+                  "Value": "'Gate rules, all datasets, vs 98% target'"
                 }
               }
             },
@@ -231,7 +307,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -244,28 +320,28 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             }
@@ -280,7 +356,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -332,6 +408,24 @@
           "selector": {
             "metadata": "_Measures.DQ Trend Pass Rate"
           }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9CA3AF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Target DQ Pass"
+          }
         }
       ],
       "lineStyles": [
@@ -347,7 +441,14 @@
             "showMarker": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "markerSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
                 }
               }
             }

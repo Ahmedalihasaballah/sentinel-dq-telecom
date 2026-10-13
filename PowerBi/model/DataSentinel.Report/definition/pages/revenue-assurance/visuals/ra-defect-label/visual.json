@@ -3,11 +3,11 @@
   "name": "ra-defect-label",
   "position": {
     "x": 638,
-    "y": 132,
-    "z": 146,
+    "y": 134,
+    "z": 172,
     "width": 266,
     "height": 22,
-    "tabOrder": 146
+    "tabOrder": 172
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#D9363E"
                     }
                   },
                   {
                     "value": "EUR at risk, data defects",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

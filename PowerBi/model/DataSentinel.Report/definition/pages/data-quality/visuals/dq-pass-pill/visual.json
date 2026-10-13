@@ -3,11 +3,11 @@
   "name": "dq-pass-pill",
   "position": {
     "x": 316,
-    "y": 206,
-    "z": 95,
-    "width": 210,
+    "y": 208,
+    "z": 112,
+    "width": 198,
     "height": 24,
-    "tabOrder": 95
+    "tabOrder": 112
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI DQ Delta"
+                  "Property": "UI DQ Pill"
                 }
               },
-              "queryRef": "_Measures.UI DQ Delta",
-              "nativeQueryRef": "UI DQ Delta"
+              "queryRef": "_Measures.UI DQ Pill",
+              "nativeQueryRef": "UI DQ Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E8F0FD'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI DQ Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E8F0FD'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI DQ Pill Bg"
                     }
                   }
                 }
@@ -191,8 +201,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#1D4ED8'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI DQ Pill Fg"
                     }
                   }
                 }
@@ -201,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

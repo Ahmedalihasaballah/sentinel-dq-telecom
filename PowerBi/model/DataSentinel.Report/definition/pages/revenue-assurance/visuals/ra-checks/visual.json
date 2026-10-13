@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-checks",
   "position": {
     "x": 298,
     "y": 604,
-    "z": 165,
-    "height": 420,
+    "z": 193,
     "width": 784,
-    "tabOrder": 165
+    "height": 420,
+    "tabOrder": 193
   },
   "visual": {
     "visualType": "tableEx",
@@ -78,6 +78,7 @@
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -87,18 +88,17 @@
                       },
                       "Property": "rows_checked"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_revenue_assurance.rows_checked)",
               "nativeQueryRef": "Sum of rows_checked",
-              "active": false,
               "displayName": "rows_checked"
             },
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -108,18 +108,17 @@
                       },
                       "Property": "rows_mismatched"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_revenue_assurance.rows_mismatched)",
               "nativeQueryRef": "Sum of rows_mismatched",
-              "active": false,
               "displayName": "rows_mismatched"
             },
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -129,13 +128,11 @@
                       },
                       "Property": "amount_at_risk_eur"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_revenue_assurance.amount_at_risk_eur)",
               "nativeQueryRef": "Sum of amount_at_risk_eur",
-              "active": false,
               "displayName": "amount_at_risk_eur"
             },
             {
@@ -190,56 +187,6 @@
         "isDefaultSort": true
       }
     },
-    "objects": {
-      "values": [
-        {
-          "properties": {
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "_Measures"
-                        }
-                      },
-                      "Property": "Color Recon Status"
-                    }
-                  }
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "_Measures"
-                        }
-                      },
-                      "Property": "Font Recon Status"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "mart_revenue_assurance.status"
-          }
-        }
-      ]
-    },
     "visualContainerObjects": {
       "background": [
         {
@@ -287,7 +234,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -316,7 +263,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B1B3D'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
                 }
               }
             }
@@ -374,7 +381,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "14D"
                 }
               }
             },
@@ -419,7 +426,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -432,28 +439,91 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Color Recon Status"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Font Recon Status"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "mart_revenue_assurance.status"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

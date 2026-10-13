@@ -3,14 +3,14 @@
   "name": "nw-drop-value",
   "position": {
     "x": 1273,
-    "y": 154,
-    "z": 352,
-    "width": 169,
+    "y": 156,
+    "z": 406,
+    "width": 175,
     "height": 50,
-    "tabOrder": 352
+    "tabOrder": 406
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "multiRowCard",
     "query": {
       "queryState": {
         "Values": {
@@ -62,7 +62,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -173,7 +173,7 @@
           }
         }
       ],
-      "labels": [
+      "dataLabels": [
         {
           "properties": {
             "color": {
@@ -190,48 +190,34 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "27D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "24D"
                 }
               }
             },
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
+                  "Value": "'Segoe UI Bold'"
                 }
               }
             }
           }
         }
       ],
-      "wordWrap": [
+      "card": [
         {
           "properties": {
-            "show": {
+            "barShow": {
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

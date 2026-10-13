@@ -4,10 +4,10 @@
   "position": {
     "x": 76,
     "y": 33,
-    "z": 171,
+    "z": 198,
     "width": 180,
     "height": 32,
-    "tabOrder": 171
+    "tabOrder": 198
   },
   "visual": {
     "visualType": "textbox",
@@ -23,7 +23,7 @@
                     "textStyle": {
                       "fontSize": "15pt",
                       "fontWeight": "bold",
-                      "color": "#111827"
+                      "color": "#FFFFFF"
                     }
                   }
                 ],

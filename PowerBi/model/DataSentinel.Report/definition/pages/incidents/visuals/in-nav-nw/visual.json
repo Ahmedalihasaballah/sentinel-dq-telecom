@@ -4,89 +4,24 @@
   "position": {
     "x": 16,
     "y": 376,
-    "z": 179,
+    "z": 212,
     "width": 232,
-    "height": 42,
-    "tabOrder": 179
+    "height": 44,
+    "tabOrder": 212
   },
   "visual": {
-    "visualType": "actionButton",
+    "visualType": "shape",
     "objects": {
-      "icon": [
+      "shape": [
         {
           "properties": {
-            "shapeType": {
+            "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'blank'"
+                  "Value": "'rectangle'"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "text": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'▮    Network & App'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#374151'"
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "horizontalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'left'"
-                }
-              }
-            },
-            "leftMargin": {
-              "expr": {
-                "Literal": {
-                  "Value": "14D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ],
@@ -114,45 +49,10 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "100D"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#F1F5FD'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "hover"
           }
         }
       ],
@@ -163,22 +63,6 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "shape": [
-        {
-          "properties": {
-            "tileShape": {
-              "expr": {
-                "Literal": {
-                  "Value": "'rectangleRounded'"
                 }
               }
             }

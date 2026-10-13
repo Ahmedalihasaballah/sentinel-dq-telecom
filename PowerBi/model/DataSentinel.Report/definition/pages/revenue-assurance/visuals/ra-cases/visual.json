@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-cases",
   "position": {
     "x": 1102,
     "y": 604,
-    "z": 166,
-    "height": 420,
+    "z": 194,
     "width": 784,
-    "tabOrder": 166
+    "height": 420,
+    "tabOrder": 194
   },
   "visual": {
     "visualType": "tableEx",
@@ -93,6 +93,7 @@
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -102,18 +103,17 @@
                       },
                       "Property": "diff"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_recon_mismatches.diff)",
               "nativeQueryRef": "Sum of diff",
-              "active": false,
               "displayName": "diff"
             },
             {
               "field": {
                 "Aggregation": {
+                  "Function": 0,
                   "Expression": {
                     "Column": {
                       "Expression": {
@@ -123,13 +123,11 @@
                       },
                       "Property": "amount_at_risk_eur"
                     }
-                  },
-                  "Function": 0
+                  }
                 }
               },
               "queryRef": "Sum(mart_recon_mismatches.amount_at_risk_eur)",
               "nativeQueryRef": "Sum of amount_at_risk_eur",
-              "active": false,
               "displayName": "amount_at_risk_eur"
             },
             {
@@ -155,6 +153,7 @@
           {
             "field": {
               "Aggregation": {
+                "Function": 0,
                 "Expression": {
                   "Column": {
                     "Expression": {
@@ -164,8 +163,7 @@
                     },
                     "Property": "amount_at_risk_eur"
                   }
-                },
-                "Function": 0
+                }
               }
             },
             "direction": "Descending"
@@ -173,9 +171,6 @@
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "values": []
     },
     "visualContainerObjects": {
       "background": [
@@ -224,7 +219,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }
@@ -253,7 +248,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0B1B3D'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
                 }
               }
             }
@@ -311,7 +366,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "14D"
                 }
               }
             },
@@ -356,7 +411,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -369,28 +424,44 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "8D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "values": [],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

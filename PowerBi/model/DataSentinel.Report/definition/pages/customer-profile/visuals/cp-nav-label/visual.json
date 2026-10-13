@@ -4,10 +4,10 @@
   "position": {
     "x": 30,
     "y": 106,
-    "z": 287,
+    "z": 330,
     "width": 200,
     "height": 20,
-    "tabOrder": 287
+    "tabOrder": 330
   },
   "visual": {
     "visualType": "textbox",
@@ -21,9 +21,9 @@
                   {
                     "value": "REPORT",
                     "textStyle": {
-                      "fontSize": "8pt",
+                      "fontSize": "9pt",
                       "fontWeight": "bold",
-                      "color": "#9CA3AF"
+                      "color": "#7C8BA8"
                     }
                   }
                 ],

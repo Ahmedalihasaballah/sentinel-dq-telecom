@@ -3,11 +3,11 @@
   "name": "nw-partner-label",
   "position": {
     "x": 1602,
-    "y": 132,
-    "z": 356,
+    "y": 134,
+    "z": 410,
     "width": 266,
     "height": 22,
-    "tabOrder": 356
+    "tabOrder": 410
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#F2B33D"
                     }
                   },
                   {
                     "value": "Partner cost, unknown customer",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

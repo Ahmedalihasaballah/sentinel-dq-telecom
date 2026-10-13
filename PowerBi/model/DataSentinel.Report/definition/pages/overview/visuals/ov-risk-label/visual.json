@@ -3,11 +3,11 @@
   "name": "ov-risk-label",
   "position": {
     "x": 316,
-    "y": 252,
-    "z": 40,
+    "y": 254,
+    "z": 45,
     "width": 346,
     "height": 22,
-    "tabOrder": 40
+    "tabOrder": 45
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#F06A35"
                     }
                   },
                   {
                     "value": "EUR at risk (data defects)",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

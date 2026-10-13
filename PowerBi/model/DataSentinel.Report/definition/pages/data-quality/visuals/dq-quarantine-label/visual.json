@@ -3,11 +3,11 @@
   "name": "dq-quarantine-label",
   "position": {
     "x": 1120,
-    "y": 132,
-    "z": 102,
+    "y": 134,
+    "z": 119,
     "width": 346,
     "height": 22,
-    "tabOrder": 102
+    "tabOrder": 119
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#6B5BD6"
                     }
                   },
                   {
                     "value": "Quarantined rows",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

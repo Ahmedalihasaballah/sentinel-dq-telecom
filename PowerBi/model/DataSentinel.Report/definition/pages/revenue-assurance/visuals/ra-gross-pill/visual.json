@@ -3,11 +3,11 @@
   "name": "ra-gross-pill",
   "position": {
     "x": 316,
-    "y": 206,
-    "z": 143,
-    "width": 166,
+    "y": 208,
+    "z": 169,
+    "width": 151,
     "height": 24,
-    "tabOrder": 143
+    "tabOrder": 169
   },
   "visual": {
     "visualType": "card",
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

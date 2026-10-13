@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-risk-type-meta",
   "position": {
-    "x": 892,
-    "y": 268,
-    "z": 162,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 162
+    "x": 930,
+    "y": 272,
+    "z": 189,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 189
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }

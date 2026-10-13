@@ -3,11 +3,11 @@
   "name": "ra-cases-pill",
   "position": {
     "x": 1602,
-    "y": 206,
-    "z": 160,
-    "width": 166,
+    "y": 208,
+    "z": 186,
+    "width": 250,
     "height": 24,
-    "tabOrder": 160
+    "tabOrder": 186
   },
   "visual": {
     "visualType": "card",
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

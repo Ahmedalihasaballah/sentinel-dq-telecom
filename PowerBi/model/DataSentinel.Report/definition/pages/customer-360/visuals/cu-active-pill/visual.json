@@ -3,11 +3,11 @@
   "name": "cu-active-pill",
   "position": {
     "x": 1602,
-    "y": 206,
-    "z": 274,
-    "width": 166,
+    "y": 208,
+    "z": 315,
+    "width": 250,
     "height": 24,
-    "tabOrder": 274
+    "tabOrder": 315
   },
   "visual": {
     "visualType": "card",
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

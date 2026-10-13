@@ -3,11 +3,11 @@
   "name": "ra-failing-label",
   "position": {
     "x": 1281,
-    "y": 132,
-    "z": 154,
+    "y": 134,
+    "z": 180,
     "width": 266,
     "height": 22,
-    "tabOrder": 154
+    "tabOrder": 180
   },
   "visual": {
     "visualType": "textbox",
@@ -21,14 +21,14 @@
                   {
                     "value": "● ",
                     "textStyle": {
-                      "fontSize": "9pt",
+                      "fontSize": "10pt",
                       "color": "#D9363E"
                     }
                   },
                   {
                     "value": "Checks failing",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "color": "#374151"
                     }
                   }

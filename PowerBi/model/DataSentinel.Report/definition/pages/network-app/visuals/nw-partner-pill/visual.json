@@ -3,11 +3,11 @@
   "name": "nw-partner-pill",
   "position": {
     "x": 1602,
-    "y": 206,
-    "z": 358,
-    "width": 166,
+    "y": 208,
+    "z": 412,
+    "width": 151,
     "height": 24,
-    "tabOrder": 358
+    "tabOrder": 412
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Partner Status"
+                  "Property": "UI Partner Pill"
                 }
               },
-              "queryRef": "_Measures.UI Partner Status",
-              "nativeQueryRef": "UI Partner Status"
+              "queryRef": "_Measures.UI Partner Pill",
+              "nativeQueryRef": "UI Partner Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FCEFC7'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Partner Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FCEFC7'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Partner Pill Bg"
                     }
                   }
                 }
@@ -191,8 +201,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#7A5A00'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Partner Pill Fg"
                     }
                   }
                 }
@@ -201,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },

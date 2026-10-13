@@ -3,11 +3,11 @@
   "name": "ov-risk-pill",
   "position": {
     "x": 316,
-    "y": 326,
-    "z": 42,
-    "width": 210,
+    "y": 328,
+    "z": 47,
+    "width": 198,
     "height": 24,
-    "tabOrder": 42
+    "tabOrder": 47
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Risk Delta"
+                  "Property": "UI Defect Pill"
                 }
               },
-              "queryRef": "_Measures.UI Risk Delta",
-              "nativeQueryRef": "UI Risk Delta"
+              "queryRef": "_Measures.UI Defect Pill",
+              "nativeQueryRef": "UI Defect Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FDF1D6'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Defect Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FDF1D6'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Defect Pill Bg"
                     }
                   }
                 }
@@ -218,8 +228,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#92600A'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Defect Pill Fg"
                     }
                   }
                 }
@@ -228,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },
