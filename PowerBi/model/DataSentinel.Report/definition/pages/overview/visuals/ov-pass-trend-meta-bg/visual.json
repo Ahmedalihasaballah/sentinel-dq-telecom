@@ -3,11 +3,11 @@
   "name": "ov-pass-trend-meta-bg",
   "position": {
     "x": 824,
-    "y": 270,
-    "z": 55,
+    "y": 254,
+    "z": 52,
     "width": 140,
     "height": 30,
-    "tabOrder": 55
+    "tabOrder": 52
   },
   "visual": {
     "visualType": "shape",

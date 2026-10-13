@@ -3,11 +3,11 @@
   "name": "in-team-meta",
   "position": {
     "x": 1734,
-    "y": 272,
-    "z": 246,
+    "y": 256,
+    "z": 240,
     "width": 132,
     "height": 26,
-    "tabOrder": 246
+    "tabOrder": 240
   },
   "visual": {
     "visualType": "card",

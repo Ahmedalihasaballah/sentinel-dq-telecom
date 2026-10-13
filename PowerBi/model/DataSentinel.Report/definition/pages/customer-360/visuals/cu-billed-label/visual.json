@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-billed-label",
   "position": {
-    "x": 565,
-    "y": 134,
-    "z": 296,
-    "width": 397,
+    "x": 563,
+    "y": 130,
+    "z": 288,
+    "width": 401,
     "height": 22,
-    "tabOrder": 296
+    "tabOrder": 288
   },
   "visual": {
     "visualType": "textbox",

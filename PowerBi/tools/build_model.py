@@ -488,10 +488,24 @@ print("part 7: aggregate measures")
 
 
 # ===== Part 8: larger axis text (category and value axes) on every chart =====
-AXIS_FONT = 13
+AXIS_FONT = 15
 th = json.load(open(tp, encoding="utf-8"))
 star = th["visualStyles"]["*"]["*"]
 for k in ("categoryAxis", "valueAxis"):
     star[k][0].update({"fontSize": AXIS_FONT, "titleFontSize": AXIS_FONT})
 json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 print("part 8: axis text", AXIS_FONT)
+
+
+# ===== Part 9: chart colours for treemaps, value-label size =====
+src = open(MEAS, encoding="utf-8").read()
+src = re.sub(r"\n\t/// UI9:[^\n]*\n\tmeasure '[^']+'.*?\t\tisHidden\n(?:\t\t[^\n]*\n)*", "\n", src, flags=re.S)
+block9 = "".join(f"\n\t/// UI9: chart colour\n\tmeasure 'UI Color {n}' = \"{c}\"\n\t\tisHidden\n"
+                 for n, c in (("Blue", "#2F6FDB"), ("Orange", "#F06A35"), ("Purple", "#6B5BD6")))
+src = src.replace("\n\tcolumn MeasureHost", block9 + "\n\tcolumn MeasureHost", 1)
+open(MEAS, "w", encoding="utf-8").write(src)
+th = json.load(open(tp, encoding="utf-8"))
+th["visualStyles"]["*"]["*"]["labels"][0]["fontSize"] = 12
+th["visualStyles"]["*"]["*"]["legend"][0]["fontSize"] = 12
+json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+print("part 9: treemap colours, labels 12")

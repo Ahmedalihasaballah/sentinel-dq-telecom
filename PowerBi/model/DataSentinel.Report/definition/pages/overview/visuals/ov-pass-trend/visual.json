@@ -3,11 +3,11 @@
   "name": "ov-pass-trend",
   "position": {
     "x": 94,
-    "y": 258,
-    "z": 54,
+    "y": 242,
+    "z": 51,
     "width": 886,
-    "height": 326,
-    "tabOrder": 54
+    "height": 387,
+    "tabOrder": 51
   },
   "visual": {
     "visualType": "lineChart",

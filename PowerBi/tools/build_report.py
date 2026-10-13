@@ -35,9 +35,9 @@ SIDEBAR_W = 264   # slide-out menu panel, hidden until ☰ is clicked (bookmarks
 X0, X1 = STRIP_W + 30, 1886
 W = X1 - X0
 GAP = 20
-KPI_Y, KPI_H = 120, 118
-R2_Y, R2_H = 258, 326
-R3_Y, R3_H = 604, 420
+KPI_Y, KPI_H = 120, 104
+R2_Y, R2_H = 242, 387
+R3_Y, R3_H = 649, 387
 
 NAV = [("overview", "Overview", "⌂"), ("data-quality", "Data Quality", "◇"),
        ("revenue-assurance", "Revenue Assurance", "€"), ("incidents", "Incidents", "△"),
@@ -321,18 +321,17 @@ def text_card(page, name, pos, measure, fg, size, bg=None, bold=False, align="le
 
 def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", spark=None, nav=None,
         units="0D", decimals=None):
-    """White KPI card: dot + label, big left-aligned number, status pill, optional sparkline on the right."""
+    """Compact KPI card: dot + label, big left-aligned number, status badge underneath."""
     x, y, w, h = pos
     shape(page, f"{name}-bg", pos, WHITE, border=BORDER, nav=nav, lifted=True)
-    textbox(page, f"{name}-label", (x + 18, y + 14, w - 36, 22),
+    textbox(page, f"{name}-label", (x + 16, y + 10, w - 32, 22),
             [("● ", {"fontSize": "10pt", "color": dot}),
              (label, {"fontSize": "11pt", "color": "#374151", "fontWeight": "bold"})])
-    region = w * 0.58 if spark else w - 24
     vco = frame(bg=None, border=False, pad=False)
     if nav:
         vco["visualLink"] = [{"properties": {"show": lit("true"), "type": lit("'PageNavigation'"),
                                              "navigationSection": lit(s(nav))}}]
-    put(page, f"{name}-value", (x + 10, y + 36, region, 50), {
+    put(page, f"{name}-value", (x + 8, y + 30, w - 16, 46), {
         "visualType": "multiRowCard", "query": query({"Values": [meas(measure)]}),
         "visualContainerObjects": vco,
         "objects": {"categoryLabels": OFF(),
@@ -342,17 +341,8 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
         "drillFilterOtherVisuals": True})
     if pill_measure:
         bg, fg = PILLS["grey" if pill == "status" else pill]
-        text_card(page, f"{name}-pill", (x + 18, y + 88, min(region - 24, 250), 24), pill_measure, fg, 9,
+        text_card(page, f"{name}-pill", (x + 16, y + h - 30, min(w - 32, 300), 24), pill_measure, fg, 9,
                   bg=bg, bold=True, nav=nav, dynamic=pill == "status")
-    if spark:
-        fx, fy, c = spark
-        put(page, f"{name}-spark", (x + region + 4, y + 34, w - region - 18, 72), {
-            "visualType": "lineChart", "query": query({"Category": [fx], "Y": [fy]}),
-            "visualContainerObjects": frame(bg=None, border=False, pad=False),
-            "objects": {"categoryAxis": OFF(), "valueAxis": OFF(), "legend": OFF(),
-                        "dataPoint": [series_color(fy, c)],
-                        "lineStyles": [{"properties": {"strokeWidth": lit("2D"), "showMarker": lit("false")}}]},
-            "drillFilterOtherVisuals": False})
 
 
 def pill_slicer(page, name, pos, label, table, column, mode="Dropdown"):
@@ -465,9 +455,9 @@ def track_bar(page, name, pos, category, value, track_measure, title, subtitle, 
               else series_color(value, color_of or BLUE))
     objects = {
         "legend": OFF(), "valueAxis": OFF(),
-        "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("13D")}}],
+        "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("15D")}}],
         "dataPoint": dp,
-        "labels": [{"properties": {"show": lit("true"), "color": color(WHITE), "fontSize": lit("10D"),
+        "labels": [{"properties": {"show": lit("true"), "color": color(WHITE), "fontSize": lit("12D"),
                                    "labelPosition": lit("'InsideEnd'"), "bold": lit("true")}},
                    {"properties": {"showSeries": lit("false")}, "selector": {"metadata": ref(tr)}}],
     }
@@ -522,12 +512,37 @@ def hbar(page, name, pos, category, value, title, subtitle, c=BLUE, top=None, me
           else [series_color(value, c)])
     chart(page, name, "clusteredBarChart", pos, {"Category": [category], "Y": [value]}, title, subtitle,
           {"legend": OFF(), "valueAxis": OFF(),
-           "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("13D")}}],
+           "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("15D")}}],
            "dataPoint": dp,
-           "labels": [{"properties": {"show": lit("true"), "color": color(TEXT), "fontSize": lit("10D"),
+           "labels": [{"properties": {"show": lit("true"), "color": color(TEXT), "fontSize": lit("12D"),
                                       "labelPosition": lit("'OutsideEnd'")}}]},
           sort=(value, "Descending"), meta=meta or (f"top {top}" if top else None),
           filters=[filter_top_n(cat_tbl, cat_col, top, value["Measure"]["Property"])] if top else None)
+
+
+def treemap(page, name, pos, category, value, title, subtitle, color_measure, meta=None, filters=None):
+    """Treemap: area = value, one colour (identity is the label, not the hue)."""
+    chart(page, name, "treemap", pos, {"Group": [category], "Values": [value]}, title, subtitle,
+          {"legend": OFF(),
+           "dataPoint": [{"properties": {"fill": {"solid": {"color": {"expr": meas(color_measure)}}}},
+                          "selector": ALL_POINTS}],
+           "labels": [{"properties": {"show": lit("true"), "color": color(WHITE), "fontSize": lit("12D")}}],
+           "categoryLabels": [{"properties": {"show": lit("true"), "color": color(WHITE),
+                                              "fontSize": lit("13D")}}]},
+          meta=meta, filters=filters)
+
+
+def donut(page, name, pos, category, value, title, subtitle, colors=None, meta=None):
+    """Donut for a few parts of a whole (6 or fewer); labels show the name and share."""
+    tbl = category["Column"]["Expression"]["SourceRef"]["Entity"]
+    dp = [value_color(tbl, category["Column"]["Property"], v, c) for v, c in (colors or [])]
+    chart(page, name, "donutChart", pos, {"Category": [category], "Y": [value]}, title, subtitle,
+          {"legend": [{"properties": {"show": lit("true"), "position": lit("'Right'"), "fontSize": lit("12D")}}],
+           "labels": [{"properties": {"show": lit("true"), "labelStyle": lit("'Category, percent of total'"),
+                                      "fontSize": lit("12D"), "color": color(TEXT)}}],
+           "slices": [{"properties": {"innerRadiusRatio": lit("58L")}}],
+           **({"dataPoint": dp} if dp else {})},
+          meta=meta)
 
 
 # =====================================================================
@@ -552,15 +567,15 @@ chart(P, "ov-pass-trend", "lineChart", HALF2[0],
        "lineStyles": [{"properties": {"strokeWidth": lit("2D"), "showMarker": lit("true"),
                                       "markerSize": lit("4D")}}]},
       displays={f"{M}.DQ Trend Pass Rate": "Pass rate", f"{M}.Target DQ Pass": "Target"}, meta="=UI Runs DQ")
-track_bar(P, "ov-risk-type", HALF2[1], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
-          "Leak Risk Track", "EUR at risk by leak type", "Latest reconciliation run, gross", ORANGE,
-          meta="=UI Runs Recon")
+treemap(P, "ov-risk-type", HALF2[1], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
+        "EUR at risk by leak type", "Latest reconciliation run, gross; bigger box = more EUR", "UI Color Orange",
+        meta="=UI Runs Recon")
 chart(P, "ov-issues", "barChart", HALF3[0],
       {"Category": [col("Attention", "Area")], "Y": [meas("Attention Items")],
        "Series": [col("Attention", "Priority")]},
       "Open issues by area", "Failing DQ rules, late incidents and failing revenue checks, by priority",
       {**axis_objects(legend=True, labels=True),
-       "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("13D")}}],
+       "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("15D")}}],
        "dataPoint": [value_color("Attention", "Priority", v, c) for v, c in PRIORITY_COLORS]},
       sort=(meas("Attention Items"), "Descending"), meta="=UI Attention Count")
 columns(P, "ov-priority", HALF3[1], col("mart_incidents", "priority"), meas("Incident Count"),
@@ -581,23 +596,19 @@ chart(P, "dq-fail-dataset", "clusteredBarChart", HALF2[0],
       {"Category": [col("mart_dq_health", "dataset")], "Y": [meas("DQ Failure Rate")]},
       "Failure rate by dataset", "Failed / checked rows, worst first, red above 2%",
       {"legend": OFF(), "valueAxis": OFF(),
-       "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("13D")}}],
+       "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("15D")}}],
        "dataPoint": [{"properties": {"fill": {"solid": {"color": {"expr": meas("Color Failure")}}}},
                       "selector": ALL_POINTS}],
-       "labels": [{"properties": {"show": lit("true"), "color": color(TEXT), "fontSize": lit("10D"),
+       "labels": [{"properties": {"show": lit("true"), "color": color(TEXT), "fontSize": lit("12D"),
                                   "labelPosition": lit("'OutsideEnd'")}}]},
       sort=(meas("DQ Failure Rate"), "Descending"), meta="=UI Datasets DQ")
-chart(P, "dq-quarantine", "barChart", HALF2[1],
-      {"Category": [col("mart_quarantine", "dataset")], "Y": [meas("Quarantined Rows")],
-       "Series": [col("mart_quarantine", "quarantine_status")]},
-      "Quarantine by dataset", "Rows waiting, by quarantine status, most first",
-      {**axis_objects(legend=True), "categoryAxis": [{"properties": {"labelColor": color(TEXT),
-                                                                     "fontSize": lit("13D")}}]},
-      sort=(meas("Quarantined Rows"), "Descending"), meta="=UI Quarantine Datasets")
+treemap(P, "dq-quarantine", HALF2[1], col("mart_quarantine", "dataset"), meas("Quarantined Rows"),
+        "Quarantine by dataset", "Rows waiting in quarantine; bigger box = more rows", "UI Color Purple",
+        meta="=UI Quarantine Datasets")
 hbar(P, "dq-rows-failed", HALF3[0], col("mart_dq_health", "check_name"), meas("Rows Failed"),
      "Rows failed by check", "Latest result per rule, failing rules only", RED, top=10)
-hbar(P, "dq-severity", HALF3[1], col("mart_dq_health", "severity"), meas("Failing Rules"),
-     "Failing rules by severity", "Number of rules that are not PASS", colors=SEVERITY_COLORS, meta="=UI Rules Total")
+donut(P, "dq-severity", HALF3[1], col("mart_dq_health", "severity"), meas("Failing Rules"),
+      "Failing rules by severity", "Share of rules that are not PASS", SEVERITY_COLORS, meta="=UI Rules Total")
 
 # =====================================================================
 # Page 3 Revenue Assurance
@@ -611,12 +622,13 @@ kpi(P, "ra-cases", THREE[2], "Cases to investigate", BLUE, "Cases To Investigate
 track_bar(P, "ra-risk-type", HALF2[0], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
           "Leak Risk Track", "EUR at risk by leak type", "Click a bar to filter the other charts", ORANGE,
           meta="=UI Checks Total")
-hbar(P, "ra-mismatch", HALF2[1], col("mart_revenue_assurance", "leak_type"), meas("Mismatched Rows"),
-     "Mismatched rows by check", "Rows that differ between the two systems", PURPLE, meta="=UI Checks Total")
+columns(P, "ra-mismatch", HALF2[1], col("mart_revenue_assurance", "check_id"), meas("Mismatched Rows"),
+        "Mismatched rows by check", "R1 to R10, rows that differ between the two systems", PURPLE,
+        sort=(col("mart_revenue_assurance", "check_id"), "Ascending"), meta="=UI Checks Total")
 hbar(P, "ra-reason", HALF3[0], col("mart_recon_mismatches", "reason"), meas("Cases To Investigate"),
      "Cases by reason", "Latest run, what the billing team investigates", BLUE, top=10)
-hbar(P, "ra-entity", HALF3[1], col("mart_recon_mismatches", "entity_type"), meas("Case EUR"),
-     "Case EUR by entity type", "EUR at risk in the open cases", ORANGE, meta="=UI Latest Run")
+donut(P, "ra-entity", HALF3[1], col("mart_recon_mismatches", "entity_type"), meas("Case EUR"),
+      "Case EUR by entity type", "Share of EUR at risk in the open cases", meta="=UI Latest Run")
 
 # =====================================================================
 # Page 4 Incidents
@@ -635,8 +647,8 @@ columns(P, "in-priority", HALF2[0], col("mart_incidents", "priority"), meas("Ope
         sort=(col("mart_incidents", "priority"), "Ascending"))
 track_bar(P, "in-team", HALF2[1], col("mart_incidents", "team"), meas("Open Incidents"), "Team Workload Track",
           "Workload by team", "Open incidents per team", BLUE, meta="=UI Teams")
-hbar(P, "in-dataset", HALF3[0], col("mart_incidents", "dataset"), meas("Open Incidents"),
-     "Open incidents by dataset", "Where the open incidents come from", ORANGE, top=10)
+treemap(P, "in-dataset", HALF3[0], col("mart_incidents", "dataset"), meas("Open Incidents"),
+        "Open incidents by dataset", "Where the open incidents come from; bigger box = more", "UI Color Orange")
 columns(P, "in-hours", HALF3[1], col("mart_incidents", "priority"), meas("Avg Open Hours"),
         "Average hours open by priority", "Open incidents; deadlines P1 1 h, P2 4 h, P3 24 h, P4 72 h", PURPLE,
         sort=(col("mart_incidents", "priority"), "Ascending"))
@@ -659,10 +671,10 @@ chart(P, "cu-aging", "columnChart", HALF2[0],
                                         "selector": ALL_POINTS}]},
       sort=(col("mart_customer_360", "payment_age_band"), "Ascending"),
       filters=[filter_not_in("mart_customer_360", "payment_age_band", ["Paid up"])])
-track_bar(P, "cu-unpaid-plan", HALF2[1], col("mart_customer_360", "plan_name"), meas("Unpaid EUR"),
-          "Unpaid Plan Track", "Unpaid EUR by plan", "Billed minus paid", ORANGE, meta="=UI Plans")
-hbar(P, "cu-unpaid-city", HALF3[0], col("mart_customer_360", "city"), meas("Unpaid EUR"),
-     "Unpaid EUR by city", "Where the money is owed", ORANGE, top=10)
+donut(P, "cu-unpaid-plan", HALF2[1], col("mart_customer_360", "plan_name"), meas("Unpaid EUR"),
+      "Unpaid EUR by plan", "Share of the money owed, by plan", meta="=UI Plans")
+treemap(P, "cu-unpaid-city", HALF3[0], col("mart_customer_360", "city"), meas("Unpaid EUR"),
+        "Unpaid EUR by city", "Where the money is owed; bigger box = more EUR", "UI Color Orange")
 chart(P, "cu-problems", "clusteredColumnChart", HALF3[1],
       {"Y": [meas("Customers With Dropped Calls"), meas("Customers With App Crashes"),
              meas("Customers With Plan Changes")]},
@@ -698,9 +710,12 @@ area(P, "nw-drop-day", HALF2[0], col(nd, "usage_date"), meas("Drop Rate"), "Drop
 track_bar(P, "nw-cells", HALF2[1], col("mart_cell_quality", "cell_id"), meas("Cell Drop Rate"), "Cell Drop Track",
           "Worst 10 cells", "Drop rate, minimum 20 voice calls", ORANGE, meta="top 10 shown",
           filters=[filter_top_n("mart_cell_quality", "cell_id", 10, "Cell Drop Rate")])
-track_bar(P, "nw-crash", HALF3[0], col("mart_app_usage", "app_version"), meas("Crash Share"), "Crash Share Track",
-          "Crash share by app version", "Crashes / events, red above the 2% limit", "Color Crash Share",
-          meta="=UI Versions App")
+chart(P, "nw-crash", "clusteredColumnChart", HALF3[0],
+      {"Category": [col("mart_app_usage", "app_version")], "Y": [meas("Crash Share")]},
+      "Crash share by app version", "Crashes / events, red above the 2% limit",
+      {**axis_objects(value_axis=False, labels=True),
+       "dataPoint": [series_color_by_measure(meas("Crash Share"), "Color Crash Share")]},
+      sort=(meas("Crash Share"), "Descending"), meta="=UI Versions App")
 columns(P, "nw-partner-cost", HALF3[1], col("mart_partner_usage", "period_start"), meas("Partner Cost K"),
         "Partner cost by service per month", "EUR thousands", series=col("mart_partner_usage", "service"),
         meta="=UI Months Partner")

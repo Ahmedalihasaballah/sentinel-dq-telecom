@@ -113,10 +113,10 @@
                 "color": "#6B7280"
               }
             },
-            "fontSize": 13,
+            "fontSize": 15,
             "gridlineShow": false,
             "fontFamily": "Arial",
-            "titleFontSize": 13
+            "titleFontSize": 15
           }
         ],
         "valueAxis": [
@@ -127,7 +127,7 @@
                 "color": "#6B7280"
               }
             },
-            "fontSize": 13,
+            "fontSize": 15,
             "gridlineShow": true,
             "gridlineColor": {
               "solid": {
@@ -136,7 +136,7 @@
             },
             "gridlineStyle": "solid",
             "fontFamily": "Arial",
-            "titleFontSize": 13
+            "titleFontSize": 15
           }
         ],
         "legend": [
@@ -148,7 +148,7 @@
                 "color": "#374151"
               }
             },
-            "fontSize": 10,
+            "fontSize": 12,
             "showTitle": false,
             "defaultToCircle": true,
             "fontFamily": "Arial"
@@ -161,7 +161,7 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 10,
+            "fontSize": 12,
             "fontFamily": "Arial",
             "bold": true
           }

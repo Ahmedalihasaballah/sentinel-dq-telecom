@@ -3,11 +3,11 @@
   "name": "ra-risk-type-meta-bg",
   "position": {
     "x": 824,
-    "y": 270,
-    "z": 176,
+    "y": 254,
+    "z": 171,
     "width": 140,
     "height": 30,
-    "tabOrder": 176
+    "tabOrder": 171
   },
   "visual": {
     "visualType": "shape",

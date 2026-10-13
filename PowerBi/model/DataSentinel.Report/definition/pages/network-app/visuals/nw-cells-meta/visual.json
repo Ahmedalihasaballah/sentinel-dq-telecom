@@ -3,11 +3,11 @@
   "name": "nw-cells-meta",
   "position": {
     "x": 1730,
-    "y": 276,
-    "z": 382,
+    "y": 260,
+    "z": 368,
     "width": 140,
     "height": 22,
-    "tabOrder": 382
+    "tabOrder": 368
   },
   "visual": {
     "visualType": "textbox",

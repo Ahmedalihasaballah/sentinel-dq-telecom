@@ -3,11 +3,11 @@
   "name": "dq-rows-failed-meta",
   "position": {
     "x": 824,
-    "y": 622,
-    "z": 124,
+    "y": 667,
+    "z": 120,
     "width": 140,
     "height": 22,
-    "tabOrder": 124
+    "tabOrder": 120
   },
   "visual": {
     "visualType": "textbox",

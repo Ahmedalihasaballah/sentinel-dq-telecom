@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-quarantine-label",
   "position": {
-    "x": 1320,
-    "y": 134,
-    "z": 113,
-    "width": 548,
+    "x": 1318,
+    "y": 130,
+    "z": 109,
+    "width": 552,
     "height": 22,
-    "tabOrder": 113
+    "tabOrder": 109
   },
   "visual": {
     "visualType": "textbox",

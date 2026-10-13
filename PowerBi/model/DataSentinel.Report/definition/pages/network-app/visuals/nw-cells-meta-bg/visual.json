@@ -3,11 +3,11 @@
   "name": "nw-cells-meta-bg",
   "position": {
     "x": 1730,
-    "y": 270,
-    "z": 381,
+    "y": 254,
+    "z": 367,
     "width": 140,
     "height": 30,
-    "tabOrder": 381
+    "tabOrder": 367
   },
   "visual": {
     "visualType": "shape",

@@ -3,11 +3,11 @@
   "name": "ov-priority",
   "position": {
     "x": 1000,
-    "y": 604,
-    "z": 63,
+    "y": 649,
+    "z": 60,
     "width": 886,
-    "height": 420,
-    "tabOrder": 63
+    "height": 387,
+    "tabOrder": 60
   },
   "visual": {
     "visualType": "columnChart",

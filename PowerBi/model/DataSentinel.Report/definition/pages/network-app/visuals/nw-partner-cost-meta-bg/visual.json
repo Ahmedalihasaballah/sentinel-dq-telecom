@@ -3,11 +3,11 @@
   "name": "nw-partner-cost-meta-bg",
   "position": {
     "x": 1730,
-    "y": 616,
-    "z": 387,
+    "y": 661,
+    "z": 373,
     "width": 140,
     "height": 30,
-    "tabOrder": 387
+    "tabOrder": 373
   },
   "visual": {
     "visualType": "shape",

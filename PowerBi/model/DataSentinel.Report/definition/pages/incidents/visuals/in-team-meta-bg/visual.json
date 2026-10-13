@@ -3,11 +3,11 @@
   "name": "in-team-meta-bg",
   "position": {
     "x": 1730,
-    "y": 270,
-    "z": 245,
+    "y": 254,
+    "z": 239,
     "width": 140,
     "height": 30,
-    "tabOrder": 245
+    "tabOrder": 239
   },
   "visual": {
     "visualType": "shape",

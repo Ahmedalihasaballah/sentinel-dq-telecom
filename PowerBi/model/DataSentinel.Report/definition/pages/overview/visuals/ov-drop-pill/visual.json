@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-pill",
   "position": {
-    "x": 1562,
-    "y": 208,
-    "z": 52,
-    "width": 175,
+    "x": 1560,
+    "y": 194,
+    "z": 50,
+    "width": 300,
     "height": 24,
-    "tabOrder": 52
+    "tabOrder": 50
   },
   "visual": {
     "visualType": "card",

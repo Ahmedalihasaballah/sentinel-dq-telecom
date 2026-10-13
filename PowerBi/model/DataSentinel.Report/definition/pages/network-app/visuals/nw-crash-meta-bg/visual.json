@@ -3,11 +3,11 @@
   "name": "nw-crash-meta-bg",
   "position": {
     "x": 824,
-    "y": 616,
-    "z": 384,
+    "y": 661,
+    "z": 370,
     "width": 140,
     "height": 30,
-    "tabOrder": 384
+    "tabOrder": 370
   },
   "visual": {
     "visualType": "shape",

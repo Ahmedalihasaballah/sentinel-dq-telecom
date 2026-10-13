@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-billed-pill",
   "position": {
-    "x": 565,
-    "y": 208,
-    "z": 298,
-    "width": 250,
+    "x": 563,
+    "y": 194,
+    "z": 290,
+    "width": 300,
     "height": 24,
-    "tabOrder": 298
+    "tabOrder": 290
   },
   "visual": {
     "visualType": "card",

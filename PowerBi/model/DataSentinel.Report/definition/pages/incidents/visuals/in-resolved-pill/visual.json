@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-resolved-pill",
   "position": {
-    "x": 1320,
-    "y": 208,
-    "z": 242,
-    "width": 250,
+    "x": 1318,
+    "y": 194,
+    "z": 236,
+    "width": 300,
     "height": 24,
-    "tabOrder": 242
+    "tabOrder": 236
   },
   "visual": {
     "visualType": "card",

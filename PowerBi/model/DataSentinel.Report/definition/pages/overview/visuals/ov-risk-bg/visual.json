@@ -4,10 +4,10 @@
   "position": {
     "x": 819,
     "y": 120,
-    "z": 40,
+    "z": 39,
     "width": 342,
-    "height": 118,
-    "tabOrder": 40
+    "height": 104,
+    "tabOrder": 39
   },
   "visual": {
     "visualType": "shape",

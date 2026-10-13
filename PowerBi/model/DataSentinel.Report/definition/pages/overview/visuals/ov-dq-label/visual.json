@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-dq-label",
   "position": {
-    "x": 112,
-    "y": 134,
+    "x": 110,
+    "y": 130,
     "z": 32,
-    "width": 306,
+    "width": 310,
     "height": 22,
     "tabOrder": 32
   },

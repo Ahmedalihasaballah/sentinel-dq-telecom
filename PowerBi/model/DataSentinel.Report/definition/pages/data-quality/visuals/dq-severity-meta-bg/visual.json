@@ -3,11 +3,11 @@
   "name": "dq-severity-meta-bg",
   "position": {
     "x": 1730,
-    "y": 616,
-    "z": 126,
+    "y": 661,
+    "z": 122,
     "width": 140,
     "height": 30,
-    "tabOrder": 126
+    "tabOrder": 122
   },
   "visual": {
     "visualType": "shape",

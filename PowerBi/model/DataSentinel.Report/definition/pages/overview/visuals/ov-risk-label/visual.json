@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-label",
   "position": {
-    "x": 837,
-    "y": 134,
-    "z": 41,
-    "width": 306,
+    "x": 835,
+    "y": 130,
+    "z": 40,
+    "width": 310,
     "height": 22,
-    "tabOrder": 41
+    "tabOrder": 40
   },
   "visual": {
     "visualType": "textbox",

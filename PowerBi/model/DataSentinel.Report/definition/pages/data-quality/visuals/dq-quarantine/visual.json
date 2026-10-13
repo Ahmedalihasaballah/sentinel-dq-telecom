@@ -3,17 +3,17 @@
   "name": "dq-quarantine",
   "position": {
     "x": 1000,
-    "y": 258,
-    "z": 119,
+    "y": 242,
+    "z": 115,
     "width": 886,
-    "height": 326,
-    "tabOrder": 119
+    "height": 387,
+    "tabOrder": 115
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "treemap",
     "query": {
       "queryState": {
-        "Category": {
+        "Group": {
           "projections": [
             {
               "field": {
@@ -32,7 +32,7 @@
             }
           ]
         },
-        "Y": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -49,44 +49,7 @@
               "nativeQueryRef": "Quarantined Rows"
             }
           ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "mart_quarantine"
-                    }
-                  },
-                  "Property": "quarantine_status"
-                }
-              },
-              "queryRef": "mart_quarantine.quarantine_status",
-              "nativeQueryRef": "quarantine_status",
-              "active": true
-            }
-          ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Quarantined Rows"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -317,7 +280,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Rows waiting, by quarantine status, most first'"
+                  "Value": "'Rows waiting in quarantine; bigger box = more rows'"
                 }
               }
             },
@@ -391,21 +354,45 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Top'"
+                  "Value": "false"
                 }
               }
             }
           }
         }
       ],
-      "valueAxis": [
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Color Purple"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "labels": [
         {
           "properties": {
             "show": {
@@ -415,25 +402,43 @@
                 }
               }
             },
-            "gridlineShow": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "12D"
                 }
               }
             }
           }
         }
       ],
-      "categoryAxis": [
+      "categoryLabels": [
         {
           "properties": {
-            "labelColor": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#111827'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }

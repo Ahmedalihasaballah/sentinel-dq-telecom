@@ -3,11 +3,11 @@
   "name": "dq-fail-dataset-meta-bg",
   "position": {
     "x": 824,
-    "y": 270,
-    "z": 117,
+    "y": 254,
+    "z": 113,
     "width": 140,
     "height": 30,
-    "tabOrder": 117
+    "tabOrder": 113
   },
   "visual": {
     "visualType": "shape",

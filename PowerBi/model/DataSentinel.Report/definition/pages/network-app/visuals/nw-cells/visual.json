@@ -3,11 +3,11 @@
   "name": "nw-cells",
   "position": {
     "x": 1000,
-    "y": 258,
-    "z": 380,
+    "y": 242,
+    "z": 366,
     "width": 886,
-    "height": 326,
-    "tabOrder": 380
+    "height": 387,
+    "tabOrder": 366
   },
   "visual": {
     "visualType": "barChart",
@@ -423,7 +423,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "15D"
                 }
               }
             }
@@ -492,7 +492,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "12D"
                 }
               }
             },

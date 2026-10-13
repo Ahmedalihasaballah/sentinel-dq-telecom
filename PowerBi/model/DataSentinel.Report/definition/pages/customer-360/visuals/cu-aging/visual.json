@@ -3,11 +3,11 @@
   "name": "cu-aging",
   "position": {
     "x": 94,
-    "y": 258,
-    "z": 307,
+    "y": 242,
+    "z": 299,
     "width": 886,
-    "height": 326,
-    "tabOrder": 307
+    "height": 387,
+    "tabOrder": 299
   },
   "visual": {
     "visualType": "columnChart",

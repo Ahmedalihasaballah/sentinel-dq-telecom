@@ -3,11 +3,11 @@
   "name": "nw-partner-cost",
   "position": {
     "x": 1000,
-    "y": 604,
-    "z": 386,
+    "y": 649,
+    "z": 372,
     "width": 886,
-    "height": 420,
-    "tabOrder": 386
+    "height": 387,
+    "tabOrder": 372
   },
   "visual": {
     "visualType": "columnChart",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-gross-pill",
   "position": {
-    "x": 112,
-    "y": 208,
-    "z": 165,
-    "width": 250,
+    "x": 110,
+    "y": 194,
+    "z": 161,
+    "width": 300,
     "height": 24,
-    "tabOrder": 165
+    "tabOrder": 161
   },
   "visual": {
     "visualType": "card",

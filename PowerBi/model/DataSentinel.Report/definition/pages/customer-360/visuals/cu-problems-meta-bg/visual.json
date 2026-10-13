@@ -3,11 +3,11 @@
   "name": "cu-problems-meta-bg",
   "position": {
     "x": 1730,
-    "y": 616,
-    "z": 315,
+    "y": 661,
+    "z": 305,
     "width": 140,
     "height": 30,
-    "tabOrder": 315
+    "tabOrder": 305
   },
   "visual": {
     "visualType": "shape",

@@ -3,11 +3,11 @@
   "name": "nw-drop-day",
   "position": {
     "x": 94,
-    "y": 258,
-    "z": 377,
+    "y": 242,
+    "z": 363,
     "width": 886,
-    "height": 326,
-    "tabOrder": 377
+    "height": 387,
+    "tabOrder": 363
   },
   "visual": {
     "visualType": "areaChart",

@@ -3,11 +3,11 @@
   "name": "dq-quarantine-meta-bg",
   "position": {
     "x": 1730,
-    "y": 270,
-    "z": 120,
+    "y": 254,
+    "z": 116,
     "width": 140,
     "height": 30,
-    "tabOrder": 120
+    "tabOrder": 116
   },
   "visual": {
     "visualType": "shape",

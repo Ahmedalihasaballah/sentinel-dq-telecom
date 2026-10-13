@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-failing-pill",
   "position": {
-    "x": 716,
-    "y": 208,
-    "z": 111,
-    "width": 250,
+    "x": 714,
+    "y": 194,
+    "z": 107,
+    "width": 300,
     "height": 24,
-    "tabOrder": 111
+    "tabOrder": 107
   },
   "visual": {
     "visualType": "card",

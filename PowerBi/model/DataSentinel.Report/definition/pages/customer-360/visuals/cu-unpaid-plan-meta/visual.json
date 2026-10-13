@@ -3,11 +3,11 @@
   "name": "cu-unpaid-plan-meta",
   "position": {
     "x": 1734,
-    "y": 272,
-    "z": 310,
+    "y": 256,
+    "z": 302,
     "width": 132,
     "height": 26,
-    "tabOrder": 310
+    "tabOrder": 302
   },
   "visual": {
     "visualType": "card",

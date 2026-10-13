@@ -3,11 +3,11 @@
   "name": "ra-risk-type",
   "position": {
     "x": 94,
-    "y": 258,
-    "z": 175,
+    "y": 242,
+    "z": 170,
     "width": 886,
-    "height": 326,
-    "tabOrder": 175
+    "height": 387,
+    "tabOrder": 170
   },
   "visual": {
     "visualType": "barChart",
@@ -423,7 +423,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "15D"
                 }
               }
             }
@@ -492,7 +492,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "12D"
                 }
               }
             },
