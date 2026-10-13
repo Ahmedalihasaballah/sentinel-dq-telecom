@@ -3,11 +3,11 @@
   "name": "nw-drop-day-meta-bg",
   "position": {
     "x": 824,
-    "y": 254,
-    "z": 364,
+    "y": 270,
+    "z": 378,
     "width": 140,
     "height": 30,
-    "tabOrder": 364
+    "tabOrder": 378
   },
   "visual": {
     "visualType": "shape",

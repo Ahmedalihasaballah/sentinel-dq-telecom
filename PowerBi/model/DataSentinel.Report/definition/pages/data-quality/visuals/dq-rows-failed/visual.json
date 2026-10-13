@@ -3,11 +3,11 @@
   "name": "dq-rows-failed",
   "position": {
     "x": 94,
-    "y": 649,
-    "z": 118,
+    "y": 604,
+    "z": 122,
     "width": 886,
-    "height": 387,
-    "tabOrder": 118
+    "height": 420,
+    "tabOrder": 122
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -409,7 +409,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "15D"
+                  "Value": "13D"
                 }
               }
             }
@@ -460,7 +460,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "10D"
                 }
               }
             },

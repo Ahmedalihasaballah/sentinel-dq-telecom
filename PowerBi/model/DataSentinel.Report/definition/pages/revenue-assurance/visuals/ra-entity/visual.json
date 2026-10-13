@@ -3,14 +3,14 @@
   "name": "ra-entity",
   "position": {
     "x": 1000,
-    "y": 649,
-    "z": 179,
+    "y": 604,
+    "z": 184,
     "width": 886,
-    "height": 387,
-    "tabOrder": 179
+    "height": 420,
+    "tabOrder": 184
   },
   "visual": {
-    "visualType": "donutChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -50,6 +50,24 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Case EUR"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -280,7 +298,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Share of EUR at risk in the open cases'"
+                  "Value": "'EUR at risk in the open cases'"
                 }
               }
             },
@@ -354,24 +372,67 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
-            },
-            "position": {
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Right'"
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "13D"
                 }
               }
             }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F06A35'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Case EUR"
           }
         }
       ],
@@ -385,20 +446,6 @@
                 }
               }
             },
-            "labelStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Category, percent of total'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
@@ -409,17 +456,18 @@
                   }
                 }
               }
-            }
-          }
-        }
-      ],
-      "slices": [
-        {
-          "properties": {
-            "innerRadiusRatio": {
+            },
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "58L"
+                  "Value": "10D"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OutsideEnd'"
                 }
               }
             }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-breached-label",
   "position": {
-    "x": 472,
-    "y": 130,
-    "z": 36,
-    "width": 310,
+    "x": 474,
+    "y": 134,
+    "z": 37,
+    "width": 306,
     "height": 22,
-    "tabOrder": 36
+    "tabOrder": 37
   },
   "visual": {
     "visualType": "textbox",

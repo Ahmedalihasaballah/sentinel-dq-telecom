@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-failing-label",
   "position": {
-    "x": 714,
-    "y": 130,
-    "z": 105,
-    "width": 552,
+    "x": 716,
+    "y": 134,
+    "z": 109,
+    "width": 548,
     "height": 22,
-    "tabOrder": 105
+    "tabOrder": 109
   },
   "visual": {
     "visualType": "textbox",

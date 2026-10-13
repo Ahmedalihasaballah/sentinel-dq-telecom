@@ -3,11 +3,11 @@
   "name": "ov-risk-type-meta",
   "position": {
     "x": 1734,
-    "y": 256,
-    "z": 56,
+    "y": 272,
+    "z": 59,
     "width": 132,
     "height": 26,
-    "tabOrder": 56
+    "tabOrder": 59
   },
   "visual": {
     "visualType": "card",

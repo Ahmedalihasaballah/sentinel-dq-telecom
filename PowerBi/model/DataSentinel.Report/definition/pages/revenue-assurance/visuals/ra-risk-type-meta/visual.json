@@ -3,11 +3,11 @@
   "name": "ra-risk-type-meta",
   "position": {
     "x": 828,
-    "y": 256,
-    "z": 172,
+    "y": 272,
+    "z": 177,
     "width": 132,
     "height": 26,
-    "tabOrder": 172
+    "tabOrder": 177
   },
   "visual": {
     "visualType": "card",

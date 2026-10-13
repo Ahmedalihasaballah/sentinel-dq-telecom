@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-partner-label",
   "position": {
-    "x": 1469,
-    "y": 130,
-    "z": 360,
-    "width": 401,
+    "x": 1471,
+    "y": 134,
+    "z": 373,
+    "width": 397,
     "height": 22,
-    "tabOrder": 360
+    "tabOrder": 373
   },
   "visual": {
     "visualType": "textbox",

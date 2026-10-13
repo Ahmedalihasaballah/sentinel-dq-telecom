@@ -3,11 +3,11 @@
   "name": "in-priority",
   "position": {
     "x": 94,
-    "y": 242,
-    "z": 237,
+    "y": 258,
+    "z": 243,
     "width": 886,
-    "height": 387,
-    "tabOrder": 237
+    "height": 326,
+    "tabOrder": 243
   },
   "visual": {
     "visualType": "columnChart",

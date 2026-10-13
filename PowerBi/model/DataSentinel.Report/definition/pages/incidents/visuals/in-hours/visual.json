@@ -3,11 +3,11 @@
   "name": "in-hours",
   "position": {
     "x": 1000,
-    "y": 649,
-    "z": 242,
+    "y": 604,
+    "z": 250,
     "width": 886,
-    "height": 387,
-    "tabOrder": 242
+    "height": 420,
+    "tabOrder": 250
   },
   "visual": {
     "visualType": "columnChart",

@@ -3,11 +3,11 @@
   "name": "cu-problems",
   "position": {
     "x": 1000,
-    "y": 649,
-    "z": 304,
+    "y": 604,
+    "z": 314,
     "width": 886,
-    "height": 387,
-    "tabOrder": 304
+    "height": 420,
+    "tabOrder": 314
   },
   "visual": {
     "visualType": "clusteredColumnChart",

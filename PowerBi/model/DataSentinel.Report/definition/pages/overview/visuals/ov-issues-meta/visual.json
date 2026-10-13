@@ -3,11 +3,11 @@
   "name": "ov-issues-meta",
   "position": {
     "x": 828,
-    "y": 663,
-    "z": 59,
+    "y": 618,
+    "z": 62,
     "width": 132,
     "height": 26,
-    "tabOrder": 59
+    "tabOrder": 62
   },
   "visual": {
     "visualType": "card",

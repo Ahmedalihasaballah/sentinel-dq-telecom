@@ -3,14 +3,14 @@
   "name": "ra-mismatch",
   "position": {
     "x": 1000,
-    "y": 242,
-    "z": 173,
+    "y": 258,
+    "z": 178,
     "width": 886,
-    "height": 387,
-    "tabOrder": 173
+    "height": 326,
+    "tabOrder": 178
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "mart_revenue_assurance"
                     }
                   },
-                  "Property": "check_id"
+                  "Property": "leak_type"
                 }
               },
-              "queryRef": "mart_revenue_assurance.check_id",
-              "nativeQueryRef": "check_id",
+              "queryRef": "mart_revenue_assurance.leak_type",
+              "nativeQueryRef": "leak_type",
               "active": true
             }
           ]
@@ -55,16 +55,16 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "mart_revenue_assurance"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "check_id"
+                "Property": "Mismatched Rows"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -298,7 +298,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'R1 to R10, rows that differ between the two systems'"
+                  "Value": "'Rows that differ between the two systems'"
                 }
               }
             },
@@ -375,13 +375,6 @@
                   "Value": "false"
                 }
               }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Top'"
-                }
-              }
             }
           }
         }
@@ -392,14 +385,31 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
                 }
               }
             },
-            "gridlineShow": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "13D"
                 }
               }
             }
@@ -423,6 +433,44 @@
           },
           "selector": {
             "metadata": "_Measures.Mismatched Rows"
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OutsideEnd'"
+                }
+              }
+            }
           }
         }
       ]

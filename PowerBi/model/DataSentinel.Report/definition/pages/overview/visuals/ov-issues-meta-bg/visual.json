@@ -3,11 +3,11 @@
   "name": "ov-issues-meta-bg",
   "position": {
     "x": 824,
-    "y": 661,
-    "z": 58,
+    "y": 616,
+    "z": 61,
     "width": 140,
     "height": 30,
-    "tabOrder": 58
+    "tabOrder": 61
   },
   "visual": {
     "visualType": "shape",

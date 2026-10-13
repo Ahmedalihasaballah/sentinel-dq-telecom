@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-gross-label",
   "position": {
-    "x": 110,
-    "y": 130,
-    "z": 159,
-    "width": 552,
+    "x": 112,
+    "y": 134,
+    "z": 163,
+    "width": 548,
     "height": 22,
-    "tabOrder": 159
+    "tabOrder": 163
   },
   "visual": {
     "visualType": "textbox",

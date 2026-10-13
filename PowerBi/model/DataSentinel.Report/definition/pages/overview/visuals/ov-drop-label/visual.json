@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-label",
   "position": {
-    "x": 1560,
-    "y": 130,
-    "z": 48,
-    "width": 310,
+    "x": 1562,
+    "y": 134,
+    "z": 50,
+    "width": 306,
     "height": 22,
-    "tabOrder": 48
+    "tabOrder": 50
   },
   "visual": {
     "visualType": "textbox",

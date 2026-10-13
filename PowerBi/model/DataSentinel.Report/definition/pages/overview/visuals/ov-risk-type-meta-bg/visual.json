@@ -3,11 +3,11 @@
   "name": "ov-risk-type-meta-bg",
   "position": {
     "x": 1730,
-    "y": 254,
-    "z": 55,
+    "y": 270,
+    "z": 58,
     "width": 140,
     "height": 30,
-    "tabOrder": 55
+    "tabOrder": 58
   },
   "visual": {
     "visualType": "shape",

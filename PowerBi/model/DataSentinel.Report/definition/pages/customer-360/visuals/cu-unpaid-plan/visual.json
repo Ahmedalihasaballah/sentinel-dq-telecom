@@ -3,14 +3,14 @@
   "name": "cu-unpaid-plan",
   "position": {
     "x": 1000,
-    "y": 242,
-    "z": 300,
+    "y": 258,
+    "z": 308,
     "width": 886,
-    "height": 387,
-    "tabOrder": 300
+    "height": 326,
+    "tabOrder": 308
   },
   "visual": {
-    "visualType": "donutChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -47,9 +47,41 @@
               },
               "queryRef": "_Measures.Unpaid EUR",
               "nativeQueryRef": "Unpaid EUR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Unpaid Plan Track"
+                }
+              },
+              "queryRef": "_Measures.Unpaid Plan Track",
+              "nativeQueryRef": "Unpaid Plan Track"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Unpaid EUR"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -280,7 +312,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Share of the money owed, by plan'"
+                  "Value": "'Billed minus paid'"
                 }
               }
             },
@@ -354,24 +386,85 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
-            },
-            "position": {
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Right'"
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "13D"
                 }
               }
             }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EDF0F4'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Unpaid Plan Track"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F06A35'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Unpaid EUR"
           }
         }
       ],
@@ -385,44 +478,52 @@
                 }
               }
             },
-            "labelStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Category, percent of total'"
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "10D"
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#111827'"
-                    }
-                  }
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
           }
-        }
-      ],
-      "slices": [
+        },
         {
           "properties": {
-            "innerRadiusRatio": {
+            "showSeries": {
               "expr": {
                 "Literal": {
-                  "Value": "58L"
+                  "Value": "false"
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "_Measures.Unpaid Plan Track"
           }
         }
       ]

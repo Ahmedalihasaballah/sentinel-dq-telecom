@@ -702,18 +702,6 @@ table _Measures
 		formatString: #,0
 		isHidden
 
-	/// UI9: chart colour
-	measure 'UI Color Blue' = "#2F6FDB"
-		isHidden
-
-	/// UI9: chart colour
-	measure 'UI Color Orange' = "#F06A35"
-		isHidden
-
-	/// UI9: chart colour
-	measure 'UI Color Purple' = "#6B5BD6"
-		isHidden
-
 	column MeasureHost
 		dataType: string
 		isHidden

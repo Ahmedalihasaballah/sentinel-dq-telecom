@@ -3,11 +3,11 @@
   "name": "ra-entity-meta-bg",
   "position": {
     "x": 1730,
-    "y": 661,
-    "z": 180,
+    "y": 616,
+    "z": 185,
     "width": 140,
     "height": 30,
-    "tabOrder": 180
+    "tabOrder": 185
   },
   "visual": {
     "visualType": "shape",

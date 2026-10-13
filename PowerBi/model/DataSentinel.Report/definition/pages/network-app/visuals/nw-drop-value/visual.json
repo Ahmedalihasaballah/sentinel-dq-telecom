@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-drop-value",
   "position": {
-    "x": 1008,
-    "y": 150,
-    "z": 357,
-    "width": 417,
-    "height": 46,
-    "tabOrder": 357
+    "x": 1010,
+    "y": 156,
+    "z": 369,
+    "width": 251,
+    "height": 50,
+    "tabOrder": 369
   },
   "visual": {
     "visualType": "multiRowCard",

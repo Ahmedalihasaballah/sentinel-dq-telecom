@@ -3,17 +3,17 @@
   "name": "ov-risk-type",
   "position": {
     "x": 1000,
-    "y": 242,
-    "z": 54,
+    "y": 258,
+    "z": 57,
     "width": 886,
-    "height": 387,
-    "tabOrder": 54
+    "height": 326,
+    "tabOrder": 57
   },
   "visual": {
-    "visualType": "treemap",
+    "visualType": "barChart",
     "query": {
       "queryState": {
-        "Group": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -32,7 +32,7 @@
             }
           ]
         },
-        "Values": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -47,9 +47,41 @@
               },
               "queryRef": "_Measures.Gross EUR At Risk",
               "nativeQueryRef": "Gross EUR At Risk"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Leak Risk Track"
+                }
+              },
+              "queryRef": "_Measures.Leak Risk Track",
+              "nativeQueryRef": "Leak Risk Track"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Gross EUR At Risk"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -280,7 +312,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Latest reconciliation run, gross; bigger box = more EUR'"
+                  "Value": "'Latest reconciliation run, gross'"
                 }
               }
             },
@@ -361,6 +393,43 @@
           }
         }
       ],
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ],
       "dataPoint": [
         {
           "properties": {
@@ -368,13 +437,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "_Measures"
-                        }
-                      },
-                      "Property": "UI Color Orange"
+                    "Literal": {
+                      "Value": "'#EDF0F4'"
                     }
                   }
                 }
@@ -382,13 +446,25 @@
             }
           },
           "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
+            "metadata": "_Measures.Leak Risk Track"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F06A35'"
+                    }
+                  }
                 }
               }
-            ]
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Gross EUR At Risk"
           }
         }
       ],
@@ -416,41 +492,38 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "10D"
                 }
               }
-            }
-          }
-        }
-      ],
-      "categoryLabels": [
-        {
-          "properties": {
-            "show": {
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
+                }
+              }
+            },
+            "bold": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
+            }
+          }
+        },
+        {
+          "properties": {
+            "showSeries": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "false"
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "_Measures.Leak Risk Track"
           }
         }
       ]

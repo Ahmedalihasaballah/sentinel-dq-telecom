@@ -3,14 +3,14 @@
   "name": "nw-crash",
   "position": {
     "x": 94,
-    "y": 649,
-    "z": 369,
+    "y": 604,
+    "z": 383,
     "width": 886,
-    "height": 387,
-    "tabOrder": 369
+    "height": 420,
+    "tabOrder": 383
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -47,6 +47,20 @@
               },
               "queryRef": "_Measures.Crash Share",
               "nativeQueryRef": "Crash Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Crash Share Track"
+                }
+              },
+              "queryRef": "_Measures.Crash Share Track",
+              "nativeQueryRef": "Crash Share Track"
             }
           ]
         }
@@ -375,13 +389,6 @@
                   "Value": "false"
                 }
               }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Top'"
-                }
-              }
             }
           }
         }
@@ -395,24 +402,28 @@
                   "Value": "false"
                 }
               }
-            },
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
             }
           }
         }
       ],
-      "labels": [
+      "categoryAxis": [
         {
           "properties": {
-            "show": {
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#111827'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "13D"
                 }
               }
             }
@@ -420,6 +431,24 @@
         }
       ],
       "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EDF0F4'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Crash Share Track"
+          }
+        },
         {
           "properties": {
             "fill": {
@@ -448,6 +477,65 @@
               }
             ],
             "metadata": "_Measures.Crash Share"
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "showSeries": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Crash Share Track"
           }
         }
       ]

@@ -3,11 +3,11 @@
   "name": "nw-drop-day-meta",
   "position": {
     "x": 828,
-    "y": 256,
-    "z": 365,
+    "y": 272,
+    "z": 379,
     "width": 132,
     "height": 26,
-    "tabOrder": 365
+    "tabOrder": 379
   },
   "visual": {
     "visualType": "card",

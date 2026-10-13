@@ -3,11 +3,11 @@
   "name": "dq-quarantine-meta",
   "position": {
     "x": 1734,
-    "y": 256,
-    "z": 117,
+    "y": 272,
+    "z": 121,
     "width": 132,
     "height": 26,
-    "tabOrder": 117
+    "tabOrder": 121
   },
   "visual": {
     "visualType": "card",
