@@ -3,10 +3,10 @@
   "name": "nw-crash",
   "position": {
     "x": 698,
-    "y": 616,
+    "y": 604,
     "z": 461,
     "width": 584,
-    "height": 410,
+    "height": 420,
     "tabOrder": 461
   },
   "visual": {
@@ -278,7 +278,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "14D"
                 }
               }
             },
@@ -330,7 +330,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
@@ -423,7 +423,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
+                  "Value": "11D"
                 }
               }
             }
@@ -504,7 +504,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

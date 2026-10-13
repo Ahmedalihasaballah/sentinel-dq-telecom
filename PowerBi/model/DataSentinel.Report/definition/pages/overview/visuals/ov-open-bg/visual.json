@@ -3,10 +3,10 @@
   "name": "ov-open-bg",
   "position": {
     "x": 1000,
-    "y": 128,
+    "y": 120,
     "z": 40,
     "width": 433,
-    "height": 118,
+    "height": 108,
     "tabOrder": 40
   },
   "visual": {

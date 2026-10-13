@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-sample",
   "position": {
-    "x": 1754,
-    "y": 35,
+    "x": 1770,
+    "y": 73,
     "z": 175,
-    "width": 132,
+    "width": 116,
     "height": 24,
     "tabOrder": 175
   },
@@ -22,7 +22,7 @@
                     "value": "Sample data",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "fontWeight": "bold",
                       "color": "#FFFFFF"
                     }

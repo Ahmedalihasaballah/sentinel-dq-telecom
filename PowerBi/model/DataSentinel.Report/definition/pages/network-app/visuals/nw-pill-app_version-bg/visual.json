@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-pill-app_version-bg",
   "position": {
-    "x": 1045,
-    "y": 24,
+    "x": 1220,
+    "y": 62,
     "z": 416,
-    "width": 260,
-    "height": 46,
+    "width": 200,
+    "height": 44,
     "tabOrder": 416
   },
   "visual": {

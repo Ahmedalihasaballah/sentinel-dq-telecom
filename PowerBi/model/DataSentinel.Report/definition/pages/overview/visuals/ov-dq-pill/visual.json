@@ -3,10 +3,10 @@
   "name": "ov-dq-pill",
   "position": {
     "x": 112,
-    "y": 210,
+    "y": 208,
     "z": 34,
     "width": 227,
-    "height": 28,
+    "height": 24,
     "tabOrder": 34
   },
   "visual": {
@@ -243,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

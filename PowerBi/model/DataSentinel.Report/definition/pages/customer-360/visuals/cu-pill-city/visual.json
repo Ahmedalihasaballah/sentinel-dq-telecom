@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-pill-city",
   "position": {
-    "x": 1249,
-    "y": 26,
+    "x": 1374,
+    "y": 64,
     "z": 315,
-    "width": 187,
-    "height": 42,
+    "width": 144,
+    "height": 40,
     "tabOrder": 315
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

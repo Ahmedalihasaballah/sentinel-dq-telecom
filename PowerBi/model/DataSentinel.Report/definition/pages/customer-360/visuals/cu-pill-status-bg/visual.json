@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-pill-status-bg",
   "position": {
-    "x": 905,
-    "y": 24,
+    "x": 1110,
+    "y": 62,
     "z": 316,
-    "width": 260,
-    "height": 46,
+    "width": 200,
+    "height": 44,
     "tabOrder": 316
   },
   "visual": {

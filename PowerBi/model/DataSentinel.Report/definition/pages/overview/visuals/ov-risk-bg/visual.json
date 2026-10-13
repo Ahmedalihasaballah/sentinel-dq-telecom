@@ -3,10 +3,10 @@
   "name": "ov-risk-bg",
   "position": {
     "x": 94,
-    "y": 258,
+    "y": 240,
     "z": 49,
     "width": 433,
-    "height": 118,
+    "height": 108,
     "tabOrder": 49
   },
   "visual": {

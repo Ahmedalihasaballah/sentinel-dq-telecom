@@ -3,10 +3,10 @@
   "name": "ra-defect-bg",
   "position": {
     "x": 456,
-    "y": 128,
+    "y": 120,
     "z": 186,
     "width": 342,
-    "height": 134,
+    "height": 118,
     "tabOrder": 186
   },
   "visual": {

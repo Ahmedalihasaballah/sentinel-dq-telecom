@@ -3,10 +3,10 @@
   "name": "dq-failing-label",
   "position": {
     "x": 565,
-    "y": 140,
+    "y": 134,
     "z": 125,
     "width": 397,
-    "height": 30,
+    "height": 22,
     "tabOrder": 125
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "color": "#D9363E"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Failing rules",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#374151",
                       "fontWeight": "bold"
                     }

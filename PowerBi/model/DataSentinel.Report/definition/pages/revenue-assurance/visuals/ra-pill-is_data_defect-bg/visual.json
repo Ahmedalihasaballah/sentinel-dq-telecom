@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-pill-is_data_defect-bg",
   "position": {
-    "x": 1354,
-    "y": 24,
+    "x": 1460,
+    "y": 62,
     "z": 176,
-    "width": 390,
-    "height": 46,
+    "width": 300,
+    "height": 44,
     "tabOrder": 176
   },
   "visual": {

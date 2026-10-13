@@ -3,10 +3,10 @@
   "name": "nw-data-pill",
   "position": {
     "x": 837,
-    "y": 226,
+    "y": 208,
     "z": 437,
     "width": 175,
-    "height": 28,
+    "height": 24,
     "tabOrder": 437
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-risk-type-meta",
   "position": {
-    "x": 798,
-    "y": 294,
+    "x": 828,
+    "y": 272,
     "z": 204,
-    "width": 162,
+    "width": 132,
     "height": 26,
     "tabOrder": 204
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

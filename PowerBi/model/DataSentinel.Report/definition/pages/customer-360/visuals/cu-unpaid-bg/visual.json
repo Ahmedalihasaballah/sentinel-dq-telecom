@@ -3,10 +3,10 @@
   "name": "cu-unpaid-bg",
   "position": {
     "x": 1181,
-    "y": 128,
+    "y": 120,
     "z": 333,
     "width": 342,
-    "height": 134,
+    "height": 118,
     "tabOrder": 333
   },
   "visual": {

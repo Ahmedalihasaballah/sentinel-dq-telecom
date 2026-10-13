@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-pill-plan_name-bg",
   "position": {
-    "x": 1458,
-    "y": 24,
+    "x": 1540,
+    "y": 62,
     "z": 310,
-    "width": 286,
-    "height": 46,
+    "width": 220,
+    "height": 44,
     "tabOrder": 310
   },
   "visual": {

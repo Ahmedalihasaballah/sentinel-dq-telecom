@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pill-dimension-label",
   "position": {
-    "x": 1435,
-    "y": 34,
+    "x": 1526,
+    "y": 74,
     "z": 112,
-    "width": 113,
-    "height": 28,
+    "width": 110,
+    "height": 22,
     "tabOrder": 112
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Dimension",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "color": "#4B5563"
                     }
                   }

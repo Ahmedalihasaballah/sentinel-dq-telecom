@@ -3,10 +3,10 @@
   "name": "ov-quarantine-bg",
   "position": {
     "x": 547,
-    "y": 128,
+    "y": 120,
     "z": 36,
     "width": 433,
-    "height": 118,
+    "height": 108,
     "tabOrder": 36
   },
   "visual": {

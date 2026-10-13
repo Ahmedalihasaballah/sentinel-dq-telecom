@@ -3,10 +3,10 @@
   "name": "nw-records-day",
   "position": {
     "x": 94,
-    "y": 280,
+    "y": 258,
     "z": 449,
     "width": 584,
-    "height": 318,
+    "height": 326,
     "tabOrder": 449
   },
   "visual": {
@@ -265,7 +265,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "14D"
                 }
               }
             },
@@ -317,7 +317,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

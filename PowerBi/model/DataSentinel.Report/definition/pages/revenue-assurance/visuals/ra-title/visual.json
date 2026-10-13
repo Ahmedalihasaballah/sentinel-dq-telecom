@@ -3,10 +3,10 @@
   "name": "ra-title",
   "position": {
     "x": 94,
-    "y": 22,
+    "y": 32,
     "z": 172,
-    "width": 1000,
-    "height": 52,
+    "width": 900,
+    "height": 40,
     "tabOrder": 172
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Revenue Assurance",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "30pt",
+                      "fontSize": "21pt",
                       "fontWeight": "bold",
                       "color": "#111827"
                     }

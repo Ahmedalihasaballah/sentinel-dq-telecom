@@ -3,10 +3,10 @@
   "name": "in-ack-pill",
   "position": {
     "x": 1471,
-    "y": 226,
+    "y": 208,
     "z": 269,
-    "width": 320,
-    "height": 28,
+    "width": 250,
+    "height": 24,
     "tabOrder": 269
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

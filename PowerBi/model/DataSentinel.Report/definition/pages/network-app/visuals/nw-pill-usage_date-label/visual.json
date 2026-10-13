@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-pill-usage_date-label",
   "position": {
-    "x": 1331,
-    "y": 34,
+    "x": 1446,
+    "y": 74,
     "z": 414,
-    "width": 124,
-    "height": 28,
+    "width": 110,
+    "height": 22,
     "tabOrder": 414
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Date range",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "color": "#4B5563"
                     }
                   }

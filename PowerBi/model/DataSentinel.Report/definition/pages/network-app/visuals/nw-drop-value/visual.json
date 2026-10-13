@@ -3,10 +3,10 @@
   "name": "nw-drop-value",
   "position": {
     "x": 1191,
-    "y": 168,
+    "y": 156,
     "z": 441,
     "width": 199,
-    "height": 60,
+    "height": 50,
     "tabOrder": 441
   },
   "visual": {
@@ -190,7 +190,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "35D"
+                  "Value": "24D"
                 }
               }
             },

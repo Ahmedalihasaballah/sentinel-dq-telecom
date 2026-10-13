@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-nav-ra-txt",
   "position": {
-    "x": 94,
-    "y": 240,
+    "x": 96,
+    "y": 243,
     "z": 50295,
-    "width": 214,
-    "height": 30,
+    "width": 208,
+    "height": 24,
     "tabOrder": 295
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "€   ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#8C99B0"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Revenue Assurance",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#C3CCDA",
                       "fontWeight": "bold"
                     }

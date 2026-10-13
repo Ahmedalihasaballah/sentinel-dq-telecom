@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-pass-trend-meta",
   "position": {
-    "x": 496,
-    "y": 408,
+    "x": 526,
+    "y": 382,
     "z": 69,
-    "width": 162,
+    "width": 132,
     "height": 26,
     "tabOrder": 69
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

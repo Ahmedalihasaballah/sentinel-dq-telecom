@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-pill-priority-label",
   "position": {
-    "x": 677,
-    "y": 34,
+    "x": 936,
+    "y": 74,
     "z": 249,
-    "width": 102,
-    "height": 28,
+    "width": 110,
+    "height": 22,
     "tabOrder": 249
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Priority",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "color": "#4B5563"
                     }
                   }

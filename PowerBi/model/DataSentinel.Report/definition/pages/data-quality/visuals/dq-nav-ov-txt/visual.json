@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-nav-ov-txt",
   "position": {
-    "x": 94,
-    "y": 144,
+    "x": 96,
+    "y": 147,
     "z": 50092,
-    "width": 214,
-    "height": 30,
+    "width": 208,
+    "height": 24,
     "tabOrder": 92
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "⌂   ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#8C99B0"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Overview",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#C3CCDA",
                       "fontWeight": "bold"
                     }

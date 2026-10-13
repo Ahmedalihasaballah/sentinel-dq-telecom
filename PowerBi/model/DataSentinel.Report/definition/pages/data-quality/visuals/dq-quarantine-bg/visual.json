@@ -3,10 +3,10 @@
   "name": "dq-quarantine-bg",
   "position": {
     "x": 1000,
-    "y": 128,
+    "y": 120,
     "z": 128,
     "width": 433,
-    "height": 134,
+    "height": 118,
     "tabOrder": 128
   },
   "visual": {

@@ -5,8 +5,8 @@
     "x": 94,
     "y": 80,
     "z": 236,
-    "width": 1100,
-    "height": 32,
+    "width": 900,
+    "height": 24,
     "tabOrder": 236
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Who owns each incident, how late is it, does the team meet its deadlines?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#4B5563"
                     }
                   }

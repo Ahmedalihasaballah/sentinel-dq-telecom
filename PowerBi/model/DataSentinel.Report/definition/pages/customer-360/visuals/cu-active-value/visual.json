@@ -3,10 +3,10 @@
   "name": "cu-active-value",
   "position": {
     "x": 1554,
-    "y": 168,
+    "y": 156,
     "z": 339,
     "width": 318,
-    "height": 60,
+    "height": 50,
     "tabOrder": 339
   },
   "visual": {
@@ -190,7 +190,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "35D"
+                  "Value": "24D"
                 }
               }
             },

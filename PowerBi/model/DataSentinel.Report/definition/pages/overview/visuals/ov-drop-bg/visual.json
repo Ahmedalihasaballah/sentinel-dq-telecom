@@ -3,10 +3,10 @@
   "name": "ov-drop-bg",
   "position": {
     "x": 1453,
-    "y": 258,
+    "y": 240,
     "z": 62,
     "width": 433,
-    "height": 118,
+    "height": 108,
     "tabOrder": 62
   },
   "visual": {

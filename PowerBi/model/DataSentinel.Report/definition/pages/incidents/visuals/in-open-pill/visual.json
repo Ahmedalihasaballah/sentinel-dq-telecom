@@ -3,10 +3,10 @@
   "name": "in-open-pill",
   "position": {
     "x": 112,
-    "y": 226,
+    "y": 208,
     "z": 256,
     "width": 227,
-    "height": 28,
+    "height": 24,
     "tabOrder": 256
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

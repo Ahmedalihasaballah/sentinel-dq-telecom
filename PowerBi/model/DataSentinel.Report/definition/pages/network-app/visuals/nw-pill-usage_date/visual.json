@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-pill-usage_date",
   "position": {
-    "x": 1455,
-    "y": 26,
+    "x": 1532,
+    "y": 64,
     "z": 415,
-    "width": 277,
-    "height": 42,
+    "width": 216,
+    "height": 40,
     "tabOrder": 415
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

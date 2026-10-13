@@ -3,10 +3,10 @@
   "name": "dq-oldest-value",
   "position": {
     "x": 1463,
-    "y": 168,
+    "y": 156,
     "z": 134,
     "width": 409,
-    "height": 60,
+    "height": 50,
     "tabOrder": 134
   },
   "visual": {
@@ -190,7 +190,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "35D"
+                  "Value": "24D"
                 }
               }
             },

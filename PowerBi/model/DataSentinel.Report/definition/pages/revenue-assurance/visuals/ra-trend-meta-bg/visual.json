@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-trend-meta-bg",
   "position": {
-    "x": 1700,
-    "y": 292,
+    "x": 1730,
+    "y": 270,
     "z": 206,
-    "width": 170,
-    "height": 34,
+    "width": 140,
+    "height": 30,
     "tabOrder": 206
   },
   "visual": {

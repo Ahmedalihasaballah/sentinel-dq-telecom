@@ -3,10 +3,10 @@
   "name": "ra-defect-pill",
   "position": {
     "x": 474,
-    "y": 226,
+    "y": 208,
     "z": 189,
-    "width": 294,
-    "height": 28,
+    "width": 250,
+    "height": 24,
     "tabOrder": 189
   },
   "visual": {
@@ -216,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

@@ -5,8 +5,8 @@
     "x": 94,
     "y": 80,
     "z": 26,
-    "width": 1100,
-    "height": 32,
+    "width": 900,
+    "height": 24,
     "tabOrder": 26
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Is today's data healthy, and what needs attention first?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "16pt",
+                      "fontSize": "11pt",
                       "color": "#4B5563"
                     }
                   }

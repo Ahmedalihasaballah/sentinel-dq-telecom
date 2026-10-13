@@ -3,10 +3,10 @@
   "name": "cu-billed-pill",
   "position": {
     "x": 474,
-    "y": 226,
+    "y": 208,
     "z": 328,
-    "width": 294,
-    "height": 28,
+    "width": 250,
+    "height": 24,
     "tabOrder": 328
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

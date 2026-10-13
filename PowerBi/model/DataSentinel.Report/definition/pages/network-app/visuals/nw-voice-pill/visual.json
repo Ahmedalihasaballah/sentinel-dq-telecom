@@ -3,10 +3,10 @@
   "name": "nw-voice-pill",
   "position": {
     "x": 474,
-    "y": 226,
+    "y": 208,
     "z": 432,
     "width": 175,
-    "height": 28,
+    "height": 24,
     "tabOrder": 432
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

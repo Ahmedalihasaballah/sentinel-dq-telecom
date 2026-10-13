@@ -3,10 +3,10 @@
   "name": "nw-cells",
   "position": {
     "x": 1302,
-    "y": 280,
+    "y": 258,
     "z": 455,
     "width": 584,
-    "height": 318,
+    "height": 326,
     "tabOrder": 455
   },
   "visual": {
@@ -278,7 +278,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "14D"
                 }
               }
             },
@@ -330,7 +330,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },
@@ -423,7 +423,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
+                  "Value": "11D"
                 }
               }
             }
@@ -492,7 +492,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

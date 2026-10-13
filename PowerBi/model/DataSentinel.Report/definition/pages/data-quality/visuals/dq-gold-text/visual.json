@@ -22,7 +22,7 @@
                     "value": "Gold layer",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "fontWeight": "bold",
                       "color": "#111827"
                     }
@@ -36,7 +36,7 @@
                     "value": "12 mart tables · refresh after each pipeline run",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "13pt",
+                      "fontSize": "9pt",
                       "color": "#6B7280"
                     }
                   }

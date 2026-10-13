@@ -3,10 +3,10 @@
   "name": "cu-unpaid-value",
   "position": {
     "x": 1191,
-    "y": 168,
+    "y": 156,
     "z": 335,
     "width": 318,
-    "height": 60,
+    "height": 50,
     "tabOrder": 335
   },
   "visual": {
@@ -190,7 +190,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "35D"
+                  "Value": "24D"
                 }
               }
             },

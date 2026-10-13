@@ -3,10 +3,10 @@
   "name": "cu-unpaid-pill",
   "position": {
     "x": 1199,
-    "y": 226,
+    "y": 208,
     "z": 336,
-    "width": 294,
-    "height": 28,
+    "width": 250,
+    "height": 24,
     "tabOrder": 336
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

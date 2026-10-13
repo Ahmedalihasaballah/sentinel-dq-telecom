@@ -3,10 +3,10 @@
   "name": "nw-voice-bg",
   "position": {
     "x": 456,
-    "y": 128,
+    "y": 120,
     "z": 429,
     "width": 342,
-    "height": 134,
+    "height": 118,
     "tabOrder": 429
   },
   "visual": {

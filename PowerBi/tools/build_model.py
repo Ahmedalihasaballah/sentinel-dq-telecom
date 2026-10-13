@@ -467,23 +467,3 @@ for v in ("tableEx", "pivotTable"):
         vs["rowHeaders"][0].update({"fontFamily": "Arial", "bold": True})
 json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 print("part 5: bold Arial typography")
-
-
-# ===== Part 6: larger type for axes, legends, data labels and tables =====
-th = json.load(open(tp, encoding="utf-8"))
-star = th["visualStyles"]["*"]["*"]
-star["title"][0]["fontSize"] = 20
-star["subTitle"][0]["fontSize"] = 14
-for k in ("categoryAxis", "valueAxis", "legend", "labels"):
-    star[k][0]["fontSize"] = 14
-for v in ("tableEx", "pivotTable"):
-    vs = th["visualStyles"][v]["*"]
-    vs["values"][0]["fontSize"] = 14
-    vs["columnHeaders"][0]["fontSize"] = 14
-    if "rowHeaders" in vs:
-        vs["rowHeaders"][0]["fontSize"] = 14
-th["visualStyles"]["slicer"]["*"]["items"][0]["fontSize"] = 14
-for k, size in (("callout", 40), ("title", 20), ("header", 15), ("label", 14)):
-    th["textClasses"][k]["fontSize"] = size
-json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
-print("part 6: larger type")

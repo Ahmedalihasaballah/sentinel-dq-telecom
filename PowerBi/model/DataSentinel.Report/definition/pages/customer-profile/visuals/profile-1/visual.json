@@ -3,7 +3,7 @@
   "name": "profile-1",
   "position": {
     "x": 547,
-    "y": 128,
+    "y": 120,
     "z": 381,
     "width": 433,
     "height": 904,
@@ -348,7 +348,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "14D"
                 }
               }
             },
@@ -446,7 +446,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "17D"
+                  "Value": "12D"
                 }
               }
             }
@@ -470,7 +470,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             }

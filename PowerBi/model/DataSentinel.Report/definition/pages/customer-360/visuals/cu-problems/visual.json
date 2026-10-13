@@ -3,10 +3,10 @@
   "name": "cu-problems",
   "position": {
     "x": 1000,
-    "y": 616,
+    "y": 604,
     "z": 350,
     "width": 886,
-    "height": 410,
+    "height": 420,
     "tabOrder": 350
   },
   "visual": {
@@ -341,7 +341,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "14D"
                 }
               }
             },
@@ -393,7 +393,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

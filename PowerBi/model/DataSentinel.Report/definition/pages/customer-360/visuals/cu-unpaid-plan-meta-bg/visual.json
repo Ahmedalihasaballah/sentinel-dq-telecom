@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-unpaid-plan-meta-bg",
   "position": {
-    "x": 794,
-    "y": 292,
+    "x": 824,
+    "y": 270,
     "z": 346,
-    "width": 170,
-    "height": 34,
+    "width": 140,
+    "height": 30,
     "tabOrder": 346
   },
   "visual": {

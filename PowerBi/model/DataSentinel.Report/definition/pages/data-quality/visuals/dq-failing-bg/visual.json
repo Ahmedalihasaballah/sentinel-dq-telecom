@@ -3,10 +3,10 @@
   "name": "dq-failing-bg",
   "position": {
     "x": 547,
-    "y": 128,
+    "y": 120,
     "z": 124,
     "width": 433,
-    "height": 134,
+    "height": 118,
     "tabOrder": 124
   },
   "visual": {

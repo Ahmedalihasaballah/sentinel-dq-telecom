@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-pill-priority-bg",
   "position": {
-    "x": 661,
-    "y": 24,
+    "x": 920,
+    "y": 62,
     "z": 248,
-    "width": 247,
-    "height": 46,
+    "width": 190,
+    "height": 44,
     "tabOrder": 248
   },
   "visual": {

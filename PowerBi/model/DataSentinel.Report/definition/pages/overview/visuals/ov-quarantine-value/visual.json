@@ -3,10 +3,10 @@
   "name": "ov-quarantine-value",
   "position": {
     "x": 557,
-    "y": 168,
+    "y": 156,
     "z": 38,
     "width": 409,
-    "height": 60,
+    "height": 50,
     "tabOrder": 38
   },
   "visual": {
@@ -217,7 +217,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "35D"
+                  "Value": "24D"
                 }
               }
             },

@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-priority-meta",
   "position": {
-    "x": 1704,
-    "y": 730,
+    "x": 1734,
+    "y": 720,
     "z": 81,
-    "width": 162,
+    "width": 132,
     "height": 26,
     "tabOrder": 81
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

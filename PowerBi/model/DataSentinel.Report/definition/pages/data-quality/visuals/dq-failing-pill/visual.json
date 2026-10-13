@@ -3,10 +3,10 @@
   "name": "dq-failing-pill",
   "position": {
     "x": 565,
-    "y": 226,
+    "y": 208,
     "z": 127,
-    "width": 320,
-    "height": 28,
+    "width": 250,
+    "height": 24,
     "tabOrder": 127
   },
   "visual": {
@@ -216,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "9D"
                 }
               }
             },

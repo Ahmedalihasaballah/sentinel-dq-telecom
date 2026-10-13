@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-pill-team-label",
   "position": {
-    "x": 934,
-    "y": 34,
+    "x": 1136,
+    "y": 74,
     "z": 246,
-    "width": 58,
-    "height": 28,
+    "width": 110,
+    "height": 22,
     "tabOrder": 246
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Team",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "14pt",
+                      "fontSize": "10pt",
                       "color": "#4B5563"
                     }
                   }

@@ -3,10 +3,10 @@
   "name": "in-opened",
   "position": {
     "x": 1295,
-    "y": 616,
+    "y": 604,
     "z": 278,
     "width": 591,
-    "height": 410,
+    "height": 420,
     "tabOrder": 278
   },
   "visual": {
@@ -246,7 +246,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "14D"
                 }
               }
             },
@@ -298,7 +298,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "10D"
                 }
               }
             },

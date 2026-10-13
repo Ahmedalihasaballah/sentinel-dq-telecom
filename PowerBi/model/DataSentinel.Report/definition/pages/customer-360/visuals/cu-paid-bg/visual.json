@@ -3,10 +3,10 @@
   "name": "cu-paid-bg",
   "position": {
     "x": 819,
-    "y": 128,
+    "y": 120,
     "z": 329,
     "width": 342,
-    "height": 134,
+    "height": 118,
     "tabOrder": 329
   },
   "visual": {

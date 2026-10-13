@@ -3,10 +3,10 @@
   "name": "cu-title",
   "position": {
     "x": 94,
-    "y": 22,
+    "y": 32,
     "z": 306,
-    "width": 1000,
-    "height": 52,
+    "width": 900,
+    "height": 40,
     "tabOrder": 306
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Customer 360",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "30pt",
+                      "fontSize": "21pt",
                       "fontWeight": "bold",
                       "color": "#111827"
                     }
