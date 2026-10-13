@@ -3,10 +3,10 @@
   "name": "cu-count-pill",
   "position": {
     "x": 112,
-    "y": 208,
+    "y": 226,
     "z": 324,
-    "width": 250,
-    "height": 24,
+    "width": 294,
+    "height": 28,
     "tabOrder": 324
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

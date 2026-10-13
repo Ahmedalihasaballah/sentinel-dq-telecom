@@ -3,10 +3,10 @@
   "name": "nw-partner-cost",
   "position": {
     "x": 1302,
-    "y": 604,
+    "y": 616,
     "z": 464,
     "width": 584,
-    "height": 420,
+    "height": 410,
     "tabOrder": 464
   },
   "visual": {
@@ -265,7 +265,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -317,7 +317,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

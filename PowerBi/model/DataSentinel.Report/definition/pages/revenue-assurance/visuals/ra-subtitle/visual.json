@@ -5,8 +5,8 @@
     "x": 94,
     "y": 80,
     "z": 173,
-    "width": 900,
-    "height": 24,
+    "width": 1100,
+    "height": 32,
     "tabOrder": 173
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "How many EUR leak between systems, where, and which cases must be investigated?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#4B5563"
                     }
                   }

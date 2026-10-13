@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-pill-usage_date-bg",
   "position": {
-    "x": 1430,
-    "y": 62,
+    "x": 1315,
+    "y": 24,
     "z": 413,
-    "width": 330,
-    "height": 44,
+    "width": 429,
+    "height": 46,
     "tabOrder": 413
   },
   "visual": {

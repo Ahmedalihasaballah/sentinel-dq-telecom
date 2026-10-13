@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-sample-bg",
   "position": {
-    "x": 1770,
-    "y": 62,
+    "x": 1754,
+    "y": 24,
     "z": 411,
-    "width": 116,
-    "height": 44,
+    "width": 132,
+    "height": 46,
     "tabOrder": 411
   },
   "visual": {

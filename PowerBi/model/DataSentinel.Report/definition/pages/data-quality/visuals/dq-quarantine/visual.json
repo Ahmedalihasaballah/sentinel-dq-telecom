@@ -3,10 +3,10 @@
   "name": "dq-quarantine",
   "position": {
     "x": 94,
-    "y": 604,
+    "y": 616,
     "z": 143,
     "width": 591,
-    "height": 420,
+    "height": 410,
     "tabOrder": 143
   },
   "visual": {
@@ -283,7 +283,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -335,7 +335,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },
@@ -442,7 +442,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             }

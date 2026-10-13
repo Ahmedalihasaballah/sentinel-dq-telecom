@@ -5,8 +5,8 @@
     "x": 94,
     "y": 80,
     "z": 307,
-    "width": 900,
-    "height": 24,
+    "width": 1100,
+    "height": 32,
     "tabOrder": 307
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Who has paid, who owes us money, which customers have problems?",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#4B5563"
                     }
                   }

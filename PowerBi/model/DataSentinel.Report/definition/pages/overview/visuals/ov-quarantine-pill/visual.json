@@ -3,10 +3,10 @@
   "name": "ov-quarantine-pill",
   "position": {
     "x": 565,
-    "y": 208,
+    "y": 210,
     "z": 39,
-    "width": 250,
-    "height": 24,
+    "width": 320,
+    "height": 28,
     "tabOrder": 39
   },
   "visual": {
@@ -243,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

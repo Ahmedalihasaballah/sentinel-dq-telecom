@@ -3,10 +3,10 @@
   "name": "in-list",
   "position": {
     "x": 94,
-    "y": 604,
+    "y": 616,
     "z": 277,
     "width": 1181,
-    "height": 420,
+    "height": 410,
     "tabOrder": 277
   },
   "visual": {
@@ -421,7 +421,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -473,7 +473,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

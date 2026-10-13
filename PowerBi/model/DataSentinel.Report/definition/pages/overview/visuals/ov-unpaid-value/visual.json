@@ -3,10 +3,10 @@
   "name": "ov-unpaid-value",
   "position": {
     "x": 557,
-    "y": 276,
+    "y": 298,
     "z": 56,
     "width": 409,
-    "height": 50,
+    "height": 60,
     "tabOrder": 56
   },
   "visual": {
@@ -217,7 +217,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "35D"
                 }
               }
             },

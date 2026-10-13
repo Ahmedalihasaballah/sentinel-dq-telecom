@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-pill-priority",
   "position": {
-    "x": 1006,
-    "y": 64,
+    "x": 779,
+    "y": 26,
     "z": 250,
-    "width": 92,
-    "height": 40,
+    "width": 117,
+    "height": 42,
     "tabOrder": 250
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

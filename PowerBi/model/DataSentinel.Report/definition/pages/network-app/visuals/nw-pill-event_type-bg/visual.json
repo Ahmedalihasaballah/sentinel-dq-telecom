@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-pill-event_type-bg",
   "position": {
-    "x": 1020,
-    "y": 62,
+    "x": 788,
+    "y": 24,
     "z": 419,
-    "width": 190,
-    "height": 44,
+    "width": 247,
+    "height": 46,
     "tabOrder": 419
   },
   "visual": {

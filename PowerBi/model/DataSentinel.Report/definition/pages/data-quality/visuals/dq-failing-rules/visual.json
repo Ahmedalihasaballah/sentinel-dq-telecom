@@ -3,10 +3,10 @@
   "name": "dq-failing-rules",
   "position": {
     "x": 705,
-    "y": 604,
+    "y": 616,
     "z": 146,
     "width": 1181,
-    "height": 420,
+    "height": 410,
     "tabOrder": 146
   },
   "visual": {
@@ -361,7 +361,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -413,7 +413,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

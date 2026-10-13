@@ -3,10 +3,10 @@
   "name": "cp-title",
   "position": {
     "x": 94,
-    "y": 32,
+    "y": 22,
     "z": 375,
-    "width": 900,
-    "height": 40,
+    "width": 1000,
+    "height": 52,
     "tabOrder": 375
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Customer profile",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "21pt",
+                      "fontSize": "30pt",
                       "fontWeight": "bold",
                       "color": "#111827"
                     }

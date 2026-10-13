@@ -3,10 +3,10 @@
   "name": "ov-priority",
   "position": {
     "x": 1295,
-    "y": 706,
+    "y": 716,
     "z": 79,
     "width": 591,
-    "height": 318,
+    "height": 314,
     "tabOrder": 79
   },
   "visual": {
@@ -283,7 +283,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -335,7 +335,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

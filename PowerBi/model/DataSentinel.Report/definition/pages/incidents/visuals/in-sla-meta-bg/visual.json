@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-sla-meta-bg",
   "position": {
-    "x": 1730,
-    "y": 270,
+    "x": 1700,
+    "y": 292,
     "z": 275,
-    "width": 140,
-    "height": 30,
+    "width": 170,
+    "height": 34,
     "tabOrder": 275
   },
   "visual": {

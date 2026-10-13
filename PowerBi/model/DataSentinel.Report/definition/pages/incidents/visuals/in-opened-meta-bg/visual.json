@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-opened-meta-bg",
   "position": {
-    "x": 1730,
-    "y": 616,
+    "x": 1700,
+    "y": 628,
     "z": 279,
-    "width": 140,
-    "height": 30,
+    "width": 170,
+    "height": 34,
     "tabOrder": 279
   },
   "visual": {

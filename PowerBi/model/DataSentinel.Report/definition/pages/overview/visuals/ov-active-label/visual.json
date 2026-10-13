@@ -3,10 +3,10 @@
   "name": "ov-active-label",
   "position": {
     "x": 1018,
-    "y": 254,
+    "y": 270,
     "z": 59,
     "width": 397,
-    "height": 22,
+    "height": 30,
     "tabOrder": 59
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#1FAE7A"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Active customers",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#374151",
                       "fontWeight": "bold"
                     }

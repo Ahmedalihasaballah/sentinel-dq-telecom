@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pass-trend-meta",
   "position": {
-    "x": 1734,
-    "y": 272,
+    "x": 1704,
+    "y": 294,
     "z": 142,
-    "width": 132,
+    "width": 162,
     "height": 26,
     "tabOrder": 142
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

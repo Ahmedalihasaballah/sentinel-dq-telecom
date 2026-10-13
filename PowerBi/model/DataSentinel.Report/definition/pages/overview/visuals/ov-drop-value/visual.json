@@ -3,10 +3,10 @@
   "name": "ov-drop-value",
   "position": {
     "x": 1463,
-    "y": 276,
+    "y": 298,
     "z": 64,
     "width": 251,
-    "height": 50,
+    "height": 60,
     "tabOrder": 64
   },
   "visual": {
@@ -217,7 +217,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "35D"
                 }
               }
             },

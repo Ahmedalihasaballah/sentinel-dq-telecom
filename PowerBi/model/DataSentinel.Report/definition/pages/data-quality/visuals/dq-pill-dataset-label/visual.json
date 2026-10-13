@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pill-dataset-label",
   "position": {
-    "x": 1266,
-    "y": 74,
+    "x": 1100,
+    "y": 34,
     "z": 115,
-    "width": 110,
-    "height": 22,
+    "width": 91,
+    "height": 28,
     "tabOrder": 115
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Dataset",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#4B5563"
                     }
                   }

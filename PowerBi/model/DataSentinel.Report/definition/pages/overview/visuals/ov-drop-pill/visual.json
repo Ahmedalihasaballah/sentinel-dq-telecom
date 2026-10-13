@@ -3,10 +3,10 @@
   "name": "ov-drop-pill",
   "position": {
     "x": 1471,
-    "y": 328,
+    "y": 340,
     "z": 65,
     "width": 227,
-    "height": 24,
+    "height": 28,
     "tabOrder": 65
   },
   "visual": {
@@ -243,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

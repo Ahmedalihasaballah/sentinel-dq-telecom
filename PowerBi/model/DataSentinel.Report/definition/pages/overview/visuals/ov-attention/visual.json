@@ -3,10 +3,10 @@
   "name": "ov-attention",
   "position": {
     "x": 94,
-    "y": 706,
+    "y": 716,
     "z": 76,
     "width": 1181,
-    "height": 318,
+    "height": 314,
     "tabOrder": 76
   },
   "visual": {
@@ -291,7 +291,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -343,7 +343,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

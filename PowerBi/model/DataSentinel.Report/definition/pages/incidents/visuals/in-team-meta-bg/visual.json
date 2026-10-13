@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-team-meta-bg",
   "position": {
-    "x": 1126,
-    "y": 270,
+    "x": 1096,
+    "y": 292,
     "z": 272,
-    "width": 140,
-    "height": 30,
+    "width": 170,
+    "height": 34,
     "tabOrder": 272
   },
   "visual": {

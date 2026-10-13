@@ -3,10 +3,10 @@
   "name": "ra-checks",
   "position": {
     "x": 94,
-    "y": 604,
+    "y": 616,
     "z": 208,
     "width": 886,
-    "height": 420,
+    "height": 410,
     "tabOrder": 208
   },
   "visual": {
@@ -381,7 +381,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -433,7 +433,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

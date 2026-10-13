@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-sample",
   "position": {
-    "x": 1770,
-    "y": 73,
+    "x": 1754,
+    "y": 35,
     "z": 110,
-    "width": 116,
+    "width": 132,
     "height": 24,
     "tabOrder": 110
   },
@@ -22,7 +22,7 @@
                     "value": "Sample data",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "fontWeight": "bold",
                       "color": "#FFFFFF"
                     }

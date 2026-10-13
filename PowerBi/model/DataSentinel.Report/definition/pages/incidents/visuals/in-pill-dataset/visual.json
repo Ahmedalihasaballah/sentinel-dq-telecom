@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-pill-dataset",
   "position": {
-    "x": 1408,
-    "y": 64,
+    "x": 1295,
+    "y": 26,
     "z": 244,
-    "width": 130,
-    "height": 40,
+    "width": 167,
+    "height": 42,
     "tabOrder": 244
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

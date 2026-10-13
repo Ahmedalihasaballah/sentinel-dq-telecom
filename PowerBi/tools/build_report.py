@@ -35,9 +35,9 @@ SIDEBAR_W = 264   # slide-out menu panel, hidden until ☰ is clicked (bookmarks
 X0, X1 = STRIP_W + 30, 1886
 W = X1 - X0
 GAP = 20
-KPI_Y, KPI_H = 120, 118
-R2_Y, R2_H = 258, 326
-R3_Y, R3_H = 604, 420
+KPI_Y, KPI_H = 128, 134
+R2_Y, R2_H = 280, 318
+R3_Y, R3_H = 616, 410
 
 NAV = [("overview", "Overview", "⌂"), ("data-quality", "Data Quality", "◇"),
        ("revenue-assurance", "Revenue Assurance", "€"), ("incidents", "Incidents", "△"),
@@ -255,7 +255,7 @@ def chart(page, name, vtype, pos, buckets, title, subtitle=None, objects=None, s
                           "objects": objects or {}, "drillFilterOtherVisuals": True}, filters)
     if meta:
         x, y, w, h = pos
-        chip = (x + w - 156, y + 12, 140, 30)
+        chip = (x + w - 186, y + 12, 170, 34)
         shape(page, f"{name}-meta-bg", chip, WHITE, radius="8D", border="#D9DEE7")
         if meta.startswith("="):  # measure-driven text
             text_card(page, f"{name}-meta", (chip[0] + 4, chip[1] + 2, chip[2] - 8, 26), meta[1:], "#374151", 9)
@@ -324,7 +324,7 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
     """White KPI card: dot + label, big left-aligned number, status pill, optional sparkline on the right."""
     x, y, w, h = pos
     shape(page, f"{name}-bg", pos, WHITE, border=BORDER, nav=nav, lifted=True)
-    textbox(page, f"{name}-label", (x + 18, y + 14, w - 36, 22),
+    textbox(page, f"{name}-label", (x + 18, y + 12, w - 36, 30),
             [("● ", {"fontSize": "10pt", "color": dot}),
              (label, {"fontSize": "11pt", "color": "#374151", "fontWeight": "bold"})])
     region = w * 0.58 if spark else w - 24
@@ -332,7 +332,7 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
     if nav:
         vco["visualLink"] = [{"properties": {"show": lit("true"), "type": lit("'PageNavigation'"),
                                              "navigationSection": lit(s(nav))}}]
-    put(page, f"{name}-value", (x + 10, y + 36, region, 50), {
+    put(page, f"{name}-value", (x + 10, y + 40, region, 60), {
         "visualType": "multiRowCard", "query": query({"Values": [meas(measure)]}),
         "visualContainerObjects": vco,
         "objects": {"categoryLabels": OFF(),
@@ -342,11 +342,11 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
         "drillFilterOtherVisuals": True})
     if pill_measure:
         bg, fg = PILLS["grey" if pill == "status" else pill]
-        text_card(page, f"{name}-pill", (x + 18, y + 88, min(region - 24, 250), 24), pill_measure, fg, 9,
+        text_card(page, f"{name}-pill", (x + 18, y + h - 36, min(region - 24, 320), 28), pill_measure, fg, 9,
                   bg=bg, bold=True, nav=nav, dynamic=pill == "status")
     if spark:
         fx, fy, c = spark
-        put(page, f"{name}-spark", (x + region + 4, y + 34, w - region - 18, 72), {
+        put(page, f"{name}-spark", (x + region + 4, y + 40, w - region - 18, h - 52), {
             "visualType": "lineChart", "query": query({"Category": [fx], "Y": [fy]}),
             "visualContainerObjects": frame(bg=None, border=False, pad=False),
             "objects": {"categoryAxis": OFF(), "valueAxis": OFF(), "legend": OFF(),
@@ -358,8 +358,8 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
 def pill_slicer(page, name, pos, label, table, column, mode="Dropdown"):
     x, y, w, h = pos
     shape(page, f"{name}-bg", pos, WHITE, radius="22D", border="#DADDE3")
-    textbox(page, f"{name}-label", (x + 16, y + 12, 110, 22), [(label, {"fontSize": "10pt", "color": "#4B5563"})])
-    lw = 8 * len(label) + 22
+    lw = 11 * len(label) + 30
+    textbox(page, f"{name}-label", (x + 16, y + 10, lw - 16, 28), [(label, {"fontSize": "10pt", "color": "#4B5563"})])
     objects = {"data": [{"properties": {"mode": lit(s(mode))}}], "header": OFF(),
                "items": [{"properties": {"fontColor": color(TEXT), "bold": lit("true"), "fontSize": lit("10D"),
                                          "fontFamily": lit("'Arial'"),
@@ -383,7 +383,7 @@ def nav_button(page, target, label, icon, y, active):
     x, w, h = STRIP_W + 16, SIDEBAR_W - 32, 44
     if active:
         shape(page, f"{page}-nav-{target}-bg", (x, y, w, h), NAV_ACTIVE_BG, radius="8D")
-    textbox(page, f"{page}-nav-{target}-txt", (x + 16, y + 11, w - 24, 24),
+    textbox(page, f"{page}-nav-{target}-txt", (x + 14, y + 8, w - 18, 30),
             [(f"{icon}   ", {"fontSize": "11pt", "color": WHITE if active else NAV_ICON}),
              (label, {"fontSize": "11pt", "color": WHITE if active else NAV_TEXT, "fontWeight": "bold"})])
     click_layer(page, f"{page}-nav-{target}", (x, y, w, h), ("PageNavigation", target))
@@ -420,14 +420,15 @@ def chrome(page, title, subtitle, number=None, pills=()):
         [("12 mart tables · refresh after each pipeline run", {"fontSize": "9pt", "color": SUB})]])
     PANEL_MODE = False
 
-    textbox(page, f"{page}-title", (X0, 32, 900, 40), [(title, {"fontSize": "21pt", "fontWeight": "bold",
+    textbox(page, f"{page}-title", (X0, 22, 1000, 52), [(title, {"fontSize": "21pt", "fontWeight": "bold",
                                                                 "color": TEXT})])
-    textbox(page, f"{page}-subtitle", (X0, 80, 900, 24), [(subtitle, {"fontSize": "11pt", "color": "#4B5563"})])
-    x = X1 - 116
-    sample_pill(page, (x, 62, 116, 44))
+    textbox(page, f"{page}-subtitle", (X0, 80, 1100, 32), [(subtitle, {"fontSize": "11pt", "color": "#4B5563"})])
+    x = X1 - 132
+    sample_pill(page, (x, 24, 132, 46))
     for label, table, column, width, mode in reversed(pills):
+        width = round(width * 1.3)
         x -= width + 10
-        pill_slicer(page, f"{page}-pill-{column}", (x, 62, width, 44), label, table, column, mode)
+        pill_slicer(page, f"{page}-pill-{column}", (x, 24, width, 46), label, table, column, mode)
     textbox(page, f"{page}-footer", (X0, 1046, 900, 22),
             [("DataSentinel · design preview with sample values, real values come from the Gold marts",
               {"fontSize": "8pt", "color": GREY})])
@@ -514,8 +515,8 @@ ROW3 = cols(3, R3_Y, R3_H)
 # Page 1 Overview
 P = "overview"
 chrome(P, "Overview", "Is today's data healthy, and what needs attention first?", 1)
-k1 = cols(4, KPI_Y, 108)
-k2 = cols(4, KPI_Y + 120, 108)
+k1 = cols(4, KPI_Y, 118)
+k2 = cols(4, KPI_Y + 130, 118)
 kpi(P, "ov-dq", k1[0], "DQ pass rate", BLUE, "DQ Pass Rate", "UI DQ Pill", "status",
     (col("mart_dq_trend", "run_date"), meas("DQ Trend Pass Rate"), BLUE), nav="data-quality")
 kpi(P, "ov-quarantine", k1[1], "Rows in quarantine", PURPLE, "Quarantined Rows", "UI Quarantine Pill", "status",
@@ -532,7 +533,7 @@ kpi(P, "ov-active", k2[2], "Active customers", GREEN, "Active Customers", "UI Ac
     nav="customer-360")
 kpi(P, "ov-drop", k2[3], "Dropped call rate", PURPLE, "Drop Rate", "UI Drop Pill", "status",
     (col("mart_network_daily", "usage_date"), meas("Drop Rate"), PURPLE), nav="network-app")
-r2 = cols(3, 368, 318)
+r2 = cols(3, 394, 306)
 chart(P, "ov-pass-trend", "lineChart", r2[0],
       {"Category": [col("mart_dq_trend", "run_date")], "Y": [meas("DQ Trend Pass Rate"), meas("Target DQ Pass")]},
       "Pass rate by day", "Gate rules, all datasets, vs 98% target",
@@ -550,7 +551,7 @@ chart(P, "ov-drop-trend", "lineChart", r2[2],
       {**axis_objects(legend=True), "dataPoint": [series_color(meas("Drop Rate"), ORANGE),
                                                   series_color(meas("Target Drop Rate"), GREY)]},
       displays={f"{M}.Drop Rate": "Drop rate", f"{M}.Target Drop Rate": "Limit"}, meta="=UI Days Network")
-r3 = cols(2, 706, 318, weights=[2, 1])
+r3 = cols(2, 716, 314, weights=[2, 1])
 table(P, "ov-attention", r3[0],
       [col("Attention", "Priority"), col("Attention", "Area"), col("Attention", "Item"), col("Attention", "Issue")],
       "Needs attention first", "Failing DQ rules, breached or unassigned incidents, failing revenue checks",
@@ -825,10 +826,31 @@ for name, display in PAGE_META:
     page["objects"] = {"background": [{"properties": {"color": color(BG), "transparency": lit("0D")}}],
                        "outspace": [{"properties": {"color": color(BG), "transparency": lit("0D")}}]}
     dump(os.path.join(PAGES, name, "page.json"), page)
+FONT_SCALE = 1.45  # one knob for every font size in the report (text boxes, titles, cards, axes, labels)
+
+
+def scale_fonts(o):
+    """Scale fontSize / textSize values: "11pt" in text boxes and "14D" literals in formatting objects."""
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in ("fontSize", "textSize"):
+                if isinstance(v, str) and v.endswith("pt"):
+                    o[k] = f"{round(float(v[:-2]) * FONT_SCALE)}pt"
+                elif isinstance(v, dict) and str(v.get("expr", {}).get("Literal", {}).get("Value", "")).endswith("D"):
+                    lit_ = v["expr"]["Literal"]
+                    lit_["Value"] = f"{round(float(lit_['Value'][:-1]) * FONT_SCALE)}D"
+            else:
+                scale_fonts(v)
+    elif isinstance(o, list):
+        for v in o:
+            scale_fonts(v)
+
+
 names = set()
 for page, name, doc in VISUALS:
     assert (page, name) not in names, name
     names.add((page, name))
+    scale_fonts(doc["visual"])
     dump(os.path.join(PAGES, page, "visuals", name, "visual.json"), doc)
 dump(os.path.join(PAGES, "pages.json"), {
     "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",

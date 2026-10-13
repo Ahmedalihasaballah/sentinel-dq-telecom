@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-crash-meta",
   "position": {
-    "x": 1130,
-    "y": 618,
+    "x": 1100,
+    "y": 630,
     "z": 463,
-    "width": 132,
+    "width": 162,
     "height": 26,
     "tabOrder": 463
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

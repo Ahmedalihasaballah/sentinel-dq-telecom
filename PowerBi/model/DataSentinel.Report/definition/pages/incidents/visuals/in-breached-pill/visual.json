@@ -3,10 +3,10 @@
   "name": "in-breached-pill",
   "position": {
     "x": 565,
-    "y": 208,
+    "y": 226,
     "z": 261,
-    "width": 250,
-    "height": 24,
+    "width": 320,
+    "height": 28,
     "tabOrder": 261
   },
   "visual": {
@@ -216,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

@@ -3,10 +3,10 @@
   "name": "dq-pass-trend",
   "position": {
     "x": 1436,
-    "y": 258,
+    "y": 280,
     "z": 140,
     "width": 450,
-    "height": 326,
+    "height": 318,
     "tabOrder": 140
   },
   "visual": {
@@ -262,7 +262,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -314,7 +314,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

@@ -3,10 +3,10 @@
   "name": "ov-drop-trend",
   "position": {
     "x": 1302,
-    "y": 368,
+    "y": 394,
     "z": 73,
     "width": 584,
-    "height": 318,
+    "height": 306,
     "tabOrder": 73
   },
   "visual": {
@@ -262,7 +262,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -314,7 +314,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

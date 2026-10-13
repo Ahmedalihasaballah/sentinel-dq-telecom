@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-pill-is_data_defect-label",
   "position": {
-    "x": 1476,
-    "y": 74,
+    "x": 1370,
+    "y": 34,
     "z": 177,
-    "width": 110,
-    "height": 22,
+    "width": 212,
+    "height": 28,
     "tabOrder": 177
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "Defect or business",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#4B5563"
                     }
                   }

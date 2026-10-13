@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-pill-app_version",
   "position": {
-    "x": 1330,
-    "y": 64,
+    "x": 1196,
+    "y": 26,
     "z": 418,
-    "width": 78,
-    "height": 40,
+    "width": 97,
+    "height": 42,
     "tabOrder": 418
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

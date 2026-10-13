@@ -23,22 +23,22 @@
   "minimum": "#D9363E",
   "textClasses": {
     "callout": {
-      "fontSize": 28,
+      "fontSize": 40,
       "fontFace": "Arial Black",
       "color": "#111827"
     },
     "title": {
-      "fontSize": 12,
+      "fontSize": 20,
       "fontFace": "Arial",
       "color": "#111827"
     },
     "header": {
-      "fontSize": 10,
+      "fontSize": 15,
       "fontFace": "Arial",
       "color": "#111827"
     },
     "label": {
-      "fontSize": 10,
+      "fontSize": 14,
       "fontFace": "Arial",
       "color": "#6B7280"
     }
@@ -82,7 +82,7 @@
               }
             },
             "bold": true,
-            "fontSize": 14,
+            "fontSize": 20,
             "fontFamily": "Arial"
           }
         ],
@@ -93,7 +93,7 @@
                 "color": "#6B7280"
               }
             },
-            "fontSize": 9,
+            "fontSize": 14,
             "fontFamily": "Arial"
           }
         ],
@@ -113,7 +113,7 @@
                 "color": "#6B7280"
               }
             },
-            "fontSize": 10,
+            "fontSize": 14,
             "gridlineShow": false,
             "fontFamily": "Arial"
           }
@@ -126,7 +126,7 @@
                 "color": "#6B7280"
               }
             },
-            "fontSize": 10,
+            "fontSize": 14,
             "gridlineShow": true,
             "gridlineColor": {
               "solid": {
@@ -146,7 +146,7 @@
                 "color": "#374151"
               }
             },
-            "fontSize": 10,
+            "fontSize": 14,
             "showTitle": false,
             "defaultToCircle": true,
             "fontFamily": "Arial"
@@ -159,7 +159,7 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 10,
+            "fontSize": 14,
             "fontFamily": "Arial",
             "bold": true
           }
@@ -205,7 +205,7 @@
               }
             },
             "bold": true,
-            "fontSize": 10,
+            "fontSize": 14,
             "outlineStyle": 2,
             "fontFamily": "Arial"
           }
@@ -232,7 +232,7 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 10,
+            "fontSize": 14,
             "fontFamily": "Arial"
           }
         ],
@@ -275,7 +275,8 @@
               }
             },
             "bold": true,
-            "fontFamily": "Arial"
+            "fontFamily": "Arial",
+            "fontSize": 14
           }
         ],
         "rowHeaders": [
@@ -291,7 +292,8 @@
               }
             },
             "fontFamily": "Arial",
-            "bold": true
+            "bold": true,
+            "fontSize": 14
           }
         ],
         "values": [
@@ -301,7 +303,7 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 10,
+            "fontSize": 14,
             "backColorPrimary": {
               "solid": {
                 "color": "#FFFFFF"
@@ -343,7 +345,7 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 9,
+            "fontSize": 14,
             "bold": true
           }
         ]

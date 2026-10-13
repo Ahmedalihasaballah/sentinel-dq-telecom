@@ -3,10 +3,10 @@
   "name": "ov-active-bg",
   "position": {
     "x": 1000,
-    "y": 240,
+    "y": 258,
     "z": 58,
     "width": 433,
-    "height": 108,
+    "height": 118,
     "tabOrder": 58
   },
   "visual": {

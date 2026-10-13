@@ -3,10 +3,10 @@
   "name": "ov-open-value",
   "position": {
     "x": 1010,
-    "y": 156,
+    "y": 168,
     "z": 42,
     "width": 251,
-    "height": 50,
+    "height": 60,
     "tabOrder": 42
   },
   "visual": {
@@ -217,7 +217,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "35D"
                 }
               }
             },

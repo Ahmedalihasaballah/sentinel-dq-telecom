@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-unpaid-plan-meta",
   "position": {
-    "x": 828,
-    "y": 272,
+    "x": 798,
+    "y": 294,
     "z": 347,
-    "width": 132,
+    "width": 162,
     "height": 26,
     "tabOrder": 347
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

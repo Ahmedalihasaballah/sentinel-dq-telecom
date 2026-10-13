@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-pill-team-bg",
   "position": {
-    "x": 1120,
-    "y": 62,
+    "x": 918,
+    "y": 24,
     "z": 245,
-    "width": 200,
-    "height": 44,
+    "width": 260,
+    "height": 46,
     "tabOrder": 245
   },
   "visual": {

@@ -3,10 +3,10 @@
   "name": "dq-oldest-pill",
   "position": {
     "x": 1471,
-    "y": 208,
+    "y": 226,
     "z": 135,
-    "width": 250,
-    "height": 24,
+    "width": 320,
+    "height": 28,
     "tabOrder": 135
   },
   "visual": {
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

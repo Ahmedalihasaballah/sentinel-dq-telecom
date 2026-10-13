@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-drop-trend-meta",
   "position": {
-    "x": 1734,
-    "y": 382,
+    "x": 1704,
+    "y": 408,
     "z": 75,
-    "width": 132,
+    "width": 162,
     "height": 26,
     "tabOrder": 75
   },
@@ -183,7 +183,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

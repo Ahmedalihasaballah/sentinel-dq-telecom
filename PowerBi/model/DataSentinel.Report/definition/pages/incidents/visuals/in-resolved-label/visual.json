@@ -3,10 +3,10 @@
   "name": "in-resolved-label",
   "position": {
     "x": 1018,
-    "y": 134,
+    "y": 140,
     "z": 263,
     "width": 397,
-    "height": 22,
+    "height": 30,
     "tabOrder": 263
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#1FAE7A"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Resolved in SLA",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#374151",
                       "fontWeight": "bold"
                     }

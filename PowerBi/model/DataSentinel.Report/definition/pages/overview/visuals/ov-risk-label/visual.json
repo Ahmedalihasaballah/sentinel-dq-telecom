@@ -3,10 +3,10 @@
   "name": "ov-risk-label",
   "position": {
     "x": 112,
-    "y": 254,
+    "y": 270,
     "z": 50,
     "width": 397,
-    "height": 22,
+    "height": 30,
     "tabOrder": 50
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#F06A35"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "EUR at risk (data defects)",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#374151",
                       "fontWeight": "bold"
                     }

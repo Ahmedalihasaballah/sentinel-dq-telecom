@@ -3,10 +3,10 @@
   "name": "ov-risk-value",
   "position": {
     "x": 104,
-    "y": 276,
+    "y": 298,
     "z": 51,
     "width": 251,
-    "height": 50,
+    "height": 60,
     "tabOrder": 51
   },
   "visual": {
@@ -217,7 +217,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "35D"
                 }
               }
             },

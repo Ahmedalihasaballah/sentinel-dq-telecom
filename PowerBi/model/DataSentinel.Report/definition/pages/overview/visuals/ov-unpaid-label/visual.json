@@ -3,10 +3,10 @@
   "name": "ov-unpaid-label",
   "position": {
     "x": 565,
-    "y": 254,
+    "y": 270,
     "z": 55,
     "width": 397,
-    "height": 22,
+    "height": 30,
     "tabOrder": 55
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#F06A35"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Unpaid EUR",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#374151",
                       "fontWeight": "bold"
                     }

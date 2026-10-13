@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-pill-status",
   "position": {
-    "x": 1180,
-    "y": 64,
+    "x": 1001,
+    "y": 26,
     "z": 318,
-    "width": 118,
-    "height": 40,
+    "width": 152,
+    "height": 42,
     "tabOrder": 318
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

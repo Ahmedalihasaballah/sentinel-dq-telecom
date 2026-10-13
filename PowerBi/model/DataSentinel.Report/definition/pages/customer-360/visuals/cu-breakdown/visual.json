@@ -3,10 +3,10 @@
   "name": "cu-breakdown",
   "position": {
     "x": 1000,
-    "y": 258,
+    "y": 280,
     "z": 342,
     "width": 433,
-    "height": 326,
+    "height": 318,
     "tabOrder": 342
   },
   "visual": {
@@ -294,7 +294,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -346,7 +346,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

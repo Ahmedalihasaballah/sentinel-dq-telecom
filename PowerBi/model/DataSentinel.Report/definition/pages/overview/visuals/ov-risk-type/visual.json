@@ -3,10 +3,10 @@
   "name": "ov-risk-type",
   "position": {
     "x": 698,
-    "y": 368,
+    "y": 394,
     "z": 70,
     "width": 584,
-    "height": 318,
+    "height": 306,
     "tabOrder": 70
   },
   "visual": {
@@ -278,7 +278,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -330,7 +330,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },
@@ -423,7 +423,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "16D"
                 }
               }
             }
@@ -492,7 +492,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

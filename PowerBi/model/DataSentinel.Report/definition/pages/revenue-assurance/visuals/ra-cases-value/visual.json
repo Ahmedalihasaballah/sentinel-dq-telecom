@@ -3,10 +3,10 @@
   "name": "ra-cases-value",
   "position": {
     "x": 1554,
-    "y": 156,
+    "y": 168,
     "z": 200,
     "width": 318,
-    "height": 50,
+    "height": 60,
     "tabOrder": 200
   },
   "visual": {
@@ -190,7 +190,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "35D"
                 }
               }
             },

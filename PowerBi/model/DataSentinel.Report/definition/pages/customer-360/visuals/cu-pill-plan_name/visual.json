@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-pill-plan_name",
   "position": {
-    "x": 1594,
-    "y": 64,
+    "x": 1532,
+    "y": 26,
     "z": 312,
-    "width": 154,
-    "height": 40,
+    "width": 200,
+    "height": 42,
     "tabOrder": 312
   },
   "visual": {
@@ -211,7 +211,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "14D"
                 }
               }
             },

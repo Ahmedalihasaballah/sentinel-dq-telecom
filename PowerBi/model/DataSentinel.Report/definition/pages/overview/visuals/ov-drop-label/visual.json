@@ -3,10 +3,10 @@
   "name": "ov-drop-label",
   "position": {
     "x": 1471,
-    "y": 254,
+    "y": 270,
     "z": 63,
     "width": 397,
-    "height": 22,
+    "height": 30,
     "tabOrder": 63
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "value": "● ",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "10pt",
+                      "fontSize": "14pt",
                       "color": "#6B5BD6"
                     }
                   },
@@ -30,7 +30,7 @@
                     "value": "Dropped call rate",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "16pt",
                       "color": "#374151",
                       "fontWeight": "bold"
                     }

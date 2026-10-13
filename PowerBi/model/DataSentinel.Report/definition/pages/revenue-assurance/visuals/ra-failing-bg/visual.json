@@ -3,10 +3,10 @@
   "name": "ra-failing-bg",
   "position": {
     "x": 1181,
-    "y": 120,
+    "y": 128,
     "z": 194,
     "width": 342,
-    "height": 118,
+    "height": 134,
     "tabOrder": 194
   },
   "visual": {

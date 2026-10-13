@@ -3,10 +3,10 @@
   "name": "ov-open-pill",
   "position": {
     "x": 1018,
-    "y": 208,
+    "y": 210,
     "z": 43,
     "width": 227,
-    "height": 24,
+    "height": 28,
     "tabOrder": 43
   },
   "visual": {
@@ -228,7 +228,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "13D"
                 }
               }
             },

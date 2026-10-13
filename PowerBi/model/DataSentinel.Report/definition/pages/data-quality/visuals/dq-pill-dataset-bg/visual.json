@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-pill-dataset-bg",
   "position": {
-    "x": 1250,
-    "y": 62,
+    "x": 1084,
+    "y": 24,
     "z": 114,
-    "width": 250,
-    "height": 44,
+    "width": 325,
+    "height": 46,
     "tabOrder": 114
   },
   "visual": {
