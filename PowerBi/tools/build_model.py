@@ -485,3 +485,13 @@ block7 = "".join(f"\n\t/// UI7: aggregate view\n\tmeasure '{n}' = {e}\n\t\tforma
 src = src.replace("\n\tcolumn MeasureHost", block7 + "\n\tcolumn MeasureHost", 1)
 open(MEAS, "w", encoding="utf-8").write(src)
 print("part 7: aggregate measures")
+
+
+# ===== Part 8: larger axis text (category and value axes) on every chart =====
+AXIS_FONT = 13
+th = json.load(open(tp, encoding="utf-8"))
+star = th["visualStyles"]["*"]["*"]
+for k in ("categoryAxis", "valueAxis"):
+    star[k][0].update({"fontSize": AXIS_FONT, "titleFontSize": AXIS_FONT})
+json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+print("part 8: axis text", AXIS_FONT)

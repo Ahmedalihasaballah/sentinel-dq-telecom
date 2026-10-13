@@ -175,6 +175,13 @@ table _Measures
 
 
 
+
+
+
+
+
+
+
 	/// UI: report helper
 	measure 'UI Records Delta' =
 			VAR maxD = CALCULATE ( MAX ( mart_network_daily[usage_date] ), ALLSELECTED ( mart_network_daily ) )
