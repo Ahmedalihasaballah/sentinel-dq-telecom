@@ -21,7 +21,7 @@ table _Measures
 		formatString: #,0
 		lineageTag: 71423f10-cb8e-4c84-9970-23f0418dbf39
 
-	measure 'Resolved In SLA' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[status] = "RESOLVED", mart_incidents[sla_status] = "RESOLVED_IN_SLA" )
+	measure 'Resolved In SLA' = CALCULATE ( COUNTROWS ( mart_incidents ), mart_incidents[status] = "RESOLVED", mart_incidents[sla_status] = "RESOLVED_IN_SLA" ) + 0
 		formatString: #,0
 		lineageTag: b51e6a71-e5a3-4a81-93bb-2a1ee7983b46
 
