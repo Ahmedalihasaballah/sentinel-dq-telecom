@@ -509,11 +509,29 @@ THREE = cols(3, KPI_Y, KPI_H)
 FOUR = cols(4, KPI_Y, KPI_H)
 FIVE = cols(5, KPI_Y, KPI_H)
 HALF2 = cols(2, R2_Y, R2_H)       # row 2: two equal charts
-FULL3 = (X0, R3_Y, W, R3_H)       # row 3: one full-width table
-HALF3 = cols(2, R3_Y, R3_H)       # row 3: two equal visuals
+HALF3 = cols(2, R3_Y, R3_H)       # row 3: two equal charts
+PRIORITY_COLORS = [("Critical", RED), ("High", ORANGE), ("Medium", AMBER), ("Low", GREY)]
+SEVERITY_COLORS = [("critical", RED), ("high", ORANGE), ("medium", AMBER), ("low", GREY)]
+
+
+def hbar(page, name, pos, category, value, title, subtitle, c=BLUE, top=None, meta=None, colors=None):
+    """Horizontal bars, biggest first, value printed at the end of each bar; optional top-N."""
+    cat_tbl = category["Column"]["Expression"]["SourceRef"]["Entity"]
+    cat_col = category["Column"]["Property"]
+    dp = ([value_color(cat_tbl, cat_col, v, cc) for v, cc in colors] if colors
+          else [series_color(value, c)])
+    chart(page, name, "clusteredBarChart", pos, {"Category": [category], "Y": [value]}, title, subtitle,
+          {"legend": OFF(), "valueAxis": OFF(),
+           "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("10D")}}],
+           "dataPoint": dp,
+           "labels": [{"properties": {"show": lit("true"), "color": color(TEXT), "fontSize": lit("10D"),
+                                      "labelPosition": lit("'OutsideEnd'")}}]},
+          sort=(value, "Descending"), meta=meta or (f"top {top}" if top else None),
+          filters=[filter_top_n(cat_tbl, cat_col, top, value["Measure"]["Property"])] if top else None)
+
 
 # =====================================================================
-# Page 1 Overview: one headline per domain, the action list, and the two biggest risks
+# Page 1 Overview
 P = "overview"
 chrome(P, "Overview", "Is today's data healthy, and what needs attention first?", 1)
 kpi(P, "ov-dq", FIVE[0], "DQ pass rate", BLUE, "DQ Pass Rate", "UI DQ Pill", "status",
@@ -537,14 +555,20 @@ chart(P, "ov-pass-trend", "lineChart", HALF2[0],
 track_bar(P, "ov-risk-type", HALF2[1], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
           "Leak Risk Track", "EUR at risk by leak type", "Latest reconciliation run, gross", ORANGE,
           meta="=UI Runs Recon")
-table(P, "ov-attention", FULL3,
-      [col("Attention", "Priority"), col("Attention", "Area"), col("Attention", "Item"), col("Attention", "Issue")],
-      "Needs attention first", "Failing DQ rules, breached or unassigned incidents, failing revenue checks",
-      sort=(col("Attention", "Priority"), "Ascending"),
-      rules=cell_rule("Color Attention", "Font Attention", col("Attention", "Priority")), meta="=UI Attention Count")
+chart(P, "ov-issues", "barChart", HALF3[0],
+      {"Category": [col("Attention", "Area")], "Y": [meas("Attention Items")],
+       "Series": [col("Attention", "Priority")]},
+      "Open issues by area", "Failing DQ rules, late incidents and failing revenue checks, by priority",
+      {**axis_objects(legend=True, labels=True),
+       "categoryAxis": [{"properties": {"labelColor": color(TEXT), "fontSize": lit("11D")}}],
+       "dataPoint": [value_color("Attention", "Priority", v, c) for v, c in PRIORITY_COLORS]},
+      sort=(meas("Attention Items"), "Descending"), meta="=UI Attention Count")
+columns(P, "ov-priority", HALF3[1], col("mart_incidents", "priority"), meas("Incident Count"),
+        "Incidents by priority", "Count, by SLA status", series=col("mart_incidents", "sla_status"),
+        colors=SLA_COLORS, sort=(col("mart_incidents", "priority"), "Ascending"), meta="=UI Incidents Total")
 
 # =====================================================================
-# Page 2 Data Quality: where it fails, what waits in quarantine, and the rules to fix
+# Page 2 Data Quality
 P = "data-quality"
 chrome(P, "Data Quality", "Which datasets and rules fail, is it getting better, how many rows wait in quarantine?", 2,
        pills=[("Dataset", "mart_dq_health", "dataset", 250, "Dropdown"),
@@ -570,18 +594,13 @@ chart(P, "dq-quarantine", "barChart", HALF2[1],
       {**axis_objects(legend=True), "categoryAxis": [{"properties": {"labelColor": color(TEXT),
                                                                      "fontSize": lit("10D")}}]},
       sort=(meas("Quarantined Rows"), "Descending"), meta="=UI Quarantine Datasets")
-table(P, "dq-failing-rules", FULL3,
-      [col("mart_dq_health", c) for c in ["dataset", "rule_id", "check_name", "scope"]]
-      + [agg("mart_dq_health", "rows_failed")]
-      + [col("mart_dq_health", c) for c in ["status", "severity", "detail"]],
-      "Failing rules", "Latest result per rule, status is not PASS, most failed rows first",
-      sort=(agg("mart_dq_health", "rows_failed"), "Descending"),
-      filters=[filter_not_in("mart_dq_health", "status", ["PASS"])],
-      rules=cell_rule("Color DQ Status", "Font DQ Status", col("mart_dq_health", "status")),
-      displays={"Sum(mart_dq_health.rows_failed)": "rows_failed"})
+hbar(P, "dq-rows-failed", HALF3[0], col("mart_dq_health", "check_name"), meas("Rows Failed"),
+     "Rows failed by check", "Latest result per rule, failing rules only", RED, top=10)
+hbar(P, "dq-severity", HALF3[1], col("mart_dq_health", "severity"), meas("Failing Rules"),
+     "Failing rules by severity", "Number of rules that are not PASS", colors=SEVERITY_COLORS, meta="=UI Rules Total")
 
 # =====================================================================
-# Page 3 Revenue Assurance: how much leaks, where, and the cases to investigate
+# Page 3 Revenue Assurance
 P = "revenue-assurance"
 chrome(P, "Revenue Assurance", "How many EUR leak between systems, where, and which cases must be investigated?", 3,
        pills=[("Defect or business", "mart_revenue_assurance", "is_data_defect", 300, "Dropdown")])
@@ -590,27 +609,17 @@ kpi(P, "ra-gross", THREE[0], "EUR at risk", ORANGE, "Gross EUR At Risk", "UI Gro
 kpi(P, "ra-failing", THREE[1], "Checks failing", RED, "Checks Failing", "UI Checks Total", "red")
 kpi(P, "ra-cases", THREE[2], "Cases to investigate", BLUE, "Cases To Investigate", "UI Latest Run", "blue")
 track_bar(P, "ra-risk-type", HALF2[0], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
-          "Leak Risk Track", "EUR at risk by leak type", "Click a bar to filter the checks and cases", ORANGE,
+          "Leak Risk Track", "EUR at risk by leak type", "Click a bar to filter the other charts", ORANGE,
           meta="=UI Checks Total")
-table(P, "ra-checks", HALF2[1],
-      [col("mart_revenue_assurance", c) for c in ["check_id", "leak_type"]]
-      + [agg("mart_revenue_assurance", c) for c in ["rows_mismatched", "amount_at_risk_eur"]]
-      + [col("mart_revenue_assurance", c) for c in ["status", "severity"]],
-      "Checks R1 to R10", "Latest run, R10 is business (unpaid), not a data defect",
-      sort=(col("mart_revenue_assurance", "check_id"), "Ascending"),
-      rules=cell_rule("Color Recon Status", "Font Recon Status", col("mart_revenue_assurance", "status")),
-      displays={f"Sum(mart_revenue_assurance.{c})": c for c in ["rows_mismatched", "amount_at_risk_eur"]})
-table(P, "ra-cases", FULL3,
-      [col("mart_recon_mismatches", c) for c in ["check_id", "entity_type", "entity_key", "value_a", "value_b"]]
-      + [agg("mart_recon_mismatches", "diff"), agg("mart_recon_mismatches", "amount_at_risk_eur"),
-         col("mart_recon_mismatches", "reason")],
-      "Case list", "What the billing team investigates, largest EUR first",
-      sort=(agg("mart_recon_mismatches", "amount_at_risk_eur"), "Descending"),
-      displays={"Sum(mart_recon_mismatches.diff)": "diff",
-                "Sum(mart_recon_mismatches.amount_at_risk_eur)": "amount_at_risk_eur"})
+hbar(P, "ra-mismatch", HALF2[1], col("mart_revenue_assurance", "leak_type"), meas("Mismatched Rows"),
+     "Mismatched rows by check", "Rows that differ between the two systems", PURPLE, meta="=UI Checks Total")
+hbar(P, "ra-reason", HALF3[0], col("mart_recon_mismatches", "reason"), meas("Cases To Investigate"),
+     "Cases by reason", "Latest run, what the billing team investigates", BLUE, top=10)
+hbar(P, "ra-entity", HALF3[1], col("mart_recon_mismatches", "entity_type"), meas("Case EUR"),
+     "Case EUR by entity type", "EUR at risk in the open cases", ORANGE, meta="=UI Latest Run")
 
 # =====================================================================
-# Page 4 Incidents: what is open and late, who carries it, and the list to work
+# Page 4 Incidents
 P = "incidents"
 chrome(P, "Incidents", "Who owns each incident, how late is it, does the team meet its deadlines?", 4,
        pills=[("Priority", "mart_incidents", "priority", 190, "Dropdown"),
@@ -622,21 +631,18 @@ kpi(P, "in-open", THREE[0], "Open", ORANGE, "Open Incidents", "UI Open 7d", "gre
 kpi(P, "in-breached", THREE[1], "Breached", RED, "SLA Breached", "UI SLA Pill", "status")
 kpi(P, "in-resolved", THREE[2], "Resolved in SLA", GREEN, "Resolved In SLA", "UI Compliance Pill", "status")
 columns(P, "in-priority", HALF2[0], col("mart_incidents", "priority"), meas("Open Incidents"), "Open by priority",
-        "Open incidents, legend = SLA status", series=col("mart_incidents", "sla_status"), colors=SLA_COLORS,
+        "Open incidents, by SLA status", series=col("mart_incidents", "sla_status"), colors=SLA_COLORS,
         sort=(col("mart_incidents", "priority"), "Ascending"))
 track_bar(P, "in-team", HALF2[1], col("mart_incidents", "team"), meas("Open Incidents"), "Team Workload Track",
           "Workload by team", "Open incidents per team", BLUE, meta="=UI Teams")
-table(P, "in-list", FULL3,
-      [col("mart_incidents", c) for c in ["incident_id", "priority", "dataset", "check_name", "description",
-                                         "owner", "team", "status", "due_at"]]
-      + [agg("mart_incidents", "open_hours", 4), col("mart_incidents", "sla_status")],
-      "Incident list", "Soonest deadline first, BREACHED in red",
-      sort=(col("mart_incidents", "due_at"), "Ascending"),
-      rules=cell_rule("Color SLA Status", "Font SLA Status", col("mart_incidents", "sla_status")),
-      displays={"Max(mart_incidents.open_hours)": "open_hours"})
+hbar(P, "in-dataset", HALF3[0], col("mart_incidents", "dataset"), meas("Open Incidents"),
+     "Open incidents by dataset", "Where the open incidents come from", ORANGE, top=10)
+columns(P, "in-hours", HALF3[1], col("mart_incidents", "priority"), meas("Avg Open Hours"),
+        "Average hours open by priority", "Open incidents; deadlines P1 1 h, P2 4 h, P3 24 h, P4 72 h", PURPLE,
+        sort=(col("mart_incidents", "priority"), "Ascending"))
 
 # =====================================================================
-# Page 5 Customer 360: billed vs paid, how old the debt is, who owes and who has problems
+# Page 5 Customer 360
 P = "customer-360"
 chrome(P, "Customer 360", "Who has paid, who owes us money, which customers have problems?", 5,
        pills=[("Status", "mart_customer_360", "status", 200, "Dropdown"),
@@ -655,40 +661,23 @@ chart(P, "cu-aging", "columnChart", HALF2[0],
       filters=[filter_not_in("mart_customer_360", "payment_age_band", ["Paid up"])])
 track_bar(P, "cu-unpaid-plan", HALF2[1], col("mart_customer_360", "plan_name"), meas("Unpaid EUR"),
           "Unpaid Plan Track", "Unpaid EUR by plan", "Billed minus paid", ORANGE, meta="=UI Plans")
-table(P, "cu-top-unpaid", HALF3[0],
-      [col("mart_customer_360", c) for c in ["customer_id", "name_masked", "plan_name"]]
-      + [agg("mart_customer_360", "unpaid_eur"), col("mart_customer_360", "last_payment_at")],
-      "Top 20 customers by unpaid EUR", "Right-click a customer > Drill through for the profile",
-      sort=(agg("mart_customer_360", "unpaid_eur"), "Descending"),
-      filters=[filter_top_n("mart_customer_360", "customer_id", 20, "Unpaid EUR")],
-      displays={"Sum(mart_customer_360.unpaid_eur)": "unpaid_eur"})
-table(P, "cu-problems", HALF3[1],
-      [col("mart_customer_360", "customer_id")]
-      + [agg("mart_customer_360", c) for c in ["dropped_calls", "app_crashes", "plan_changes"]],
-      "Customers with problems", "Most dropped calls first",
-      sort=(agg("mart_customer_360", "dropped_calls"), "Descending"),
-      displays={f"Sum(mart_customer_360.{c})": c for c in ["dropped_calls", "app_crashes", "plan_changes"]})
-
-# Drill-through profile (hidden)
-P = "customer-profile"
-chrome(P, "Customer profile", "Everything about one customer. Names, phone and email are masked.")
-groups = [
-    ("Customer", ["customer_id", "name_masked", "email_masked", "msisdn_masked", "city", "country", "status",
-                  "created_at"]),
-    ("Plan and billing", ["plan_name", "monthly_fee", "plan_data_gb", "plan_voice_minutes", "invoices",
-                          "billed_eur", "paid_eur", "unpaid_eur", "last_payment_at"]),
-    ("Network use", ["voice_minutes_used", "sms_count", "data_mb_used", "dropped_calls",
-                     "last_network_activity_at"]),
-    ("App and partner", ["app_events", "app_crashes", "plan_changes", "last_login_at", "partner_amount_eur"]),
-]
-for i, (pos, (lb, fields)) in enumerate(zip(cols(4, KPI_Y, 904), groups)):
-    chart(P, f"profile-{i}", "multiRowCard", pos, {"Values": [col("mart_customer_360", c) for c in fields]}, lb,
-          objects={"card": [{"properties": {"barShow": lit("true"), "barColor": color(BLUE)}}],
-                   "dataLabels": [{"properties": {"color": color(TEXT), "fontSize": lit("12D")}}],
-                   "categoryLabels": [{"properties": {"color": color(SUB), "fontSize": lit("9D")}}]})
+hbar(P, "cu-unpaid-city", HALF3[0], col("mart_customer_360", "city"), meas("Unpaid EUR"),
+     "Unpaid EUR by city", "Where the money is owed", ORANGE, top=10)
+chart(P, "cu-problems", "clusteredColumnChart", HALF3[1],
+      {"Y": [meas("Customers With Dropped Calls"), meas("Customers With App Crashes"),
+             meas("Customers With Plan Changes")]},
+      "Customers with problems", "Number of customers affected",
+      {**axis_objects(legend=True, labels=True),
+       "dataPoint": [series_color(meas("Customers With Dropped Calls"), ORANGE),
+                     series_color(meas("Customers With App Crashes"), RED),
+                     series_color(meas("Customers With Plan Changes"), PURPLE)]},
+      displays={f"{M}.Customers With Dropped Calls": "Dropped calls",
+                f"{M}.Customers With App Crashes": "App crashes",
+                f"{M}.Customers With Plan Changes": "Plan changes"},
+      meta="=UI Customers Shown")
 
 # =====================================================================
-# Page 6 Network & App: call quality, worst cells, app stability, partner cost
+# Page 6 Network & App
 P = "network-app"
 chrome(P, "Network & App", "Where do calls drop, how does the app behave, and what does partner traffic cost?", 6,
        pills=[("Event type", "mart_network_daily", "event_type", 190, "Dropdown"),
@@ -719,7 +708,7 @@ columns(P, "nw-partner-cost", HALF3[1], col("mart_partner_usage", "period_start"
 
 # =====================================================================
 PAGE_META = [("overview", "Overview"), ("data-quality", "Data Quality"), ("revenue-assurance", "Revenue Assurance"),
-             ("incidents", "Incidents"), ("customer-360", "Customer 360"), ("customer-profile", "Customer Profile"),
+             ("incidents", "Incidents"), ("customer-360", "Customer 360"),
              ("network-app", "Network & App")]
 
 
@@ -729,14 +718,9 @@ def dump(path, obj):
         json.dump(obj, fh, indent=2, ensure_ascii=False)
 
 
-old_profile = json.load(open(os.path.join(PAGES, "customer-profile", "page.json"), encoding="utf-8"))
 shutil.rmtree(PAGES)
 for name, display in PAGE_META:
-    if name == "customer-profile":
-        page = old_profile
-        page["displayName"] = display
-    else:
-        page = {"$schema": PAGE_SCHEMA, "name": name, "displayName": display}
+    page = {"$schema": PAGE_SCHEMA, "name": name, "displayName": display}
     page.update({"displayOption": "FitToPage", "height": 1080, "width": 1920})
     page["objects"] = {"background": [{"properties": {"color": color(BG), "transparency": lit("0D")}}],
                        "outspace": [{"properties": {"color": color(BG), "transparency": lit("0D")}}]}

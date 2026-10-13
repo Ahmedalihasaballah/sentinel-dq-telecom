@@ -4,117 +4,64 @@
   "position": {
     "x": 1000,
     "y": 604,
-    "z": 294,
+    "z": 314,
     "width": 886,
     "height": 420,
-    "tabOrder": 294
+    "tabOrder": 314
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Y": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "mart_customer_360"
+                      "Entity": "_Measures"
                     }
                   },
-                  "Property": "customer_id"
+                  "Property": "Customers With Dropped Calls"
                 }
               },
-              "queryRef": "mart_customer_360.customer_id",
-              "nativeQueryRef": "customer_id",
-              "active": true
+              "queryRef": "_Measures.Customers With Dropped Calls",
+              "nativeQueryRef": "Customers With Dropped Calls",
+              "displayName": "Dropped calls"
             },
             {
               "field": {
-                "Aggregation": {
-                  "Function": 0,
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_customer_360"
-                        }
-                      },
-                      "Property": "dropped_calls"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
-                  }
+                  },
+                  "Property": "Customers With App Crashes"
                 }
               },
-              "queryRef": "Sum(mart_customer_360.dropped_calls)",
-              "nativeQueryRef": "Sum of dropped_calls",
-              "displayName": "dropped_calls"
+              "queryRef": "_Measures.Customers With App Crashes",
+              "nativeQueryRef": "Customers With App Crashes",
+              "displayName": "App crashes"
             },
             {
               "field": {
-                "Aggregation": {
-                  "Function": 0,
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_customer_360"
-                        }
-                      },
-                      "Property": "app_crashes"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
-                  }
+                  },
+                  "Property": "Customers With Plan Changes"
                 }
               },
-              "queryRef": "Sum(mart_customer_360.app_crashes)",
-              "nativeQueryRef": "Sum of app_crashes",
-              "displayName": "app_crashes"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Function": 0,
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_customer_360"
-                        }
-                      },
-                      "Property": "plan_changes"
-                    }
-                  }
-                }
-              },
-              "queryRef": "Sum(mart_customer_360.plan_changes)",
-              "nativeQueryRef": "Sum of plan_changes",
-              "displayName": "plan_changes"
+              "queryRef": "_Measures.Customers With Plan Changes",
+              "nativeQueryRef": "Customers With Plan Changes",
+              "displayName": "Plan changes"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Aggregation": {
-                "Function": 0,
-                "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "mart_customer_360"
-                      }
-                    },
-                    "Property": "dropped_calls"
-                  }
-                }
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
@@ -345,7 +292,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Most dropped calls first'"
+                  "Value": "'Number of customers affected'"
                 }
               }
             },
@@ -413,17 +360,112 @@
       ]
     },
     "objects": {
-      "values": [],
-      "total": [
+      "legend": [
         {
           "properties": {
-            "totals": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
                 }
               }
             }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F06A35'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Customers With Dropped Calls"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D9363E'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Customers With App Crashes"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6B5BD6'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Customers With Plan Changes"
           }
         }
       ]

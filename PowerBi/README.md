@@ -26,7 +26,6 @@ on a new machine loads the data from Databricks.
 | Incidents | Who owns each incident, how late is it, does the team meet its deadlines? |
 | Customer 360 | Who has paid, who owes money, which customers have problems? |
 | Network & App | Where do calls drop, how does the app behave, what does partner traffic cost? |
-| Customer profile | Hidden drill-through: right-click a customer → Drill through. |
 
 ## Business targets
 

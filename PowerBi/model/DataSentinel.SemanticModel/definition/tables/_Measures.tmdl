@@ -660,6 +660,41 @@ table _Measures
 	measure 'Color Failure' = IF ( [DQ Failure Rate] > 1 - [Target DQ Pass], "#D9363E", "#2F6FDB" )
 		isHidden
 
+	/// UI7: aggregate view
+	measure 'Attention Items' = COUNTROWS ( Attention )
+		formatString: #,0
+		isHidden
+
+	/// UI7: aggregate view
+	measure 'Rows Failed' = CALCULATE ( SUM ( mart_dq_health[rows_failed] ), mart_dq_health[status] <> "PASS" )
+		formatString: #,0
+		isHidden
+
+	/// UI7: aggregate view
+	measure 'Case EUR' = SUM ( mart_recon_mismatches[amount_at_risk_eur] )
+		formatString: € #,0
+		isHidden
+
+	/// UI7: aggregate view
+	measure 'Avg Open Hours' = CALCULATE ( AVERAGE ( mart_incidents[open_hours] ), mart_incidents[status] <> "RESOLVED" )
+		formatString: #,0.0
+		isHidden
+
+	/// UI7: aggregate view
+	measure 'Customers With Dropped Calls' = CALCULATE ( [Customer Count], mart_customer_360[dropped_calls] > 0 )
+		formatString: #,0
+		isHidden
+
+	/// UI7: aggregate view
+	measure 'Customers With App Crashes' = CALCULATE ( [Customer Count], mart_customer_360[app_crashes] > 0 )
+		formatString: #,0
+		isHidden
+
+	/// UI7: aggregate view
+	measure 'Customers With Plan Changes' = CALCULATE ( [Customer Count], mart_customer_360[plan_changes] > 0 )
+		formatString: #,0
+		isHidden
+
 	column MeasureHost
 		dataType: string
 		isHidden

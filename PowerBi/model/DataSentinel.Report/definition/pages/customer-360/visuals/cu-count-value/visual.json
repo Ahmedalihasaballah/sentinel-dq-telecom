@@ -4,10 +4,10 @@
   "position": {
     "x": 104,
     "y": 156,
-    "z": 275,
+    "z": 293,
     "width": 409,
     "height": 50,
-    "tabOrder": 275
+    "tabOrder": 293
   },
   "visual": {
     "visualType": "multiRowCard",

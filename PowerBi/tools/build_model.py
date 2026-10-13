@@ -467,3 +467,21 @@ for v in ("tableEx", "pivotTable"):
         vs["rowHeaders"][0].update({"fontFamily": "Arial", "bold": True})
 json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 print("part 5: bold Arial typography")
+
+
+# ===== Part 7: aggregate measures that replace the list tables =====
+V7 = [
+    ("Attention Items", "COUNTROWS ( Attention )", "#,0"),
+    ("Rows Failed", 'CALCULATE ( SUM ( mart_dq_health[rows_failed] ), mart_dq_health[status] <> "PASS" )', "#,0"),
+    ("Case EUR", "SUM ( mart_recon_mismatches[amount_at_risk_eur] )", "€ #,0"),
+    ("Avg Open Hours", 'CALCULATE ( AVERAGE ( mart_incidents[open_hours] ), mart_incidents[status] <> "RESOLVED" )', "#,0.0"),
+    ("Customers With Dropped Calls", "CALCULATE ( [Customer Count], mart_customer_360[dropped_calls] > 0 )", "#,0"),
+    ("Customers With App Crashes", "CALCULATE ( [Customer Count], mart_customer_360[app_crashes] > 0 )", "#,0"),
+    ("Customers With Plan Changes", "CALCULATE ( [Customer Count], mart_customer_360[plan_changes] > 0 )", "#,0"),
+]
+src = open(MEAS, encoding="utf-8").read()
+src = re.sub(r"\n\t/// UI7:[^\n]*\n\tmeasure '[^']+'.*?\t\tisHidden\n(?:\t\t[^\n]*\n)*", "\n", src, flags=re.S)
+block7 = "".join(f"\n\t/// UI7: aggregate view\n\tmeasure '{n}' = {e}\n\t\tformatString: {f}\n\t\tisHidden\n" for n, e, f in V7)
+src = src.replace("\n\tcolumn MeasureHost", block7 + "\n\tcolumn MeasureHost", 1)
+open(MEAS, "w", encoding="utf-8").write(src)
+print("part 7: aggregate measures")

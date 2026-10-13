@@ -4,10 +4,10 @@
   "position": {
     "x": 94,
     "y": 258,
-    "z": 167,
+    "z": 175,
     "width": 886,
     "height": 326,
-    "tabOrder": 167
+    "tabOrder": 175
   },
   "visual": {
     "visualType": "barChart",
@@ -312,7 +312,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Click a bar to filter the checks and cases'"
+                  "Value": "'Click a bar to filter the other charts'"
                 }
               }
             },

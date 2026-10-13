@@ -4,10 +4,10 @@
   "position": {
     "x": 94,
     "y": 258,
-    "z": 228,
+    "z": 243,
     "width": 886,
     "height": 326,
-    "tabOrder": 228
+    "tabOrder": 243
   },
   "visual": {
     "visualType": "columnChart",
@@ -317,7 +317,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Open incidents, legend = SLA status'"
+                  "Value": "'Open incidents, by SLA status'"
                 }
               }
             },
