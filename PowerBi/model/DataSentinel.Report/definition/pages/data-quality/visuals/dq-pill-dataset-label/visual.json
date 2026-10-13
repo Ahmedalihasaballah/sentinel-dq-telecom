@@ -4,10 +4,10 @@
   "position": {
     "x": 1266,
     "y": 74,
-    "z": 88,
+    "z": 115,
     "width": 110,
     "height": 22,
-    "tabOrder": 88
+    "tabOrder": 115
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Dataset",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#4B5563"
                     }

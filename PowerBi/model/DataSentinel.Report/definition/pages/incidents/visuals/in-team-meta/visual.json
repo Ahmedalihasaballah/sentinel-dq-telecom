@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-team-meta",
   "position": {
-    "x": 1160,
-    "y": 268,
-    "z": 219,
-    "width": 172,
-    "height": 30,
-    "tabOrder": 219
+    "x": 1130,
+    "y": 272,
+    "z": 273,
+    "width": 132,
+    "height": 26,
+    "tabOrder": 273
   },
   "visual": {
     "visualType": "card",
@@ -174,7 +174,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6B7280'"
+                      "Value": "'#374151'"
                     }
                   }
                 }
@@ -197,7 +197,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "'Arial'"
                 }
               }
             }

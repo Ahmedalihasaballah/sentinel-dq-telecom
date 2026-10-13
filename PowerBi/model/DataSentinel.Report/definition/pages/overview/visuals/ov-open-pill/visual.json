@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-open-pill",
   "position": {
-    "x": 1120,
-    "y": 206,
-    "z": 33,
-    "width": 210,
+    "x": 1018,
+    "y": 208,
+    "z": 43,
+    "width": 227,
     "height": 24,
-    "tabOrder": 33
+    "tabOrder": 43
   },
   "visual": {
     "visualType": "card",
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FDF1D6'"
+                      "Value": "'#F1F3F6'"
                     }
                   }
                 }
@@ -80,7 +80,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FDF1D6'"
+                      "Value": "'#F1F3F6'"
                     }
                   }
                 }
@@ -219,7 +219,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#92600A'"
+                      "Value": "'#4B5563'"
                     }
                   }
                 }
@@ -228,7 +228,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },
@@ -242,7 +242,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "'Arial'"
                 }
               }
             }

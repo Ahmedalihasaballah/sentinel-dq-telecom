@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "ov-risk-spark",
   "position": {
-    "x": 512,
-    "y": 276,
-    "z": 43,
-    "height": 70,
-    "width": 148,
-    "tabOrder": 43
+    "x": 349,
+    "y": 274,
+    "z": 53,
+    "height": 72,
+    "width": 164,
+    "tabOrder": 53
   },
   "visual": {
     "visualType": "lineChart",
@@ -121,6 +121,13 @@
                   "Value": "2D"
                 }
               }
+            },
+            "showMarker": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -155,7 +162,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }

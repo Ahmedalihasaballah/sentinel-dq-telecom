@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-gold-text",
   "position": {
-    "x": 34,
+    "x": 98,
     "y": 976,
-    "z": 239,
+    "z": 50305,
     "width": 198,
     "height": 70,
-    "tabOrder": 239
+    "tabOrder": 305
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Gold layer",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "fontWeight": "bold",
                       "color": "#111827"
@@ -34,6 +35,7 @@
                   {
                     "value": "12 mart tables · refresh after each pipeline run",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "9pt",
                       "color": "#6B7280"
                     }
@@ -134,5 +136,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-paid-pill",
   "position": {
-    "x": 959,
-    "y": 206,
-    "z": 266,
-    "width": 166,
+    "x": 837,
+    "y": 208,
+    "z": 332,
+    "width": 250,
     "height": 24,
-    "tabOrder": 266
+    "tabOrder": 332
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Collected"
+                  "Property": "UI Collection Pill"
                 }
               },
-              "queryRef": "_Measures.UI Collected",
-              "nativeQueryRef": "UI Collected"
+              "queryRef": "_Measures.UI Collection Pill",
+              "nativeQueryRef": "UI Collection Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E3F6EE'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Collection Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#E3F6EE'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Collection Pill Bg"
                     }
                   }
                 }
@@ -191,8 +201,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#0F7A53'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Collection Pill Fg"
                     }
                   }
                 }
@@ -201,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },
@@ -215,7 +230,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "'Arial'"
                 }
               }
             }

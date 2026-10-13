@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-failing-pill",
   "position": {
-    "x": 718,
-    "y": 206,
-    "z": 100,
-    "width": 210,
+    "x": 565,
+    "y": 208,
+    "z": 127,
+    "width": 250,
     "height": 24,
-    "tabOrder": 100
+    "tabOrder": 127
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Rules Total"
+                  "Property": "UI Failing Pill"
                 }
               },
-              "queryRef": "_Measures.UI Rules Total",
-              "nativeQueryRef": "UI Rules Total"
+              "queryRef": "_Measures.UI Failing Pill",
+              "nativeQueryRef": "UI Failing Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FDE2E2'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Failing Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#FDE2E2'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Failing Pill Bg"
                     }
                   }
                 }
@@ -191,8 +201,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#B42318'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Failing Pill Fg"
                     }
                   }
                 }
@@ -201,7 +216,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },
@@ -215,7 +230,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "'Arial'"
                 }
               }
             }

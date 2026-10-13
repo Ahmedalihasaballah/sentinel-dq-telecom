@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "nw-records-spark",
   "position": {
-    "x": 467,
-    "y": 156,
-    "z": 339,
-    "height": 70,
-    "width": 115,
-    "tabOrder": 339
+    "x": 297,
+    "y": 154,
+    "z": 428,
+    "height": 72,
+    "width": 126,
+    "tabOrder": 428
   },
   "visual": {
     "visualType": "lineChart",
@@ -121,6 +121,13 @@
                   "Value": "2D"
                 }
               }
+            },
+            "showMarker": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -155,7 +162,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6E8EC'"
+                      "Value": "'#E3E8EF'"
                     }
                   }
                 }

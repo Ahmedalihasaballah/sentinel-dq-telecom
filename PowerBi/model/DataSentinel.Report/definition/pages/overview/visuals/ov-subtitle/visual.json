@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-subtitle",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 80,
-    "z": 16,
+    "z": 26,
     "width": 900,
     "height": 24,
-    "tabOrder": 16
+    "tabOrder": 26
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Is today's data healthy, and what needs attention first?",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-title",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 32,
-    "z": 182,
+    "z": 235,
     "width": 900,
     "height": 40,
-    "tabOrder": 182
+    "tabOrder": 235
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Incidents",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "21pt",
                       "fontWeight": "bold",
                       "color": "#111827"

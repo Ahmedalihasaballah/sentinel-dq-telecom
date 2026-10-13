@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-subtitle",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 80,
-    "z": 321,
+    "z": 410,
     "width": 900,
     "height": 24,
-    "tabOrder": 321
+    "tabOrder": 410
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Where do calls drop, how does the app behave, and what does partner traffic cost?",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

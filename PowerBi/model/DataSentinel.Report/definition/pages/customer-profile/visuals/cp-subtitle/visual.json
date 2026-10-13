@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cp-subtitle",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 80,
-    "z": 297,
+    "z": 376,
     "width": 900,
     "height": 24,
-    "tabOrder": 297
+    "tabOrder": 376
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Everything about one customer. Names, phone and email are masked.",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

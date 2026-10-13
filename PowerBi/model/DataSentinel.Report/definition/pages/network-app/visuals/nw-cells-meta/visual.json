@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-cells-meta",
   "position": {
-    "x": 1696,
-    "y": 274,
-    "z": 365,
-    "width": 172,
-    "height": 24,
-    "tabOrder": 365
+    "x": 1730,
+    "y": 276,
+    "z": 457,
+    "width": 140,
+    "height": 22,
+    "tabOrder": 457
   },
   "visual": {
     "visualType": "textbox",
@@ -21,12 +21,13 @@
                   {
                     "value": "top 10 shown",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "9pt",
-                      "color": "#6B7280"
+                      "color": "#374151"
                     }
                   }
                 ],
-                "horizontalTextAlignment": "right"
+                "horizontalTextAlignment": "center"
               }
             ]
           }

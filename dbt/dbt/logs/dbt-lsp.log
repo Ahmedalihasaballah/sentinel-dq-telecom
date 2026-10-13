@@ -674,3 +674,940 @@ Processed: 23 models | 4 exposures
 Summary: 23 total | 23 success
 18:21:33.299471 [info ]: Cached model count updated: 23 models (accurate)
 18:21:33.754838 [info ]: Loading profiles.yml
+==================== 2026-10-12T07:04:55.999510Z | 00000000-0000-0000-0000-000000000000 ====================
+==================== 2026-10-12T07:04:56.010144Z | c4a7da43-9816-4596-ad4b-9541fd1a5ac3 ====================
+07:04:56.011348 [info ]: Starting dbt LSP server
+07:04:56.012290 [info ]: Connecting to LSP client on port 8000
+07:04:56.016817 [info ]: Successfully connected to LSP client
+07:04:56.017205 [info ]: Creating LSP service...
+07:04:56.031005 [info ]: Creating LSP server...
+07:04:56.031043 [info ]: Starting LSP server...
+07:04:56.151393 [info ]: Loading profiles.yml
+==================== 2026-10-12T07:04:56.306452Z | 2d0dda14-c9ab-4310-bac0-17011cd672ab ====================
+07:04:56.307948 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' successfully [1ms]
+==================== 2026-10-12T07:04:56.377292Z | 8343df89-7381-4be2-8aeb-ef7d6289e653 ====================
+07:04:56.379285 [info ]: Started loading project
+07:04:56.389818 [info ]: Loading profiles.yml
+07:04:56.442221 [debug]:    Started loading packages
+07:04:56.454886 [debug]:     Loaded [  0.01s] packages
+07:04:56.470017 [info ]: Finished loading project [  0.09s]
+07:04:56.479444 [info ]: Started parsing
+07:04:56.640610 [debug]: Finished parsing models/exposures.yml [  0.01s]
+07:04:56.657346 [debug]: Finished parsing models/schema.yml [  0.02s]
+07:04:56.662158 [debug]: Finished parsing models/sources.yml [  0.00s]
+07:04:56.684849 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.686023 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.686649 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.687066 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.687917 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.688463 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.689560 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.691039 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.692879 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.693924 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.695186 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.695839 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.696772 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.697341 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.698441 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.699100 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.700059 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.700634 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.701665 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.702133 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.702740 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.703094 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.703642 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:04:56.704636 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:04:56.761544 [debug]: Finished parsing models/dims/dim_customer.sql [  0.05s]
+07:04:56.778045 [debug]: Finished parsing models/dims/dim_date.sql [  0.02s]
+07:04:56.780879 [debug]: Finished parsing models/dims/dim_plan.sql [  0.00s]
+07:04:56.784495 [debug]: Finished parsing models/facts/fact_app_events.sql [  0.00s]
+07:04:56.788022 [debug]: Finished parsing models/facts/fact_invoice.sql [  0.00s]
+07:04:56.791723 [debug]: Finished parsing models/facts/fact_partner_usage.sql [  0.00s]
+07:04:56.795284 [debug]: Finished parsing models/facts/fact_payment.sql [  0.00s]
+07:04:56.811346 [debug]: Finished parsing models/facts/fact_usage.sql [  0.02s]
+07:04:56.814233 [debug]: Finished parsing models/intermediate/int_customer_by_phone.sql [  0.00s]
+07:04:56.816452 [debug]: Finished parsing models/marts/mart_app_usage.sql [  0.00s]
+07:04:56.820304 [debug]: Finished parsing models/marts/mart_cell_quality.sql [  0.00s]
+07:04:56.838278 [debug]: Finished parsing models/marts/mart_customer_360.sql [  0.02s]
+07:04:56.854514 [debug]: Finished parsing models/marts/mart_dq_health.sql [  0.02s]
+07:04:56.874940 [debug]: Finished parsing models/marts/mart_dq_trend.sql [  0.02s]
+07:04:56.890200 [debug]: Finished parsing models/marts/mart_incidents.sql [  0.02s]
+07:04:56.893645 [debug]: Finished parsing models/marts/mart_network_daily.sql [  0.00s]
+07:04:56.896093 [debug]: Finished parsing models/marts/mart_partner_usage.sql [  0.00s]
+07:04:56.900865 [debug]: Finished parsing models/marts/mart_quarantine.sql [  0.00s]
+07:04:56.903977 [debug]: Finished parsing models/marts/mart_recon_mismatches.sql [  0.00s]
+07:04:56.908074 [debug]: Finished parsing models/marts/mart_revenue_assurance.sql [  0.00s]
+07:04:56.912061 [debug]: Finished parsing models/marts/mart_revenue_assurance_trend.sql [  0.00s]
+07:04:56.936718 [debug]: Finished parsing models/staging/stg_invoices.sql [  0.02s]
+07:04:56.942937 [debug]: Finished parsing models/staging/stg_payments.sql [  0.01s]
+07:04:57.019269 [debug]: Finished parsing tests/assert_customer_versions_do_not_overlap.sql [  0.00s]
+07:04:57.037996 [debug]: Finished parsing tests/assert_fact_invoice_unique_key.sql [  0.02s]
+07:04:57.041883 [debug]: Finished parsing tests/assert_no_raw_pii_in_gold.sql [  0.00s]
+07:04:57.045144 [debug]: Finished parsing tests/assert_one_current_customer.sql [  0.00s]
+07:04:57.510891 [info ]: Finished parsing [  1.03s]
+07:04:57.518406 [info ]: Cached model count updated: 23 models (estimate)
+07:04:57.518437 [info ]: Cached model count updated: 23 models (accurate)
+07:04:57.521001 [info ]: Started scheduling
+07:04:57.527794 [info ]: Finished scheduling [  0.01s]
+07:04:57.527889 [debug]: Compilation - 26 nodes selected: {"exposure.dbt_sentinel.dashboard_customer_360", "exposure.dbt_sentinel.dashboard_data_quality_health", "exposure.dbt_sentinel.dashboard_network_app_usage", "exposure.dbt_sentinel.dashboard_revenue_assurance", "model.dbt_sentinel.dim_customer", "model.dbt_sentinel.dim_plan", "model.dbt_sentinel.fact_app_events", "model.dbt_sentinel.fact_invoice", "model.dbt_sentinel.fact_partner_usage", "model.dbt_sentinel.fact_payment", "model.dbt_sentinel.fact_usage", "model.dbt_sentinel.int_customer_by_phone", "model.dbt_sentinel.mart_app_usage", "model.dbt_sentinel.mart_cell_quality", "model.dbt_sentinel.mart_customer_360", "model.dbt_sentinel.mart_dq_health", "model.dbt_sentinel.mart_dq_trend", "model.dbt_sentinel.mart_incidents", "model.dbt_sentinel.mart_network_daily", "model.dbt_sentinel.mart_partner_usage", "model.dbt_sentinel.mart_quarantine", "model.dbt_sentinel.mart_recon_mismatches", "model.dbt_sentinel.mart_revenue_assurance", "model.dbt_sentinel.mart_revenue_assurance_trend", "model.dbt_sentinel.stg_invoices", "model.dbt_sentinel.stg_payments"}
+07:04:57.528617 [info ]: Started scheduling
+07:04:57.529180 [info ]: Finished scheduling [  0.00s]
+07:04:57.533859 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "invoice_file" }) and interval: None
+07:04:57.534053 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "invoice_line" }) and interval: None
+07:04:57.534062 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "customer_history" }) and interval: None
+07:04:57.534070 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "invoice" }) and interval: None
+07:04:57.534078 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "dq_results" }) and interval: None
+07:04:57.534085 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "incident_ops" }) and interval: None
+07:04:57.534093 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "incidents" }) and interval: None
+07:04:57.534099 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "recon_results" }) and interval: None
+07:04:57.534113 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "partner_usage" }) and interval: None
+07:04:57.534120 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "payment_file" }) and interval: None
+07:04:57.534126 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "account" }) and interval: None
+07:04:57.534133 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "app_event" }) and interval: None
+07:04:57.534138 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "plan_history" }) and interval: None
+07:04:57.534144 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "payment" }) and interval: None
+07:04:57.534150 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "network_cdr" }) and interval: None
+07:04:57.534155 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "recon_mismatches" }) and interval: None
+07:04:57.534162 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "customer_xref" }) and interval: None
+07:04:57.549775 [debug]:    Started downloading relations (1 items)
+07:04:57.555410 [debug]: Databricks driver resolved: databricks 0.21.0.dev+dbt0.21.13
+07:04:58.002747 [debug]: Ignoring unsupported LSP notification
+07:04:58.860439 [debug]: Ignoring unsupported LSP notification
+07:04:58.879437 [debug]: Ignoring unsupported LSP notification
+07:05:01.190035 [debug]: Ignoring unsupported LSP notification
+07:05:02.003677 [debug]: Ignoring unsupported LSP notification
+07:05:03.453326 [debug]: Ignoring unsupported LSP notification
+07:05:04.923855 [debug]: Ignoring unsupported LSP notification
+07:05:05.323386 [debug]: Ignoring unsupported LSP notification
+07:05:07.136616 [debug]: Ignoring unsupported LSP notification
+07:05:07.364313 [debug]: Ignoring unsupported LSP notification
+07:05:10.319333 [debug]: create_debug_span(...).entered() took 708.6µs
+07:05:10.326440 [debug]: Query executed on node unknown:
+
+SELECT
+    table_name,
+    if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+    lower(data_source_format) AS file_format,
+    table_schema,
+    table_owner,
+    table_catalog,
+    if(
+    table_type IN (
+        'EXTERNAL',
+        'MANAGED',
+        'MANAGED_SHALLOW_CLONE',
+        'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+    ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'data_sentinel'
+    AND table_schema = 'quarantine'
+07:05:10.328619 [debug]:     Failed [ 12.78s] downloading relations (error: Adapter operation was cancelled)
+07:05:10.346370 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+07:05:10.346370 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 24 errors for target 'dev' [14.0s]
+==================== 2026-10-12T07:05:10.431843Z | 1f25af53-5580-43d7-881a-f0fb4ca9c0f0 ====================
+07:05:10.432031 [info ]: Started loading project
+07:05:10.433450 [info ]: Loading profiles.yml
+07:05:10.441445 [debug]:    Started loading packages
+07:05:10.448598 [debug]:     Loaded [  0.01s] packages
+07:05:10.450896 [info ]: Finished loading project [  0.02s]
+07:05:10.451490 [info ]: Started parsing
+07:05:10.539032 [debug]: Finished parsing models/exposures.yml [  0.00s]
+07:05:10.540435 [debug]: Finished parsing models/schema.yml [  0.00s]
+07:05:10.541278 [debug]: Finished parsing models/sources.yml [  0.00s]
+07:05:10.543841 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.544171 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.544637 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.544903 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.545308 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.545583 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.545969 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.546237 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.546627 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.546919 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.547309 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.547580 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.547948 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.548201 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.548598 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.548908 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.549292 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.549578 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.549962 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.550242 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.550692 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.550982 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.551350 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models\sources.yml:7:5
+07:05:10.551606 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models\sources.yml:8:5
+07:05:10.553842 [debug]: Finished parsing models/dims/dim_customer.sql [  0.00s]
+07:05:10.554917 [debug]: Finished parsing models/dims/dim_date.sql [  0.00s]
+07:05:10.556058 [debug]: Finished parsing models/dims/dim_plan.sql [  0.00s]
+07:05:10.557244 [debug]: Finished parsing models/facts/fact_app_events.sql [  0.00s]
+07:05:10.558766 [debug]: Finished parsing models/facts/fact_invoice.sql [  0.00s]
+07:05:10.560296 [debug]: Finished parsing models/facts/fact_partner_usage.sql [  0.00s]
+07:05:10.561685 [debug]: Finished parsing models/facts/fact_payment.sql [  0.00s]
+07:05:10.562641 [debug]: Finished parsing models/facts/fact_usage.sql [  0.00s]
+07:05:10.563539 [debug]: Finished parsing models/intermediate/int_customer_by_phone.sql [  0.00s]
+07:05:10.564522 [debug]: Finished parsing models/marts/mart_app_usage.sql [  0.00s]
+07:05:10.565660 [debug]: Finished parsing models/marts/mart_cell_quality.sql [  0.00s]
+07:05:10.567110 [debug]: Finished parsing models/marts/mart_customer_360.sql [  0.00s]
+07:05:10.568492 [debug]: Finished parsing models/marts/mart_dq_health.sql [  0.00s]
+07:05:10.569757 [debug]: Finished parsing models/marts/mart_dq_trend.sql [  0.00s]
+07:05:10.571425 [debug]: Finished parsing models/marts/mart_incidents.sql [  0.00s]
+07:05:10.572412 [debug]: Finished parsing models/marts/mart_network_daily.sql [  0.00s]
+07:05:10.573547 [debug]: Finished parsing models/marts/mart_partner_usage.sql [  0.00s]
+07:05:10.574572 [debug]: Finished parsing models/marts/mart_quarantine.sql [  0.00s]
+07:05:10.575839 [debug]: Finished parsing models/marts/mart_recon_mismatches.sql [  0.00s]
+07:05:10.577112 [debug]: Finished parsing models/marts/mart_revenue_assurance.sql [  0.00s]
+07:05:10.578286 [debug]: Finished parsing models/marts/mart_revenue_assurance_trend.sql [  0.00s]
+07:05:10.579622 [debug]: Finished parsing models/staging/stg_invoices.sql [  0.00s]
+07:05:10.581098 [debug]: Finished parsing models/staging/stg_payments.sql [  0.00s]
+07:05:10.620465 [debug]: Finished parsing tests/assert_customer_versions_do_not_overlap.sql [  0.00s]
+07:05:10.621263 [debug]: Finished parsing tests/assert_fact_invoice_unique_key.sql [  0.00s]
+07:05:10.622167 [debug]: Finished parsing tests/assert_no_raw_pii_in_gold.sql [  0.00s]
+07:05:10.624172 [debug]: Finished parsing tests/assert_one_current_customer.sql [  0.00s]
+07:05:11.070509 [info ]: Finished parsing [  0.62s]
+07:05:11.072329 [info ]: Cached model count updated: 23 models (estimate)
+07:05:11.072356 [info ]: Cached model count updated: 23 models (accurate)
+07:05:11.072465 [info ]: Started scheduling
+07:05:11.073428 [info ]: Finished scheduling [  0.00s]
+07:05:11.073470 [debug]: Compilation - 26 nodes selected: {"exposure.dbt_sentinel.dashboard_customer_360", "exposure.dbt_sentinel.dashboard_data_quality_health", "exposure.dbt_sentinel.dashboard_network_app_usage", "exposure.dbt_sentinel.dashboard_revenue_assurance", "model.dbt_sentinel.dim_customer", "model.dbt_sentinel.dim_plan", "model.dbt_sentinel.fact_app_events", "model.dbt_sentinel.fact_invoice", "model.dbt_sentinel.fact_partner_usage", "model.dbt_sentinel.fact_payment", "model.dbt_sentinel.fact_usage", "model.dbt_sentinel.int_customer_by_phone", "model.dbt_sentinel.mart_app_usage", "model.dbt_sentinel.mart_cell_quality", "model.dbt_sentinel.mart_customer_360", "model.dbt_sentinel.mart_dq_health", "model.dbt_sentinel.mart_dq_trend", "model.dbt_sentinel.mart_incidents", "model.dbt_sentinel.mart_network_daily", "model.dbt_sentinel.mart_partner_usage", "model.dbt_sentinel.mart_quarantine", "model.dbt_sentinel.mart_recon_mismatches", "model.dbt_sentinel.mart_revenue_assurance", "model.dbt_sentinel.mart_revenue_assurance_trend", "model.dbt_sentinel.stg_invoices", "model.dbt_sentinel.stg_payments"}
+07:05:11.073528 [info ]: Started scheduling
+07:05:11.073981 [info ]: Finished scheduling [  0.00s]
+07:05:11.074287 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "plan_history" }) and interval: None
+07:05:11.074305 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "customer_xref" }) and interval: None
+07:05:11.074311 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "incident_ops" }) and interval: None
+07:05:11.074317 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "invoice_line" }) and interval: None
+07:05:11.074322 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "recon_results" }) and interval: None
+07:05:11.074328 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "network_cdr" }) and interval: None
+07:05:11.074334 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "customer_history" }) and interval: None
+07:05:11.074339 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "partner_usage" }) and interval: None
+07:05:11.074344 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "invoice" }) and interval: None
+07:05:11.074349 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "payment" }) and interval: None
+07:05:11.074354 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "payment_file" }) and interval: None
+07:05:11.074359 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "invoice_file" }) and interval: None
+07:05:11.074365 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "account" }) and interval: None
+07:05:11.074371 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "dq_results" }) and interval: None
+07:05:11.074376 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "incidents" }) and interval: None
+07:05:11.074381 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "silver", table: "app_event" }) and interval: None
+07:05:11.074386 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "data_sentinel", schema: "monitoring", table: "recon_mismatches" }) and interval: None
+07:05:11.076577 [debug]:    Started downloading relations (1 items)
+07:05:12.540652 [debug]: create_debug_span(...).entered() took 29.9µs
+07:05:14.498550 [debug]: Ignoring unsupported LSP notification
+07:05:14.567754 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 2.0261385s
+07:05:14.568273 [debug]: reader.schema() took 446.9µs
+07:05:14.574615 [debug]: batch-consume loop (for res in reader) took 6.2796ms
+07:05:14.576704 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 2.0359958s
+07:05:14.578648 [debug]: concat_batches + normalize_result_column_names took 1.8892ms
+07:05:14.578705 [debug]: record_current_span_status_from_attrs took 15.6µs
+07:05:14.578722 [debug]: Query executed on node unknown:
+
+SELECT
+    table_name,
+    if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+    lower(data_source_format) AS file_format,
+    table_schema,
+    table_owner,
+    table_catalog,
+    if(
+    table_type IN (
+        'EXTERNAL',
+        'MANAGED',
+        'MANAGED_SHALLOW_CLONE',
+        'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+    ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'data_sentinel'
+    AND table_schema = 'quarantine'
+07:05:14.578744 [debug]: drop(query_span_guard) (span exit/export) took 28.7µs
+07:05:14.581363 [debug]:   Finished [  3.50s] downloading relations (1 items)
+07:05:14.596361 [info ]: Started building task graph
+07:05:14.603499 [info ]: Finished building task graph [  0.01s]
+07:05:14.668044 [info ]: Started rendering (22 nodes)
+07:05:14.668649 [info ]: Started model gold.mart_revenue_assurance_trend
+07:05:14.668927 [debug]: Started rendering model gold.mart_revenue_assurance_trend
+07:05:14.669327 [info ]: Started model gold.mart_revenue_assurance
+07:05:14.669354 [debug]: Started rendering model gold.mart_revenue_assurance
+07:05:14.669374 [info ]: Started model gold.mart_recon_mismatches
+07:05:14.669384 [debug]: Started rendering model gold.mart_recon_mismatches
+07:05:14.669399 [info ]: Started model gold.mart_partner_usage
+07:05:14.669408 [debug]: Started rendering model gold.mart_partner_usage
+07:05:14.669427 [info ]: Started model gold.mart_network_daily
+07:05:14.669436 [debug]: Started rendering model gold.mart_network_daily
+07:05:14.669449 [info ]: Started model gold.mart_cell_quality
+07:05:14.669457 [debug]: Started rendering model gold.mart_cell_quality
+07:05:14.669471 [info ]: Started model gold.mart_app_usage
+07:05:14.669480 [debug]: Started rendering model gold.mart_app_usage
+07:05:14.669494 [info ]: Started model gold.mart_quarantine
+07:05:14.669504 [debug]: Started rendering model gold.mart_quarantine
+07:05:14.669520 [info ]: Started model gold.mart_incidents
+07:05:14.669528 [debug]: Started rendering model gold.mart_incidents
+07:05:14.669543 [info ]: Started model gold.mart_dq_trend
+07:05:14.669552 [debug]: Started rendering model gold.mart_dq_trend
+07:05:14.669565 [info ]: Started model gold.mart_dq_health
+07:05:14.669574 [debug]: Started rendering model gold.mart_dq_health
+07:05:14.669588 [info ]: Started model gold.mart_customer_360
+07:05:14.669596 [debug]: Started rendering model gold.mart_customer_360
+07:05:14.669612 [info ]: Started model gold.fact_usage
+07:05:14.669620 [debug]: Started rendering model gold.fact_usage
+07:05:14.669637 [info ]: Started model gold.fact_payment
+07:05:14.669654 [debug]: Started rendering model gold.fact_payment
+07:05:14.669680 [info ]: Started model gold_staging.stg_payments
+07:05:14.669745 [debug]: Started rendering model gold_staging.stg_payments
+07:05:14.669770 [info ]: Started model gold.fact_partner_usage
+07:05:14.669779 [debug]: Started rendering model gold.fact_partner_usage
+07:05:14.669793 [info ]: Started model gold.fact_invoice
+07:05:14.669801 [debug]: Started rendering model gold.fact_invoice
+07:05:14.669814 [info ]: Started model gold_staging.stg_invoices
+07:05:14.669822 [debug]: Started rendering model gold_staging.stg_invoices
+07:05:14.669835 [info ]: Started model gold_staging.int_customer_by_phone
+07:05:14.669844 [debug]: Started rendering model gold_staging.int_customer_by_phone
+07:05:14.669857 [info ]: Started model gold.fact_app_events
+07:05:14.669865 [debug]: Started rendering model gold.fact_app_events
+07:05:14.669888 [info ]: Started model gold.dim_customer
+07:05:14.669897 [debug]: Started rendering model gold.dim_customer
+07:05:14.669911 [info ]: Started model gold.dim_plan
+07:05:14.669920 [debug]: Started rendering model gold.dim_plan
+07:05:14.683192 [debug]: Compiled SQL for node model.dbt_sentinel.mart_dq_trend at target\.lsp\compiled\dbt_sentinel\models\marts\mart_dq_trend.sql
+07:05:14.683783 [debug]: Compiled SQL for node model.dbt_sentinel.mart_cell_quality at target\.lsp\compiled\dbt_sentinel\models\marts\mart_cell_quality.sql
+07:05:14.683214 [debug]: Compiled SQL for node model.dbt_sentinel.fact_usage at target\.lsp\compiled\dbt_sentinel\models\facts\fact_usage.sql
+07:05:14.684636 [debug]: Compiled SQL for node model.dbt_sentinel.mart_partner_usage at target\.lsp\compiled\dbt_sentinel\models\marts\mart_partner_usage.sql
+07:05:14.688363 [debug]: Finished rendering [  0.02s] model gold.mart_dq_trend [success]
+07:05:14.689838 [info ]: Started analyzing (22 nodes)
+07:05:14.689876 [debug]: Started analyzing model gold.mart_dq_trend
+07:05:14.690625 [debug]: Finished rendering [  0.02s] model gold.mart_partner_usage [success]
+07:05:14.690672 [debug]: Started analyzing model gold.mart_partner_usage
+07:05:14.690706 [debug]: Finished rendering [  0.02s] model gold.fact_usage [success]
+07:05:14.690729 [debug]: Started analyzing model gold.fact_usage
+07:05:14.690760 [debug]: Finished rendering [  0.02s] model gold.mart_cell_quality [success]
+07:05:14.690780 [debug]: Started analyzing model gold.mart_cell_quality
+07:05:14.691212 [debug]: Compiled SQL for node model.dbt_sentinel.fact_partner_usage at target\.lsp\compiled\dbt_sentinel\models\facts\fact_partner_usage.sql
+07:05:14.694281 [debug]: Finished rendering [  0.02s] model gold.fact_partner_usage [success]
+07:05:14.694367 [debug]: Started analyzing model gold.fact_partner_usage
+07:05:14.697583 [debug]: Compiled SQL for node model.dbt_sentinel.mart_revenue_assurance at target\.lsp\compiled\dbt_sentinel\models\marts\mart_revenue_assurance.sql
+07:05:14.699177 [debug]: Compiled SQL for node model.dbt_sentinel.mart_recon_mismatches at target\.lsp\compiled\dbt_sentinel\models\marts\mart_recon_mismatches.sql
+07:05:14.699414 [debug]: Compiled SQL for node model.dbt_sentinel.mart_revenue_assurance_trend at target\.lsp\compiled\dbt_sentinel\models\marts\mart_revenue_assurance_trend.sql
+07:05:14.701171 [debug]: Finished rendering [  0.03s] model gold.mart_revenue_assurance [success]
+07:05:14.701247 [debug]: Started analyzing model gold.mart_revenue_assurance
+07:05:14.702436 [debug]: Finished rendering [  0.03s] model gold.mart_revenue_assurance_trend [success]
+07:05:14.702496 [debug]: Started analyzing model gold.mart_revenue_assurance_trend
+07:05:14.703369 [debug]: Finished rendering [  0.03s] model gold.mart_recon_mismatches [success]
+07:05:14.703508 [debug]: Started analyzing model gold.mart_recon_mismatches
+07:05:14.704160 [debug]: Compiled SQL for node model.dbt_sentinel.int_customer_by_phone at target\.lsp\compiled\dbt_sentinel\models\intermediate\int_customer_by_phone.sql
+07:05:14.707260 [debug]: Compiled SQL for node model.dbt_sentinel.mart_dq_health at target\.lsp\compiled\dbt_sentinel\models\marts\mart_dq_health.sql
+07:05:14.710222 [debug]: Compiled SQL for node model.dbt_sentinel.stg_payments at target\.lsp\compiled\dbt_sentinel\models\staging\stg_payments.sql
+07:05:14.710664 [debug]: Compiled SQL for node model.dbt_sentinel.fact_app_events at target\.lsp\compiled\dbt_sentinel\models\facts\fact_app_events.sql
+07:05:14.711050 [debug]: Compiled SQL for node model.dbt_sentinel.fact_invoice at target\.lsp\compiled\dbt_sentinel\models\facts\fact_invoice.sql
+07:05:14.720628 [debug]: Compiled SQL for node model.dbt_sentinel.dim_plan at target\.lsp\compiled\dbt_sentinel\models\dims\dim_plan.sql
+07:05:14.722595 [debug]: Compiled SQL for node model.dbt_sentinel.mart_network_daily at target\.lsp\compiled\dbt_sentinel\models\marts\mart_network_daily.sql
+07:05:14.722910 [debug]: Compiled SQL for node model.dbt_sentinel.mart_incidents at target\.lsp\compiled\dbt_sentinel\models\marts\mart_incidents.sql
+07:05:14.723854 [debug]: Compiled SQL for node model.dbt_sentinel.stg_invoices at target\.lsp\compiled\dbt_sentinel\models\staging\stg_invoices.sql
+07:05:14.727778 [debug]: Compiled SQL for node model.dbt_sentinel.fact_payment at target\.lsp\compiled\dbt_sentinel\models\facts\fact_payment.sql
+07:05:14.729012 [debug]: Compiled SQL for node model.dbt_sentinel.mart_app_usage at target\.lsp\compiled\dbt_sentinel\models\marts\mart_app_usage.sql
+07:05:14.729878 [debug]: Compiled SQL for node model.dbt_sentinel.mart_customer_360 at target\.lsp\compiled\dbt_sentinel\models\marts\mart_customer_360.sql
+07:05:14.730849 [debug]: Compiled SQL for node model.dbt_sentinel.dim_customer at target\.lsp\compiled\dbt_sentinel\models\dims\dim_customer.sql
+07:05:14.756982 [debug]: Finished analyzing [  0.05s] model gold.mart_revenue_assurance_trend [success]
+07:05:14.757041 [info ]:  Succeeded model gold.mart_revenue_assurance_trend (table) [1 of 22 in 0.09s]
+07:05:14.757425 [debug]: Finished rendering [  0.09s] model gold_staging.int_customer_by_phone [success]
+07:05:14.757480 [debug]: Started analyzing model gold_staging.int_customer_by_phone
+07:05:14.757618 [debug]: Finished rendering [  0.09s] model gold_staging.stg_payments [success]
+07:05:14.757645 [debug]: Started analyzing model gold_staging.stg_payments
+07:05:14.757776 [debug]: Finished rendering [  0.09s] model gold.mart_dq_health [success]
+07:05:14.757807 [debug]: Started analyzing model gold.mart_dq_health
+07:05:14.760166 [debug]: Finished analyzing [  0.06s] model gold.mart_revenue_assurance [success]
+07:05:14.760213 [info ]:  Succeeded model gold.mart_revenue_assurance (table) [2 of 22 in 0.09s]
+07:05:14.760263 [debug]: Finished analyzing [  0.06s] model gold.mart_recon_mismatches [success]
+07:05:14.760315 [info ]:  Succeeded model gold.mart_recon_mismatches (table) [3 of 22 in 0.09s]
+07:05:14.760365 [debug]: Finished rendering [  0.09s] model gold.fact_app_events [success]
+07:05:14.760396 [debug]: Started analyzing model gold.fact_app_events
+07:05:14.760619 [debug]: Finished rendering [  0.09s] model gold.fact_invoice [success]
+07:05:14.760665 [debug]: Started analyzing model gold.fact_invoice
+07:05:14.762458 [debug]: Finished analyzing [  0.07s] model gold.mart_partner_usage [success]
+07:05:14.762504 [info ]:  Succeeded model gold.mart_partner_usage (table) [4 of 22 in 0.09s]
+07:05:14.762748 [debug]: Finished rendering [  0.09s] model gold.dim_plan [success]
+07:05:14.762793 [debug]: Started analyzing model gold.dim_plan
+07:05:14.762932 [debug]: Finished rendering [  0.09s] model gold.mart_network_daily [success]
+07:05:14.762957 [debug]: Started analyzing model gold.mart_network_daily
+07:05:14.771304 [debug]: Finished analyzing [  0.08s] model gold.mart_cell_quality [success]
+07:05:14.771359 [info ]:  Succeeded model gold.mart_cell_quality (table) [6 of 22 in 0.10s]
+07:05:14.771741 [debug]: Finished rendering [  0.10s] model gold.mart_incidents [success]
+07:05:14.771788 [debug]: Started analyzing model gold.mart_incidents
+07:05:14.774696 [debug]: Finished analyzing [  0.01s] model gold.fact_app_events [success]
+07:05:14.774751 [info ]:  Succeeded model gold.fact_app_events (table) [20 of 22 in 0.10s]
+07:05:14.774827 [debug]: Finished rendering [  0.11s] model gold_staging.stg_invoices [success]
+07:05:14.774865 [debug]: Started analyzing model gold_staging.stg_invoices
+07:05:14.775931 [debug]: Finished analyzing [  0.09s] model gold.mart_dq_trend [success]
+07:05:14.775976 [info ]:  Succeeded model gold.mart_dq_trend (table) [10 of 22 in 0.10s]
+07:05:14.776243 [debug]: Finished rendering [  0.11s] model gold.fact_payment [success]
+07:05:14.776276 [debug]: Started analyzing model gold.fact_payment
+07:05:14.777235 [debug]: Compiled SQL for node model.dbt_sentinel.mart_quarantine at target\.lsp\compiled\dbt_sentinel\models\marts\mart_quarantine.sql
+07:05:14.780763 [debug]: Finished analyzing [  0.09s] model gold.fact_partner_usage [success]
+07:05:14.780818 [info ]:  Succeeded model gold.fact_partner_usage (table) [16 of 22 in 0.11s]
+07:05:14.781089 [debug]: Finished rendering [  0.11s] model gold.mart_app_usage [success]
+07:05:14.781130 [debug]: Started analyzing model gold.mart_app_usage
+07:05:14.781697 [debug]: Finished analyzing [  0.01s] model gold.fact_payment [success]
+07:05:14.781737 [info ]:  Succeeded model gold.fact_payment (table) [14 of 22 in 0.11s]
+07:05:14.781816 [debug]: Finished rendering [  0.11s] model gold.mart_customer_360 [success]
+07:05:14.781846 [debug]: Started analyzing model gold.mart_customer_360
+07:05:14.783954 [debug]: Finished analyzing [  0.09s] model gold.fact_usage [success]
+07:05:14.784006 [info ]:  Succeeded model gold.fact_usage (table) [13 of 22 in 0.11s]
+07:05:14.784245 [debug]: Finished rendering [  0.11s] model gold.dim_customer [success]
+07:05:14.784279 [debug]: Started analyzing model gold.dim_customer
+07:05:14.786902 [debug]: Finished analyzing [  0.01s] model gold.mart_app_usage [success]
+07:05:14.786963 [info ]:  Succeeded model gold.mart_app_usage (table) [7 of 22 in 0.12s]
+07:05:14.787276 [debug]: Finished rendering [  0.12s] model gold.mart_quarantine [success]
+07:05:14.787309 [info ]: Finished rendering [  0.12s] (22 nodes, 0 skipped, 0 errors)
+07:05:14.787342 [debug]: Started analyzing model gold.mart_quarantine
+07:05:14.787825 [debug]: Finished analyzing [  0.03s] model gold_staging.int_customer_by_phone [success]
+07:05:14.787868 [info ]:  Succeeded model gold_staging.int_customer_by_phone (view) [19 of 22 in 0.12s]
+07:05:14.788978 [debug]: Finished analyzing [  0.03s] model gold_staging.stg_payments [success]
+07:05:14.789022 [info ]:  Succeeded model gold_staging.stg_payments (view) [15 of 22 in 0.12s]
+07:05:14.789646 [debug]: Finished analyzing [  0.03s] model gold.fact_invoice [success]
+07:05:14.789679 [info ]:  Succeeded model gold.fact_invoice (table) [17 of 22 in 0.12s]
+07:05:14.791273 [debug]: Finished analyzing [  0.03s] model gold.mart_network_daily [success]
+07:05:14.791307 [info ]:  Succeeded model gold.mart_network_daily (table) [5 of 22 in 0.12s]
+07:05:14.798876 [debug]: Finished analyzing [  0.04s] model gold.mart_dq_health [success]
+07:05:14.798931 [info ]:  Succeeded model gold.mart_dq_health (table) [11 of 22 in 0.13s]
+07:05:14.798982 [debug]: Finished analyzing [  0.01s] model gold.mart_quarantine [success]
+07:05:14.799002 [info ]:  Succeeded model gold.mart_quarantine (table) [8 of 22 in 0.13s]
+07:05:14.800659 [debug]: Finished analyzing [  0.04s] model gold.dim_plan [success]
+07:05:14.800707 [info ]:  Succeeded model gold.dim_plan (table) [22 of 22 in 0.13s]
+07:05:14.807185 [debug]: Finished analyzing [  0.02s] model gold.dim_customer [success]
+07:05:14.807253 [info ]:  Succeeded model gold.dim_customer (table) [21 of 22 in 0.14s]
+07:05:14.810603 [debug]: Finished analyzing [  0.04s] model gold_staging.stg_invoices [success]
+07:05:14.810647 [info ]:  Succeeded model gold_staging.stg_invoices (view) [18 of 22 in 0.14s]
+07:05:14.812558 [debug]: Finished analyzing [  0.04s] model gold.mart_incidents [success]
+07:05:14.812609 [info ]:  Succeeded model gold.mart_incidents (table) [9 of 22 in 0.14s]
+07:05:14.816203 [debug]: Finished analyzing [  0.03s] model gold.mart_customer_360 [success]
+07:05:14.816236 [info ]: Finished analyzing [  0.13s] (22 nodes, 0 skipped, 0 errors)
+07:05:14.816252 [info ]:  Succeeded model gold.mart_customer_360 (table) [12 of 22 in 0.15s]
+07:05:14.831060 [info ]: Started scheduling
+07:05:14.831412 [info ]: Finished scheduling [  0.00s]
+07:05:14.831963 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+07:05:14.831963 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 24 errors for target 'dev' [4.4s]
+Processed: 22 models | 4 exposures
+Summary: 22 total | 22 success
+07:05:14.832131 [info ]: Cached model count updated: 23 models (accurate)
+==================== 2026-10-12T07:05:16.501608Z | ff67c7e0-fb22-4207-be40-47ddf59d5611 ====================
+07:05:16.502312 [info ]: Started loading project
+07:05:16.503894 [info ]: Loading profiles.yml
+07:05:16.523292 [info ]: Finished loading project [  0.02s]
+07:05:16.602692 [info ]: Cached model count updated: 23 models (estimate)
+07:05:16.602727 [info ]: Cached model count updated: 23 models (accurate)
+07:05:16.602842 [info ]: Started scheduling
+07:05:16.603347 [info ]: Finished scheduling [  0.00s]
+07:05:16.603397 [debug]: Compilation - 27 nodes selected: {"exposure.dbt_sentinel.dashboard_customer_360", "exposure.dbt_sentinel.dashboard_data_quality_health", "exposure.dbt_sentinel.dashboard_network_app_usage", "exposure.dbt_sentinel.dashboard_revenue_assurance", "model.dbt_sentinel.dim_customer", "model.dbt_sentinel.dim_date", "model.dbt_sentinel.dim_plan", "model.dbt_sentinel.fact_app_events", "model.dbt_sentinel.fact_invoice", "model.dbt_sentinel.fact_partner_usage", "model.dbt_sentinel.fact_payment", "model.dbt_sentinel.fact_usage", "model.dbt_sentinel.int_customer_by_phone", "model.dbt_sentinel.mart_app_usage", "model.dbt_sentinel.mart_cell_quality", "model.dbt_sentinel.mart_customer_360", "model.dbt_sentinel.mart_dq_health", "model.dbt_sentinel.mart_dq_trend", "model.dbt_sentinel.mart_incidents", "model.dbt_sentinel.mart_network_daily", "model.dbt_sentinel.mart_partner_usage", "model.dbt_sentinel.mart_quarantine", "model.dbt_sentinel.mart_recon_mismatches", "model.dbt_sentinel.mart_revenue_assurance", "model.dbt_sentinel.mart_revenue_assurance_trend", "model.dbt_sentinel.stg_invoices", "model.dbt_sentinel.stg_payments"}
+07:05:16.606320 [debug]:    Started downloading relations (1 items)
+07:05:17.778569 [debug]: create_debug_span(...).entered() took 48µs
+07:05:18.462389 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 683.6991ms
+07:05:18.462443 [debug]: reader.schema() took 900ns
+07:05:18.465556 [debug]: batch-consume loop (for res in reader) took 3.0753ms
+07:05:18.468385 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 689.7514ms
+07:05:18.468653 [debug]: concat_batches + normalize_result_column_names took 215.7µs
+07:05:18.468693 [debug]: record_current_span_status_from_attrs took 11.8µs
+07:05:18.468715 [debug]: Query executed on node unknown:
+
+SELECT
+    table_name,
+    if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+    lower(data_source_format) AS file_format,
+    table_schema,
+    table_owner,
+    table_catalog,
+    if(
+    table_type IN (
+        'EXTERNAL',
+        'MANAGED',
+        'MANAGED_SHALLOW_CLONE',
+        'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+    ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'data_sentinel'
+    AND table_schema = 'quarantine'
+07:05:18.468744 [debug]: drop(query_span_guard) (span exit/export) took 37.6µs
+07:05:18.469473 [debug]:   Finished [  1.86s] downloading relations (1 items)
+07:05:18.472778 [info ]: Started building task graph
+07:05:18.473336 [info ]: Finished building task graph [  0.00s]
+07:05:18.480284 [info ]: Started rendering (23 nodes)
+07:05:18.480351 [info ]: Started model gold.dim_date
+07:05:18.480376 [debug]: Started rendering model gold.dim_date
+07:05:18.480438 [info ]: Started model gold.mart_revenue_assurance_trend
+07:05:18.480475 [debug]: Started rendering model gold.mart_revenue_assurance_trend
+07:05:18.480529 [info ]: Started model gold.mart_revenue_assurance
+07:05:18.480553 [debug]: Started rendering model gold.mart_revenue_assurance
+07:05:18.480591 [info ]: Started model gold.mart_recon_mismatches
+07:05:18.480627 [debug]: Started rendering model gold.mart_recon_mismatches
+07:05:18.480671 [info ]: Started model gold.mart_partner_usage
+07:05:18.480694 [debug]: Started rendering model gold.mart_partner_usage
+07:05:18.480731 [info ]: Started model gold.mart_network_daily
+07:05:18.480760 [debug]: Started rendering model gold.mart_network_daily
+07:05:18.480809 [info ]: Started model gold.mart_cell_quality
+07:05:18.480848 [debug]: Started rendering model gold.mart_cell_quality
+07:05:18.480892 [info ]: Started model gold.mart_app_usage
+07:05:18.480917 [debug]: Started rendering model gold.mart_app_usage
+07:05:18.480961 [info ]: Started model gold.mart_quarantine
+07:05:18.480991 [debug]: Started rendering model gold.mart_quarantine
+07:05:18.481029 [info ]: Started model gold.mart_incidents
+07:05:18.481053 [debug]: Started rendering model gold.mart_incidents
+07:05:18.481098 [info ]: Started model gold.mart_dq_trend
+07:05:18.481120 [debug]: Started rendering model gold.mart_dq_trend
+07:05:18.481159 [info ]: Started model gold.mart_dq_health
+07:05:18.481199 [debug]: Started rendering model gold.mart_dq_health
+07:05:18.481234 [info ]: Started model gold.mart_customer_360
+07:05:18.481255 [debug]: Started rendering model gold.mart_customer_360
+07:05:18.481289 [info ]: Started model gold.fact_usage
+07:05:18.481309 [debug]: Started rendering model gold.fact_usage
+07:05:18.481342 [info ]: Started model gold.fact_payment
+07:05:18.481373 [debug]: Started rendering model gold.fact_payment
+07:05:18.481415 [info ]: Started model gold_staging.stg_payments
+07:05:18.481457 [debug]: Started rendering model gold_staging.stg_payments
+07:05:18.481497 [info ]: Started model gold.fact_partner_usage
+07:05:18.481520 [debug]: Started rendering model gold.fact_partner_usage
+07:05:18.481555 [info ]: Started model gold.fact_invoice
+07:05:18.481577 [debug]: Started rendering model gold.fact_invoice
+07:05:18.481612 [info ]: Started model gold_staging.stg_invoices
+07:05:18.481634 [debug]: Started rendering model gold_staging.stg_invoices
+07:05:18.481772 [info ]: Started model gold_staging.int_customer_by_phone
+07:05:18.481796 [debug]: Started rendering model gold_staging.int_customer_by_phone
+07:05:18.481834 [info ]: Started model gold.fact_app_events
+07:05:18.481860 [debug]: Started rendering model gold.fact_app_events
+07:05:18.481895 [info ]: Started model gold.dim_customer
+07:05:18.481917 [debug]: Started rendering model gold.dim_customer
+07:05:18.481952 [info ]: Started model gold.dim_plan
+07:05:18.481975 [debug]: Started rendering model gold.dim_plan
+07:05:18.485024 [debug]: Compiled SQL for node model.dbt_sentinel.dim_date at target\.lsp\compiled\dbt_sentinel\models\dims\dim_date.sql
+07:05:18.485460 [debug]: Finished rendering [  0.01s] model gold.dim_date [success]
+07:05:18.485567 [info ]: Started analyzing (23 nodes)
+07:05:18.485596 [debug]: Started analyzing model gold.dim_date
+07:05:18.493639 [debug]: Compiled SQL for node model.dbt_sentinel.mart_recon_mismatches at target\.lsp\compiled\dbt_sentinel\models\marts\mart_recon_mismatches.sql
+07:05:18.493639 [debug]: Compiled SQL for node model.dbt_sentinel.mart_revenue_assurance at target\.lsp\compiled\dbt_sentinel\models\marts\mart_revenue_assurance.sql
+07:05:18.493636 [debug]: Compiled SQL for node model.dbt_sentinel.mart_partner_usage at target\.lsp\compiled\dbt_sentinel\models\marts\mart_partner_usage.sql
+07:05:18.493699 [debug]: Compiled SQL for node model.dbt_sentinel.mart_revenue_assurance_trend at target\.lsp\compiled\dbt_sentinel\models\marts\mart_revenue_assurance_trend.sql
+07:05:18.494478 [debug]: Finished rendering [  0.01s] model gold.mart_partner_usage [success]
+07:05:18.494556 [debug]: Compiled SQL for node model.dbt_sentinel.mart_network_daily at target\.lsp\compiled\dbt_sentinel\models\marts\mart_network_daily.sql
+07:05:18.494565 [debug]: Compiled SQL for node model.dbt_sentinel.mart_cell_quality at target\.lsp\compiled\dbt_sentinel\models\marts\mart_cell_quality.sql
+07:05:18.494567 [debug]: Started analyzing model gold.mart_partner_usage
+07:05:18.494646 [debug]: Finished rendering [  0.01s] model gold.mart_recon_mismatches [success]
+07:05:18.494681 [debug]: Started analyzing model gold.mart_recon_mismatches
+07:05:18.494715 [debug]: Compiled SQL for node model.dbt_sentinel.mart_app_usage at target\.lsp\compiled\dbt_sentinel\models\marts\mart_app_usage.sql
+07:05:18.495189 [debug]: Compiled SQL for node model.dbt_sentinel.mart_dq_trend at target\.lsp\compiled\dbt_sentinel\models\marts\mart_dq_trend.sql
+07:05:18.495224 [debug]: Compiled SQL for node model.dbt_sentinel.mart_quarantine at target\.lsp\compiled\dbt_sentinel\models\marts\mart_quarantine.sql
+07:05:18.495394 [debug]: Compiled SQL for node model.dbt_sentinel.mart_incidents at target\.lsp\compiled\dbt_sentinel\models\marts\mart_incidents.sql
+07:05:18.495663 [debug]: Compiled SQL for node model.dbt_sentinel.mart_dq_health at target\.lsp\compiled\dbt_sentinel\models\marts\mart_dq_health.sql
+07:05:18.495833 [debug]: Compiled SQL for node model.dbt_sentinel.fact_usage at target\.lsp\compiled\dbt_sentinel\models\facts\fact_usage.sql
+07:05:18.496102 [debug]: Compiled SQL for node model.dbt_sentinel.fact_payment at target\.lsp\compiled\dbt_sentinel\models\facts\fact_payment.sql
+07:05:18.496167 [debug]: Finished analyzing [  0.00s] model gold.mart_partner_usage [success]
+07:05:18.496178 [debug]: Compiled SQL for node model.dbt_sentinel.mart_customer_360 at target\.lsp\compiled\dbt_sentinel\models\marts\mart_customer_360.sql
+07:05:18.496207 [info ]:  Succeeded model gold.mart_partner_usage (table) [5 of 23 in 0.01s]
+07:05:18.496410 [debug]: Compiled SQL for node model.dbt_sentinel.stg_payments at target\.lsp\compiled\dbt_sentinel\models\staging\stg_payments.sql
+07:05:18.496696 [debug]: Compiled SQL for node model.dbt_sentinel.fact_invoice at target\.lsp\compiled\dbt_sentinel\models\facts\fact_invoice.sql
+07:05:18.496771 [debug]: Compiled SQL for node model.dbt_sentinel.stg_invoices at target\.lsp\compiled\dbt_sentinel\models\staging\stg_invoices.sql
+07:05:18.497012 [debug]: Compiled SQL for node model.dbt_sentinel.fact_partner_usage at target\.lsp\compiled\dbt_sentinel\models\facts\fact_partner_usage.sql
+07:05:18.497048 [debug]: Compiled SQL for node model.dbt_sentinel.int_customer_by_phone at target\.lsp\compiled\dbt_sentinel\models\intermediate\int_customer_by_phone.sql
+07:05:18.497618 [debug]: Compiled SQL for node model.dbt_sentinel.dim_plan at target\.lsp\compiled\dbt_sentinel\models\dims\dim_plan.sql
+07:05:18.497629 [debug]: Compiled SQL for node model.dbt_sentinel.dim_customer at target\.lsp\compiled\dbt_sentinel\models\dims\dim_customer.sql
+07:05:18.497668 [debug]: Compiled SQL for node model.dbt_sentinel.fact_app_events at target\.lsp\compiled\dbt_sentinel\models\facts\fact_app_events.sql
+07:05:18.497770 [debug]: Finished rendering [  0.02s] model gold.mart_revenue_assurance [success]
+07:05:18.497831 [debug]: Started analyzing model gold.mart_revenue_assurance
+07:05:18.498084 [debug]: Finished rendering [  0.02s] model gold.mart_revenue_assurance_trend [success]
+07:05:18.498129 [debug]: Started analyzing model gold.mart_revenue_assurance_trend
+07:05:18.498185 [debug]: Started analyzing model gold.mart_network_daily
+07:05:18.498401 [debug]: Finished rendering [  0.02s] model gold.mart_cell_quality [success]
+07:05:18.498435 [debug]: Started analyzing model gold.mart_cell_quality
+07:05:18.498479 [debug]: Finished analyzing [  0.00s] model gold.mart_recon_mismatches [success]
+07:05:18.498508 [info ]:  Succeeded model gold.mart_recon_mismatches (table) [4 of 23 in 0.02s]
+07:05:18.498622 [debug]: Finished rendering [  0.02s] model gold.mart_network_daily [success]
+07:05:18.498670 [debug]: Finished rendering [  0.02s] model gold.mart_quarantine [success]
+07:05:18.498702 [debug]: Started analyzing model gold.mart_quarantine
+07:05:18.498881 [debug]: Finished rendering [  0.02s] model gold.mart_app_usage [success]
+07:05:18.498923 [debug]: Started analyzing model gold.mart_app_usage
+07:05:18.499091 [debug]: Finished rendering [  0.02s] model gold.mart_dq_trend [success]
+07:05:18.499131 [debug]: Started analyzing model gold.mart_dq_trend
+07:05:18.499888 [debug]: Finished analyzing [  0.00s] model gold.mart_app_usage [success]
+07:05:18.499924 [info ]:  Succeeded model gold.mart_app_usage (table) [8 of 23 in 0.02s]
+07:05:18.500748 [debug]: Finished analyzing [  0.00s] model gold.mart_revenue_assurance [success]
+07:05:18.500787 [info ]:  Succeeded model gold.mart_revenue_assurance (table) [3 of 23 in 0.02s]
+07:05:18.500855 [debug]: Finished rendering [  0.02s] model gold.mart_incidents [success]
+07:05:18.500887 [debug]: Started analyzing model gold.mart_incidents
+07:05:18.501151 [debug]: Finished analyzing [  0.00s] model gold.mart_revenue_assurance_trend [success]
+07:05:18.501175 [info ]:  Succeeded model gold.mart_revenue_assurance_trend (table) [2 of 23 in 0.02s]
+07:05:18.502073 [debug]: Finished analyzing [  0.00s] model gold.mart_dq_trend [success]
+07:05:18.502111 [info ]:  Succeeded model gold.mart_dq_trend (table) [11 of 23 in 0.02s]
+07:05:18.502178 [debug]: Finished rendering [  0.02s] model gold.mart_dq_health [success]
+07:05:18.502212 [debug]: Started analyzing model gold.mart_dq_health
+07:05:18.502247 [debug]: Finished rendering [  0.02s] model gold.fact_payment [success]
+07:05:18.502271 [debug]: Started analyzing model gold.fact_payment
+07:05:18.502299 [debug]: Finished rendering [  0.02s] model gold.fact_usage [success]
+07:05:18.502319 [debug]: Started analyzing model gold.fact_usage
+07:05:18.502353 [debug]: Finished rendering [  0.02s] model gold_staging.stg_payments [success]
+07:05:18.502380 [debug]: Started analyzing model gold_staging.stg_payments
+07:05:18.502404 [debug]: Finished rendering [  0.02s] model gold.fact_invoice [success]
+07:05:18.502423 [debug]: Started analyzing model gold.fact_invoice
+07:05:18.502447 [debug]: Finished rendering [  0.02s] model gold.mart_customer_360 [success]
+07:05:18.502465 [debug]: Started analyzing model gold.mart_customer_360
+07:05:18.502489 [debug]: Finished rendering [  0.02s] model gold_staging.stg_invoices [success]
+07:05:18.502508 [debug]: Started analyzing model gold_staging.stg_invoices
+07:05:18.502533 [debug]: Finished rendering [  0.02s] model gold_staging.int_customer_by_phone [success]
+07:05:18.502555 [debug]: Started analyzing model gold_staging.int_customer_by_phone
+07:05:18.502584 [debug]: Finished rendering [  0.02s] model gold.fact_partner_usage [success]
+07:05:18.502603 [debug]: Started analyzing model gold.fact_partner_usage
+07:05:18.502627 [debug]: Finished rendering [  0.02s] model gold.dim_plan [success]
+07:05:18.502645 [debug]: Started analyzing model gold.dim_plan
+07:05:18.502674 [debug]: Finished rendering [  0.02s] model gold.dim_customer [success]
+07:05:18.502693 [debug]: Started analyzing model gold.dim_customer
+07:05:18.502718 [debug]: Finished rendering [  0.02s] model gold.fact_app_events [success]
+07:05:18.502733 [info ]: Finished rendering [  0.02s] (23 nodes, 0 skipped, 0 errors)
+07:05:18.502749 [debug]: Started analyzing model gold.fact_app_events
+07:05:18.502890 [debug]: Finished analyzing [  0.00s] model gold.mart_network_daily [success]
+07:05:18.502917 [info ]:  Succeeded model gold.mart_network_daily (table) [6 of 23 in 0.02s]
+07:05:18.503167 [debug]: Finished analyzing [  0.00s] model gold.mart_dq_health [success]
+07:05:18.503193 [info ]:  Succeeded model gold.mart_dq_health (table) [12 of 23 in 0.02s]
+07:05:18.506100 [debug]: Finished analyzing [  0.00s] model gold.fact_payment [success]
+07:05:18.506150 [info ]:  Succeeded model gold.fact_payment (table) [15 of 23 in 0.02s]
+07:05:18.506202 [debug]: Finished analyzing [  0.01s] model gold.mart_incidents [success]
+07:05:18.506225 [info ]:  Succeeded model gold.mart_incidents (table) [10 of 23 in 0.02s]
+07:05:18.506661 [debug]: Finished analyzing [  0.01s] model gold.mart_quarantine [success]
+07:05:18.506694 [info ]:  Succeeded model gold.mart_quarantine (table) [9 of 23 in 0.02s]
+07:05:18.507599 [debug]: Finished analyzing [  0.01s] model gold_staging.stg_invoices [success]
+07:05:18.507631 [info ]:  Succeeded model gold_staging.stg_invoices (view) [19 of 23 in 0.03s]
+07:05:18.508471 [debug]: Finished analyzing [  0.01s] model gold.mart_cell_quality [success]
+07:05:18.508502 [info ]:  Succeeded model gold.mart_cell_quality (table) [7 of 23 in 0.03s]
+07:05:18.508885 [debug]: Finished analyzing [  0.01s] model gold_staging.stg_payments [success]
+07:05:18.508910 [info ]:  Succeeded model gold_staging.stg_payments (view) [16 of 23 in 0.03s]
+07:05:18.511139 [debug]: Finished analyzing [  0.01s] model gold.fact_usage [success]
+07:05:18.511179 [info ]:  Succeeded model gold.fact_usage (table) [14 of 23 in 0.03s]
+07:05:18.511313 [debug]: Finished analyzing [  0.01s] model gold_staging.int_customer_by_phone [success]
+07:05:18.511340 [info ]:  Succeeded model gold_staging.int_customer_by_phone (view) [20 of 23 in 0.03s]
+07:05:18.511613 [debug]: Finished analyzing [  0.01s] model gold.dim_plan [success]
+07:05:18.511640 [info ]:  Succeeded model gold.dim_plan (table) [23 of 23 in 0.03s]
+07:05:18.512596 [debug]: Finished analyzing [  0.01s] model gold.fact_partner_usage [success]
+07:05:18.512643 [info ]:  Succeeded model gold.fact_partner_usage (table) [17 of 23 in 0.03s]
+07:05:18.512964 [debug]: Finished analyzing [  0.01s] model gold.fact_app_events [success]
+07:05:18.512996 [info ]:  Succeeded model gold.fact_app_events (table) [21 of 23 in 0.03s]
+07:05:18.514755 [debug]: Finished analyzing [  0.03s] model gold.dim_date [success]
+07:05:18.514794 [info ]:  Succeeded model gold.dim_date (table) [1 of 23 in 0.03s]
+07:05:18.514973 [debug]: Finished analyzing [  0.01s] model gold.dim_customer [success]
+07:05:18.515007 [info ]:  Succeeded model gold.dim_customer (table) [22 of 23 in 0.03s]
+07:05:18.515849 [debug]: Finished analyzing [  0.01s] model gold.fact_invoice [success]
+07:05:18.515882 [info ]:  Succeeded model gold.fact_invoice (table) [18 of 23 in 0.03s]
+07:05:18.517328 [debug]: Finished analyzing [  0.01s] model gold.mart_customer_360 [success]
+07:05:18.517357 [info ]: Finished analyzing [  0.03s] (23 nodes, 0 skipped, 0 errors)
+07:05:18.517369 [info ]:  Succeeded model gold.mart_customer_360 (table) [13 of 23 in 0.04s]
+07:05:18.526666 [info ]: Started scheduling
+07:05:18.526839 [info ]: Finished scheduling [  0.00s]
+07:05:18.527918 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' successfully for target 'dev' [2.0s]
+Processed: 23 models | 4 exposures
+Summary: 23 total | 23 success
+07:05:18.528134 [info ]: Cached model count updated: 23 models (accurate)
+08:32:07.940504 [debug]: Ignoring unsupported LSP notification
+08:32:49.740534 [debug]: Ignoring unsupported LSP notification
+08:32:49.958750 [debug]: Ignoring unsupported LSP notification
+08:32:51.658566 [debug]: Ignoring unsupported LSP notification
+08:33:07.353734 [debug]: Ignoring unsupported LSP notification
+08:33:09.327579 [debug]: Ignoring unsupported LSP notification
+==================== 2026-10-12T08:33:20.531556Z | ec817d3d-f15d-46dc-a371-768f6d82c00b ====================
+08:33:20.531751 [info ]: Started loading project
+08:33:20.533028 [info ]: Loading profiles.yml
+08:33:20.550989 [info ]: Finished loading project [  0.02s]
+08:33:20.645114 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' successfully for target 'dev' [113ms]
+08:33:20.645286 [info ]: Cached model count updated: 23 models (accurate)
+08:33:25.812306 [debug]: Query executed on node unknown:
+select * from (
+with cust as (
+    select * from `data_sentinel`.`gold`.`dim_customer` where is_current and customer_key <> -1
+),
+plan as (
+    select plan_id, plan_name, monthly_fee, data_gb, voice_minutes from `data_sentinel`.`gold`.`dim_plan` where is_current and plan_key <> -1
+)
+SELECT * FROM plan
+) limit 1000
+==================== 2026-10-12T08:33:27.442856Z | a76b46a1-5808-47c3-8c92-5c411fc09caf ====================
+08:33:27.443073 [info ]: Started loading project
+08:33:27.444832 [info ]: Loading profiles.yml
+08:33:27.461603 [info ]: Finished loading project [  0.02s]
+08:33:27.521943 [info ]: Cached model count updated: 23 models (estimate)
+08:33:27.521983 [info ]: Cached model count updated: 23 models (accurate)
+08:33:27.522114 [info ]: Started scheduling
+08:33:27.522683 [info ]: Finished scheduling [  0.00s]
+08:33:27.522731 [debug]: Compilation - 27 nodes selected: {"exposure.dbt_sentinel.dashboard_customer_360", "exposure.dbt_sentinel.dashboard_data_quality_health", "exposure.dbt_sentinel.dashboard_network_app_usage", "exposure.dbt_sentinel.dashboard_revenue_assurance", "model.dbt_sentinel.dim_customer", "model.dbt_sentinel.dim_date", "model.dbt_sentinel.dim_plan", "model.dbt_sentinel.fact_app_events", "model.dbt_sentinel.fact_invoice", "model.dbt_sentinel.fact_partner_usage", "model.dbt_sentinel.fact_payment", "model.dbt_sentinel.fact_usage", "model.dbt_sentinel.int_customer_by_phone", "model.dbt_sentinel.mart_app_usage", "model.dbt_sentinel.mart_cell_quality", "model.dbt_sentinel.mart_customer_360", "model.dbt_sentinel.mart_dq_health", "model.dbt_sentinel.mart_dq_trend", "model.dbt_sentinel.mart_incidents", "model.dbt_sentinel.mart_network_daily", "model.dbt_sentinel.mart_partner_usage", "model.dbt_sentinel.mart_quarantine", "model.dbt_sentinel.mart_recon_mismatches", "model.dbt_sentinel.mart_revenue_assurance", "model.dbt_sentinel.mart_revenue_assurance_trend", "model.dbt_sentinel.stg_invoices", "model.dbt_sentinel.stg_payments"}
+08:33:27.525525 [debug]:    Started downloading relations (1 items)
+08:33:28.557953 [debug]: create_debug_span(...).entered() took 39.7µs
+08:33:29.418010 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 859.8938ms
+08:33:29.418085 [debug]: reader.schema() took 1µs
+08:33:29.422675 [debug]: batch-consume loop (for res in reader) took 4.5417ms
+08:33:29.424568 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 866.5547ms
+08:33:29.424799 [debug]: concat_batches + normalize_result_column_names took 184.8µs
+08:33:29.424829 [debug]: record_current_span_status_from_attrs took 11.8µs
+08:33:29.424847 [debug]: Query executed on node unknown:
+
+SELECT
+    table_name,
+    if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+    lower(data_source_format) AS file_format,
+    table_schema,
+    table_owner,
+    table_catalog,
+    if(
+    table_type IN (
+        'EXTERNAL',
+        'MANAGED',
+        'MANAGED_SHALLOW_CLONE',
+        'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+    ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'data_sentinel'
+    AND table_schema = 'quarantine'
+08:33:29.424868 [debug]: drop(query_span_guard) (span exit/export) took 28.8µs
+08:33:29.425526 [debug]:   Finished [  1.90s] downloading relations (1 items)
+08:33:29.429822 [info ]: Started building task graph
+08:33:29.430433 [info ]: Finished building task graph [  0.00s]
+08:33:29.438963 [info ]: Started rendering (23 nodes)
+08:33:29.439040 [info ]: Started model gold.dim_date
+08:33:29.439069 [debug]: Started rendering model gold.dim_date
+08:33:29.439133 [info ]: Started model gold.mart_revenue_assurance_trend
+08:33:29.439151 [debug]: Started rendering model gold.mart_revenue_assurance_trend
+08:33:29.439176 [info ]: Started model gold.mart_revenue_assurance
+08:33:29.439189 [debug]: Started rendering model gold.mart_revenue_assurance
+08:33:29.439227 [info ]: Started model gold.mart_recon_mismatches
+08:33:29.439259 [debug]: Started rendering model gold.mart_recon_mismatches
+08:33:29.439294 [info ]: Started model gold.mart_partner_usage
+08:33:29.439326 [debug]: Started rendering model gold.mart_partner_usage
+08:33:29.439355 [info ]: Started model gold.mart_network_daily
+08:33:29.439372 [debug]: Started rendering model gold.mart_network_daily
+08:33:29.439425 [info ]: Started model gold.mart_cell_quality
+08:33:29.439457 [debug]: Started rendering model gold.mart_cell_quality
+08:33:29.439504 [info ]: Started model gold.mart_app_usage
+08:33:29.439537 [debug]: Started rendering model gold.mart_app_usage
+08:33:29.439576 [info ]: Started model gold.mart_quarantine
+08:33:29.439607 [debug]: Started rendering model gold.mart_quarantine
+08:33:29.439642 [info ]: Started model gold.mart_incidents
+08:33:29.439667 [debug]: Started rendering model gold.mart_incidents
+08:33:29.439705 [info ]: Started model gold.mart_dq_trend
+08:33:29.439741 [debug]: Started rendering model gold.mart_dq_trend
+08:33:29.439784 [info ]: Started model gold.mart_dq_health
+08:33:29.439810 [debug]: Started rendering model gold.mart_dq_health
+08:33:29.439845 [info ]: Started model gold.mart_customer_360
+08:33:29.439867 [debug]: Started rendering model gold.mart_customer_360
+08:33:29.439898 [info ]: Started model gold.fact_usage
+08:33:29.439921 [debug]: Started rendering model gold.fact_usage
+08:33:29.439953 [info ]: Started model gold.fact_payment
+08:33:29.439976 [debug]: Started rendering model gold.fact_payment
+08:33:29.440020 [info ]: Started model gold_staging.stg_payments
+08:33:29.440047 [debug]: Started rendering model gold_staging.stg_payments
+08:33:29.440086 [info ]: Started model gold.fact_partner_usage
+08:33:29.440117 [debug]: Started rendering model gold.fact_partner_usage
+08:33:29.440186 [info ]: Started model gold.fact_invoice
+08:33:29.440216 [debug]: Started rendering model gold.fact_invoice
+08:33:29.440270 [info ]: Started model gold_staging.stg_invoices
+08:33:29.440305 [debug]: Started rendering model gold_staging.stg_invoices
+08:33:29.440344 [info ]: Started model gold_staging.int_customer_by_phone
+08:33:29.440383 [debug]: Started rendering model gold_staging.int_customer_by_phone
+08:33:29.440420 [info ]: Started model gold.fact_app_events
+08:33:29.440455 [debug]: Started rendering model gold.fact_app_events
+08:33:29.440504 [info ]: Started model gold.dim_customer
+08:33:29.440527 [debug]: Started rendering model gold.dim_customer
+08:33:29.440568 [info ]: Started model gold.dim_plan
+08:33:29.440591 [debug]: Started rendering model gold.dim_plan
+08:33:29.440716 [debug]: Compiled SQL for node model.dbt_sentinel.dim_date at target\.lsp\compiled\dbt_sentinel\models\dims\dim_date.sql
+08:33:29.440723 [debug]: Compiled SQL for node model.dbt_sentinel.mart_revenue_assurance at target\.lsp\compiled\dbt_sentinel\models\marts\mart_revenue_assurance.sql
+08:33:29.440824 [debug]: Compiled SQL for node model.dbt_sentinel.mart_revenue_assurance_trend at target\.lsp\compiled\dbt_sentinel\models\marts\mart_revenue_assurance_trend.sql
+08:33:29.441335 [info ]: Started analyzing (23 nodes)
+08:33:29.441378 [debug]: Started analyzing model gold.dim_date
+08:33:29.441447 [debug]: Finished rendering [  0.00s] model gold.dim_date [success]
+08:33:29.441626 [debug]: Compiled SQL for node model.dbt_sentinel.mart_quarantine at target\.lsp\compiled\dbt_sentinel\models\marts\mart_quarantine.sql
+08:33:29.441572 [debug]: Compiled SQL for node model.dbt_sentinel.mart_recon_mismatches at target\.lsp\compiled\dbt_sentinel\models\marts\mart_recon_mismatches.sql
+08:33:29.441895 [debug]: Finished rendering [  0.00s] model gold.mart_revenue_assurance [success]
+08:33:29.441945 [debug]: Compiled SQL for node model.dbt_sentinel.mart_incidents at target\.lsp\compiled\dbt_sentinel\models\marts\mart_incidents.sql
+08:33:29.441960 [debug]: Started analyzing model gold.mart_revenue_assurance
+08:33:29.442367 [debug]: Compiled SQL for node model.dbt_sentinel.mart_partner_usage at target\.lsp\compiled\dbt_sentinel\models\marts\mart_partner_usage.sql
+08:33:29.442513 [debug]: Compiled SQL for node model.dbt_sentinel.mart_cell_quality at target\.lsp\compiled\dbt_sentinel\models\marts\mart_cell_quality.sql
+08:33:29.442646 [debug]: Compiled SQL for node model.dbt_sentinel.mart_network_daily at target\.lsp\compiled\dbt_sentinel\models\marts\mart_network_daily.sql
+08:33:29.443007 [debug]: Compiled SQL for node model.dbt_sentinel.mart_dq_trend at target\.lsp\compiled\dbt_sentinel\models\marts\mart_dq_trend.sql
+08:33:29.443455 [debug]: Compiled SQL for node model.dbt_sentinel.mart_app_usage at target\.lsp\compiled\dbt_sentinel\models\marts\mart_app_usage.sql
+08:33:29.443614 [debug]: Compiled SQL for node model.dbt_sentinel.fact_payment at target\.lsp\compiled\dbt_sentinel\models\facts\fact_payment.sql
+08:33:29.444076 [debug]: Compiled SQL for node model.dbt_sentinel.mart_customer_360 at target\.lsp\compiled\dbt_sentinel\models\marts\mart_customer_360.sql
+08:33:29.444253 [debug]: Compiled SQL for node model.dbt_sentinel.fact_usage at target\.lsp\compiled\dbt_sentinel\models\facts\fact_usage.sql
+08:33:29.444297 [debug]: Compiled SQL for node model.dbt_sentinel.fact_partner_usage at target\.lsp\compiled\dbt_sentinel\models\facts\fact_partner_usage.sql
+08:33:29.444804 [debug]: Compiled SQL for node model.dbt_sentinel.stg_payments at target\.lsp\compiled\dbt_sentinel\models\staging\stg_payments.sql
+08:33:29.445071 [debug]: Compiled SQL for node model.dbt_sentinel.stg_invoices at target\.lsp\compiled\dbt_sentinel\models\staging\stg_invoices.sql
+08:33:29.445394 [debug]: Compiled SQL for node model.dbt_sentinel.fact_invoice at target\.lsp\compiled\dbt_sentinel\models\facts\fact_invoice.sql
+08:33:29.445429 [debug]: Compiled SQL for node model.dbt_sentinel.int_customer_by_phone at target\.lsp\compiled\dbt_sentinel\models\intermediate\int_customer_by_phone.sql
+08:33:29.445613 [debug]: Compiled SQL for node model.dbt_sentinel.fact_app_events at target\.lsp\compiled\dbt_sentinel\models\facts\fact_app_events.sql
+08:33:29.445821 [debug]: Finished analyzing [  0.00s] model gold.dim_date [success]
+08:33:29.445865 [info ]:  Succeeded model gold.dim_date (table) [1 of 23 in 0.01s]
+08:33:29.445886 [debug]: Compiled SQL for node model.dbt_sentinel.dim_plan at target\.lsp\compiled\dbt_sentinel\models\dims\dim_plan.sql
+08:33:29.445978 [debug]: Started analyzing model gold.mart_incidents
+08:33:29.445996 [debug]: Finished rendering [  0.01s] model gold.mart_incidents [success]
+08:33:29.446022 [debug]: Finished rendering [  0.01s] model gold.mart_revenue_assurance_trend [success]
+08:33:29.446055 [debug]: Started analyzing model gold.mart_revenue_assurance_trend
+08:33:29.446096 [debug]: Started analyzing model gold.mart_network_daily
+08:33:29.446139 [debug]: Finished rendering [  0.01s] model gold.mart_quarantine [success]
+08:33:29.446167 [debug]: Started analyzing model gold.mart_quarantine
+08:33:29.446203 [debug]: Started analyzing model gold.mart_dq_trend
+08:33:29.446252 [debug]: Finished rendering [  0.01s] model gold.mart_network_daily [success]
+08:33:29.446310 [debug]: Finished rendering [  0.01s] model gold.mart_recon_mismatches [success]
+08:33:29.446335 [debug]: Started analyzing model gold.mart_recon_mismatches
+08:33:29.446344 [debug]: Compiled SQL for node model.dbt_sentinel.dim_customer at target\.lsp\compiled\dbt_sentinel\models\dims\dim_customer.sql
+08:33:29.446368 [debug]: Finished analyzing [  0.00s] model gold.mart_revenue_assurance [success]
+08:33:29.446393 [info ]:  Succeeded model gold.mart_revenue_assurance (table) [3 of 23 in 0.01s]
+08:33:29.446440 [debug]: Finished rendering [  0.01s] model gold.fact_payment [success]
+08:33:29.446473 [debug]: Started analyzing model gold.fact_payment
+08:33:29.446521 [debug]: Finished rendering [  0.01s] model gold.mart_app_usage [success]
+08:33:29.446546 [debug]: Started analyzing model gold.mart_app_usage
+08:33:29.446549 [debug]: Finished rendering [  0.01s] model gold.mart_dq_trend [success]
+08:33:29.446583 [debug]: Finished rendering [  0.01s] model gold.mart_customer_360 [success]
+08:33:29.446605 [debug]: Started analyzing model gold.mart_customer_360
+08:33:29.446636 [debug]: Finished rendering [  0.01s] model gold.fact_partner_usage [success]
+08:33:29.446660 [debug]: Started analyzing model gold.fact_partner_usage
+08:33:29.446703 [debug]: Finished rendering [  0.01s] model gold.fact_usage [success]
+08:33:29.446728 [debug]: Started analyzing model gold.fact_usage
+08:33:29.446757 [debug]: Finished rendering [  0.01s] model gold_staging.stg_payments [success]
+08:33:29.446779 [debug]: Started analyzing model gold_staging.stg_payments
+08:33:29.446806 [debug]: Finished rendering [  0.01s] model gold_staging.stg_invoices [success]
+08:33:29.446829 [debug]: Started analyzing model gold_staging.stg_invoices
+08:33:29.446857 [debug]: Finished rendering [  0.01s] model gold_staging.int_customer_by_phone [success]
+08:33:29.446881 [debug]: Started analyzing model gold_staging.int_customer_by_phone
+08:33:29.446924 [debug]: Finished rendering [  0.01s] model gold.fact_app_events [success]
+08:33:29.446949 [debug]: Started analyzing model gold.fact_app_events
+08:33:29.446982 [debug]: Finished rendering [  0.01s] model gold.dim_plan [success]
+08:33:29.447005 [debug]: Started analyzing model gold.dim_plan
+08:33:29.447040 [debug]: Finished rendering [  0.01s] model gold.dim_customer [success]
+08:33:29.447062 [debug]: Started analyzing model gold.dim_customer
+08:33:29.447089 [debug]: Finished rendering [  0.01s] model gold.fact_invoice [success]
+08:33:29.447111 [debug]: Started analyzing model gold.fact_invoice
+08:33:29.447142 [debug]: Finished rendering [  0.01s] model gold.mart_partner_usage [success]
+08:33:29.447166 [debug]: Started analyzing model gold.mart_partner_usage
+08:33:29.447195 [debug]: Finished rendering [  0.01s] model gold.mart_cell_quality [success]
+08:33:29.447215 [debug]: Started analyzing model gold.mart_cell_quality
+08:33:29.447467 [debug]: Compiled SQL for node model.dbt_sentinel.mart_dq_health at target\.lsp\compiled\dbt_sentinel\models\marts\mart_dq_health.sql
+08:33:29.448262 [debug]: Finished rendering [  0.01s] model gold.mart_dq_health [success]
+08:33:29.448309 [info ]: Finished rendering [  0.01s] (23 nodes, 0 skipped, 0 errors)
+08:33:29.448342 [debug]: Started analyzing model gold.mart_dq_health
+08:33:29.450705 [debug]: Finished analyzing [  0.00s] model gold.mart_app_usage [success]
+08:33:29.450763 [info ]:  Succeeded model gold.mart_app_usage (table) [8 of 23 in 0.01s]
+08:33:29.450827 [debug]: Finished analyzing [  0.00s] model gold.mart_network_daily [success]
+08:33:29.450850 [info ]:  Succeeded model gold.mart_network_daily (table) [6 of 23 in 0.01s]
+08:33:29.450895 [debug]: Finished analyzing [  0.00s] model gold.mart_incidents [success]
+08:33:29.450916 [info ]:  Succeeded model gold.mart_incidents (table) [10 of 23 in 0.01s]
+08:33:29.450955 [debug]: Finished analyzing [  0.00s] model gold.mart_revenue_assurance_trend [success]
+08:33:29.450977 [info ]:  Succeeded model gold.mart_revenue_assurance_trend (table) [2 of 23 in 0.01s]
+08:33:29.451078 [debug]: Finished analyzing [  0.00s] model gold.fact_payment [success]
+08:33:29.451112 [info ]:  Succeeded model gold.fact_payment (table) [15 of 23 in 0.01s]
+08:33:29.451156 [debug]: Finished analyzing [  0.00s] model gold_staging.stg_payments [success]
+08:33:29.451176 [info ]:  Succeeded model gold_staging.stg_payments (view) [16 of 23 in 0.01s]
+08:33:29.451706 [debug]: Finished analyzing [  0.00s] model gold.mart_dq_health [success]
+08:33:29.451733 [info ]:  Succeeded model gold.mart_dq_health (table) [12 of 23 in 0.01s]
+08:33:29.452601 [debug]: Finished analyzing [  0.01s] model gold.mart_dq_trend [success]
+08:33:29.452639 [info ]:  Succeeded model gold.mart_dq_trend (table) [11 of 23 in 0.01s]
+08:33:29.452691 [debug]: Finished analyzing [  0.01s] model gold.mart_quarantine [success]
+08:33:29.452713 [info ]:  Succeeded model gold.mart_quarantine (table) [9 of 23 in 0.01s]
+08:33:29.456894 [debug]: Finished analyzing [  0.01s] model gold_staging.stg_invoices [success]
+08:33:29.456985 [info ]:  Succeeded model gold_staging.stg_invoices (view) [19 of 23 in 0.02s]
+08:33:29.457398 [debug]: Finished analyzing [  0.01s] model gold_staging.int_customer_by_phone [success]
+08:33:29.457437 [info ]:  Succeeded model gold_staging.int_customer_by_phone (view) [20 of 23 in 0.02s]
+08:33:29.457808 [debug]: Finished analyzing [  0.01s] model gold.fact_usage [success]
+08:33:29.457836 [info ]:  Succeeded model gold.fact_usage (table) [14 of 23 in 0.02s]
+08:33:29.458319 [debug]: Finished analyzing [  0.01s] model gold.mart_partner_usage [success]
+08:33:29.458349 [info ]:  Succeeded model gold.mart_partner_usage (table) [5 of 23 in 0.02s]
+08:33:29.459312 [debug]: Finished analyzing [  0.01s] model gold.fact_partner_usage [success]
+08:33:29.459345 [info ]:  Succeeded model gold.fact_partner_usage (table) [17 of 23 in 0.02s]
+08:33:29.459387 [debug]: Finished analyzing [  0.01s] model gold.dim_plan [success]
+08:33:29.459407 [info ]:  Succeeded model gold.dim_plan (table) [23 of 23 in 0.02s]
+08:33:29.459913 [debug]: Finished analyzing [  0.01s] model gold.mart_cell_quality [success]
+08:33:29.459941 [info ]:  Succeeded model gold.mart_cell_quality (table) [7 of 23 in 0.02s]
+08:33:29.461491 [debug]: Finished analyzing [  0.01s] model gold.fact_invoice [success]
+08:33:29.461538 [info ]:  Succeeded model gold.fact_invoice (table) [18 of 23 in 0.02s]
+08:33:29.461888 [debug]: Finished analyzing [  0.01s] model gold.dim_customer [success]
+08:33:29.461930 [info ]:  Succeeded model gold.dim_customer (table) [22 of 23 in 0.02s]
+08:33:29.462389 [debug]: Finished analyzing [  0.02s] model gold.fact_app_events [success]
+08:33:29.462429 [info ]:  Succeeded model gold.fact_app_events (table) [21 of 23 in 0.02s]
+08:33:29.462479 [debug]: Finished analyzing [  0.02s] model gold.mart_recon_mismatches [success]
+08:33:29.462501 [info ]:  Succeeded model gold.mart_recon_mismatches (table) [4 of 23 in 0.02s]
+08:33:29.466629 [debug]: Finished analyzing [  0.02s] model gold.mart_customer_360 [success]
+08:33:29.466679 [info ]: Finished analyzing [  0.03s] (23 nodes, 0 skipped, 0 errors)
+08:33:29.466696 [info ]:  Succeeded model gold.mart_customer_360 (table) [13 of 23 in 0.03s]
+08:33:29.478468 [info ]: Started scheduling
+08:33:29.478716 [info ]: Finished scheduling [  0.00s]
+08:33:29.478975 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' successfully for target 'dev' [2.0s]
+Processed: 23 models | 4 exposures
+Summary: 23 total | 23 success
+08:33:29.479279 [info ]: Cached model count updated: 23 models (accurate)
+08:33:39.190365 [debug]: Ignoring unsupported LSP notification
+08:33:40.541960 [debug]: Ignoring unsupported LSP notification
+08:33:55.926097 [debug]: Ignoring unsupported LSP notification
+08:35:52.185223 [debug]: Ignoring unsupported LSP notification
+08:35:52.360615 [debug]: Ignoring unsupported LSP notification
+08:36:40.268374 [debug]: Ignoring unsupported LSP notification

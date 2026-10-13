@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-title",
   "position": {
-    "x": 298,
+    "x": 94,
     "y": 32,
-    "z": 131,
+    "z": 172,
     "width": 900,
     "height": 40,
-    "tabOrder": 131
+    "tabOrder": 172
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Revenue Assurance",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "21pt",
                       "fontWeight": "bold",
                       "color": "#111827"

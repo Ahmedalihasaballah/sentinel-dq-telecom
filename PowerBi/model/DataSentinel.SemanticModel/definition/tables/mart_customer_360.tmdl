@@ -172,6 +172,18 @@ table mart_customer_360
 		summarizeBy: sum
 		sourceColumn: partner_amount_eur
 
+	column payment_age_order = VAR d = DATEDIFF ( mart_customer_360[last_payment_at], NOW (), DAY ) RETURN SWITCH ( TRUE (), mart_customer_360[unpaid_eur] <= 0, 0, ISBLANK ( mart_customer_360[last_payment_at] ), 5, d <= 30, 1, d <= 60, 2, d <= 90, 3, 4 )
+		dataType: int64
+		isHidden
+		lineageTag: f5b21c22-f0c5-440a-a04d-3ed5b974ee32
+		summarizeBy: none
+
+	column payment_age_band = SWITCH ( mart_customer_360[payment_age_order], 0, "Paid up", 1, "0-30 days", 2, "31-60 days", 3, "61-90 days", 4, "90+ days", "Never paid" )
+		dataType: string
+		lineageTag: aca62a01-0723-4cbc-8a6e-1bc5f580472a
+		summarizeBy: none
+		sortByColumn: payment_age_order
+
 	partition mart_customer_360 = m
 		mode: import
 		source =

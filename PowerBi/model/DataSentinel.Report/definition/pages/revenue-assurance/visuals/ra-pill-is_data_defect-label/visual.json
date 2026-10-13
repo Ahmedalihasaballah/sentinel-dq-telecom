@@ -4,10 +4,10 @@
   "position": {
     "x": 1476,
     "y": 74,
-    "z": 136,
+    "z": 177,
     "width": 110,
     "height": 22,
-    "tabOrder": 136
+    "tabOrder": 177
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Defect or business",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#4B5563"
                     }

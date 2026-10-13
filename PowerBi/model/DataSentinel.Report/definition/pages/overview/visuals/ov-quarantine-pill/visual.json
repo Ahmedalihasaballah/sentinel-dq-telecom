@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-quarantine-pill",
   "position": {
-    "x": 718,
-    "y": 206,
-    "z": 29,
-    "width": 210,
+    "x": 565,
+    "y": 208,
+    "z": 39,
+    "width": 250,
     "height": 24,
-    "tabOrder": 29
+    "tabOrder": 39
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "UI Quarantine Datasets"
+                  "Property": "UI Quarantine Pill"
                 }
               },
-              "queryRef": "_Measures.UI Quarantine Datasets",
-              "nativeQueryRef": "UI Quarantine Datasets"
+              "queryRef": "_Measures.UI Quarantine Pill",
+              "nativeQueryRef": "UI Quarantine Pill"
             }
           ]
         }
@@ -48,8 +48,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#F1F3F6'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Quarantine Pill Bg"
                     }
                   }
                 }
@@ -79,8 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#F1F3F6'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Quarantine Pill Bg"
                     }
                   }
                 }
@@ -218,8 +228,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#4B5563'"
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "UI Quarantine Pill Fg"
                     }
                   }
                 }
@@ -228,7 +243,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },
@@ -242,7 +257,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "'Arial'"
                 }
               }
             }

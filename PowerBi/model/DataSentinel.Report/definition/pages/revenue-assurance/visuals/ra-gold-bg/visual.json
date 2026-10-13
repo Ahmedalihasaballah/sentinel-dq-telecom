@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-gold-bg",
   "position": {
-    "x": 18,
+    "x": 82,
     "y": 962,
-    "z": 129,
+    "z": 50170,
     "width": 228,
     "height": 92,
-    "tabOrder": 129
+    "tabOrder": 170
   },
   "visual": {
     "visualType": "shape",
@@ -68,7 +68,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFFFFF'"
+                      "Value": "'#E9EEF7'"
                     }
                   }
                 }
@@ -90,32 +90,14 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E6E8EC'"
-                    }
-                  }
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
+                  "Value": "false"
                 }
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "10D"
                 }
               }
             }
@@ -162,5 +144,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

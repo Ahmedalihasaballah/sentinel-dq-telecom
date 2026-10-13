@@ -4,10 +4,10 @@
   "position": {
     "x": 1126,
     "y": 74,
-    "z": 251,
+    "z": 317,
     "width": 110,
     "height": 22,
-    "tabOrder": 251
+    "tabOrder": 317
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Status",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#4B5563"
                     }

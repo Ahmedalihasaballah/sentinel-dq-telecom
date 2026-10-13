@@ -4,10 +4,10 @@
   "position": {
     "x": 1686,
     "y": 1046,
-    "z": 334,
+    "z": 423,
     "width": 200,
     "height": 22,
-    "tabOrder": 334
+    "tabOrder": 423
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Page 6 of 6",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "8pt",
                       "color": "#9CA3AF"
                     }

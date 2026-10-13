@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-logo-text",
   "position": {
-    "x": 76,
+    "x": 136,
     "y": 33,
-    "z": 120,
-    "width": 180,
+    "z": 50153,
+    "width": 150,
     "height": 32,
-    "tabOrder": 120
+    "tabOrder": 153
   },
   "visual": {
     "visualType": "textbox",
@@ -21,9 +21,10 @@
                   {
                     "value": "DataSentinel",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "15pt",
                       "fontWeight": "bold",
-                      "color": "#111827"
+                      "color": "#FFFFFF"
                     }
                   }
                 ],
@@ -122,5 +123,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

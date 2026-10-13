@@ -4,10 +4,10 @@
   "position": {
     "x": 1036,
     "y": 74,
-    "z": 331,
+    "z": 420,
     "width": 110,
     "height": 22,
-    "tabOrder": 331
+    "tabOrder": 420
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "Event type",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#4B5563"
                     }

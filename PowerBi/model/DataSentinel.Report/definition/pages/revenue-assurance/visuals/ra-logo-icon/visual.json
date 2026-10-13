@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-logo-icon",
   "position": {
-    "x": 26,
+    "x": 86,
     "y": 33,
-    "z": 119,
+    "z": 50152,
     "width": 40,
     "height": 30,
-    "tabOrder": 119
+    "tabOrder": 152
   },
   "visual": {
     "visualType": "textbox",
@@ -21,6 +21,7 @@
                   {
                     "value": "◈",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "15pt",
                       "color": "#FFFFFF"
                     }
@@ -121,5 +122,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

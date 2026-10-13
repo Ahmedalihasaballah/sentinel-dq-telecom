@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-logo-bg",
   "position": {
-    "x": 26,
+    "x": 86,
     "y": 28,
-    "z": 227,
+    "z": 50285,
     "width": 40,
     "height": 40,
-    "tabOrder": 227
+    "tabOrder": 285
   },
   "visual": {
     "visualType": "shape",
@@ -144,5 +144,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

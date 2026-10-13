@@ -4907,3 +4907,55 @@ parsing.
 [0m21:25:34.976573 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000289DDE8D3D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000289D87BFD10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000289F3FBF810>]}
 [0m21:25:34.976573 [debug] [MainThread]: Flushing usage events
 [0m21:25:37.574713 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:10:20.862815 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6DF955A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6DD4DCCD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6E2283ED0>]}
+
+
+============================== 09:10:20.870437 | c59b3ea4-8c20-4c62-87f7-b80f3b72fd3a ==============================
+[0m09:10:20.870437 [info ] [MainThread]: Running with dbt=1.12.3
+[0m09:10:20.871521 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt ', 'log_path': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt\\logs'}
+[0m09:10:21.116324 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c59b3ea4-8c20-4c62-87f7-b80f3b72fd3a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6E2311350>]}
+[0m09:10:21.166637 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m09:10:21.168465 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m09:10:21.171035 [debug] [MainThread]: Command `cli deps` succeeded at 09:10:21.170731 after 0.67 seconds
+[0m09:10:21.171698 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6E05505A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6E253D040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D6E208FE50>]}
+[0m09:10:21.172361 [debug] [MainThread]: Flushing usage events
+[0m09:10:21.909175 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:05:59.698644 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D603D5A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D5DFB8CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D62D03ED0>]}
+
+
+============================== 19:05:59.705657 | 82471e48-fe2d-4cba-8c4d-1d7d0675ec8a ==============================
+[0m19:05:59.705657 [info ] [MainThread]: Running with dbt=1.12.3
+[0m19:05:59.706613 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt ', 'log_path': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt\\logs'}
+[0m19:05:59.981906 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '82471e48-fe2d-4cba-8c4d-1d7d0675ec8a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D62DC5350>]}
+[0m19:06:00.029028 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m19:06:00.031498 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m19:06:00.033611 [debug] [MainThread]: Command `cli deps` succeeded at 19:06:00.033269 after 0.72 seconds
+[0m19:06:00.034493 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D60FCC5A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D62F71040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018D62B0FE50>]}
+[0m19:06:00.035297 [debug] [MainThread]: Flushing usage events
+[0m19:06:01.531631 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:20:46.317420 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028586355A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028583ED8CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028588C83ED0>]}
+
+
+============================== 09:20:46.324081 | abfd814f-2b49-46a4-93f5-2df46c4f7b03 ==============================
+[0m09:20:46.324081 [info ] [MainThread]: Running with dbt=1.12.3
+[0m09:20:46.325105 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt ', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt\\logs'}
+[0m09:20:46.634326 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'abfd814f-2b49-46a4-93f5-2df46c4f7b03', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028588D49350>]}
+[0m09:20:46.730010 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m09:20:46.733613 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m09:20:46.735901 [debug] [MainThread]: Command `cli deps` succeeded at 09:20:46.735519 after 0.84 seconds
+[0m09:20:46.736610 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028586F4C5A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028588F01040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028588A8FE50>]}
+[0m09:20:46.737218 [debug] [MainThread]: Flushing usage events
+[0m09:20:47.605921 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:01:44.864801 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025608A45A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000256065D8CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002560B373ED0>]}
+
+
+============================== 10:01:44.873078 | abe35543-5502-402e-8d97-bb6ccc2e200a ==============================
+[0m10:01:44.873078 [info ] [MainThread]: Running with dbt=1.12.3
+[0m10:01:44.875437 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt ', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'c:\\Users\\DELL\\Downloads\\CDC-tutorial-main\\sentinel-dq-telecom\\dbt\\dbt\\logs'}
+[0m10:01:45.210485 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'abe35543-5502-402e-8d97-bb6ccc2e200a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002560B401350>]}
+[0m10:01:45.305411 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m10:01:45.310025 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m10:01:45.311737 [debug] [MainThread]: Command `cli deps` succeeded at 10:01:45.311490 after 0.99 seconds
+[0m10:01:45.312586 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000256096405A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002560B6D5040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002560B17FE50>]}
+[0m10:01:45.313211 [debug] [MainThread]: Flushing usage events
+[0m10:01:46.158979 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-nav-label",
   "position": {
-    "x": 30,
+    "x": 90,
     "y": 106,
-    "z": 310,
+    "z": 50393,
     "width": 200,
     "height": 20,
-    "tabOrder": 310
+    "tabOrder": 393
   },
   "visual": {
     "visualType": "textbox",
@@ -21,9 +21,10 @@
                   {
                     "value": "REPORT",
                     "textStyle": {
-                      "fontSize": "8pt",
+                      "fontFamily": "Arial",
+                      "fontSize": "9pt",
                       "fontWeight": "bold",
-                      "color": "#9CA3AF"
+                      "color": "#7C8BA8"
                     }
                   }
                 ],
@@ -122,5 +123,6 @@
         }
       ]
     }
-  }
+  },
+  "isHidden": true
 }

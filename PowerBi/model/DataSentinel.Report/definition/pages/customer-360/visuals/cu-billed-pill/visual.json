@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-billed-pill",
   "position": {
-    "x": 638,
-    "y": 206,
-    "z": 262,
-    "width": 166,
+    "x": 474,
+    "y": 208,
+    "z": 328,
+    "width": 250,
     "height": 24,
-    "tabOrder": 262
+    "tabOrder": 328
   },
   "visual": {
     "visualType": "card",
@@ -201,7 +201,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
                 }
               }
             },
@@ -215,7 +215,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "'Arial'"
                 }
               }
             }
