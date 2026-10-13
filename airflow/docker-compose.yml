@@ -18,7 +18,7 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
       - ./dbt_profiles:/opt/airflow/dbt_profiles
-      - ../dbt_simple:/opt/airflow/dbt_simple
+      - ../dbt/dbt:/opt/airflow/dbt_simple
       - airflow_db:/opt/airflow/db
 volumes:
   airflow_db:

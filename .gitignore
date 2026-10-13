@@ -12,3 +12,6 @@ dbt/profiles.yml
 .vscode/
 .DS_Store
 *.pbix
+
+# quarantine review app: password hashes stay local
+review_app/users.json
