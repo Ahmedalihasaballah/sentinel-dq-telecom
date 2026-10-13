@@ -14,6 +14,15 @@ from pathlib import Path
 import yaml
 
 ITERATIONS = 310_000
+# One review-app user per data source; groups follow incident_routing in 70_incident_setup (CRM, Billing, ... teams).
+SOURCE_GROUPS = {
+    "crm": ["crm_customers", "crm_plans"],
+    "billing": ["billing_accounts", "billing_invoices", "billing_invoice_lines", "billing_payments",
+                "invoices_file", "payments_file"],
+    "network": ["network_cdr"],
+    # "app": ["app_events"],   # app_events contract disabled (contract/_app_events.yaml)
+    "partner": ["partner_usage"],
+}
 EDITABLE_STATUSES = ("PENDING_FIX", "REJECTED", "FIXED_PENDING_REVALIDATION")
 ALL_STATUSES = EDITABLE_STATUSES + ("REVALIDATED_OK",)
 FIXED_STATUS = "FIXED_PENDING_REVALIDATION"
@@ -63,13 +72,14 @@ def load_contracts(contract_dir: Path) -> dict:
     """dataset name -> list of column names, from contract/*.yaml (same files the quality gate uses)."""
     out = {}
     for f in sorted(contract_dir.glob("*.yaml")):
+        if f.name.startswith("_"):   # disabled contract, same rule as load_contracts in 11_dq_lib
+            continue
         c = yaml.safe_load(f.read_text(encoding="utf-8"))
         name = c["dataset"]
         cols = [x["name"] for x in c["columns"]]
         if _SAFE_NAME.match(name) and all(_SAFE_NAME.match(x) for x in cols):
             out[name] = cols
     return out
-
 
 def safe_name(name: str) -> str:
     if not _SAFE_NAME.match(name):

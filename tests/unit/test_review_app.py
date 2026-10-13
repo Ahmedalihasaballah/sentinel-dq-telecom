@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "review_app"))
 
-from logic import allowed_datasets, authenticate, diff_rows, hash_password, load_contracts, safe_name  # noqa: E402
+from logic import SOURCE_GROUPS, allowed_datasets, authenticate, diff_rows, hash_password, load_contracts, safe_name  # noqa: E402
 
 
 def test_password_hash_and_verify():
@@ -42,3 +42,9 @@ def test_contracts_load_and_names_are_safe():
         assert False
     except ValueError:
         pass
+
+
+def test_every_dataset_belongs_to_exactly_one_source_user():
+    datasets = sorted(load_contracts(ROOT / "contract"))
+    grouped = sorted(d for ds in SOURCE_GROUPS.values() for d in ds)
+    assert grouped == datasets

@@ -1,5 +1,5 @@
 dataset: network_cdr
-version: "1.0"
+version: "1.1"
 owner: Network operations
 description: One row per call, SMS or data session (daily CDR files)
 glossary: [CDR, Event type, Call duration, Data volume, Cell, Call result]
@@ -14,7 +14,7 @@ columns:
   - {name: event_ts, type: timestamp, required: true}
   - {name: duration_sec, type: int, required: true}
   - {name: data_mb, type: "decimal(12,2)", required: true}
-  - {name: cell_id, type: string, required: true}
+  - {name: cell_id, type: string, required: false}   # optional: a missing cell_id is only flagged (NET_CELL_PRESENT)
   - {name: call_result, type: string, required: true}
 slo: {min_pass_rate: 0.95, circuit_breaker_min_pass_rate: 0.30}
 rules:

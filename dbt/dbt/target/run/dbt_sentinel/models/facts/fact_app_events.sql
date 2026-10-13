@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- FACT: one row per mobile app event.
 -- The app sends the customer id directly, so we look up the customer VERSION valid at event time.

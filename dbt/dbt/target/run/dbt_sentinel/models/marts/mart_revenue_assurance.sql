@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- Dashboard 2: the latest reconciliation run, one row per check, with the EUR at risk.
 with last_run as (

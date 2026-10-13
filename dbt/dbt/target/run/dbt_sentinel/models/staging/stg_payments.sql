@@ -1,6 +1,7 @@
 
   
   
+  
   create or replace view `data_sentinel`.`gold_staging`.`stg_payments`
   
   as (

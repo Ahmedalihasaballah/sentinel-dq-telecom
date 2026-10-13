@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- DIMENSION: one row per plan VERSION (a plan keeps one row each time its price or limits change).
 -- Input: silver.plan_history

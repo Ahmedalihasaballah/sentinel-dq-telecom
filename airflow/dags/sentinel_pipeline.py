@@ -2,18 +2,18 @@
 
 Airflow only orchestrates. The work stays in the Databricks notebooks and in dbt.
 Order of the tasks and why:
-  bronze_*          load new CDC events, app events and batch files into Bronze (in parallel)
-  gate              contract + rules: pass -> validated table, fail -> quarantine
+  bronze_*          load new CDC events (01_bronze) and batch files into Bronze, in parallel
+                    (app events are not loaded by this pipeline)
+  gate              contract + rules: pass -> validated table, fail -> quarantine.
+                    Circuit breaker: if 50% or more of any table's rows fail, the gate raises after saving its
+                    results, so everything after it stops (the incident is still alerted, Gold is not rebuilt)
   autofix           deterministic repairs on quarantined rows
   revalidate        same rules again on the fixed rows
   monitors          the five observability pillars
-  circuit_breaker   stops Silver and Gold while a critical incident is OPEN (23_circuit_breaker raises on purpose)
   silver_*          SCD2 history, clean tables, customer_xref
   recon             cross-system checks (only reads Silver)
-  incidents         assign owner/priority, alert, escalate, record resolved (after gate, monitors and recon);
-                    runs even when the breaker stopped Silver, so the blocking incident is still alerted
-  dbt_build         Gold dims, facts, marts and tests (after incidents, because mart_incidents reads them);
-                    skipped while the breaker is open
+  incidents         assign owner/priority, alert, escalate, record resolved (after gate, monitors and recon)
+  dbt_build         Gold dims, facts, marts and tests (after incidents, because mart_incidents reads them)
 """
 import os
 from datetime import datetime, timedelta
@@ -53,19 +53,15 @@ with DAG(
     tags=["sentinel", "data-quality"],
 ) as dag:
 
-    # Notebook names match databricks/notebooks/ in the repo. The CDC Bronze notebook (01_bronze) is not in the
-    # repo yet, so its task is left out; add it back here and in the bronze list below once the notebook exists:
-    #   bronze_cdc = notebook("bronze_cdc", "01_bronze")
-    bronze_app = notebook("bronze_app_events", "03_bronze_app_events")
+    # Notebook names match databricks/notebooks/ in the repo (all notebooks sit in one Databricks folder).
+    bronze_cdc = notebook("bronze_cdc", "01_bronze")
     bronze_files = notebook("bronze_batch_files", "02.1_bronze_batch_files")
 
-    gate = notebook("gate", "20_quality_gate")
+    # a tripped circuit breaker is a deliberate stop, so no retry
+    gate = notebook("gate", "20_quality_gate", {"max_reject_rate": "0.5", "stop_on_breaker": "true"}, retries=0)
     autofix = notebook("autofix", "21_quarantine_autofix")
     revalidate = notebook("revalidate", "22_revalidate")
     monitors = notebook("monitors", "30_observability_monitors")
-    # A tripped breaker is a deliberate stop, not a glitch: no retry.
-    breaker = notebook("circuit_breaker", "23_circuit_breaker", {"datasets": "all", "block_severities": "critical"},
-                       retries=0)
 
     silver_history = notebook("silver_history", "50_silver_history")
     silver_clean = notebook("silver_clean", "51_silver_clean")
@@ -73,13 +69,13 @@ with DAG(
 
     recon = notebook("recon", "60_recon")
     incidents = notebook("incidents", "71_incident_manage", {"sla_scale": SLA_SCALE},
-                         trigger_rule="all_done")   # also after a tripped breaker
+                         trigger_rule="all_done")   # runs even after the breaker stopped the pipeline
 
     dbt_build = BashOperator(
         task_id="dbt_build",
         bash_command="cd /opt/airflow/dbt_simple && /home/airflow/dbt_venv/bin/dbt build --profiles-dir /opt/airflow/dbt_profiles",
     )
 
-    [bronze_app, bronze_files] >> gate >> autofix >> revalidate >> monitors
-    monitors >> breaker >> silver_history >> silver_clean >> silver_xref >> recon >> incidents >> dbt_build
-    breaker >> dbt_build          # Gold is not rebuilt while the breaker is open
+    [bronze_cdc, bronze_files] >> gate >> autofix >> revalidate >> monitors
+    monitors >> silver_history >> silver_clean >> silver_xref >> recon >> incidents >> dbt_build
+    gate >> dbt_build             # Gold is not rebuilt when the breaker tripped

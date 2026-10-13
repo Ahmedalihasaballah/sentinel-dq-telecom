@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- Dashboard 4: partner (roaming and international) cost per month and service, and how much belongs to unknown numbers.
 select

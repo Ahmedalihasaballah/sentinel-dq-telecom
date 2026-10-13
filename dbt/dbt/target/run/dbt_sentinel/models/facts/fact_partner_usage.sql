@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- FACT: one row per partner usage record (roaming or international).
 -- The partner file covers a whole month, so we look up the customer at the start of the NEXT month.

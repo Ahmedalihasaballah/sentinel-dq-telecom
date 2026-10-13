@@ -1,6 +1,8 @@
 """Manage review-app users. Passwords are asked interactively and stored only as salted PBKDF2 hashes.
 
     python review_app/manage_users.py add admin --role admin
+    python review_app/manage_users.py sources                  one user per data source (crm, billing, network, app, partner)
+    python review_app/manage_users.py sources --only billing   just that source
     python review_app/manage_users.py add billing --role owner --datasets billing_payments,billing_invoices
     python review_app/manage_users.py passwd billing
     python review_app/manage_users.py remove billing
@@ -11,7 +13,7 @@ import getpass
 import sys
 from pathlib import Path
 
-from logic import hash_password, load_users, save_users
+from logic import SOURCE_GROUPS, hash_password, load_users, save_users
 
 USERS_FILE = Path(__file__).resolve().parent / "users.json"
 MIN_LEN = 10
@@ -36,6 +38,8 @@ def main():
     sub.add_parser("passwd").add_argument("username")
     sub.add_parser("remove").add_argument("username")
     sub.add_parser("list")
+    so = sub.add_parser("sources", help="create one owner user per data source, each with its own password")
+    so.add_argument("--only", default="", help="comma separated source names, e.g. billing,crm")
     args = ap.parse_args()
 
     users = load_users(USERS_FILE)
@@ -48,6 +52,22 @@ def main():
         if args.username not in users:
             sys.exit("No such user.")
         users[args.username].update(hash_password(ask_password()))
+    elif args.cmd == "sources":
+        only = [x.strip() for x in args.only.split(",") if x.strip()]
+        unknown = set(only) - set(SOURCE_GROUPS)
+        if unknown:
+            sys.exit(f"Unknown source(s): {', '.join(sorted(unknown))}. Choose from: {', '.join(SOURCE_GROUPS)}")
+        for name, datasets in SOURCE_GROUPS.items():
+            if only and name not in only:
+                continue
+            if name in users:
+                print(f"{name}: already exists (change its password with: passwd {name})")
+                continue
+            print(f"\nUser '{name}' can see and edit: {', '.join(datasets)}")
+            users[name] = {**hash_password(ask_password()), "role": "owner", "datasets": datasets}
+            save_users(USERS_FILE, users)      # save after each user so a typo later does not lose the earlier ones
+            print(f"{name}: created")
+        return
     elif args.cmd == "remove":
         users.pop(args.username, None)
     else:

@@ -1,5 +1,5 @@
 dataset: invoices_file
-version: "1.0"
+version: "1.1"
 owner: Billing team
 description: Monthly billing invoice files (file copy of the invoices, compared with Postgres in recon)
 glossary: [Invoice, Plan fee (PLAN_FEE), Data overage (DATA_OVERAGE), Invoice total]
@@ -22,8 +22,8 @@ rules:
   - {id: INVF_ID_NOT_NULL, type: not_null, column: invoice_id, dimension: completeness, severity: critical, action: reject}
   - {id: INVF_ID_UNIQUE, type: unique, keys: [invoice_id], order_by: [_file_name], dimension: uniqueness, severity: high, action: reject}
   - {id: INVF_MSISDN_FORMAT, type: regex, column: msisdn, pattern: "^[+]316[0-9]{8}$", dimension: validity, severity: high, action: reject}
-  - {id: INVF_TOTAL_NON_NEGATIVE, type: range, column: total_amount, min: 0, dimension: validity, severity: high, action: reject}
-  - {id: INVF_OVERAGE_NON_NEGATIVE, type: range, column: overage, min: 0, dimension: validity, severity: high, action: reject}
+  - {id: INVF_TOTAL_NON_NEGATIVE, type: range, column: total_amount, min: 0, dimension: validity, severity: high, action: flag}
+  - {id: INVF_OVERAGE_NON_NEGATIVE, type: range, column: overage, min: 0, dimension: validity, severity: high, action: flag}
   - {id: INVF_PERIOD_ORDER, type: compare, left: period_start, op: "<=", right: period_end, dimension: validity, severity: medium, action: reject}
   - {id: INVF_STATUS_DOMAIN, type: domain, column: status, values: [ISSUED, PAID, OVERDUE, CANCELLED], dimension: domain, severity: medium, action: reject}
   - id: INVF_TOTAL_CONSISTENT

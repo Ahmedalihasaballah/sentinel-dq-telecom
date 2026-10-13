@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- Dashboard 1: pass rate per day, dataset and quality dimension (gate rules only).
 select

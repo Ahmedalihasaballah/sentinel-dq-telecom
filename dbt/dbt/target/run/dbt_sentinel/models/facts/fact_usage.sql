@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- FACT: one row per network record (a call, an SMS or a data session).
 -- Inputs: silver.network_cdr, silver.customer_xref, and the customer lookup by phone number.

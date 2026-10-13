@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- FACT: one row per payment and source.
 -- The customer comes from the invoice that was paid.

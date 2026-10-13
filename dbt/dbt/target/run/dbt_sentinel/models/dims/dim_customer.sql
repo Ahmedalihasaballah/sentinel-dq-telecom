@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- DIMENSION: one row per customer VERSION (a customer gets a new row when plan, city, status... change).
 -- Inputs: silver.customer_history (the customers) and dim_plan (the plan prices).

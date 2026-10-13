@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- DIMENSION: one row per calendar day. It needs no input table: dbt builds the days itself.
 -- The first and last day come from dbt_project.yml (date_start, date_end).

@@ -1,5 +1,5 @@
 dataset: partner_usage
-version: "1.0"
+version: "1.1"
 owner: Partnerships team
 description: Monthly partner usage files (roaming and international calls)
 glossary: [Partner usage record, Roaming, International call, Partner amount, Currency]
@@ -20,7 +20,7 @@ rules:
   - {id: PRT_ID_UNIQUE, type: unique, keys: [partner_record_id], order_by: [_file_name], dimension: uniqueness, severity: high, action: reject}
   - {id: PRT_MSISDN_FORMAT, type: regex, column: msisdn, pattern: "^[+]316[0-9]{8}$", dimension: validity, severity: high, action: reject}
   - {id: PRT_SERVICE_DOMAIN, type: domain, column: service, values: [ROAMING, INTL_CALL], dimension: domain, severity: medium, action: reject}
-  - {id: PRT_AMOUNT_NON_NEGATIVE, type: range, column: amount, min: 0, dimension: validity, severity: high, action: reject}
+  - {id: PRT_AMOUNT_NON_NEGATIVE, type: range, column: amount, min: 0, dimension: validity, severity: high, action: flag}
   - {id: PRT_CURRENCY_DOMAIN, type: domain, column: currency, values: [EUR], dimension: domain, severity: medium, action: reject}
 monitors:
   freshness: {frequency: monthly, max_delay_days: 10}

@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- FACT: one row per invoice and source (billing_db or billing_file).
 -- Each invoice gets the customer VERSION that was valid when the invoice was issued.

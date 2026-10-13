@@ -1,5 +1,5 @@
 dataset: billing_payments
-version: "1.0"
+version: "1.1"
 owner: Finance team
 description: One row per payment change event from Postgres billing.payments
 glossary: [Payment, Payment method, Unpaid invoice]
@@ -19,7 +19,7 @@ slo: {min_pass_rate: 0.97, circuit_breaker_min_pass_rate: 0.50}
 rules:
   - {id: PAY_ID_NOT_NULL, type: not_null, column: payment_id, dimension: completeness, severity: critical, action: reject}
   - {id: PAY_AMOUNT_PRESENT, type: not_null, column: amount, dimension: completeness, severity: high, action: reject}
-  - {id: PAY_AMOUNT_NON_NEGATIVE, type: range, column: amount, min: 0, dimension: validity, severity: high, action: reject}
+  - {id: PAY_AMOUNT_NON_NEGATIVE, type: range, column: amount, min: 0, dimension: validity, severity: high, action: flag}
   - {id: PAY_METHOD_PRESENT, type: not_null, column: method, dimension: completeness, severity: low, action: flag}
   - {id: PAY_METHOD_DOMAIN, type: domain, column: method, values: [CARD, SEPA, IDEAL], dimension: domain, severity: medium, action: reject}
   - {id: PAY_STATUS_DOMAIN, type: domain, column: status, values: [PAID, FAILED, REFUNDED], dimension: domain, severity: medium, action: reject}

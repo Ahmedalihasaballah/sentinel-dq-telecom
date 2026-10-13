@@ -1,3 +1,4 @@
+# DISABLED on 2026-10-13: app events are no longer loaded. Files starting with "_" are ignored by load_contracts; rename back to app_events.yaml to re-enable.
 dataset: app_events
 version: "1.0"
 owner: Digital team

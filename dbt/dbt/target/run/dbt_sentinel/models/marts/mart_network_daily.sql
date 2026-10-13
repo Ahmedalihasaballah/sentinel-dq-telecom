@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- Dashboard 4: network load per day and record type.
 select

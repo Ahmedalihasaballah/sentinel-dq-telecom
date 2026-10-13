@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- Dashboard 4: app events per day, app version and event type (crash share per version).
 select

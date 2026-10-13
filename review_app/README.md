@@ -16,8 +16,20 @@ No notebook was changed.
 ```powershell
 .venv\Scripts\pip install -r review_app\requirements.txt
 .venv\Scripts\python review_app\manage_users.py add admin --role admin
-.venv\Scripts\python review_app\manage_users.py add billing --role owner --datasets billing_payments,billing_invoices
+.venv\Scripts\python review_app\manage_users.py sources      # one user per data source, each with its own password
 ```
+
+`sources` creates these users (one password prompt each). Each one sees and edits only its own datasets:
+
+| User | Datasets |
+|---|---|
+| `crm` | crm_customers, crm_plans |
+| `billing` | billing_accounts, billing_invoices, billing_invoice_lines, billing_payments, invoices_file, payments_file |
+| `network` | network_cdr |
+| `app` | app_events |
+| `partner` | partner_usage |
+
+Other commands: `passwd <user>` changes a password, `remove <user>` deletes a user, `list` shows all users, `sources --only billing` creates just one of them. The groups are defined in `SOURCE_GROUPS` in `logic.py`.
 
 Passwords are typed interactively (minimum 10 characters) and stored only as salted PBKDF2 hashes in `review_app/users.json`, which is git-ignored.
 

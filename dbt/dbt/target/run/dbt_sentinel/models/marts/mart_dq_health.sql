@@ -13,6 +13,7 @@
       
       
       
+      
       as
       -- Dashboard 1: the latest result of every gate rule and monitor (one row per dataset / check / rule / scope).
 with ranked as (

@@ -1,5 +1,5 @@
 dataset: payments_file
-version: "1.0"
+version: "1.1"
 owner: Finance team
 description: Monthly billing payment files (file copy of the payments, compared with Postgres in recon)
 glossary: [Payment, Payment method]
@@ -21,7 +21,7 @@ rules:
   - {id: PAYF_ID_NOT_NULL, type: not_null, column: payment_id, dimension: completeness, severity: critical, action: reject}
   - {id: PAYF_ID_UNIQUE, type: unique, keys: [payment_id], order_by: [_file_name], dimension: uniqueness, severity: high, action: reject}
   - {id: PAYF_AMOUNT_PRESENT, type: not_null, column: amount, dimension: completeness, severity: high, action: reject}
-  - {id: PAYF_AMOUNT_NON_NEGATIVE, type: range, column: amount, min: 0, dimension: validity, severity: high, action: reject}
+  - {id: PAYF_AMOUNT_NON_NEGATIVE, type: range, column: amount, min: 0, dimension: validity, severity: high, action: flag}
   - {id: PAYF_METHOD_DOMAIN, type: domain, column: method, values: [CARD, SEPA, IDEAL], dimension: domain, severity: medium, action: reject}
   - {id: PAYF_STATUS_DOMAIN, type: domain, column: status, values: [PAID, FAILED, REFUNDED], dimension: domain, severity: medium, action: reject}
   - {id: PAYF_PAID_NOT_FUTURE, type: not_future, column: paid_at, dimension: timeliness, severity: medium, action: reject}
