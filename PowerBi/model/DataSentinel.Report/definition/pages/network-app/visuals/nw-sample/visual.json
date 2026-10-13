@@ -21,6 +21,7 @@
                   {
                     "value": "Sample data",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "fontWeight": "bold",
                       "color": "#FFFFFF"

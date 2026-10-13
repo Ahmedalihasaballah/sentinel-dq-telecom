@@ -197,7 +197,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segoe UI Bold'"
+                  "Value": "'Arial Black'"
                 }
               }
             }

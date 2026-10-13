@@ -24,22 +24,22 @@
   "textClasses": {
     "callout": {
       "fontSize": 28,
-      "fontFace": "Segoe UI Bold",
+      "fontFace": "Arial Black",
       "color": "#111827"
     },
     "title": {
       "fontSize": 12,
-      "fontFace": "Segoe UI Semibold",
+      "fontFace": "Arial",
       "color": "#111827"
     },
     "header": {
       "fontSize": 10,
-      "fontFace": "Segoe UI Semibold",
+      "fontFace": "Arial",
       "color": "#111827"
     },
     "label": {
       "fontSize": 10,
-      "fontFace": "Segoe UI",
+      "fontFace": "Arial",
       "color": "#6B7280"
     }
   },
@@ -82,7 +82,8 @@
               }
             },
             "bold": true,
-            "fontSize": 14
+            "fontSize": 14,
+            "fontFamily": "Arial"
           }
         ],
         "subTitle": [
@@ -92,7 +93,8 @@
                 "color": "#6B7280"
               }
             },
-            "fontSize": 9
+            "fontSize": 9,
+            "fontFamily": "Arial"
           }
         ],
         "padding": [
@@ -112,7 +114,8 @@
               }
             },
             "fontSize": 10,
-            "gridlineShow": false
+            "gridlineShow": false,
+            "fontFamily": "Arial"
           }
         ],
         "valueAxis": [
@@ -130,7 +133,8 @@
                 "color": "#EEF0F3"
               }
             },
-            "gridlineStyle": "solid"
+            "gridlineStyle": "solid",
+            "fontFamily": "Arial"
           }
         ],
         "legend": [
@@ -144,7 +148,8 @@
             },
             "fontSize": 10,
             "showTitle": false,
-            "defaultToCircle": true
+            "defaultToCircle": true,
+            "fontFamily": "Arial"
           }
         ],
         "labels": [
@@ -154,7 +159,9 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 10
+            "fontSize": 10,
+            "fontFamily": "Arial",
+            "bold": true
           }
         ]
       }
@@ -199,7 +206,8 @@
             },
             "bold": true,
             "fontSize": 10,
-            "outlineStyle": 2
+            "outlineStyle": 2,
+            "fontFamily": "Arial"
           }
         ],
         "values": [
@@ -224,7 +232,8 @@
                 "color": "#111827"
               }
             },
-            "fontSize": 10
+            "fontSize": 10,
+            "fontFamily": "Arial"
           }
         ],
         "grid": [
@@ -265,7 +274,8 @@
                 "color": "#374151"
               }
             },
-            "bold": true
+            "bold": true,
+            "fontFamily": "Arial"
           }
         ],
         "rowHeaders": [
@@ -279,7 +289,9 @@
               "solid": {
                 "color": "#111827"
               }
-            }
+            },
+            "fontFamily": "Arial",
+            "bold": true
           }
         ],
         "values": [
@@ -299,7 +311,8 @@
               "solid": {
                 "color": "#F7F9FC"
               }
-            }
+            },
+            "fontFamily": "Arial"
           }
         ],
         "grid": [

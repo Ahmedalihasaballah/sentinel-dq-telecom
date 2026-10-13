@@ -21,6 +21,7 @@
                   {
                     "value": "≋   ",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#8C99B0"
                     }
@@ -28,8 +29,10 @@
                   {
                     "value": "Network & App",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
-                      "color": "#C3CCDA"
+                      "color": "#C3CCDA",
+                      "fontWeight": "bold"
                     }
                   }
                 ],

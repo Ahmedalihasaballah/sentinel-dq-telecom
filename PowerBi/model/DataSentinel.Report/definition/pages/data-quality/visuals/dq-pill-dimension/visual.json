@@ -215,6 +215,13 @@
                 }
               }
             },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
             "outline": {
               "expr": {
                 "Literal": {

@@ -21,6 +21,7 @@
                   {
                     "value": "Data Quality",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "21pt",
                       "fontWeight": "bold",
                       "color": "#111827"

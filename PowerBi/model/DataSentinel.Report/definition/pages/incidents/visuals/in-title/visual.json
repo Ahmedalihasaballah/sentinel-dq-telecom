@@ -21,6 +21,7 @@
                   {
                     "value": "Incidents",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "21pt",
                       "fontWeight": "bold",
                       "color": "#111827"

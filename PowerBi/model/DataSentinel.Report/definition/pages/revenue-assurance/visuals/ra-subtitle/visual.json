@@ -21,6 +21,7 @@
                   {
                     "value": "How many EUR leak between systems, where, and which cases must be investigated?",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

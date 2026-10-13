@@ -176,12 +176,13 @@ def frame(title=None, subtitle=None, bg=WHITE, border=True, radius="12D", border
          "visualHeader": OFF()}
     if title:
         o["title"] = [{"properties": {"show": lit("true"), "text": lit(s(title)), "alignment": lit("'left'"),
-                                      "fontColor": color(TEXT), "fontSize": lit("14D"), "bold": lit("true")}}]
+                                      "fontColor": color(TEXT), "fontSize": lit("14D"), "bold": lit("true"),
+                                      "fontFamily": lit("'Arial'")}}]
     else:
         o["title"] = OFF()
     if subtitle:
         o["subTitle"] = [{"properties": {"show": lit("true"), "text": lit(s(subtitle)), "fontColor": color(SUB),
-                                         "fontSize": lit("10D")}}]
+                                         "fontSize": lit("10D"), "fontFamily": lit("'Arial'")}}]
     if pad:
         o["padding"] = [{"properties": {"top": lit("10D"), "bottom": lit("8D"), "left": lit("14D"),
                                         "right": lit("14D")}}]
@@ -257,7 +258,8 @@ def textbox(page, name, pos, runs, align="left", paragraphs=None):
     put(page, name, pos, {
         "visualType": "textbox",
         "objects": {"general": [{"properties": {"paragraphs": [
-            {"textRuns": [{"value": t, "textStyle": st} for t, st in p], "horizontalTextAlignment": align}
+            {"textRuns": [{"value": t, "textStyle": {"fontFamily": "Arial", **st}} for t, st in p],
+             "horizontalTextAlignment": align}
             for p in paras]}}]},
         "visualContainerObjects": {"background": OFF(), "border": OFF(), "dropShadow": OFF(),
                                    "visualHeader": OFF(),
@@ -286,7 +288,7 @@ def text_card(page, name, pos, measure, fg, size, bg=None, bold=False, align="le
                     "labels": [{"properties": {"color": ({"solid": {"color": {"expr": meas(f"{measure} Fg")}}}
                                                          if dynamic else color(fg)), "fontSize": lit(f"{size}D"),
                                                "bold": lit("true" if bold else "false"),
-                                               "fontFamily": lit("'Segoe UI'")}}]},
+                                               "fontFamily": lit("'Arial'")}}]},
         "drillFilterOtherVisuals": True})
 
 
@@ -296,7 +298,8 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
     x, y, w, h = pos
     shape(page, f"{name}-bg", pos, WHITE, border=BORDER, nav=nav, lifted=True)
     textbox(page, f"{name}-label", (x + 18, y + 14, w - 36, 22),
-            [("● ", {"fontSize": "10pt", "color": dot}), (label, {"fontSize": "11pt", "color": "#374151"})])
+            [("● ", {"fontSize": "10pt", "color": dot}),
+             (label, {"fontSize": "11pt", "color": "#374151", "fontWeight": "bold"})])
     region = w * 0.58 if spark else w - 24
     vco = frame(bg=None, border=False, pad=False)
     if nav:
@@ -307,7 +310,7 @@ def kpi(page, name, pos, label, dot, measure, pill_measure=None, pill="blue", sp
         "visualContainerObjects": vco,
         "objects": {"categoryLabels": OFF(),
                     "dataLabels": [{"properties": {"color": color(TEXT), "fontSize": lit("24D"),
-                                                   "fontFamily": lit("'Segoe UI Bold'")}}],
+                                                   "fontFamily": lit("'Arial Black'")}}],
                     "card": [{"properties": {"barShow": lit("false"), "outlineStyle": lit("0D")}}]},
         "drillFilterOtherVisuals": True})
     if pill_measure:
@@ -332,6 +335,7 @@ def pill_slicer(page, name, pos, label, table, column, mode="Dropdown"):
     lw = 8 * len(label) + 22
     objects = {"data": [{"properties": {"mode": lit(s(mode))}}], "header": OFF(),
                "items": [{"properties": {"fontColor": color(TEXT), "bold": lit("true"), "fontSize": lit("10D"),
+                                         "fontFamily": lit("'Arial'"),
                                          "outline": lit("'None'")}}]}
     if mode == "Between":
         objects["slider"] = OFF()
@@ -354,13 +358,11 @@ def nav_button(page, target, label, icon, y, active):
         shape(page, f"{page}-nav-{target}-bg", (x, y, w, h), NAV_ACTIVE_BG, radius="8D")
     textbox(page, f"{page}-nav-{target}-txt", (x + 16, y + 11, w - 24, 24),
             [(f"{icon}   ", {"fontSize": "11pt", "color": WHITE if active else NAV_ICON}),
-             (label, {"fontSize": "11pt", "color": WHITE if active else NAV_TEXT,
-                      **({"fontWeight": "bold"} if active else {})})])
+             (label, {"fontSize": "11pt", "color": WHITE if active else NAV_TEXT, "fontWeight": "bold"})])
     put(page, f"{page}-nav-{target}", (x, y, w, h), {
         "visualType": "shape",
         "objects": {"shape": [{"properties": {"tileShape": lit("'rectangle'")}}],
-                    "fill": [{"properties": {"show": lit("true"), "fillColor": color(WHITE),
-                                             "transparency": lit("100D")}}],
+                    "fill": [{"properties": {"show": lit("false")}}],
                     "outline": OFF()},
         "visualContainerObjects": {
             "visualLink": [{"properties": {"show": lit("true"), "type": lit("'PageNavigation'"),

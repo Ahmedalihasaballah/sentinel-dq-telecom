@@ -21,6 +21,7 @@
                   {
                     "value": "Where do calls drop, how does the app behave, and what does partner traffic cost?",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

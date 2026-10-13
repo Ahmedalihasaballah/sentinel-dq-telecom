@@ -21,6 +21,7 @@
                   {
                     "value": "● ",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#F06A35"
                     }
@@ -28,8 +29,10 @@
                   {
                     "value": "Oldest quarantined row (days)",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
-                      "color": "#374151"
+                      "color": "#374151",
+                      "fontWeight": "bold"
                     }
                   }
                 ],

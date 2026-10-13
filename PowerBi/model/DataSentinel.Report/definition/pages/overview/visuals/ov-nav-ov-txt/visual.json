@@ -21,6 +21,7 @@
                   {
                     "value": "⌂   ",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#FFFFFF"
                     }
@@ -28,6 +29,7 @@
                   {
                     "value": "Overview",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#FFFFFF",
                       "fontWeight": "bold"

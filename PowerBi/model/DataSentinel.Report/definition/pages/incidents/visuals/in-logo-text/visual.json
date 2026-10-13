@@ -21,6 +21,7 @@
                   {
                     "value": "DataSentinel",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "15pt",
                       "fontWeight": "bold",
                       "color": "#FFFFFF"

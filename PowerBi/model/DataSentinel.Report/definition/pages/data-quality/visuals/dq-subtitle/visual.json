@@ -21,6 +21,7 @@
                   {
                     "value": "Which datasets and rules fail, is it getting better, how many rows wait in quarantine?",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

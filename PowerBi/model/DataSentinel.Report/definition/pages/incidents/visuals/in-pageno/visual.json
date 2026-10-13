@@ -21,6 +21,7 @@
                   {
                     "value": "Page 4 of 6",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "8pt",
                       "color": "#9CA3AF"
                     }

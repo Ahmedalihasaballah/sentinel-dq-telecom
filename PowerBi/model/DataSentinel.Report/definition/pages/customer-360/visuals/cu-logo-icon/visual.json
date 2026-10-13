@@ -21,6 +21,7 @@
                   {
                     "value": "◈",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "15pt",
                       "color": "#FFFFFF"
                     }

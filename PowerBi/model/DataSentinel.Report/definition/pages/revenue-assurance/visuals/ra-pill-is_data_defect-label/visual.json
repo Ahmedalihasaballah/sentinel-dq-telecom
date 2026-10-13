@@ -21,6 +21,7 @@
                   {
                     "value": "Defect or business",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#4B5563"
                     }

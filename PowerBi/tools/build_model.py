@@ -448,3 +448,22 @@ for v in ("tableEx", "pivotTable"):
 th["backgroundLight"] = "#EEF2F7"
 json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 print("part 4: refined styling")
+
+# ===== Part 5: bold Arial typography =====
+th = json.load(open(tp, encoding="utf-8"))
+for k, face in (("callout", "Arial Black"), ("title", "Arial"), ("header", "Arial"), ("label", "Arial")):
+    th["textClasses"][k]["fontFace"] = face
+star = th["visualStyles"]["*"]["*"]
+star["title"][0].update({"fontFamily": "Arial", "bold": True})
+star["subTitle"][0]["fontFamily"] = "Arial"
+for k in ("categoryAxis", "valueAxis", "legend", "labels"):
+    star[k][0]["fontFamily"] = "Arial"
+star["labels"][0]["bold"] = True
+for v in ("tableEx", "pivotTable"):
+    vs = th["visualStyles"][v]["*"]
+    vs["columnHeaders"][0].update({"fontFamily": "Arial", "bold": True})
+    vs["values"][0]["fontFamily"] = "Arial"
+    if "rowHeaders" in vs:
+        vs["rowHeaders"][0].update({"fontFamily": "Arial", "bold": True})
+json.dump(th, open(tp, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+print("part 5: bold Arial typography")

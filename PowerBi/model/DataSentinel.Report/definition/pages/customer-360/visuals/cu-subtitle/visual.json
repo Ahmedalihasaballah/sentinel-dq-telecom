@@ -21,6 +21,7 @@
                   {
                     "value": "Who has paid, who owes us money, which customers have problems?",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

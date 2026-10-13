@@ -21,6 +21,7 @@
                   {
                     "value": "Everything about one customer. Names, phone and email are masked.",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "11pt",
                       "color": "#4B5563"
                     }

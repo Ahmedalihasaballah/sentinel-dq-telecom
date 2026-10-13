@@ -21,6 +21,7 @@
                   {
                     "value": "top 10 shown",
                     "textStyle": {
+                      "fontFamily": "Arial",
                       "fontSize": "9pt",
                       "color": "#374151"
                     }
