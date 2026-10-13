@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-unpaid-value",
   "position": {
-    "x": 1191,
+    "x": 1463,
     "y": 156,
-    "z": 335,
-    "width": 318,
+    "z": 287,
+    "width": 409,
     "height": 50,
-    "tabOrder": 335
+    "tabOrder": 287
   },
   "visual": {
     "visualType": "multiRowCard",

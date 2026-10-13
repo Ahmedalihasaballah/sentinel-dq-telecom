@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-value",
   "position": {
-    "x": 104,
-    "y": 276,
-    "z": 51,
-    "width": 251,
+    "x": 829,
+    "y": 156,
+    "z": 42,
+    "width": 199,
     "height": 50,
-    "tabOrder": 51
+    "tabOrder": 42
   },
   "visual": {
     "visualType": "multiRowCard",

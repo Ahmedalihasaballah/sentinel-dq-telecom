@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-unpaid-value",
   "position": {
-    "x": 557,
-    "y": 276,
-    "z": 56,
-    "width": 409,
+    "x": 1191,
+    "y": 156,
+    "z": 47,
+    "width": 318,
     "height": 50,
-    "tabOrder": 56
+    "tabOrder": 47
   },
   "visual": {
     "visualType": "multiRowCard",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-spark",
   "position": {
-    "x": 349,
-    "y": 274,
-    "z": 53,
-    "width": 164,
+    "x": 1021,
+    "y": 154,
+    "z": 44,
+    "width": 126,
     "height": 72,
-    "tabOrder": 53
+    "tabOrder": 44
   },
   "visual": {
     "visualType": "lineChart",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-breached-value",
   "position": {
-    "x": 557,
+    "x": 708,
     "y": 156,
-    "z": 260,
-    "width": 409,
+    "z": 222,
+    "width": 560,
     "height": 50,
-    "tabOrder": 260
+    "tabOrder": 222
   },
   "visual": {
     "visualType": "multiRowCard",

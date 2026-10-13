@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-fail-dataset-meta-bg",
   "position": {
-    "x": 412,
+    "x": 824,
     "y": 270,
-    "z": 137,
+    "z": 114,
     "width": 140,
     "height": 30,
-    "tabOrder": 137
+    "tabOrder": 114
   },
   "visual": {
     "visualType": "shape",

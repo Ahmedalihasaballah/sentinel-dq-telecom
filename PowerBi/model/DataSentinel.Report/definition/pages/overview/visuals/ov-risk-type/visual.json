@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-type",
   "position": {
-    "x": 698,
-    "y": 368,
-    "z": 70,
-    "width": 584,
-    "height": 318,
-    "tabOrder": 70
+    "x": 1000,
+    "y": 258,
+    "z": 57,
+    "width": 886,
+    "height": 326,
+    "tabOrder": 57
   },
   "visual": {
     "visualType": "barChart",

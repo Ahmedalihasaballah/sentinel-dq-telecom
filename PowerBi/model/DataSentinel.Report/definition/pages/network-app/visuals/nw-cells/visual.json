@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-cells",
   "position": {
-    "x": 1302,
+    "x": 1000,
     "y": 258,
-    "z": 455,
-    "width": 584,
+    "z": 391,
+    "width": 886,
     "height": 326,
-    "tabOrder": 455
+    "tabOrder": 391
   },
   "visual": {
     "visualType": "barChart",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dq-quarantine-pill",
   "position": {
-    "x": 1018,
+    "x": 1320,
     "y": 208,
-    "z": 131,
+    "z": 112,
     "width": 250,
     "height": 24,
-    "tabOrder": 131
+    "tabOrder": 112
   },
   "visual": {
     "visualType": "card",

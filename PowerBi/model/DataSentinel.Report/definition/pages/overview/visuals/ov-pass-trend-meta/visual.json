@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-pass-trend-meta",
   "position": {
-    "x": 526,
-    "y": 382,
-    "z": 69,
+    "x": 828,
+    "y": 272,
+    "z": 56,
     "width": 132,
     "height": 26,
-    "tabOrder": 69
+    "tabOrder": 56
   },
   "visual": {
     "visualType": "card",

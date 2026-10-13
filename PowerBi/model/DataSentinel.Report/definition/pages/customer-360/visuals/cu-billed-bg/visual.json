@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-billed-bg",
   "position": {
-    "x": 456,
+    "x": 547,
     "y": 120,
-    "z": 325,
-    "width": 342,
+    "z": 277,
+    "width": 433,
     "height": 118,
-    "tabOrder": 325
+    "tabOrder": 277
   },
   "visual": {
     "visualType": "shape",

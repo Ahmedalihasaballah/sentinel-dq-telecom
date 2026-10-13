@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-partner-spark",
   "position": {
-    "x": 1746,
+    "x": 1708,
     "y": 154,
-    "z": 448,
-    "width": 126,
+    "z": 387,
+    "width": 164,
     "height": 72,
-    "tabOrder": 448
+    "tabOrder": 387
   },
   "visual": {
     "visualType": "lineChart",

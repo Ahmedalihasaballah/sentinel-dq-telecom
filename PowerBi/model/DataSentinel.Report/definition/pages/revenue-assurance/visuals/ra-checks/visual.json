@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-checks",
   "position": {
-    "x": 94,
-    "y": 604,
-    "z": 208,
+    "x": 1000,
+    "y": 258,
+    "z": 170,
     "width": 886,
-    "height": 420,
-    "tabOrder": 208
+    "height": 326,
+    "tabOrder": 170
   },
   "visual": {
     "visualType": "tableEx",
@@ -44,56 +44,6 @@
               "queryRef": "mart_revenue_assurance.leak_type",
               "nativeQueryRef": "leak_type",
               "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "mart_revenue_assurance"
-                    }
-                  },
-                  "Property": "source_a"
-                }
-              },
-              "queryRef": "mart_revenue_assurance.source_a",
-              "nativeQueryRef": "source_a",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "mart_revenue_assurance"
-                    }
-                  },
-                  "Property": "source_b"
-                }
-              },
-              "queryRef": "mart_revenue_assurance.source_b",
-              "nativeQueryRef": "source_b",
-              "active": true
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Function": 0,
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_revenue_assurance"
-                        }
-                      },
-                      "Property": "rows_checked"
-                    }
-                  }
-                }
-              },
-              "queryRef": "Sum(mart_revenue_assurance.rows_checked)",
-              "nativeQueryRef": "Sum of rows_checked",
-              "displayName": "rows_checked"
             },
             {
               "field": {

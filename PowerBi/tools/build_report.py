@@ -505,35 +505,28 @@ def table(page, name, pos, fields, title, subtitle=None, sort=None, filters=None
 
 SLA_COLORS = [("RESOLVED_IN_SLA", GREEN), ("ON_TRACK", BLUE), ("RESOLVED_LATE", AMBER),
               ("UNASSIGNED", GREY), ("BREACHED", RED)]
+THREE = cols(3, KPI_Y, KPI_H)
 FOUR = cols(4, KPI_Y, KPI_H)
 FIVE = cols(5, KPI_Y, KPI_H)
-ROW2 = cols(3, R2_Y, R2_H)
-ROW3 = cols(3, R3_Y, R3_H)
+HALF2 = cols(2, R2_Y, R2_H)       # row 2: two equal charts
+FULL3 = (X0, R3_Y, W, R3_H)       # row 3: one full-width table
+HALF3 = cols(2, R3_Y, R3_H)       # row 3: two equal visuals
 
 # =====================================================================
-# Page 1 Overview
+# Page 1 Overview: one headline per domain, the action list, and the two biggest risks
 P = "overview"
 chrome(P, "Overview", "Is today's data healthy, and what needs attention first?", 1)
-k1 = cols(4, KPI_Y, 108)
-k2 = cols(4, KPI_Y + 120, 108)
-kpi(P, "ov-dq", k1[0], "DQ pass rate", BLUE, "DQ Pass Rate", "UI DQ Pill", "status",
+kpi(P, "ov-dq", FIVE[0], "DQ pass rate", BLUE, "DQ Pass Rate", "UI DQ Pill", "status",
     (col("mart_dq_trend", "run_date"), meas("DQ Trend Pass Rate"), BLUE), nav="data-quality")
-kpi(P, "ov-quarantine", k1[1], "Rows in quarantine", PURPLE, "Quarantined Rows", "UI Quarantine Pill", "status",
-    nav="data-quality")
-kpi(P, "ov-open", k1[2], "Open incidents", ORANGE, "Open Incidents", "UI Open 7d", "grey",
-    (col("mart_incidents", "opened_at"), meas("Incident Count"), ORANGE), nav="incidents")
-kpi(P, "ov-breached", k1[3], "SLA breached", RED, "SLA Breached", "UI SLA Pill", "status", nav="incidents")
-kpi(P, "ov-risk", k2[0], "EUR at risk (data defects)", ORANGE, "EUR At Risk", "UI Defect Pill", "status",
+kpi(P, "ov-breached", FIVE[1], "SLA breached", RED, "SLA Breached", "UI SLA Pill", "status", nav="incidents")
+kpi(P, "ov-risk", FIVE[2], "EUR at risk (data defects)", ORANGE, "EUR At Risk", "UI Defect Pill", "status",
     (col("mart_revenue_assurance_trend", "run_ts"), meas("Recon Risk Run"), ORANGE), nav="revenue-assurance",
     units="1D")
-kpi(P, "ov-unpaid", k2[1], "Unpaid EUR", ORANGE, "Unpaid EUR", "UI Collection Pill", "status", nav="customer-360",
+kpi(P, "ov-unpaid", FIVE[3], "Unpaid EUR", ORANGE, "Unpaid EUR", "UI Collection Pill", "status", nav="customer-360",
     units="1D")
-kpi(P, "ov-active", k2[2], "Active customers", GREEN, "Active Customers", "UI Active Share", "grey",
-    nav="customer-360")
-kpi(P, "ov-drop", k2[3], "Dropped call rate", PURPLE, "Drop Rate", "UI Drop Pill", "status",
+kpi(P, "ov-drop", FIVE[4], "Dropped call rate", PURPLE, "Drop Rate", "UI Drop Pill", "status",
     (col("mart_network_daily", "usage_date"), meas("Drop Rate"), PURPLE), nav="network-app")
-r2 = cols(3, 368, 318)
-chart(P, "ov-pass-trend", "lineChart", r2[0],
+chart(P, "ov-pass-trend", "lineChart", HALF2[0],
       {"Category": [col("mart_dq_trend", "run_date")], "Y": [meas("DQ Trend Pass Rate"), meas("Target DQ Pass")]},
       "Pass rate by day", "Gate rules, all datasets, vs 98% target",
       {**axis_objects(legend=True), "dataPoint": [series_color(meas("DQ Trend Pass Rate"), BLUE),
@@ -541,39 +534,26 @@ chart(P, "ov-pass-trend", "lineChart", r2[0],
        "lineStyles": [{"properties": {"strokeWidth": lit("2D"), "showMarker": lit("true"),
                                       "markerSize": lit("4D")}}]},
       displays={f"{M}.DQ Trend Pass Rate": "Pass rate", f"{M}.Target DQ Pass": "Target"}, meta="=UI Runs DQ")
-track_bar(P, "ov-risk-type", r2[1], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
+track_bar(P, "ov-risk-type", HALF2[1], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
           "Leak Risk Track", "EUR at risk by leak type", "Latest reconciliation run, gross", ORANGE,
           meta="=UI Runs Recon")
-chart(P, "ov-drop-trend", "lineChart", r2[2],
-      {"Category": [col("mart_network_daily", "usage_date")], "Y": [meas("Drop Rate"), meas("Target Drop Rate")]},
-      "Dropped call rate per day", "Voice calls, vs 2% limit",
-      {**axis_objects(legend=True), "dataPoint": [series_color(meas("Drop Rate"), ORANGE),
-                                                  series_color(meas("Target Drop Rate"), GREY)]},
-      displays={f"{M}.Drop Rate": "Drop rate", f"{M}.Target Drop Rate": "Limit"}, meta="=UI Days Network")
-r3 = cols(2, 706, 318, weights=[2, 1])
-table(P, "ov-attention", r3[0],
+table(P, "ov-attention", FULL3,
       [col("Attention", "Priority"), col("Attention", "Area"), col("Attention", "Item"), col("Attention", "Issue")],
       "Needs attention first", "Failing DQ rules, breached or unassigned incidents, failing revenue checks",
       sort=(col("Attention", "Priority"), "Ascending"),
       rules=cell_rule("Color Attention", "Font Attention", col("Attention", "Priority")), meta="=UI Attention Count")
-columns(P, "ov-priority", r3[1], col("mart_incidents", "priority"), meas("Incident Count"),
-        "Incidents by priority", "Count, legend = SLA status", series=col("mart_incidents", "sla_status"),
-        colors=SLA_COLORS, sort=(col("mart_incidents", "priority"), "Ascending"), meta="=UI Incidents Total")
 
 # =====================================================================
-# Page 2 Data Quality
+# Page 2 Data Quality: where it fails, what waits in quarantine, and the rules to fix
 P = "data-quality"
 chrome(P, "Data Quality", "Which datasets and rules fail, is it getting better, how many rows wait in quarantine?", 2,
        pills=[("Dataset", "mart_dq_health", "dataset", 250, "Dropdown"),
               ("Dimension", "mart_dq_health", "dimension", 250, "Dropdown")])
-kpi(P, "dq-pass", FOUR[0], "DQ pass rate", BLUE, "DQ Pass Rate", "UI DQ Pill", "status",
+kpi(P, "dq-pass", THREE[0], "DQ pass rate", BLUE, "DQ Pass Rate", "UI DQ Pill", "status",
     (col("mart_dq_trend", "run_date"), meas("DQ Trend Pass Rate"), BLUE))
-kpi(P, "dq-failing", FOUR[1], "Failing rules", RED, "Failing Rules", "UI Failing Pill", "status")
-kpi(P, "dq-quarantine", FOUR[2], "Quarantined rows", PURPLE, "Quarantined Rows", "UI Quarantine Pill", "status")
-kpi(P, "dq-oldest", FOUR[3], "Oldest quarantined row (days)", ORANGE, "Oldest Quarantine Age Days",
-    "UI Oldest Note", "grey")
-D3 = cols(3, R2_Y, R2_H, weights=[1, 1.75, 0.95])
-chart(P, "dq-fail-dataset", "clusteredBarChart", D3[0],
+kpi(P, "dq-failing", THREE[1], "Failing rules", RED, "Failing Rules", "UI Failing Pill", "status")
+kpi(P, "dq-quarantine", THREE[2], "Quarantined rows", PURPLE, "Quarantined Rows", "UI Quarantine Pill", "status")
+chart(P, "dq-fail-dataset", "clusteredBarChart", HALF2[0],
       {"Category": [col("mart_dq_health", "dataset")], "Y": [meas("DQ Failure Rate")]},
       "Failure rate by dataset", "Failed / checked rows, worst first, red above 2%",
       {"legend": OFF(), "valueAxis": OFF(),
@@ -583,33 +563,14 @@ chart(P, "dq-fail-dataset", "clusteredBarChart", D3[0],
        "labels": [{"properties": {"show": lit("true"), "color": color(TEXT), "fontSize": lit("10D"),
                                   "labelPosition": lit("'OutsideEnd'")}}]},
       sort=(meas("DQ Failure Rate"), "Descending"), meta="=UI Datasets DQ")
-chart(P, "dq-heatmap", "pivotTable", D3[1],
-      {"Rows": [col("mart_dq_trend", "dataset")], "Columns": [col("mart_dq_trend", "dimension")],
-       "Values": [meas("DQ Trend Pass Rate")]},
-      "Dataset x dimension", "Pass rate: green 98%+, amber 90-98%, red below 90%",
-      {"values": [{"properties": {"backColor": {"solid": {"color": {"expr": meas("Color Matrix")}}},
-                                  "fontSize": lit("10D")},
-                   "selector": {**ALL_POINTS, "metadata": f"{M}.DQ Trend Pass Rate"}}],
-       "columnHeaders": [{"properties": {"fontSize": lit("10D"), "wordWrap": lit("true")}}],
-       "rowHeaders": [{"properties": {"fontSize": lit("10D")}}],
-       "subTotals": [{"properties": {"rowSubtotals": lit("false"), "columnSubtotals": lit("false")}}],
-       "columnFormatting": [{"properties": {"autoSizeColumnWidth": lit("true")}}]})
-chart(P, "dq-pass-trend", "lineChart", D3[2],
-      {"Category": [col("mart_dq_trend", "run_date")], "Y": [meas("DQ Trend Pass Rate"), meas("Target DQ Pass")]},
-      "Pass rate over time", "vs 98% target",
-      {**axis_objects(legend=True), "dataPoint": [series_color(meas("DQ Trend Pass Rate"), BLUE),
-                                                  series_color(meas("Target DQ Pass"), GREY)],
-       "lineStyles": [{"properties": {"strokeWidth": lit("2D"), "showMarker": lit("true")}}]},
-      displays={f"{M}.DQ Trend Pass Rate": "Pass rate", f"{M}.Target DQ Pass": "Target"}, meta="=UI Runs DQ")
-q = cols(2, R3_Y, R3_H, weights=[1, 2])
-chart(P, "dq-quarantine", "barChart", q[0],
+chart(P, "dq-quarantine", "barChart", HALF2[1],
       {"Category": [col("mart_quarantine", "dataset")], "Y": [meas("Quarantined Rows")],
        "Series": [col("mart_quarantine", "quarantine_status")]},
       "Quarantine by dataset", "Rows waiting, by quarantine status, most first",
       {**axis_objects(legend=True), "categoryAxis": [{"properties": {"labelColor": color(TEXT),
                                                                      "fontSize": lit("10D")}}]},
       sort=(meas("Quarantined Rows"), "Descending"), meta="=UI Quarantine Datasets")
-table(P, "dq-failing-rules", q[1],
+table(P, "dq-failing-rules", FULL3,
       [col("mart_dq_health", c) for c in ["dataset", "rule_id", "check_name", "scope"]]
       + [agg("mart_dq_health", "rows_failed")]
       + [col("mart_dq_health", c) for c in ["status", "severity", "detail"]],
@@ -620,34 +581,26 @@ table(P, "dq-failing-rules", q[1],
       displays={"Sum(mart_dq_health.rows_failed)": "rows_failed"})
 
 # =====================================================================
-# Page 3 Revenue Assurance
+# Page 3 Revenue Assurance: how much leaks, where, and the cases to investigate
 P = "revenue-assurance"
 chrome(P, "Revenue Assurance", "How many EUR leak between systems, where, and which cases must be investigated?", 3,
        pills=[("Defect or business", "mart_revenue_assurance", "is_data_defect", 300, "Dropdown")])
-kpi(P, "ra-gross", FIVE[0], "EUR at risk", ORANGE, "Gross EUR At Risk", "UI Gross Note", "amber",
+kpi(P, "ra-gross", THREE[0], "EUR at risk", ORANGE, "Gross EUR At Risk", "UI Gross Note", "amber",
     (col("mart_revenue_assurance_trend", "run_ts"), meas("Recon Risk Run"), ORANGE), units="1D")
-kpi(P, "ra-defect", FIVE[1], "EUR at risk, data defects", RED, "EUR At Risk", "UI Defect Pill", "status",
-    units="1D")
-kpi(P, "ra-mismatched", FIVE[2], "Mismatched rows", PURPLE, "Mismatched Rows", "UI Mismatch Checks", "grey")
-kpi(P, "ra-failing", FIVE[3], "Checks failing", RED, "Checks Failing", "UI Checks Total", "red")
-kpi(P, "ra-cases", FIVE[4], "Cases to investigate", BLUE, "Cases To Investigate", "UI Latest Run", "blue")
-r2 = cols(2, R2_Y, R2_H)
-track_bar(P, "ra-risk-type", r2[0], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
+kpi(P, "ra-failing", THREE[1], "Checks failing", RED, "Checks Failing", "UI Checks Total", "red")
+kpi(P, "ra-cases", THREE[2], "Cases to investigate", BLUE, "Cases To Investigate", "UI Latest Run", "blue")
+track_bar(P, "ra-risk-type", HALF2[0], col("mart_revenue_assurance", "leak_type"), meas("Gross EUR At Risk"),
           "Leak Risk Track", "EUR at risk by leak type", "Click a bar to filter the checks and cases", ORANGE,
           meta="=UI Checks Total")
-area(P, "ra-trend", r2[1], col("mart_revenue_assurance_trend", "run_ts"), meas("Recon Risk Run"),
-     "EUR at risk per run", "Total of all checks; click a leak type to see one check", ORANGE, meta="=UI Runs Recon")
-r3 = cols(2, R3_Y, R3_H)
-table(P, "ra-checks", r3[0],
-      [col("mart_revenue_assurance", c) for c in ["check_id", "leak_type", "source_a", "source_b"]]
-      + [agg("mart_revenue_assurance", c) for c in ["rows_checked", "rows_mismatched", "amount_at_risk_eur"]]
+table(P, "ra-checks", HALF2[1],
+      [col("mart_revenue_assurance", c) for c in ["check_id", "leak_type"]]
+      + [agg("mart_revenue_assurance", c) for c in ["rows_mismatched", "amount_at_risk_eur"]]
       + [col("mart_revenue_assurance", c) for c in ["status", "severity"]],
       "Checks R1 to R10", "Latest run, R10 is business (unpaid), not a data defect",
       sort=(col("mart_revenue_assurance", "check_id"), "Ascending"),
       rules=cell_rule("Color Recon Status", "Font Recon Status", col("mart_revenue_assurance", "status")),
-      displays={f"Sum(mart_revenue_assurance.{c})": c for c in ["rows_checked", "rows_mismatched",
-                                                               "amount_at_risk_eur"]})
-table(P, "ra-cases", r3[1],
+      displays={f"Sum(mart_revenue_assurance.{c})": c for c in ["rows_mismatched", "amount_at_risk_eur"]})
+table(P, "ra-cases", FULL3,
       [col("mart_recon_mismatches", c) for c in ["check_id", "entity_type", "entity_key", "value_a", "value_b"]]
       + [agg("mart_recon_mismatches", "diff"), agg("mart_recon_mismatches", "amount_at_risk_eur"),
          col("mart_recon_mismatches", "reason")],
@@ -657,91 +610,61 @@ table(P, "ra-cases", r3[1],
                 "Sum(mart_recon_mismatches.amount_at_risk_eur)": "amount_at_risk_eur"})
 
 # =====================================================================
-# Page 4 Incidents
+# Page 4 Incidents: what is open and late, who carries it, and the list to work
 P = "incidents"
 chrome(P, "Incidents", "Who owns each incident, how late is it, does the team meet its deadlines?", 4,
        pills=[("Priority", "mart_incidents", "priority", 190, "Dropdown"),
               ("Team", "mart_incidents", "team", 200, "Dropdown"),
               ("Dataset", "mart_incidents", "dataset", 220, "Dropdown"),
               ("Status", "mart_incidents", "status", 200, "Dropdown")])
-kpi(P, "in-open", FOUR[0], "Open", ORANGE, "Open Incidents", "UI Open 7d", "grey",
+kpi(P, "in-open", THREE[0], "Open", ORANGE, "Open Incidents", "UI Open 7d", "grey",
     (col("mart_incidents", "opened_at"), meas("Incident Count"), ORANGE))
-kpi(P, "in-breached", FOUR[1], "Breached", RED, "SLA Breached", "UI SLA Pill", "status")
-kpi(P, "in-resolved", FOUR[2], "Resolved in SLA", GREEN, "Resolved In SLA", "UI Compliance Pill", "status")
-kpi(P, "in-ack", FOUR[3], "Avg minutes to ack", BLUE, "Avg Minutes To Ack", "UI Ack Note", "blue", decimals=1)
-columns(P, "in-priority", ROW2[0], col("mart_incidents", "priority"), meas("Open Incidents"), "Open by priority",
+kpi(P, "in-breached", THREE[1], "Breached", RED, "SLA Breached", "UI SLA Pill", "status")
+kpi(P, "in-resolved", THREE[2], "Resolved in SLA", GREEN, "Resolved In SLA", "UI Compliance Pill", "status")
+columns(P, "in-priority", HALF2[0], col("mart_incidents", "priority"), meas("Open Incidents"), "Open by priority",
         "Open incidents, legend = SLA status", series=col("mart_incidents", "sla_status"), colors=SLA_COLORS,
         sort=(col("mart_incidents", "priority"), "Ascending"))
-track_bar(P, "in-team", ROW2[1], col("mart_incidents", "team"), meas("Open Incidents"), "Team Workload Track",
+track_bar(P, "in-team", HALF2[1], col("mart_incidents", "team"), meas("Open Incidents"), "Team Workload Track",
           "Workload by team", "Open incidents per team", BLUE, meta="=UI Teams")
-chart(P, "in-sla", "donutChart", ROW2[2],
-      {"Category": [col("mart_incidents", "sla_status")], "Y": [meas("Incident Count")]},
-      "SLA outcome", "All incidents", {
-          "dataPoint": [value_color("mart_incidents", "sla_status", v, c) for v, c in SLA_COLORS],
-          "legend": [{"properties": {"show": lit("true"), "position": lit("'Right'")}}],
-          "labels": [{"properties": {"show": lit("true"), "labelStyle": lit("'Percent of total'")}}]},
-      meta="=UI Incidents Total")
-r3 = cols(2, R3_Y, R3_H, weights=[2, 1])
-table(P, "in-list", r3[0],
+table(P, "in-list", FULL3,
       [col("mart_incidents", c) for c in ["incident_id", "priority", "dataset", "check_name", "description",
                                          "owner", "team", "status", "due_at"]]
-      + [agg("mart_incidents", "escalation_level", 4), agg("mart_incidents", "open_hours", 4),
-         col("mart_incidents", "sla_status")],
+      + [agg("mart_incidents", "open_hours", 4), col("mart_incidents", "sla_status")],
       "Incident list", "Soonest deadline first, BREACHED in red",
       sort=(col("mart_incidents", "due_at"), "Ascending"),
       rules=cell_rule("Color SLA Status", "Font SLA Status", col("mart_incidents", "sla_status")),
-      displays={"Max(mart_incidents.escalation_level)": "escalation_level",
-                "Max(mart_incidents.open_hours)": "open_hours"})
-columns(P, "in-opened", r3[1], col("mart_incidents", "opened_at"), meas("Incident Count"),
-        "Incidents opened per day", "Count", BLUE, meta="=UI Incidents Total")
+      displays={"Max(mart_incidents.open_hours)": "open_hours"})
 
 # =====================================================================
-# Page 5 Customer 360
+# Page 5 Customer 360: billed vs paid, how old the debt is, who owes and who has problems
 P = "customer-360"
 chrome(P, "Customer 360", "Who has paid, who owes us money, which customers have problems?", 5,
        pills=[("Status", "mart_customer_360", "status", 200, "Dropdown"),
               ("City", "mart_customer_360", "city", 210, "Dropdown"),
               ("Plan", "mart_customer_360", "plan_name", 220, "Dropdown")])
-kpi(P, "cu-count", FIVE[0], "Customers", BLUE, "Customer Count", "UI Active Share", "blue")
-kpi(P, "cu-billed", FIVE[1], "Billed EUR", PURPLE, "Billed EUR", "UI Invoices", "grey", units="1D")
-kpi(P, "cu-paid", FIVE[2], "Paid EUR", GREEN, "Paid EUR", "UI Collection Pill", "status", units="1D")
-kpi(P, "cu-unpaid", FIVE[3], "Unpaid EUR", ORANGE, "Unpaid EUR", "UI Unpaid Owe", "grey", units="1D")
-kpi(P, "cu-active", FIVE[4], "Active customers", GREEN, "Active Customers", "UI Plans", "grey")
-C4 = cols(4, R2_Y, R2_H)
-chart(P, "cu-aging", "columnChart", C4[0],
+kpi(P, "cu-count", FOUR[0], "Customers", BLUE, "Customer Count", "UI Active Share", "blue")
+kpi(P, "cu-billed", FOUR[1], "Billed EUR", PURPLE, "Billed EUR", "UI Invoices", "grey", units="1D")
+kpi(P, "cu-paid", FOUR[2], "Paid EUR", GREEN, "Paid EUR", "UI Collection Pill", "status", units="1D")
+kpi(P, "cu-unpaid", FOUR[3], "Unpaid EUR", ORANGE, "Unpaid EUR", "UI Unpaid Owe", "grey", units="1D")
+chart(P, "cu-aging", "columnChart", HALF2[0],
       {"Category": [col("mart_customer_360", "payment_age_band")], "Y": [meas("Unpaid EUR")]},
       "Unpaid EUR by payment age", "Days since last payment, older is darker",
       {**axis_objects(), "dataPoint": [{"properties": {"fill": {"solid": {"color": {"expr": meas("Color Aging")}}}},
                                         "selector": ALL_POINTS}]},
       sort=(col("mart_customer_360", "payment_age_band"), "Ascending"),
       filters=[filter_not_in("mart_customer_360", "payment_age_band", ["Paid up"])])
-chart(P, "cu-breakdown", "barChart", C4[2],
-      {"Category": [col("mart_customer_360", "status"), col("mart_customer_360", "city"),
-                    col("mart_customer_360", "plan_name")], "Y": [meas("Customer Count")]},
-      "Customers by status / city / plan", "Use the drill arrows to switch level",
-      {**axis_objects(value_axis=False, labels=True), "dataPoint": [series_color(meas("Customer Count"), BLUE)]},
-      sort=(meas("Customer Count"), "Descending"), meta="=UI Customers Shown")
-track_bar(P, "cu-unpaid-plan", C4[1], col("mart_customer_360", "plan_name"), meas("Unpaid EUR"),
+track_bar(P, "cu-unpaid-plan", HALF2[1], col("mart_customer_360", "plan_name"), meas("Unpaid EUR"),
           "Unpaid Plan Track", "Unpaid EUR by plan", "Billed minus paid", ORANGE, meta="=UI Plans")
-chart(P, "cu-usage", "scatterChart", C4[3],
-      {"Category": [col("mart_customer_360", "customer_id")],
-       "X": [agg("mart_customer_360", "voice_minutes_used")], "Y": [agg("mart_customer_360", "data_mb_used")],
-       "Tooltips": [col("mart_customer_360", "plan_name")]},
-      "Plan usage", "Voice min (x) vs data MB (y); plan filter compares plans",
-      {**axis_objects(), "dataPoint": [{"properties": {"defaultColor": color(BLUE)}}]})
-r3 = cols(2, R3_Y, R3_H)
-table(P, "cu-top-unpaid", r3[0],
-      [col("mart_customer_360", c) for c in ["customer_id", "name_masked", "city", "plan_name"]]
-      + [agg("mart_customer_360", c) for c in ["billed_eur", "paid_eur", "unpaid_eur"]]
-      + [col("mart_customer_360", "last_payment_at")],
+table(P, "cu-top-unpaid", HALF3[0],
+      [col("mart_customer_360", c) for c in ["customer_id", "name_masked", "plan_name"]]
+      + [agg("mart_customer_360", "unpaid_eur"), col("mart_customer_360", "last_payment_at")],
       "Top 20 customers by unpaid EUR", "Right-click a customer > Drill through for the profile",
       sort=(agg("mart_customer_360", "unpaid_eur"), "Descending"),
       filters=[filter_top_n("mart_customer_360", "customer_id", 20, "Unpaid EUR")],
-      displays={f"Sum(mart_customer_360.{c})": c for c in ["billed_eur", "paid_eur", "unpaid_eur"]})
-table(P, "cu-problems", r3[1],
+      displays={"Sum(mart_customer_360.unpaid_eur)": "unpaid_eur"})
+table(P, "cu-problems", HALF3[1],
       [col("mart_customer_360", "customer_id")]
-      + [agg("mart_customer_360", c) for c in ["dropped_calls", "app_crashes", "plan_changes"]]
-      + [col("mart_customer_360", c) for c in ["last_login_at", "last_network_activity_at"]],
+      + [agg("mart_customer_360", c) for c in ["dropped_calls", "app_crashes", "plan_changes"]],
       "Customers with problems", "Most dropped calls first",
       sort=(agg("mart_customer_360", "dropped_calls"), "Descending"),
       displays={f"Sum(mart_customer_360.{c})": c for c in ["dropped_calls", "app_crashes", "plan_changes"]})
@@ -765,38 +688,31 @@ for i, (pos, (lb, fields)) in enumerate(zip(cols(4, KPI_Y, 904), groups)):
                    "categoryLabels": [{"properties": {"color": color(SUB), "fontSize": lit("9D")}}]})
 
 # =====================================================================
-# Page 6 Network & App  (the reference image)
+# Page 6 Network & App: call quality, worst cells, app stability, partner cost
 P = "network-app"
 chrome(P, "Network & App", "Where do calls drop, how does the app behave, and what does partner traffic cost?", 6,
        pills=[("Event type", "mart_network_daily", "event_type", 190, "Dropdown"),
               ("App version", "mart_app_usage", "app_version", 200, "Dropdown"),
               ("Date range", "mart_network_daily", "usage_date", 330, "Between")])
 nd = "mart_network_daily"
-kpi(P, "nw-records", FIVE[0], "Records", BLUE, "Network Records", "UI Records Delta", "blue",
-    (col(nd, "usage_date"), meas("Network Records"), BLUE))
-kpi(P, "nw-voice", FIVE[1], "Voice minutes", GREEN, "Voice Minutes", "UI Voice Delta", "blue",
+kpi(P, "nw-voice", FOUR[0], "Voice minutes", GREEN, "Voice Minutes", "UI Voice Delta", "blue",
     (col(nd, "usage_date"), meas("Voice Minutes"), GREEN))
-kpi(P, "nw-data", FIVE[2], "Data", PURPLE, "Data GB", "UI Data Delta", "blue",
+kpi(P, "nw-data", FOUR[1], "Data", PURPLE, "Data GB", "UI Data Delta", "blue",
     (col(nd, "usage_date"), meas("Data GB"), PURPLE))
-kpi(P, "nw-drop", FIVE[3], "Drop rate", ORANGE, "Drop Rate", "UI Drop Pill", "status",
+kpi(P, "nw-drop", FOUR[2], "Drop rate", ORANGE, "Drop Rate", "UI Drop Pill", "status",
     (col(nd, "usage_date"), meas("Drop Rate"), ORANGE), decimals=1)
-kpi(P, "nw-partner", FIVE[4], "Partner cost, unknown customer", AMBER, "Unknown Partner Cost EUR",
+kpi(P, "nw-partner", FOUR[3], "Partner cost, unknown customer", AMBER, "Unknown Partner Cost EUR",
     "UI Partner Pill", "status", (col("mart_partner_usage", "period_start"), meas("Unknown Partner Cost EUR"),
                                     AMBER), units="1D")
-columns(P, "nw-records-day", ROW2[0], col(nd, "usage_date"), meas("Network Records M"), "Records per day by type",
-        "Millions", series=col(nd, "event_type"),
-        colors=[("VOICE", BLUE), ("DATA", GREEN), ("SMS", PURPLE)], meta="=UI Days Network")
-area(P, "nw-drop-day", ROW2[1], col(nd, "usage_date"), meas("Drop Rate"), "Dropped call rate per day",
+area(P, "nw-drop-day", HALF2[0], col(nd, "usage_date"), meas("Drop Rate"), "Dropped call rate per day",
      "Voice calls only", ORANGE, meta="=UI Days Network")
-track_bar(P, "nw-cells", ROW2[2], col("mart_cell_quality", "cell_id"), meas("Cell Drop Rate"), "Cell Drop Track",
+track_bar(P, "nw-cells", HALF2[1], col("mart_cell_quality", "cell_id"), meas("Cell Drop Rate"), "Cell Drop Track",
           "Worst 10 cells", "Drop rate, minimum 20 voice calls", ORANGE, meta="top 10 shown",
           filters=[filter_top_n("mart_cell_quality", "cell_id", 10, "Cell Drop Rate")])
-columns(P, "nw-app-events", ROW3[0], col("mart_app_usage", "event_date"), meas("App Events K"), "App events per day",
-        "Thousands", BLUE, meta="=UI Days App")
-track_bar(P, "nw-crash", ROW3[1], col("mart_app_usage", "app_version"), meas("Crash Share"), "Crash Share Track",
+track_bar(P, "nw-crash", HALF3[0], col("mart_app_usage", "app_version"), meas("Crash Share"), "Crash Share Track",
           "Crash share by app version", "Crashes / events, red above the 2% limit", "Color Crash Share",
           meta="=UI Versions App")
-columns(P, "nw-partner-cost", ROW3[2], col("mart_partner_usage", "period_start"), meas("Partner Cost K"),
+columns(P, "nw-partner-cost", HALF3[1], col("mart_partner_usage", "period_start"), meas("Partner Cost K"),
         "Partner cost by service per month", "EUR thousands", series=col("mart_partner_usage", "service"),
         meta="=UI Months Partner")
 

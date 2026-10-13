@@ -4,10 +4,10 @@
   "position": {
     "x": 94,
     "y": 604,
-    "z": 349,
+    "z": 293,
     "width": 886,
     "height": 420,
-    "tabOrder": 349
+    "tabOrder": 293
   },
   "visual": {
     "visualType": "tableEx",
@@ -53,67 +53,12 @@
                       "Entity": "mart_customer_360"
                     }
                   },
-                  "Property": "city"
-                }
-              },
-              "queryRef": "mart_customer_360.city",
-              "nativeQueryRef": "city",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "mart_customer_360"
-                    }
-                  },
                   "Property": "plan_name"
                 }
               },
               "queryRef": "mart_customer_360.plan_name",
               "nativeQueryRef": "plan_name",
               "active": true
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Function": 0,
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_customer_360"
-                        }
-                      },
-                      "Property": "billed_eur"
-                    }
-                  }
-                }
-              },
-              "queryRef": "Sum(mart_customer_360.billed_eur)",
-              "nativeQueryRef": "Sum of billed_eur",
-              "displayName": "billed_eur"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Function": 0,
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_customer_360"
-                        }
-                      },
-                      "Property": "paid_eur"
-                    }
-                  }
-                }
-              },
-              "queryRef": "Sum(mart_customer_360.paid_eur)",
-              "nativeQueryRef": "Sum of paid_eur",
-              "displayName": "paid_eur"
             },
             {
               "field": {

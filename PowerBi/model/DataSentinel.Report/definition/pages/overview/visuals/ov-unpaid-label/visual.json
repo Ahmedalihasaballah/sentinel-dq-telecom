@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-unpaid-label",
   "position": {
-    "x": 565,
-    "y": 254,
-    "z": 55,
-    "width": 397,
+    "x": 1199,
+    "y": 134,
+    "z": 46,
+    "width": 306,
     "height": 22,
-    "tabOrder": 55
+    "tabOrder": 46
   },
   "visual": {
     "visualType": "textbox",

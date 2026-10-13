@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-partner-bg",
   "position": {
-    "x": 1544,
+    "x": 1453,
     "y": 120,
-    "z": 444,
-    "width": 342,
+    "z": 383,
+    "width": 433,
     "height": 118,
-    "tabOrder": 444
+    "tabOrder": 383
   },
   "visual": {
     "visualType": "shape",

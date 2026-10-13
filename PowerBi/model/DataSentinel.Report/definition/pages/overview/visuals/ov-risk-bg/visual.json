@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-risk-bg",
   "position": {
-    "x": 94,
-    "y": 240,
-    "z": 49,
-    "width": 433,
-    "height": 108,
-    "tabOrder": 49
+    "x": 819,
+    "y": 120,
+    "z": 40,
+    "width": 342,
+    "height": 118,
+    "tabOrder": 40
   },
   "visual": {
     "visualType": "shape",

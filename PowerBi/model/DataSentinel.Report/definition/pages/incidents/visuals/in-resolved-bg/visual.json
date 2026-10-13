@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-resolved-bg",
   "position": {
-    "x": 1000,
+    "x": 1302,
     "y": 120,
-    "z": 262,
-    "width": 433,
+    "z": 224,
+    "width": 584,
     "height": 118,
-    "tabOrder": 262
+    "tabOrder": 224
   },
   "visual": {
     "visualType": "shape",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-voice-bg",
   "position": {
-    "x": 456,
+    "x": 94,
     "y": 120,
-    "z": 429,
-    "width": 342,
+    "z": 368,
+    "width": 433,
     "height": 118,
-    "tabOrder": 429
+    "tabOrder": 368
   },
   "visual": {
     "visualType": "shape",

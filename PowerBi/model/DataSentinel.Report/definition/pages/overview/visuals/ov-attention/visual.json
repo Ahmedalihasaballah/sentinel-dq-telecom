@@ -3,11 +3,11 @@
   "name": "ov-attention",
   "position": {
     "x": 94,
-    "y": 706,
-    "z": 76,
-    "width": 1181,
-    "height": 318,
-    "tabOrder": 76
+    "y": 604,
+    "z": 60,
+    "width": 1792,
+    "height": 420,
+    "tabOrder": 60
   },
   "visual": {
     "visualType": "tableEx",

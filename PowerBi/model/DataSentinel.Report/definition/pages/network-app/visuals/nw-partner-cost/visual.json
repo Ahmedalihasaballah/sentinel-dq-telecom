@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-partner-cost",
   "position": {
-    "x": 1302,
+    "x": 1000,
     "y": 604,
-    "z": 464,
-    "width": 584,
+    "z": 397,
+    "width": 886,
     "height": 420,
-    "tabOrder": 464
+    "tabOrder": 397
   },
   "visual": {
     "visualType": "columnChart",

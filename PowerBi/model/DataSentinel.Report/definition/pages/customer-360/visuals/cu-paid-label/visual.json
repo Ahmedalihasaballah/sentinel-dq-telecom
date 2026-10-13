@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-paid-label",
   "position": {
-    "x": 837,
+    "x": 1018,
     "y": 134,
-    "z": 330,
-    "width": 306,
+    "z": 282,
+    "width": 397,
     "height": 22,
-    "tabOrder": 330
+    "tabOrder": 282
   },
   "visual": {
     "visualType": "textbox",

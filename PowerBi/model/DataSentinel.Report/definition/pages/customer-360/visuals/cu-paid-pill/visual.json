@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-paid-pill",
   "position": {
-    "x": 837,
+    "x": 1018,
     "y": 208,
-    "z": 332,
+    "z": 284,
     "width": 250,
     "height": 24,
-    "tabOrder": 332
+    "tabOrder": 284
   },
   "visual": {
     "visualType": "card",

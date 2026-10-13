@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-cases",
   "position": {
-    "x": 1000,
+    "x": 94,
     "y": 604,
-    "z": 209,
-    "width": 886,
+    "z": 171,
+    "width": 1792,
     "height": 420,
-    "tabOrder": 209
+    "tabOrder": 171
   },
   "visual": {
     "visualType": "tableEx",

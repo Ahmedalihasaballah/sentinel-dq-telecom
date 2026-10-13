@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-voice-label",
   "position": {
-    "x": 474,
+    "x": 112,
     "y": 134,
-    "z": 430,
-    "width": 306,
+    "z": 369,
+    "width": 397,
     "height": 22,
-    "tabOrder": 430
+    "tabOrder": 369
   },
   "visual": {
     "visualType": "textbox",

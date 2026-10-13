@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "in-breached-pill",
   "position": {
-    "x": 565,
+    "x": 716,
     "y": 208,
-    "z": 261,
+    "z": 223,
     "width": 250,
     "height": 24,
-    "tabOrder": 261
+    "tabOrder": 223
   },
   "visual": {
     "visualType": "card",

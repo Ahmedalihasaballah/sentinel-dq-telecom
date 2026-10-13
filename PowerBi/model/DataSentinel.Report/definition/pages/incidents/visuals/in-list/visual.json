@@ -4,10 +4,10 @@
   "position": {
     "x": 94,
     "y": 604,
-    "z": 277,
-    "width": 1181,
+    "z": 232,
+    "width": 1792,
     "height": 420,
-    "tabOrder": 277
+    "tabOrder": 232
   },
   "visual": {
     "visualType": "tableEx",
@@ -149,26 +149,6 @@
               "queryRef": "mart_incidents.due_at",
               "nativeQueryRef": "due_at",
               "active": true
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Function": 4,
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "mart_incidents"
-                        }
-                      },
-                      "Property": "escalation_level"
-                    }
-                  }
-                }
-              },
-              "queryRef": "Max(mart_incidents.escalation_level)",
-              "nativeQueryRef": "Max of escalation_level",
-              "displayName": "escalation_level"
             },
             {
               "field": {

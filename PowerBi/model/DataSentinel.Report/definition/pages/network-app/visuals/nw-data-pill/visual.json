@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-data-pill",
   "position": {
-    "x": 837,
+    "x": 565,
     "y": 208,
-    "z": 437,
-    "width": 175,
+    "z": 376,
+    "width": 227,
     "height": 24,
-    "tabOrder": 437
+    "tabOrder": 376
   },
   "visual": {
     "visualType": "card",

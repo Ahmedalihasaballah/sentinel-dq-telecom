@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-voice-pill",
   "position": {
-    "x": 474,
+    "x": 112,
     "y": 208,
-    "z": 432,
-    "width": 175,
+    "z": 371,
+    "width": 227,
     "height": 24,
-    "tabOrder": 432
+    "tabOrder": 371
   },
   "visual": {
     "visualType": "card",

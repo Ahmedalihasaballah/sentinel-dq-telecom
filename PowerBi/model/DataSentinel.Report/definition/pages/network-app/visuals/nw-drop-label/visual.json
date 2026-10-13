@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-drop-label",
   "position": {
-    "x": 1199,
+    "x": 1018,
     "y": 134,
-    "z": 440,
-    "width": 306,
+    "z": 379,
+    "width": 397,
     "height": 22,
-    "tabOrder": 440
+    "tabOrder": 379
   },
   "visual": {
     "visualType": "textbox",

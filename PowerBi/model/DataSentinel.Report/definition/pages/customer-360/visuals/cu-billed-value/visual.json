@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-billed-value",
   "position": {
-    "x": 466,
+    "x": 557,
     "y": 156,
-    "z": 327,
-    "width": 318,
+    "z": 279,
+    "width": 409,
     "height": 50,
-    "tabOrder": 327
+    "tabOrder": 279
   },
   "visual": {
     "visualType": "multiRowCard",

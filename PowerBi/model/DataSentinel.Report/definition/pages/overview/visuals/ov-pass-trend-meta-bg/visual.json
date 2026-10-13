@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-pass-trend-meta-bg",
   "position": {
-    "x": 522,
-    "y": 380,
-    "z": 68,
+    "x": 824,
+    "y": 270,
+    "z": 55,
     "width": 140,
     "height": 30,
-    "tabOrder": 68
+    "tabOrder": 55
   },
   "visual": {
     "visualType": "shape",

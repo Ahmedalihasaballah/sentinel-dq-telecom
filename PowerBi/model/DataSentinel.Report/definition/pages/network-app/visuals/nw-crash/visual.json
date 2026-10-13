@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "nw-crash",
   "position": {
-    "x": 698,
+    "x": 94,
     "y": 604,
-    "z": 461,
-    "width": 584,
+    "z": 394,
+    "width": 886,
     "height": 420,
-    "tabOrder": 461
+    "tabOrder": 394
   },
   "visual": {
     "visualType": "barChart",

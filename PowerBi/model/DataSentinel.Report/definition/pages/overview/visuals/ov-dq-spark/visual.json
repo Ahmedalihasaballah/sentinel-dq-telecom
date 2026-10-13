@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ov-dq-spark",
   "position": {
-    "x": 349,
+    "x": 297,
     "y": 154,
     "z": 35,
-    "width": 164,
+    "width": 126,
     "height": 72,
     "tabOrder": 35
   },

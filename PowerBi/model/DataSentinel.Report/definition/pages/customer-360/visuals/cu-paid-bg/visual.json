@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cu-paid-bg",
   "position": {
-    "x": 819,
+    "x": 1000,
     "y": 120,
-    "z": 329,
-    "width": 342,
+    "z": 281,
+    "width": 433,
     "height": 118,
-    "tabOrder": 329
+    "tabOrder": 281
   },
   "visual": {
     "visualType": "shape",

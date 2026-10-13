@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "ra-failing-pill",
   "position": {
-    "x": 1199,
+    "x": 716,
     "y": 208,
-    "z": 197,
+    "z": 162,
     "width": 250,
     "height": 24,
-    "tabOrder": 197
+    "tabOrder": 162
   },
   "visual": {
     "visualType": "card",
