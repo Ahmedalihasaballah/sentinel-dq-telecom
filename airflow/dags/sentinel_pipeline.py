@@ -57,8 +57,8 @@ with DAG(
     bronze_cdc = notebook("bronze_cdc", "01_bronze")
     bronze_files = notebook("bronze_batch_files", "02.1_bronze_batch_files")
 
-    # a tripped circuit breaker is a deliberate stop, so no retry
-    gate = notebook("gate", "20_quality_gate", {"max_reject_rate": "0.5", "stop_on_breaker": "true"}, retries=0)
+    # one retry (default_args) so a network blip does not fail the run; a tripped breaker simply trips again
+    gate = notebook("gate", "20_quality_gate", {"max_reject_rate": "0.5", "stop_on_breaker": "true"})
     autofix = notebook("autofix", "21_quarantine_autofix")
     revalidate = notebook("revalidate", "22_revalidate")
     monitors = notebook("monitors", "30_observability_monitors")

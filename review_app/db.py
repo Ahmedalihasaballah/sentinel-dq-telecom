@@ -72,6 +72,48 @@ def save_fixes(conn, dataset: str, edits: list[dict], editor: str) -> int:
         return updated
 
 
+M = f"{CATALOG}.monitoring"
+PRIORITY_ORDER = "CASE priority WHEN 'P1' THEN 1 WHEN 'P2' THEN 2 WHEN 'P3' THEN 3 ELSE 4 END"
+
+
+def _dataset_filter(scope, column="dataset") -> str:
+    """SQL filter for a source user's datasets; None = admin, no filter."""
+    if scope is None:
+        return "TRUE"
+    names = [safe_name(d) for d in scope] or ["__none__"]
+    return f"{column} IN ({', '.join(repr(n) for n in names)})"
+
+
+def _rows(conn, q: str) -> list[dict]:
+    with conn.cursor() as cur:
+        cur.execute(q)
+        names = [d[0] for d in cur.description]
+        return [dict(zip(names, r)) for r in cur.fetchall()]
+
+
+def incident_kpis(conn, scope=None) -> dict:
+    rows = _rows(conn, f"""SELECT count(*) AS open_incidents,
+          sum(CASE WHEN priority = 'P1' THEN 1 ELSE 0 END) AS open_p1,
+          sum(CASE WHEN priority = 'P2' THEN 1 ELSE 0 END) AS open_p2,
+          sum(CASE WHEN sla_status = 'BREACHED' THEN 1 ELSE 0 END) AS open_sla_breached,
+          sum(CASE WHEN acknowledged_at IS NULL THEN 1 ELSE 0 END) AS waiting_for_ack
+        FROM {M}.v_incident_board WHERE status = 'OPEN' AND {_dataset_filter(scope)}""")
+    return rows[0] if rows else {}
+
+
+def open_incidents(conn, scope=None, limit: int = 200) -> list[dict]:
+    return _rows(conn, f"""SELECT priority, dataset, check_name, description, team, owner,
+          CAST(opened_at AS STRING) AS opened_at, CAST(due_at AS STRING) AS due_at, sla_status, round(age_minutes / 60, 1) AS age_hours, runbook
+        FROM {M}.v_incident_board WHERE status = 'OPEN' AND {_dataset_filter(scope)}
+        ORDER BY {PRIORITY_ORDER}, opened_at LIMIT {int(limit)}""")
+
+
+def alert_log(conn, scope=None, limit: int = 200) -> list[dict]:
+    return _rows(conn, f"""SELECT CAST(a.sent_at AS STRING) AS sent_at, a.priority, a.kind, a.channel, a.status, a.recipient, a.body
+        FROM {M}.v_alert_log a LEFT JOIN {M}.incidents i ON a.incident_id = i.incident_id
+        WHERE {_dataset_filter(scope, 'i.dataset')} ORDER BY a.sent_at DESC LIMIT {int(limit)}""")
+
+
 def recent_edits(conn, dataset: str, limit: int = 50) -> list[dict]:
     with conn.cursor() as cur:
         cur.execute(f"SHOW TABLES IN {CATALOG}.monitoring LIKE 'quarantine_edits'")

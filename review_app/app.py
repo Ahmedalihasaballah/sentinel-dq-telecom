@@ -76,14 +76,45 @@ with st.sidebar:
     if not datasets:
         st.warning("Your account has no datasets assigned.")
         st.stop()
-    dataset = st.selectbox("Dataset", datasets)
-    statuses = st.multiselect("Status", ALL_STATUSES, default=list(EDITABLE_STATUSES))
-    limit = st.slider("Max rows", 50, 1000, 200, step=50)
+    pages = ["Quarantine review", "Alerts"] + (["Data layers"] if ss["role"] == "admin" else [])  # raw PII in Source/Bronze
+    page = st.radio("Page", pages, index=len(pages) - 1 if ss["role"] == "admin" else 0)  # admin opens on Data layers
+    if page == "Quarantine review":
+        dataset = st.selectbox("Dataset", datasets)
+        statuses = st.multiselect("Status", ALL_STATUSES, default=list(EDITABLE_STATUSES))
+        limit = st.slider("Max rows", 50, 1000, 200, step=50)
 
 try:
     conn = get_conn()
 except Exception as e:  # missing env vars or warehouse not reachable
     st.error(f"Cannot connect to Databricks: {e}")
+    st.stop()
+
+if page == "Data layers":
+    import layers
+    layers.render(conn)
+    st.stop()
+
+if page == "Alerts":
+    # admins see every incident; a source user sees only incidents of its own datasets (plus recon for admins)
+    scope = None if ss["role"] == "admin" else datasets
+    st.title("Alerts & incidents")
+    st.caption("Alerts are written by the pipeline (71_incident_manage). Channel 'log' = saved here, 'slack' = also sent to Slack.")
+    k = db.incident_kpis(conn, scope)
+    for col, (label, key) in zip(st.columns(5), [("Open", "open_incidents"), ("Open P1", "open_p1"), ("Open P2", "open_p2"),
+                                                 ("SLA breached", "open_sla_breached"), ("Waiting for ack", "waiting_for_ack")]):
+        col.metric(label, k.get(key) or 0)
+    st.subheader("Open incidents")
+    inc = db.open_incidents(conn, scope)
+    if inc:
+        st.dataframe(pd.DataFrame(inc), hide_index=True, use_container_width=True)
+    else:
+        st.success("No open incidents.")
+    st.subheader("Alert log")
+    al = db.alert_log(conn, scope)
+    if al:
+        st.dataframe(pd.DataFrame(al), hide_index=True, use_container_width=True)
+    else:
+        st.write("No alerts yet.")
     st.stop()
 
 st.title(f"Quarantine · `{dataset}`")

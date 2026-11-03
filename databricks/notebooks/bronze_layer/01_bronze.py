@@ -2,8 +2,9 @@
 # BRONZE CDC: load the Debezium change events that bridge.py wrote to the Volume into bronze.cdc_events.
 #   source  /Volumes/data_sentinel/bronze/raw/cdc_<time>.jsonl  (one Kafka message per line, telecom.crm.* / telecom.billing.*)
 #   target  data_sentinel.bronze.cdc_events                      (one row per Kafka message)
-# Safe to run again: only messages not stored yet are inserted (key = topic + partition + offset), so nothing is
-# loaded twice and nothing is lost. Taken from the manual cell in the 'reading_tables' notebook (2026-10-09).
+# Safe to run again: only messages not stored yet are inserted, so nothing is loaded twice and nothing is lost.
+# Key = topic + partition + offset + Kafka timestamp: if the Kafka topics are ever recreated, offsets restart at 0,
+# and the timestamp keeps a new message from being mistaken for an old one with the same offset. Taken from the manual cell in the 'reading_tables' notebook (2026-10-09).
 # App events live in the app_events/ subfolder and are not read here.
 
 from pyspark.sql import functions as F
@@ -22,7 +23,7 @@ bronze_df = (
     spark.read.json(SOURCE_PATH)
     .withColumn("_source_file", F.col("_metadata.file_path"))
     .withColumn("_bronze_ingested_at", F.current_timestamp())
-    .dropDuplicates(["topic", "partition", "offset"])
+    .dropDuplicates(["topic", "partition", "offset", "kafka_timestamp_ms"])
 )
 
 before = spark.table(TARGET_TABLE).count() if spark.catalog.tableExists(TARGET_TABLE) else 0
@@ -30,7 +31,8 @@ if before == 0 and not spark.catalog.tableExists(TARGET_TABLE):
     bronze_df.write.format("delta").mode("overwrite").saveAsTable(TARGET_TABLE)
 else:
     (DeltaTable.forName(spark, TARGET_TABLE).alias("t")
-        .merge(bronze_df.alias("s"), "t.topic = s.topic AND t.partition = s.partition AND t.offset = s.offset")
+        .merge(bronze_df.alias("s"), "t.topic = s.topic AND t.partition = s.partition AND t.offset = s.offset "
+               "AND t.kafka_timestamp_ms <=> s.kafka_timestamp_ms")
         .whenNotMatchedInsertAll()
         .execute())
 
