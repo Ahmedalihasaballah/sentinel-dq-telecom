@@ -1,6 +1,6 @@
 -- DIMENSION: one row per customer VERSION (a customer gets a new row when plan, city, status... change).
 -- Inputs: silver.customer_history (the customers) and dim_plan (the plan prices).
--- Only masked or hashed personal data is here. Raw phone, email and name never reach Gold.
+-- Personal data (name, email, phone number) is shown as it is.
 
 -- Part 1: all real customer versions
 select
@@ -10,11 +10,11 @@ select
     c.valid_from,
     c.valid_to,
     c.is_current,
-    c.name_masked,
-    c.email_masked,
-    c.email_hash,
-    c.msisdn_masked,
-    c.msisdn_hash,
+    c.first_name,
+    c.last_name,
+    c.customer_name,
+    c.email,
+    c.msisdn,
     c.city,
     c.country,
     c.status,
@@ -51,10 +51,10 @@ select
     timestamp'1970-01-01 00:00:00',
     timestamp'9999-12-31 00:00:00',
     true,
-    'UNKNOWN',
-    'UNKNOWN',
+    cast(null as string),
     cast(null as string),
     'UNKNOWN',
+    cast(null as string),
     cast(null as string),
     cast(null as string),
     cast(null as string),

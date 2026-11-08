@@ -10,23 +10,35 @@ table mart_customer_360
 
 		annotation SummarizationSetBy = Automatic
 
-	column name_masked
+	column customer_name
 		dataType: string
 		lineageTag: fbc09542-d6c6-4faf-bb9a-cc685edb4fe6
 		summarizeBy: none
-		sourceColumn: name_masked
+		sourceColumn: customer_name
 
-	column email_masked
+	column first_name
+		dataType: string
+		lineageTag: 71fed7cf-2497-45ea-bae9-f1286678eac0
+		summarizeBy: none
+		sourceColumn: first_name
+
+	column last_name
+		dataType: string
+		lineageTag: 78f89882-e65e-45f7-9dd8-cc16c1e4bddf
+		summarizeBy: none
+		sourceColumn: last_name
+
+	column email
 		dataType: string
 		lineageTag: 09287d6a-bcea-41a9-adfe-4deae6b224e3
 		summarizeBy: none
-		sourceColumn: email_masked
+		sourceColumn: email
 
-	column msisdn_masked
+	column msisdn
 		dataType: string
 		lineageTag: f2357b67-1ea6-482f-bf42-8b9775d50606
 		summarizeBy: none
-		sourceColumn: msisdn_masked
+		sourceColumn: msisdn
 
 	column city
 		dataType: string

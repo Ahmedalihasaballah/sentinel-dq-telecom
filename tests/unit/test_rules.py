@@ -1,7 +1,6 @@
 from datetime import datetime, timezone
 from pathlib import Path
 
-from sentinel_dq.common.pii import hash_pii, mask_email, mask_msisdn
 from sentinel_dq.quality.contract_loader import load_contracts, validate_contract
 from sentinel_dq.quality.rules import apply_fix_steps, evaluate, fix_row, try_cast
 
@@ -22,10 +21,24 @@ def verdict(rows, dataset="crm_customers"):
     return evaluate(rows, CONTRACTS[dataset], now=NOW)["results"]
 
 
-def test_all_contracts_valid_and_disabled_ones_skipped():
-    assert "app_events" not in CONTRACTS          # contract/_app_events.yaml is disabled
+def test_all_contracts_valid_and_disabled_ones_skipped(tmp_path):
+    assert "app_events" in CONTRACTS              # streamed app events are part of the pipeline again
     for name, c in CONTRACTS.items():
         assert validate_contract(c) == [], name
+    (tmp_path / "_off.yaml").write_text("dataset: off\n", encoding="utf-8")   # files starting with "_" are disabled
+    assert load_contracts(tmp_path) == {}
+
+
+def test_app_event_rules():
+    good = {"event_id": "EVT-1", "customer_id": "7", "event_type": "login", "app_version": "6.0",
+            "event_ts": "2026-10-12T10:00:00Z"}
+    assert verdict([good], "app_events")[0]["status"] == "PASS"
+    bad_type = verdict([dict(good, event_type="unknown_evt")], "app_events")[0]
+    assert bad_type["status"] == "REJECT" and "APP_EVENT_TYPE_DOMAIN" in bad_type["failed_rules"]
+    no_customer = verdict([dict(good, customer_id=None)], "app_events")[0]
+    assert "APP_CUSTOMER_PRESENT" in no_customer["failed_rules"]
+    odd_version = verdict([dict(good, app_version="v6")], "app_events")[0]
+    assert odd_version["status"] == "PASS" and "APP_VERSION_FORMAT" in odd_version["flags"]
 
 
 def test_clean_customer_passes():
@@ -78,10 +91,3 @@ def test_every_fix_example_in_the_contracts_works():
             for raw, expected in fx.get("examples", []):
                 assert apply_fix_steps(raw, fx["steps"]) == expected, (c["dataset"], raw)
 
-
-def test_pii_hash_and_masks():
-    assert hash_pii(" +31612345678 ", salt="s") == hash_pii("+31612345678", salt="s")
-    assert hash_pii("A@B.NL", lower=True, salt="s") == hash_pii("a@b.nl", lower=True, salt="s")
-    assert hash_pii(None) is None and len(hash_pii("x")) == 64
-    assert mask_msisdn("+31612345678") == "+316****78"
-    assert mask_email("luuk.200@example.nl") == "l***@example.nl"

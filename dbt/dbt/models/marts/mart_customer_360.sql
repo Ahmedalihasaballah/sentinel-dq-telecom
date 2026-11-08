@@ -1,5 +1,5 @@
 -- Dashboard 3: one row per current customer with plan, billing, payments, network usage, app activity and partner usage.
--- Phone, email and name are masked; nothing raw reaches Gold.
+-- Name, email and phone number are shown as they are.
 with cust as (
     select * from {{ ref('dim_customer') }} where is_current and customer_key <> -1
 ),
@@ -38,7 +38,7 @@ partner as (
     from {{ ref('fact_partner_usage') }} where customer_key <> -1 group by customer_id
 )
 select
-    c.customer_id, c.name_masked, c.email_masked, c.msisdn_masked, c.city, c.country, c.status, c.created_at,
+    c.customer_id, c.customer_name, c.first_name, c.last_name, c.email, c.msisdn, c.city, c.country, c.status, c.created_at,
     p.plan_name, p.monthly_fee, p.data_gb as plan_data_gb, p.voice_minutes as plan_voice_minutes,
     coalesce(i.invoices, 0) as invoices,
     coalesce(i.billed_eur, 0) as billed_eur,

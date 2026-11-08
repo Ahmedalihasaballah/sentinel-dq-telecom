@@ -14,7 +14,7 @@ models:
         data_tests: [not_null]
 
   - name: dim_customer
-    description: One row per customer version. Masked and hashed PII only.
+    description: One row per customer version, with name, email and phone number.
     columns:
       - name: customer_key
         data_tests: [unique, not_null]

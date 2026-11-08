@@ -3,10 +3,12 @@ import os
 
 from databricks import sql
 
-from logic import ALL_STATUSES, EDITABLE_STATUSES, FIXED_STATUS, safe_name
+from logic import ALL_STATUSES, DUPLICATE_REASONS, EDITABLE_STATUSES, FIXED_STATUS, REVIEW_STATUSES, safe_name
 
 CATALOG = "data_sentinel"
 T_EDITS = f"{CATALOG}.monitoring.quarantine_edits"
+T_DUPES = f"{CATALOG}.silver.customer_duplicate_candidates"
+T_DUPE_REVIEWS = f"{CATALOG}.monitoring.duplicate_reviews"
 DEFAULT_HOST = "dbc-21b8c56c-c07d.cloud.databricks.com"  # same workspace as airflow/docker-compose.yml and dbt
 
 
@@ -123,3 +125,58 @@ def recent_edits(conn, dataset: str, limit: int = 50) -> list[dict]:
                     f"FROM {T_EDITS} WHERE dataset = :ds ORDER BY edited_at DESC LIMIT {int(limit)}", {"ds": dataset})
         names = [d[0] for d in cur.description]
         return [dict(zip(names, r)) for r in cur.fetchall()]
+
+
+# ---------- duplicate customers ----------
+
+def duplicates_table_exists(conn) -> bool:
+    with conn.cursor() as cur:
+        cur.execute(f"SHOW TABLES IN {CATALOG}.silver LIKE 'customer_duplicate_candidates'")
+        return bool(cur.fetchall())
+
+
+def duplicate_counts(conn) -> dict:
+    """Active pairs per review_status."""
+    return {r["review_status"]: r["n"] for r in _rows(conn, f"""SELECT review_status, count(*) AS n FROM {T_DUPES}
+                                                              WHERE is_active GROUP BY 1""")}
+
+
+def fetch_duplicate_pairs(conn, statuses: list[str], reasons: list[str], min_score: float = 0.0,
+                          limit: int = 200) -> list[dict]:
+    """Active pairs with the chosen status and at least one of the chosen reasons, strongest first."""
+    statuses = [s for s in statuses if s in REVIEW_STATUSES] or ["PENDING"]
+    reasons = [r for r in reasons if r in DUPLICATE_REASONS] or list(DUPLICATE_REASONS)
+    status_list = ", ".join(f"'{s}'" for s in statuses)
+    reason_list = ", ".join(f"'{r}'" for r in reasons)
+    return _rows(conn, f"""SELECT pair_id, customer_id_a, customer_id_b, array_join(reasons, ', ') AS reasons, score,
+          customer_name_a, customer_name_b, msisdn_a, msisdn_b, email_a, email_b,
+          city_a, city_b, review_status, review_note, reviewed_by, CAST(reviewed_at AS STRING) AS reviewed_at,
+          CAST(first_detected_at AS STRING) AS first_detected_at
+        FROM {T_DUPES}
+        WHERE is_active AND review_status IN ({status_list}) AND arrays_overlap(reasons, array({reason_list}))
+          AND score >= {float(min_score)}
+        ORDER BY score DESC, customer_id_a, customer_id_b LIMIT {int(limit)}""")
+
+
+def save_duplicate_decisions(conn, decisions: list[dict], reviewer: str) -> int:
+    """Record each decision on the pair and log it (who, when, old -> new). Customers are never merged."""
+    with conn.cursor() as cur:
+        cur.execute(f"""CREATE TABLE IF NOT EXISTS {T_DUPE_REVIEWS} (reviewed_at TIMESTAMP, reviewer STRING,
+                        pair_id STRING, old_status STRING, new_status STRING, note STRING)""")
+        for d in decisions:
+            params = {"pid": d["pair_id"], "st": d["new_status"], "note": d["note"], "by": reviewer,
+                      "old": d["old_status"]}
+            cur.execute(f"""UPDATE {T_DUPES} SET review_status = :st, review_note = :note, reviewed_by = :by,
+                            reviewed_at = current_timestamp() WHERE pair_id = :pid""", params)
+            cur.execute(f"INSERT INTO {T_DUPE_REVIEWS} VALUES (current_timestamp(), :by, :pid, :old, :st, :note)",
+                        params)
+        return len(decisions)
+
+
+def recent_duplicate_reviews(conn, limit: int = 50) -> list[dict]:
+    with conn.cursor() as cur:
+        cur.execute(f"SHOW TABLES IN {CATALOG}.monitoring LIKE 'duplicate_reviews'")
+        if not cur.fetchall():
+            return []
+    return _rows(conn, f"""SELECT CAST(reviewed_at AS STRING) AS reviewed_at, reviewer, pair_id, old_status,
+          new_status, note FROM {T_DUPE_REVIEWS} ORDER BY reviewed_at DESC LIMIT {int(limit)}""")

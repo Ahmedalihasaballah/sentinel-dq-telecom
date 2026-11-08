@@ -13,8 +13,8 @@ import streamlit as st
 from dotenv import load_dotenv
 
 import db
-from logic import (ALL_STATUSES, EDITABLE_STATUSES, allowed_datasets, authenticate, diff_rows, load_contracts,
-                   load_users)
+from logic import (ALL_STATUSES, DUPLICATE_REASONS, EDITABLE_STATUSES, REVIEW_STATUSES, allowed_datasets,
+                   authenticate, can_review_duplicates, diff_decisions, diff_rows, load_contracts, load_users)
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -76,12 +76,19 @@ with st.sidebar:
     if not datasets:
         st.warning("Your account has no datasets assigned.")
         st.stop()
-    pages = ["Quarantine review", "Alerts"] + (["Data layers"] if ss["role"] == "admin" else [])  # raw PII in Source/Bronze
+    pages = (["Quarantine review", "Alerts"]
+             + (["Duplicate customers"] if can_review_duplicates(datasets) else [])   # admins and the crm user
+             + (["Data layers"] if ss["role"] == "admin" else []))                    # raw PII in Source/Bronze
     page = st.radio("Page", pages, index=len(pages) - 1 if ss["role"] == "admin" else 0)  # admin opens on Data layers
     if page == "Quarantine review":
         dataset = st.selectbox("Dataset", datasets)
         statuses = st.multiselect("Status", ALL_STATUSES, default=list(EDITABLE_STATUSES))
         limit = st.slider("Max rows", 50, 1000, 200, step=50)
+    if page == "Duplicate customers":
+        dup_statuses = st.multiselect("Review status", REVIEW_STATUSES, default=["PENDING"])
+        dup_reasons = st.multiselect("Reason", DUPLICATE_REASONS, default=list(DUPLICATE_REASONS))
+        min_score = st.slider("Min score", 0.0, 1.0, 0.0, step=0.1)
+        limit = st.slider("Max pairs", 50, 1000, 200, step=50)
 
 try:
     conn = get_conn()
@@ -115,6 +122,45 @@ if page == "Alerts":
         st.dataframe(pd.DataFrame(al), hide_index=True, use_container_width=True)
     else:
         st.write("No alerts yet.")
+    st.stop()
+
+if page == "Duplicate customers":
+    st.title("Duplicate customers")
+    st.caption("Pairs of customers that are probably the same person, found by 54_silver_customer_duplicates. "
+               "Set **review_status** to SAME_PERSON or NOT_SAME (and a note if useful), then press **Save decisions**. "
+               "The decision is only recorded; customers are not merged. Score = sum of the reason weights "
+               "(phone 0.6, email 0.5, same name + city 0.3, similar name + city 0.2), at most 1.0.")
+    if not db.duplicates_table_exists(conn):
+        st.info("No duplicate candidates yet: run the notebook 54_silver_customer_duplicates (task silver_dupes).")
+        st.stop()
+    dc = db.duplicate_counts(conn)
+    for col, s in zip(st.columns(len(REVIEW_STATUSES)), REVIEW_STATUSES):
+        col.metric(s.replace("_", " ").title(), dc.get(s, 0))
+    pairs = db.fetch_duplicate_pairs(conn, dup_statuses, dup_reasons, min_score, limit)
+    if not pairs:
+        st.success("No pairs with the selected filters.")
+    else:
+        original = pd.DataFrame(pairs)
+        edited = st.data_editor(
+            original, hide_index=True, use_container_width=True, key="editor_duplicates",
+            disabled=[c for c in original.columns if c not in ("review_status", "review_note")],
+            column_config={"review_status": st.column_config.SelectboxColumn("review_status", options=list(REVIEW_STATUSES),
+                                                                             required=True),
+                           "review_note": st.column_config.TextColumn("review_note", max_chars=500),
+                           "score": st.column_config.NumberColumn("score", format="%.2f")})
+        decisions = diff_decisions(pairs, edited.to_dict("records"))
+        st.write(f"**{len(decisions)}** pair(s) changed.")
+        if st.button("Save decisions", type="primary", disabled=not decisions):
+            n = db.save_duplicate_decisions(conn, decisions, ss["user"])
+            st.success(f"{n} decision(s) saved.")
+            time.sleep(1)
+            st.rerun()
+    with st.expander("Review history"):
+        hist = db.recent_duplicate_reviews(conn)
+        if hist:
+            st.dataframe(pd.DataFrame(hist), hide_index=True, use_container_width=True)
+        else:
+            st.write("No decisions yet.")
     st.stop()
 
 st.title(f"Quarantine · `{dataset}`")

@@ -4,7 +4,7 @@
 
 -- Step 1: the accounts (we need the phone number and account id)
 with account as (
-    select account_id, account_ref, msisdn_hash
+    select account_id, account_ref, msisdn
     from {{ source('silver', 'account') }}
 ),
 
@@ -32,7 +32,7 @@ db_invoices as (
         i.invoice_id,
         i.account_id,
         a.account_ref,
-        a.msisdn_hash,
+        a.msisdn,
         i.period_start,
         i.period_end,
         cast(null as decimal(10,2)) as plan_fee,
@@ -54,7 +54,7 @@ file_invoices as (
         f.invoice_id,
         r.account_id,
         f.account_ref,
-        f.msisdn_hash,
+        f.msisdn,
         f.period_start,
         f.period_end,
         f.plan_fee,

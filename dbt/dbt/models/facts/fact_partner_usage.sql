@@ -4,7 +4,7 @@
 
 select
     p.partner_record_id,
-    p.msisdn_hash,
+    p.msisdn,
     p.service,
     p.amount,
     p.currency,
@@ -15,6 +15,6 @@ select
     c.customer_key is not null as customer_known
 from {{ source('silver', 'partner_usage') }} p
 left join {{ ref('int_customer_by_phone') }} c
-    on  p.msisdn_hash = c.msisdn_hash
+    on  p.msisdn = c.msisdn
     and cast(add_months(p.period_start, 1) as timestamp) >= c.valid_from
     and cast(add_months(p.period_start, 1) as timestamp) < c.valid_to

@@ -38,11 +38,11 @@
                       "Entity": "mart_customer_360"
                     }
                   },
-                  "Property": "name_masked"
+                  "Property": "customer_name"
                 }
               },
-              "queryRef": "mart_customer_360.name_masked",
-              "nativeQueryRef": "name_masked",
+              "queryRef": "mart_customer_360.customer_name",
+              "nativeQueryRef": "customer_name",
               "active": true
             },
             {
@@ -53,11 +53,11 @@
                       "Entity": "mart_customer_360"
                     }
                   },
-                  "Property": "email_masked"
+                  "Property": "email"
                 }
               },
-              "queryRef": "mart_customer_360.email_masked",
-              "nativeQueryRef": "email_masked",
+              "queryRef": "mart_customer_360.email",
+              "nativeQueryRef": "email",
               "active": true
             },
             {
@@ -68,11 +68,11 @@
                       "Entity": "mart_customer_360"
                     }
                   },
-                  "Property": "msisdn_masked"
+                  "Property": "msisdn"
                 }
               },
-              "queryRef": "mart_customer_360.msisdn_masked",
-              "nativeQueryRef": "msisdn_masked",
+              "queryRef": "mart_customer_360.msisdn",
+              "nativeQueryRef": "msisdn",
               "active": true
             },
             {

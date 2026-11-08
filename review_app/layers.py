@@ -30,7 +30,7 @@ LAYERS = {
         "about": "Rows that failed their data contract, with the reason and status "
                  "(REJECTED, PENDING_FIX, FIXED_PENDING_REVALIDATION, REVALIDATED_OK)."},
     "4 · Silver (validated, clean, history)": {"kind": "uc", "schema": "silver",
-        "about": "*_validated = rows that passed the gate; clean tables = newest version per key with hashed phone; "
+        "about": "*_validated = rows that passed the gate; clean tables = newest version per key; "
                  "customer_history / plan_history = SCD2 versions; customer_xref = CRM ↔ billing link."},
     "5 · Gold (dbt: dims, facts, marts)": {"kind": "uc", "schema": "gold",
         "about": "Star schema built by dbt: dim_* and fact_* tables, and the mart_* tables used by Power BI and Genie."},

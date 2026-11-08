@@ -19,7 +19,7 @@ exposures:
     type: dashboard
     maturity: medium
     owner: {name: Customer care, email: ahmedzaki9393.1@gmail.com}
-    description: Everything we know about one customer in one place (masked PII).
+    description: Everything we know about one customer in one place.
     depends_on: [ref('mart_customer_360')]
 
   - name: dashboard_network_app_usage

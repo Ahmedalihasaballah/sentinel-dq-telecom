@@ -2,6 +2,8 @@
 
 kafka mode : sends events to the Kafka topic app.events (bridge.py then uploads them)
     python app_event_producer.py kafka --rate 20 --total 500
+    python app_event_producer.py kafka --rate 50 --total 3000 --spread-days 30   (backfill: event times spread over the last 30 days)
+    python app_event_producer.py kafka --rate 2                                  (live stream, runs until Ctrl+C)
 file mode  : writes one JSON-lines file in the same envelope the bridge uses (fallback without Kafka)
     python app_event_producer.py file --date 2026-10-07 --rows 3000 --out data/landing/app_events
     then upload that folder to /Volumes/data_sentinel/bronze/raw/app_events/
@@ -57,11 +59,17 @@ def run_kafka(a):
         value_serializer=lambda v: json.dumps(v).encode("utf-8"),
     )
     state, i = {"last": None}, 0
-    while a.total == 0 or i < a.total:
-        ev = make_event(i, datetime.now(timezone.utc), a.customers, state, a.drift)
-        producer.send("app.events", key=str(ev["customer_id"]), value=ev)
-        i += 1
-        time.sleep(1 / a.rate)
+    try:
+        while a.total == 0 or i < a.total:
+            ts = datetime.now(timezone.utc) - timedelta(seconds=random.randint(0, int(a.spread_days * 86400)))
+            ev = make_event(i, ts, a.customers, state, a.drift)
+            producer.send("app.events", key=str(ev["customer_id"]), value=ev)
+            i += 1
+            if i % 100 == 0:
+                print("sent", i, "events", flush=True)
+            time.sleep(1 / a.rate)
+    except KeyboardInterrupt:
+        pass
     producer.flush()
     print("sent", i, "events to app.events")
 
@@ -98,6 +106,7 @@ if __name__ == "__main__":
     ap.add_argument("--drift", action="store_true")
     ap.add_argument("--rate", type=float, default=20, help="kafka: events per second")
     ap.add_argument("--total", type=int, default=0, help="kafka: 0 = run forever")
+    ap.add_argument("--spread-days", type=float, default=0, help="kafka: spread event times over the last N days (0 = now)")
     ap.add_argument("--bootstrap", default="localhost:9092")
     ap.add_argument("--date", default="2026-10-07")
     ap.add_argument("--rows", type=int, default=3000)

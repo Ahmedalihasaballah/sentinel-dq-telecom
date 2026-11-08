@@ -38,11 +38,11 @@
                       "Entity": "mart_customer_360"
                     }
                   },
-                  "Property": "name_masked"
+                  "Property": "customer_name"
                 }
               },
-              "queryRef": "mart_customer_360.name_masked",
-              "nativeQueryRef": "name_masked",
+              "queryRef": "mart_customer_360.customer_name",
+              "nativeQueryRef": "customer_name",
               "active": true
             },
             {

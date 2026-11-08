@@ -5,7 +5,7 @@
 # Safe to run again: only messages not stored yet are inserted, so nothing is loaded twice and nothing is lost.
 # Key = topic + partition + offset + Kafka timestamp: if the Kafka topics are ever recreated, offsets restart at 0,
 # and the timestamp keeps a new message from being mistaken for an old one with the same offset. Taken from the manual cell in the 'reading_tables' notebook (2026-10-09).
-# App events live in the app_events/ subfolder and are not read here.
+# App events live in the app_events/ subfolder and are loaded by 03_bronze_app_events.
 
 from pyspark.sql import functions as F
 from delta.tables import DeltaTable

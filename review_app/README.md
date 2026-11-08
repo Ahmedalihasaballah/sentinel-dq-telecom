@@ -52,6 +52,25 @@ Then open http://localhost:8501.
 
 Rows already in REVALIDATED_OK are read-only. After 5 wrong passwords the session is locked for 5 minutes. Users are signed out after 30 minutes without activity.
 
+## Duplicate customers page
+
+Visible to admins and to users that own `crm_customers` (the `crm` user).
+
+1. The notebook `54_silver_customer_duplicates` (Airflow task `silver_dupes`) writes pairs of customers that are probably the same person to `data_sentinel.silver.customer_duplicate_candidates`. Each pair has its reasons, a score, and the real names, phone numbers and emails of both customers.
+2. On this page the reviewer filters by status, reason and minimum score. They set `review_status` to `SAME_PERSON` or `NOT_SAME`, optionally add a note, and press **Save decisions**.
+3. Each decision is written to the pair and logged in `data_sentinel.monitoring.duplicate_reviews` (who, when, old status, new status, note). The customers are **not** merged.
+4. On the next run, a decision is kept. If the pair's reasons change, the pair goes back to `PENDING`, because the evidence changed.
+
+| Reason | Weight |
+|---|---|
+| `SAME_PHONE_SAME_EMAIL` (safety net, normally rejected by the gate rule `CUST_DUPLICATE`) | 0.9 |
+| `SAME_PHONE_DIFF_EMAIL` | 0.6 |
+| `SAME_EMAIL_DIFF_PHONE` | 0.5 |
+| `SAME_NAME_SAME_CITY` | 0.3 |
+| `SIMILAR_NAME_SAME_CITY` (1-2 letters apart) | 0.2 |
+
+`crm.customers` has no address, so the city is used in its place. The generated seed data reuses a small set of names, so expect many weak name + city pairs (score 0.2-0.3). Start with the high scores.
+
 ## Security notes
 
 - The app's own password check is the access control. The app talks to Databricks with one token, the one in `.env`, so protect that token and run the app only on a trusted machine or network. Streamlit serves plain HTTP.

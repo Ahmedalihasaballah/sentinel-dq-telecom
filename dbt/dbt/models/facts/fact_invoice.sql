@@ -7,7 +7,7 @@ select
     i.invoice_id,
     i.account_id,
     i.account_ref,
-    i.msisdn_hash,
+    i.msisdn,
     i.period_start,
     i.period_end,
     i.plan_fee,
@@ -25,6 +25,6 @@ from {{ ref('stg_invoices') }} i
 
 -- invoice time = when it was issued; if that is empty, the last day of the billing period
 left join {{ ref('int_customer_by_phone') }} c
-    on  i.msisdn_hash = c.msisdn_hash
+    on  i.msisdn = c.msisdn
     and coalesce(i.issued_at, cast(i.period_end as timestamp)) >= c.valid_from
     and coalesce(i.issued_at, cast(i.period_end as timestamp)) < c.valid_to

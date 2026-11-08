@@ -20,7 +20,7 @@ SOURCE_GROUPS = {
     "billing": ["billing_accounts", "billing_invoices", "billing_invoice_lines", "billing_payments",
                 "invoices_file", "payments_file"],
     "network": ["network_cdr"],
-    # "app": ["app_events"],   # app_events contract disabled (contract/_app_events.yaml)
+    "app": ["app_events"],
     "partner": ["partner_usage"],
 }
 EDITABLE_STATUSES = ("PENDING_FIX", "REJECTED", "FIXED_PENDING_REVALIDATION")
@@ -112,4 +112,32 @@ def diff_rows(original: list[dict], edited: list[dict], columns: list[str]) -> l
         changes = [(c, _norm(old.get(c)), _norm(r.get(c))) for c in columns if _norm(old.get(c)) != _norm(r.get(c))]
         if changes:
             out.append({"row_id": r["_row_id"], "values": {c: _norm(r.get(c)) for c in columns}, "changes": changes})
+    return out
+
+
+# ---------- duplicate customers (silver.customer_duplicate_candidates, built by 54_silver_customer_duplicates) ----------
+
+DUPLICATE_REASONS = ("SAME_PHONE_SAME_EMAIL", "SAME_PHONE_DIFF_EMAIL", "SAME_EMAIL_DIFF_PHONE",
+                     "SAME_NAME_SAME_CITY", "SIMILAR_NAME_SAME_CITY")   # same names as src/sentinel_dq/quality/duplicates.py
+REVIEW_STATUSES = ("PENDING", "SAME_PERSON", "NOT_SAME")
+DUPLICATES_DATASET = "crm_customers"   # who may review: admins and users that own this dataset
+
+
+def can_review_duplicates(datasets: list[str]) -> bool:
+    return DUPLICATES_DATASET in datasets
+
+
+def diff_decisions(original: list[dict], edited: list[dict]) -> list[dict]:
+    """Compare pairs by pair_id; return [{pair_id, old_status, new_status, note}] for pairs whose decision or note
+    changed. A status outside REVIEW_STATUSES is ignored."""
+    before = {r["pair_id"]: r for r in original}
+    out = []
+    for r in edited:
+        old = before.get(r["pair_id"])
+        new_status = _norm(r.get("review_status"))
+        if old is None or new_status not in REVIEW_STATUSES:
+            continue
+        old_status, old_note, new_note = _norm(old.get("review_status")), _norm(old.get("review_note")), _norm(r.get("review_note"))
+        if new_status != old_status or new_note != old_note:
+            out.append({"pair_id": r["pair_id"], "old_status": old_status, "new_status": new_status, "note": new_note})
     return out

@@ -16,5 +16,5 @@ jobs:
         run: pip install pyyaml pytest
       - name: Validate data contracts
         run: python scripts/validate_contracts.py
-      - name: Unit tests (rules, fixes, PII, SCD2, review app)
+      - name: Unit tests (rules, fixes, duplicates, SCD2, review app)
         run: python -m pytest -q

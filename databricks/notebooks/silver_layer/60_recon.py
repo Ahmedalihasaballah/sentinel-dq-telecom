@@ -70,7 +70,7 @@ cust_cur = (spark.table(T_CUSTOMER_HISTORY).filter("is_current")
             .select("customer_id", F.col("status").alias("crm_status"), "plan_id"))
 plan_cur = (spark.table(T_PLAN_HISTORY).filter("is_current")
             .select("plan_id", F.col("monthly_fee").alias("crm_fee")))
-known_hash = spark.table(T_CUSTOMER_HISTORY).select("msisdn_hash").distinct()
+known_msisdn = spark.table(T_CUSTOMER_HISTORY).select("msisdn").distinct()
 ql_t = quarantine_table(CONTRACTS["billing_invoice_lines"])
 if spark.catalog.tableExists(ql_t):
     q_lines = (spark.table(ql_t).withColumn("invoice_id", F.expr("try_cast(invoice_id AS bigint)"))
@@ -151,17 +151,17 @@ register("R7", "Payment for an unknown invoice", "billing file (payments)", "bil
          "payment", pf.count(), m7, "gold.fact_payment")
 
 # COMMAND ----------
-# R8: network usage from a phone number that is not a CRM customer (grouped by hashed phone number)
+# R8: network usage from a phone number that is not a CRM customer (grouped by phone number)
 cdr = spark.table(T_NETWORK_CDR)
-u8 = (cdr.join(known_hash, "msisdn_hash", "left_anti").groupBy("msisdn_hash")
+u8 = (cdr.join(known_msisdn, "msisdn", "left_anti").groupBy("msisdn")
          .agg(F.count("*").cast("double").alias("_events")))
-m8 = std(u8, "msisdn_hash", a="_events", reason="usage from a phone number that is not in the CRM")
-register("R8", "Network usage from a phone number not in CRM", "network cdr", "crm.customers", "medium", "msisdn_hash",
-         cdr.select("msisdn_hash").distinct().count(), m8, "gold.fact_usage")
+m8 = std(u8, "msisdn", a="_events", reason="usage from a phone number that is not in the CRM")
+register("R8", "Network usage from a phone number not in CRM", "network cdr", "crm.customers", "medium", "msisdn",
+         cdr.select("msisdn").distinct().count(), m8, "gold.fact_usage")
 
 # R9: partner usage for a phone number that is not a CRM customer. EUR at risk = the partner amount.
 pu = spark.table(T_PARTNER_USAGE)
-m9 = std(pu.join(known_hash, "msisdn_hash", "left_anti"), "partner_record_id", a="amount", risk="amount",
+m9 = std(pu.join(known_msisdn, "msisdn", "left_anti"), "partner_record_id", a="amount", risk="amount",
          reason="partner usage for a phone number that is not in the CRM")
 register("R9", "Partner usage for a phone number not in CRM", "partner file", "crm.customers", "medium", "partner_record",
          pu.count(), m9, "gold.fact_partner_usage")

@@ -1,7 +1,7 @@
 """Kafka -> Databricks Volume bridge.
 
 CDC topics (telecom.*)  -> /Volumes/data_sentinel/bronze/raw/cdc_<time>.jsonl        (read by 01_bronze)
-App events (app.events) -> /Volumes/data_sentinel/bronze/raw/app_events/app_events_<time>.jsonl  (read by 02_bronze_app_events)
+App events (app.events) -> /Volumes/data_sentinel/bronze/raw/app_events/app_events_<time>.jsonl  (read by 03_bronze_app_events)
 
 Every line is one Kafka message wrapped in an envelope. "value" is kept as the raw message text.
 """
@@ -90,6 +90,16 @@ def upload_batch(events):
         put_file(directory, prefix, group)
 
 
+def commit(consumer):
+    """Commit the consumer offsets; a failed commit is retried with the next batch instead of stopping the bridge.
+    The files are already uploaded, and Bronze ignores a message it already has (topic, partition, offset, timestamp),
+    so a batch sent twice after a restart does not create duplicates."""
+    try:
+        consumer.commit()
+    except Exception as exc:  # e.g. kafka UnknownError when the broker clock jumped (laptop sleep)
+        log.warning("Offset commit failed (%s); retrying with the next batch", exc)
+
+
 def main():
     if not HOST or not TOKEN:
         raise RuntimeError("Set DATABRICKS_HOST and DATABRICKS_TOKEN in .env")
@@ -129,7 +139,7 @@ def main():
             elapsed = time.monotonic() - last_flush
             if events and (len(events) >= BATCH_SIZE or elapsed >= FLUSH_SECONDS):
                 upload_batch(events)      # commit offsets only after a successful upload
-                consumer.commit()
+                commit(consumer)
                 events.clear()
                 last_flush = time.monotonic()
 
@@ -138,7 +148,7 @@ def main():
     finally:
         if events:
             upload_batch(events)
-            consumer.commit()
+            commit(consumer)
         consumer.close()
 
 

@@ -2,8 +2,8 @@
 
 Airflow only orchestrates. The work stays in the Databricks notebooks and in dbt.
 Order of the tasks and why:
-  bronze_*          load new CDC events (01_bronze) and batch files into Bronze, in parallel
-                    (app events are not loaded by this pipeline)
+  bronze_*          load into Bronze, in parallel: CDC events (01_bronze), batch files (02.1) and the
+                    streamed mobile app events (03_bronze_app_events, topic app.events)
   gate              contract + rules: pass -> validated table, fail -> quarantine.
                     Circuit breaker: if 50% or more of any table's rows fail, the gate raises after saving its
                     results, so everything after it stops (the incident is still alerted, Gold is not rebuilt)
@@ -11,6 +11,8 @@ Order of the tasks and why:
   revalidate        same rules again on the fixed rows
   monitors          the five observability pillars
   silver_*          SCD2 history, clean tables, customer_xref
+  silver_dupes      pairs of customers that are probably the same person, for review in the review app.
+                    Side branch after silver_history: nothing downstream reads it, so it never blocks Gold
   recon             cross-system checks (only reads Silver)
   incidents         assign owner/priority, alert, escalate, record resolved (after gate, monitors and recon)
   dbt_build         Gold dims, facts, marts and tests (after incidents, because mart_incidents reads them)
@@ -56,6 +58,7 @@ with DAG(
     # Notebook names match databricks/notebooks/ in the repo (all notebooks sit in one Databricks folder).
     bronze_cdc = notebook("bronze_cdc", "01_bronze")
     bronze_files = notebook("bronze_batch_files", "02.1_bronze_batch_files")
+    bronze_app = notebook("bronze_app_events", "03_bronze_app_events")
 
     # one retry (default_args) so a network blip does not fail the run; a tripped breaker simply trips again
     gate = notebook("gate", "20_quality_gate", {"max_reject_rate": "0.5", "stop_on_breaker": "true"})
@@ -66,6 +69,7 @@ with DAG(
     silver_history = notebook("silver_history", "50_silver_history")
     silver_clean = notebook("silver_clean", "51_silver_clean")
     silver_xref = notebook("silver_xref", "52_silver_customer_xref")
+    silver_dupes = notebook("silver_dupes", "54_silver_customer_duplicates")
 
     recon = notebook("recon", "60_recon")
     incidents = notebook("incidents", "71_incident_manage", {"sla_scale": SLA_SCALE},
@@ -76,6 +80,7 @@ with DAG(
         bash_command="cd /opt/airflow/dbt_simple && /home/airflow/dbt_venv/bin/dbt build --profiles-dir /opt/airflow/dbt_profiles",
     )
 
-    [bronze_cdc, bronze_files] >> gate >> autofix >> revalidate >> monitors
+    [bronze_cdc, bronze_files, bronze_app] >> gate >> autofix >> revalidate >> monitors
     monitors >> silver_history >> silver_clean >> silver_xref >> recon >> incidents >> dbt_build
+    silver_history >> silver_dupes
     gate >> dbt_build             # Gold is not rebuilt when the breaker tripped

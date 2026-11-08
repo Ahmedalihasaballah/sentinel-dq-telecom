@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Incident flow</title><style>
+*{box-sizing:border-box} body{margin:0;background:#F4F7FB;font-family:"Segoe UI",system-ui,sans-serif;color:#0F172A}
+.c{position:relative;width:1600px;height:1090px;overflow:hidden}
+h1{position:absolute;left:50px;top:24px;margin:0;font-size:34px;letter-spacing:-.4px} h1 b{color:#0891B2}
+.sub{position:absolute;left:52px;top:72px;font-size:16px;color:#475569}
+.lane{position:absolute;left:30px;width:1540px;border-radius:16px;border:1.5px dashed #CBD5E1;background:rgba(255,255,255,.35)}
+.lt{position:absolute;left:18px;top:-11px;background:#F4F7FB;padding:0 8px;font-size:13px;font-weight:700;letter-spacing:2.5px;color:#64748B}
+.lt i{font-style:normal;display:inline-block;background:#0F172A;color:#fff;border-radius:50%;width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;letter-spacing:0;margin-right:6px}
+.card{position:absolute;background:#fff;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 5px 14px rgba(15,23,42,.07);padding:11px 14px;z-index:2}
+.t{font-weight:700;font-size:16px;display:flex;align-items:center;gap:8px}
+.n{display:inline-block;min-width:34px;padding:2px 7px;border-radius:8px;color:#fff;font-size:13px;text-align:center}
+.d{margin-top:6px;font-size:12.8px;color:#475569;line-height:1.38} .d code{font-family:Consolas,monospace;font-size:11.8px;background:#F1F5F9;padding:0 3px;border-radius:3px}
+.tag{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:8px;margin-left:auto}
+.once{background:#EDE9FE;color:#6D28D9} .dag{background:#DCFCE7;color:#15803D} .man{background:#FEF3C7;color:#B45309}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:9px}
+.steps div{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:9px;padding:7px 8px;font-size:12px;color:#334155;line-height:1.3}
+.steps b{display:block;color:#0F172A;font-size:12.5px;margin-bottom:2px}
+.tbl{position:absolute;top:592px;height:58px;background:#0F172A;color:#E2E8F0;border-radius:10px;padding:8px 12px;font-size:12px;z-index:2;line-height:1.3}
+.tbl b{color:#fff;font-family:Consolas,monospace;font-size:13px;display:block}
+.tl{position:absolute;left:50px;top:968px;width:1500px;display:flex;align-items:center;gap:6px;z-index:2}
+.ev{flex:1;background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:6px 8px;font-size:11.5px;color:#475569;line-height:1.25}
+.ev b{display:block;font-size:12.5px;color:#0F172A} .ev.r{border-color:#86EFAC;background:#F0FDF4} .ev.a{border-color:#FCD34D;background:#FFFBEB}
+.tl .ar{color:#94A3B8;font-size:18px}
+svg{position:absolute;left:0;top:0;z-index:3;pointer-events:none}
+.lbl{font-size:12px;font-weight:600;fill:#334155;paint-order:stroke;stroke:#F4F7FB;stroke-width:4px}
+.foot{position:absolute;left:50px;bottom:12px;font-size:12px;color:#94A3B8}
+</style></head><body><div class="c">
+<h1>Data<b>Sentinel</b> · incident management flow</h1>
+<div class="sub">Which notebook runs when, what it writes, and who uses the result · notebooks 30, 31, 32, 70–73, 79</div>
+
+<!-- lane 1: setup -->
+<div class="lane" style="top:118px;height:150px"><div class="lt"><i>1</i>ONE-TIME SETUP (run once, before the first DAG run)</div></div>
+<div class="card" style="left:55px;top:138px;width:470px;height:112px"><div class="t"><span class="n" style="background:#7C3AED">70</span>incident_setup<span class="tag once">once</span></div>
+<div class="d">Creates the rule tables: <code>incident_routing</code> (dataset → team, owner, escalation), <code>priority_policy</code> (critical → P1 / 60 min, high → P2 / 4 h…), <code>runbooks</code> (first steps per pillar), and the empty <code>incident_ops</code>, <code>incident_events</code>, <code>alerts</code>.</div></div>
+<div class="card" style="left:565px;top:138px;width:470px;height:112px"><div class="t"><span class="n" style="background:#7C3AED">31</span>dq_summary<span class="tag once">once</span></div>
+<div class="d">Creates quality views: <code>v_dq_latest</code>, <code>v_pass_rate_by_dataset</code>, <code>v_pass_rate_after_fix</code>. Views recompute on every read, so they never need a re-run.</div></div>
+<div class="card" style="left:1075px;top:138px;width:470px;height:112px"><div class="t"><span class="n" style="background:#7C3AED">73</span>incident_views<span class="tag once">once</span></div>
+<div class="d">Creates <code>v_incident_board</code>: every incident with priority, owner, age, minutes to acknowledge / resolve and SLA state (ON_TRACK, BREACHED, RESOLVED_IN_SLA, RESOLVED_LATE).</div></div>
+
+<!-- lane 2: every run -->
+<div class="lane" style="top:300px;height:250px"><div class="lt"><i>2</i>EVERY DAG RUN (Airflow, every 30 min)</div></div>
+<div class="card" style="left:55px;top:322px;width:300px;height:62px"><div class="t"><span class="n" style="background:#0E7490">20</span>quality_gate<span class="tag dag">task gate</span></div><div class="d">rule failures, pass rate below SLO, breaker</div></div>
+<div class="card" style="left:55px;top:398px;width:300px;height:62px"><div class="t"><span class="n" style="background:#7C3AED">30</span>observability_monitors<span class="tag dag">monitors</span></div><div class="d">5 pillars: freshness, volume, distribution…</div></div>
+<div class="card" style="left:55px;top:474px;width:300px;height:62px"><div class="t"><span class="n" style="background:#B45309">60</span>recon<span class="tag dag">task recon</span></div><div class="d">R1–R10 cross-system checks</div></div>
+<div class="card" style="left:425px;top:370px;width:270px;height:120px;border-top:4px solid #DC2626"><div class="t">🔔 Incident opened / closed</div>
+<div class="d"><code>sync_incidents()</code> in 11_dq_lib · key <code>dataset|check|scope</code> · a failing check → OPEN · the check passes again → RESOLVED (no manual close)</div></div>
+<div class="card" style="left:765px;top:322px;width:780px;height:214px;border-top:4px solid #16A34A"><div class="t"><span class="n" style="background:#16A34A">71</span>incident_manage<span class="tag dag">task incidents · runs even if a step before failed</span></div>
+<div class="d">Reads the new and closed incidents and the rules from 70. Safe to re-run: nothing is assigned, alerted or closed twice.</div>
+<div class="steps">
+<div><b>① Assign</b>priority from severity, team + owner from routing, due time, runbook</div>
+<div><b>② Alert</b>P1 / P2 → one Slack digest per run; without a webhook it is logged</div>
+<div><b>③ Escalate</b>P1 / P2 not acknowledged in time → escalation_to (level 1, 2…)</div>
+<div><b>④ Resolve</b>record RESOLVED for incidents the pipeline closed, notify who was alerted</div></div></div>
+
+<!-- lane 3: tables -->
+<div class="lane" style="top:578px;height:88px"><div class="lt"><i>3</i>MONITORING TABLES (schema data_sentinel.monitoring)</div></div>
+<div class="tbl" style="left:55px;width:360px"><b>dq_results</b>one line per check per run (20 · 21 · 22 · 30 · 60)</div>
+<div class="tbl" style="left:430px;width:270px"><b>incidents</b>OPEN / RESOLVED, key, severity</div>
+<div class="tbl" style="left:715px;width:270px"><b>incident_ops</b>priority, owner, due_at, ack, level</div>
+<div class="tbl" style="left:1000px;width:270px"><b>incident_events</b>timeline OPENED → RESOLVED</div>
+<div class="tbl" style="left:1285px;width:260px"><b>alerts</b>every message sent or logged</div>
+
+<!-- lane 4: use -->
+<div class="lane" style="top:696px;height:240px"><div class="lt"><i>4</i>WHO USES THE RESULT</div></div>
+<div class="card" style="left:55px;top:718px;width:470px;height:200px;border-top:4px solid #F2C811"><div class="t">📊 Views from 31 + 73 → dashboards</div>
+<div class="d"><b>Power BI</b>: Data Quality page (pass rate per dataset, after fix) and Incidents page (board, SLA).<br>
+<b>Review app</b>: Alerts page (open incidents, KPIs, alert log).<br><br>
+Example · <code>v_pass_rate_by_dataset</code>: crm_customers 91.1% FAIL (target 97%), app_events 95.7% PASS.</div></div>
+<div class="card" style="left:565px;top:718px;width:470px;height:200px;border-top:4px solid #F59E0B"><div class="t"><span class="n" style="background:#F59E0B">72</span>incident_ack<span class="tag man">manual · a person</span></div>
+<div class="d"><code>ack_incident("037a295f70a9", "ahmed", "asked network team for the file")</code><br>
+→ sets <code>acknowledged_at / acknowledged_by</code> in incident_ops, adds an ACKED event, <b>stops the escalation</b> and starts the time-to-acknowledge clock.<br><br>
+There is no manual close: the incident resolves when the next run no longer finds the problem.</div></div>
+<div class="card" style="left:1075px;top:718px;width:470px;height:200px;border-top:4px solid #0891B2"><div class="t"><span class="n" style="background:#0891B2">79</span>incident_verify<span class="tag man">manual · check</span></div>
+<div class="d">PASS / FAIL self-test of the whole incident system:<br>
+✔ there are incidents<br>✔ every incident has priority, owner and due time (71 ran)<br>
+✔ no duplicate rows in incident_ops<br>✔ every closed incident has a RESOLVED event<br><br>
+<span style="color:#94A3B8">32_incident_alerts is the first version of alerting, replaced by 71 (its alert_log table was never created).</span></div></div>
+
+<!-- example timeline -->
+<div style="position:absolute;left:50px;top:944px;font-size:13px;font-weight:700;color:#0E7490;z-index:2">Real example · incident 037a295f70a9 · network_cdr · “no daily file for 2026-10-02”</div>
+<div class="tl">
+<div class="ev"><b>30 · OPENED</b>10 Oct 11:42 · freshness check failed</div><div class="ar">→</div>
+<div class="ev"><b>71 · ASSIGNED</b>P2 · Network team · due in 4 h</div><div class="ar">→</div>
+<div class="ev"><b>71 · ALERTED</b>new-incident alert (log)</div><div class="ar">→</div>
+<div class="ev"><b>71 · ESCALATED</b>level 1 → level 2 · nobody acknowledged</div><div class="ar">→</div>
+<div class="ev a"><b>72 · ACKED</b>a person: “I’m on it” → escalation stops</div><div class="ar">→</div>
+<div class="ev r"><b>20/30 + 71 · RESOLVED</b>the file arrives, the check passes, incident closes itself</div></div>
+
+<svg width="1600" height="1090"><defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+<marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#475569"/></marker></defs>
+<g fill="none" stroke="#475569" stroke-width="2.3">
+<polyline points="355,353 390,353 390,415 425,415" marker-end="url(#m)"/>
+<polyline points="355,429 425,429" marker-end="url(#m)"/>
+<polyline points="355,505 390,505 390,445 425,445" marker-end="url(#m)"/>
+<polyline points="695,430 765,430" marker-end="url(#m)"/>
+<polyline points="290,250 290,284 1155,284 1155,322" stroke-dasharray="7 6" marker-end="url(#m)"/>
+<polyline points="560,490 560,592" marker-end="url(#m)"/>
+<polyline points="1155,536 1155,560 850,560 850,592" marker-end="url(#m)"/>
+<polyline points="1155,560 1135,560 1135,592" marker-end="url(#m)"/>
+<polyline points="1330,560 1415,560 1415,592" marker-end="url(#m)"/>
+<polyline points="1155,560 1330,560"/>
+<polyline points="290,650 290,718" marker-end="url(#m)"/>
+<polyline points="800,650 800,718" marker-start="url(#s)" marker-end="url(#m)"/>
+<polyline points="1310,650 1310,718" marker-end="url(#m)"/>
+</g>
+<text x="470" y="278" class="lbl">rules: routing · priority_policy · runbooks</text>
+<text x="700" y="422" class="lbl">new / closed</text>
+<text x="572" y="560" class="lbl">writes</text>
+<text x="300" y="690" class="lbl">read by the views</text>
+<text x="812" y="690" class="lbl">writes ack to incident_ops</text>
+<text x="1322" y="690" class="lbl">checks every table</text>
+</svg>
+<div class="foot">sentinel-dq-telecom · databricks/notebooks/apply_quality and incedients · November 2026</div>
+</div></body></html>

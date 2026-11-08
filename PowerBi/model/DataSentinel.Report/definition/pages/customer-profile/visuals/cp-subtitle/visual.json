@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Everything about one customer. Names, phone and email are masked.",
+                    "value": "Everything about one customer: name, phone, email, plan, billing and usage.",
                     "textStyle": {
                       "fontFamily": "Arial",
                       "fontSize": "11pt",

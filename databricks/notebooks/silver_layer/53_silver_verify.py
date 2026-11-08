@@ -3,7 +3,7 @@
 
 # COMMAND ----------
 
-# VERIFY the Silver layer. Run it after 50, 51 and 52. Nothing here changes data.
+# VERIFY the Silver layer. Run it after 50, 51, 52 and 54. Nothing here changes data.
 checks = []
 def check(area, name, ok, detail="", warn=False):
     checks.append((area, name, "PASS" if ok else ("WARN" if warn else "FAIL"), str(detail)))
@@ -44,15 +44,10 @@ d_plan = q(f"SELECT count(DISTINCT plan_id) FROM {dp}")
 check("coverage", "plan_history covers every plan that passed the quality gate", v_plan == d_plan, f"validated {v_plan:,}; history {d_plan:,}")
 
 # COMMAND ----------
-# 3) PII: no raw email, phone number or name in any Silver table built here
-raw_pii = {"email", "msisdn", "first_name", "last_name"}
-leaks = [(t.split('.')[-1], c) for t in SILVER_TABLES for c in spark.table(t).columns if c in raw_pii]
-check("pii", "no raw PII column in the Silver tables", not leaks, leaks)
-hashed = q(f"SELECT count(*) FROM {dc} WHERE msisdn_hash IS NULL OR length(msisdn_hash) <> 64")
-check("pii", "customer_history: every phone number is hashed", hashed == 0, hashed)
-for t, col in [(T_NETWORK_CDR, "msisdn_hash"), (T_PARTNER_USAGE, "msisdn_hash"), (T_INVOICE_FILE, "msisdn_hash"), (T_ACCOUNT, "msisdn_hash")]:
-    bad = q(f"SELECT count(*) FROM {t} WHERE {col} IS NULL OR length({col}) <> 64")
-    check("pii", f"{t.split('.')[-1]}: every phone number is hashed", bad == 0, bad)
+# 3) phone numbers: present everywhere they are needed to link usage, invoices and accounts to a customer
+for t in [T_CUSTOMER_HISTORY, T_NETWORK_CDR, T_PARTNER_USAGE, T_INVOICE_FILE, T_ACCOUNT]:
+    bad = q(f"SELECT count(*) FROM {t} WHERE msisdn IS NULL OR msisdn = ''")
+    check("phone", f"{t.split('.')[-1]}: every row has a phone number", bad == 0, bad)
 
 # COMMAND ----------
 # 4) clean tables: one row per key, row count = distinct keys that passed the gate
@@ -83,6 +78,22 @@ check("xref", "customers without a billing account are visible (CRM_ONLY, inject
 check("xref", "accounts without a customer are visible (BILLING_ONLY, injected: 10)", x.get("BILLING_ONLY", 0) > 0, x.get("BILLING_ONLY", 0), warn=True)
 dup_c = q(f"SELECT count(*) FROM (SELECT customer_id FROM {T_XREF} WHERE customer_id IS NOT NULL GROUP BY 1 HAVING count(*) > 1)")
 check("xref", "a customer appears once in the xref", dup_c == 0, dup_c, warn=True)
+
+# COMMAND ----------
+# 6) customer duplicate candidates (54)
+dd = T_CUSTOMER_DUPES
+bad_order = q(f"SELECT count(*) FROM {dd} WHERE customer_id_a >= customer_id_b")
+check("dupes", "each pair is stored lowest customer_id first (no self pairs)", bad_order == 0, bad_order)
+dup_pair = q(f"SELECT count(*) FROM (SELECT customer_id_a, customer_id_b FROM {dd} GROUP BY 1, 2 HAVING count(*) > 1)")
+check("dupes", "each pair is stored once", dup_pair == 0, dup_pair)
+no_reason = q(f"SELECT count(*) FROM {dd} WHERE is_active AND (reasons IS NULL OR size(reasons) = 0)")
+check("dupes", "every active pair has at least one reason", no_reason == 0, no_reason)
+bad_status = q(f"SELECT count(*) FROM {dd} WHERE review_status NOT IN ('PENDING', 'SAME_PERSON', 'NOT_SAME')")
+check("dupes", "review_status is PENDING, SAME_PERSON or NOT_SAME", bad_status == 0, bad_status)
+r = {row[0]: row[1] for row in spark.sql(f"SELECT reason, count(*) FROM {dd} LATERAL VIEW explode(reasons) e AS reason WHERE is_active GROUP BY 1").collect()}
+check("dupes", "same phone / different email pairs are found (injected: 5)", r.get("SAME_PHONE_DIFF_EMAIL", 0) > 0, r, warn=True)
+check("dupes", "same email / different phone pairs are found (injected: 5)", r.get("SAME_EMAIL_DIFF_PHONE", 0) > 0, r, warn=True)
+check("dupes", "similar name / same city pairs are found (injected: 5)", r.get("SIMILAR_NAME_SAME_CITY", 0) > 0, r, warn=True)
 
 # COMMAND ----------
 out = spark.createDataFrame(checks, "area string, `check` string, status string, detail string")

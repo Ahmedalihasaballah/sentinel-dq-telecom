@@ -43,8 +43,6 @@ check("detail", "mismatch rows match the counts in recon_results",
 eur_rows = rows.filter("check_id <> 'R10'").agg(F.sum("amount_at_risk_eur")).first()[0] or 0.0
 eur_res = sum(v["amount_at_risk_eur"] for k, v in res.items() if k != "R10")
 check("detail", "EUR at risk in the detail rows equals the summary", abs(eur_rows - eur_res) < 0.05, f"{eur_rows:,.2f} vs {eur_res:,.2f}")
-check("detail", "no phone number, email or name in the mismatch rows (keys are ids or hashes)",
-      rows.filter("entity_key LIKE '+31%' OR entity_key LIKE '%@%'").count() == 0)
 
 # COMMAND ----------
 # incidents

@@ -48,3 +48,31 @@ def test_every_dataset_belongs_to_exactly_one_source_user():
     datasets = sorted(load_contracts(ROOT / "contract"))
     grouped = sorted(d for ds in SOURCE_GROUPS.values() for d in ds)
     assert grouped == datasets
+
+
+def test_diff_decisions_keeps_only_changed_valid_decisions():
+    from logic import diff_decisions
+    original = [{"pair_id": "1-2", "review_status": "PENDING", "review_note": None},
+                {"pair_id": "3-4", "review_status": "PENDING", "review_note": None},
+                {"pair_id": "5-6", "review_status": "NOT_SAME", "review_note": "checked"},
+                {"pair_id": "7-8", "review_status": "PENDING", "review_note": None}]
+    edited = [{"pair_id": "1-2", "review_status": "SAME_PERSON", "review_note": "same IBAN"},
+              {"pair_id": "3-4", "review_status": "PENDING", "review_note": float("nan")},   # untouched
+              {"pair_id": "5-6", "review_status": "NOT_SAME", "review_note": "checked twice"},
+              {"pair_id": "7-8", "review_status": "MERGED", "review_note": None}]           # not a valid status
+    assert diff_decisions(original, edited) == [
+        {"pair_id": "1-2", "old_status": "PENDING", "new_status": "SAME_PERSON", "note": "same IBAN"},
+        {"pair_id": "5-6", "old_status": "NOT_SAME", "new_status": "NOT_SAME", "note": "checked twice"},
+    ]
+
+
+def test_only_crm_owners_and_admins_review_duplicates():
+    from logic import can_review_duplicates
+    assert can_review_duplicates(["crm_customers", "crm_plans"])
+    assert not can_review_duplicates(["billing_payments"])
+
+
+def test_review_app_reasons_match_the_rules():
+    from logic import DUPLICATE_REASONS
+    from sentinel_dq.quality.duplicates import REASONS
+    assert DUPLICATE_REASONS == REASONS

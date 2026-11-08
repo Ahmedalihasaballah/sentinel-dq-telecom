@@ -1,6 +1,5 @@
-# DISABLED on 2026-10-13: app events are no longer loaded. Files starting with "_" are ignored by load_contracts; rename back to app_events.yaml to re-enable.
 dataset: app_events
-version: "1.0"
+version: "1.1"
 owner: Digital team
 description: One row per mobile app event, streamed from Kafka topic app.events
 glossary: [App event, App event type, Customer ID in events]
@@ -26,4 +25,4 @@ monitors:
   volume: {min_rows: 1}
 lineage:
   upstream: [data_sentinel.bronze.app_events_raw]
-  downstream: [data_sentinel.silver.fact_app_events]
+  downstream: [data_sentinel.silver.app_events_validated, data_sentinel.silver.app_event, data_sentinel.gold.fact_app_events, data_sentinel.gold.mart_app_usage]

@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: silver
-    description: Rows that passed the quality gate, with SCD2 history, hashed PII and customer_xref (built by the Silver notebooks).
+    description: Rows that passed the quality gate, with SCD2 history and customer_xref (built by the Silver notebooks).
     schema: silver
     loaded_at_field: _loaded_at
     freshness:

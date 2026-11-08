@@ -4,7 +4,8 @@
 # COMMAND ----------
 
 # Shared helpers for the Silver layer (it builds on 11_dq_lib: CATALOG, load_contracts, validated_table).
-# Silver = rows that passed the quality gate, plus three things only: SCD2 history, PII masking, customer_xref.
+# Silver = rows that passed the quality gate, plus: SCD2 history, customer_xref, duplicate candidates.
+# Personal data (name, email, phone) is kept as it is: no hashing, no masking.
 # Dimensions, facts and marts are built in Gold by dbt, not here.
 
 SILVER = f"{CATALOG}.silver"
@@ -20,19 +21,13 @@ T_PAYMENT_FILE = f"{SILVER}.payment_file"
 T_NETWORK_CDR = f"{SILVER}.network_cdr"
 T_APP_EVENT = f"{SILVER}.app_event"
 T_PARTNER_USAGE = f"{SILVER}.partner_usage"
+T_CUSTOMER_DUPES = f"{SILVER}.customer_duplicate_candidates"   # built by 54, reviewed in the review app
 SILVER_TABLES = [T_CUSTOMER_HISTORY, T_PLAN_HISTORY, T_XREF, T_ACCOUNT, T_INVOICE, T_INVOICE_LINE, T_PAYMENT,
-                 T_INVOICE_FILE, T_PAYMENT_FILE, T_NETWORK_CDR, T_APP_EVENT, T_PARTNER_USAGE]
+                 T_INVOICE_FILE, T_PAYMENT_FILE, T_NETWORK_CDR, T_APP_EVENT, T_PARTNER_USAGE, T_CUSTOMER_DUPES]
 # tables of the first Silver version (dimensions and facts); they now belong to Gold (dbt) and are dropped by notebook 50
 OLD_TABLES = [f"{SILVER}.{n}" for n in ("dim_customer", "dim_plan", "fact_usage", "fact_invoice", "fact_payment",
                                         "fact_app_events", "fact_partner_usage")]
 END_OF_TIME = "9999-12-31 00:00:00"
-
-# The salt must be the same in every notebook and must not be in the code in production.
-# Create the secret once:  databricks secrets create-scope sentinel ; databricks secrets put-secret sentinel pii_salt
-try:
-    PII_SALT = dbutils.secrets.get("sentinel", "pii_salt")
-except Exception:
-    PII_SALT = "dev-salt-change-me"
 
 CONTRACTS = load_contracts()
 
@@ -47,25 +42,6 @@ def latest_per_key(df, key):
     w = Window.partitionBy(*key).orderBy(F.col("_ts_ms").desc_nulls_last(), F.col("_offset").desc_nulls_last(),
                                          F.col("_file_name").desc_nulls_last())
     return df.withColumn("_rn", F.row_number().over(w)).filter("_rn = 1").drop("_rn")
-
-
-# ---------------- PII ----------------
-def hash_pii(col, lower=False):
-    v = F.trim(F.col(col))
-    v = F.lower(v) if lower else v
-    return F.sha2(F.concat(F.lit(PII_SALT), v), 256)
-
-
-def mask_msisdn(col):      # +316****5678
-    return F.concat(F.substring(F.col(col), 1, 4), F.lit("****"), F.substring(F.col(col), -2, 2))
-
-
-def mask_email(col):       # l***@example.nl
-    return F.concat(F.substring(F.col(col), 1, 1), F.lit("***@"), F.substring_index(F.col(col), "@", -1))
-
-
-def mask_name(col):        # L***
-    return F.concat(F.substring(F.col(col), 1, 1), F.lit("***"))
 
 
 # ---------------- SCD2 ----------------

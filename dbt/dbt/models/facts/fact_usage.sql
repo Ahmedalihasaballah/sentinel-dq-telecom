@@ -5,7 +5,7 @@
 
 select
     u.cdr_id,
-    u.msisdn_hash,
+    u.msisdn,
     u.event_type,
     u.event_ts,
     u.duration_sec,
@@ -22,14 +22,14 @@ from {{ source('silver', 'network_cdr') }} u
 
 -- find the customer who owned this phone number at the time of the event
 left join {{ ref('int_customer_by_phone') }} c
-    on  u.msisdn_hash = c.msisdn_hash
+    on  u.msisdn = c.msisdn
     and u.event_ts >= c.valid_from
     and u.event_ts < c.valid_to
 
 -- find the billing account of this phone number (only when CRM and billing match)
 left join (
-    select msisdn_hash, account_id
+    select msisdn, account_id
     from {{ source('silver', 'customer_xref') }}
     where match_status = 'MATCHED'
 ) x
-    on u.msisdn_hash = x.msisdn_hash
+    on u.msisdn = x.msisdn

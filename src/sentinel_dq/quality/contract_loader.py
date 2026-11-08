@@ -9,7 +9,7 @@ FIX_OPS = {"trim", "lower", "upper", "regex_replace"}
 
 
 def load_contracts(directory) -> dict:
-    """dataset -> contract. Files whose name starts with '_' are disabled and skipped (e.g. _app_events.yaml)."""
+    """dataset -> contract. Files whose name starts with '_' are disabled and skipped (e.g. _old_feed.yaml)."""
     out = {}
     for f in sorted(Path(directory).glob("*.y*ml")):
         if f.name.startswith("_"):

@@ -24,6 +24,24 @@ INSERT INTO crm.customers (first_name,last_name,email,msisdn,city,country,status
 SELECT first_name,last_name,email,msisdn,city,country,status,plan_id
 FROM crm.customers WHERE customer_id BETWEEN 200 AND 214;
 
+-- [UNIQUENESS, duplicate review] probably the same person, but not an exact copy, so the gate lets them through.
+-- 54_silver_customer_duplicates lists them as pairs and a person reviews them in the review app.
+-- same phone, different email (5 rows)
+INSERT INTO crm.customers (first_name,last_name,email,msisdn,city,country,status,plan_id)
+SELECT first_name,last_name,'dup.phone.'||customer_id||'@example.nl',msisdn,city,country,status,plan_id
+FROM crm.customers WHERE customer_id BETWEEN 220 AND 224;
+
+-- same email, different phone (5 rows)
+INSERT INTO crm.customers (first_name,last_name,email,msisdn,city,country,status,plan_id)
+SELECT first_name,last_name,email,'+3161'||lpad(customer_id::text,7,'0'),city,country,status,plan_id
+FROM crm.customers WHERE customer_id BETWEEN 230 AND 234;
+
+-- similar name (a typo: last letter of the first name doubled), same city, new phone and email (5 rows)
+INSERT INTO crm.customers (first_name,last_name,email,msisdn,city,country,status,plan_id)
+SELECT first_name||right(first_name,1),last_name,'dup.name.'||customer_id||'@example.nl',
+       '+3162'||lpad(customer_id::text,7,'0'),city,country,status,plan_id
+FROM crm.customers WHERE customer_id BETWEEN 240 AND 244;
+
 -- [CONSISTENCY, recon] CRM customers with no billing account (15 rows)
 INSERT INTO crm.customers (first_name,last_name,email,msisdn,city,country,status,plan_id)
 SELECT 'Orphan','Crm','orphan'||g||'@example.nl','+3160'||lpad(g::text,7,'0'),'Utrecht','NL','ACTIVE',1
