@@ -62,3 +62,46 @@ def validate_contract(c: dict) -> list:
             if s.get("op") not in FIX_OPS:
                 errs.append(f"fix on {fx.get('column')}: unknown op {s.get('op')!r}")
     return errs
+
+
+# ----------------------------------------------------------------------
+# Run the real Databricks library (11_dq_lib) locally, with stand-ins for pyspark and delta.
+# Used by tests/unit/test_late_files.py to test the late file detector logic without Spark.
+# ----------------------------------------------------------------------
+import sys  # noqa: E402
+import types  # noqa: E402
+import zoneinfo  # noqa: E402,F401  keep it in sys.modules: patch.dict below drops modules imported inside it
+from functools import lru_cache  # noqa: E402
+from unittest import mock  # noqa: E402
+
+LIB_PATH = Path(__file__).resolve().parents[3] / "databricks" / "notebooks" / "apply_quality" / "11_dq_lib.py"
+
+
+def _spark_stubs():
+    m = mock.MagicMock()
+    stubs = {
+        "delta": {},
+        "delta.tables": {"DeltaTable": m},
+        "pyspark": {},
+        "pyspark.sql": {"Window": m, "functions": m},
+        "pyspark.sql.types": {k: m for k in ("DoubleType", "LongType", "StringType", "StructField",
+                                             "StructType", "TimestampType")},
+    }
+    modules = {}
+    for name, attrs in stubs.items():
+        mod = types.ModuleType(name)
+        mod.__dict__.update(attrs)
+        modules[name] = mod
+    return modules
+
+
+@lru_cache(maxsize=None)
+def load_dq_lib(path=LIB_PATH):
+    """Return 11_dq_lib as a module object (lib.validate_contract, lib.file_arrivals, ...)."""
+    path = Path(path)
+    lib = types.ModuleType("dq_lib")
+    lib.__file__ = str(path)
+    lib.spark = mock.MagicMock()           # the notebooks get `spark` from Databricks
+    with mock.patch.dict(sys.modules, _spark_stubs()):
+        exec(compile(path.read_text(encoding="utf-8"), str(path), "exec"), lib.__dict__)
+    return lib
