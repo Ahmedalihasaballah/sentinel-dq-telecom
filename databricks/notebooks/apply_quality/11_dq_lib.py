@@ -16,8 +16,9 @@ import os
 import re
 import statistics
 import uuid
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, time, timedelta, timezone
 from functools import reduce
+from zoneinfo import ZoneInfo
 
 import yaml
 from delta.tables import DeltaTable
@@ -50,6 +51,12 @@ DIMENSIONS = {"completeness", "validity", "uniqueness", "domain", "timeliness", 
 SEVERITIES = {"low", "medium", "high", "critical"}
 FIX_OPS = {"trim", "lower", "upper", "regex_replace"}
 COMPARE_OPS = {"<", "<=", ">", ">=", "=", "!="}
+
+# Late file detector defaults (a contract can override them in monitors.freshness):
+# a file is due max_delay_days after the end of its period, at FILE_DEADLINE local time in FILE_TIMEZONE.
+FILE_DEADLINE = "06:00"
+FILE_TIMEZONE = "Europe/Amsterdam"
+FILE_STATUSES = ("ON_TIME", "LATE", "MISSING", "PENDING")
 
 
 # ======================================================================
@@ -177,9 +184,130 @@ def validate_contract(c):
                     errs.append(f"fix on {fx.get('column')}: bad regex ({e})")
     m = c.get("monitors", {})
     fr = m.get("freshness")
-    if fr and fr.get("type") != "stream" and fr.get("frequency") not in ("daily", "monthly"):
-        errs.append("monitors.freshness needs type: stream or frequency: daily|monthly")
+    if fr and fr.get("type") != "stream":
+        if fr.get("frequency") not in ("daily", "monthly"):
+            errs.append("monitors.freshness needs type: stream or frequency: daily|monthly")
+        errs += _file_schedule_errors(fr, s)
     return errs
+
+
+def _file_schedule_errors(fr, source):
+    """Checks for the file schedule used by the late file detector (monitors.freshness of a file source)."""
+    errs = []
+    try:
+        _as_date(fr.get("expected_from"))
+    except (TypeError, ValueError):
+        errs.append("monitors.freshness.expected_from must be a date (YYYY-MM-DD), the first period a file is due for")
+    d = fr.get("max_delay_days")
+    if isinstance(d, bool) or not isinstance(d, int) or d < 0:
+        errs.append("monitors.freshness.max_delay_days must be a whole number of days, 0 or more")
+    if not re.fullmatch(r"([01]\d|2[0-3]):[0-5]\d", str(fr.get("deadline", FILE_DEADLINE))):
+        errs.append("monitors.freshness.deadline must be HH:MM in 24-hour time (e.g. 06:00)")
+    try:
+        ZoneInfo(str(fr.get("timezone", FILE_TIMEZONE)))
+    except Exception:
+        errs.append(f"monitors.freshness.timezone is not a known time zone: {fr.get('timezone')}")
+    pattern, fmt = source.get("file_pattern"), source.get("file_date_format")
+    if not pattern or not fmt:
+        errs.append("source.file_pattern and source.file_date_format are required for a file schedule")
+    else:
+        try:
+            if re.compile(pattern).groups != 1:
+                errs.append("source.file_pattern needs exactly one (group) around the date in the file name")
+        except re.error as e:
+            errs.append(f"source.file_pattern: bad regex ({e})")
+    return errs
+
+
+# ======================================================================
+# Late file detector (pure Python): which files are due, and did each one arrive on time?
+# ======================================================================
+
+def _as_date(v):
+    if isinstance(v, datetime):
+        return v.date()
+    if isinstance(v, date):
+        return v
+    return date.fromisoformat(str(v))
+
+
+def _month_start(d):
+    return date(d.year, d.month, 1)
+
+
+def _next_month(d):
+    return date(d.year + (d.month == 12), d.month % 12 + 1, 1)
+
+
+def period_end(period, frequency):
+    """Last day covered by a file: the day itself, or the last day of the month."""
+    return period if frequency == "daily" else _next_month(period) - timedelta(days=1)
+
+
+def file_deadline(period, fr):
+    """When the file for this period must have arrived, as a UTC datetime.
+    = end of the period + max_delay_days, at the deadline time in the contract's time zone."""
+    hh, mm = (int(x) for x in str(fr.get("deadline", FILE_DEADLINE)).split(":"))
+    day = period_end(period, fr["frequency"]) + timedelta(days=int(fr["max_delay_days"]))
+    local = datetime.combine(day, time(hh, mm), tzinfo=ZoneInfo(str(fr.get("timezone", FILE_TIMEZONE))))
+    return local.astimezone(timezone.utc)
+
+
+def expected_periods(fr, now):
+    """Every period a file is expected for, from expected_from up to the period running at `now` (UTC)."""
+    today = now.astimezone(ZoneInfo(str(fr.get("timezone", FILE_TIMEZONE)))).date()
+    start = _as_date(fr["expected_from"])
+    if fr["frequency"] == "daily":
+        return [start + timedelta(days=i) for i in range((today - start).days + 1)]
+    out, p = [], _month_start(start)
+    while p <= today:
+        out.append(p)
+        p = _next_month(p)
+    return out
+
+
+def file_period(file_name, source, frequency):
+    """The period a file belongs to, read from its name (None when the name does not match)."""
+    m = re.search(source["file_pattern"], file_name)
+    if not m:
+        return None
+    try:
+        d = datetime.strptime(m.group(1), source["file_date_format"]).date()
+    except ValueError:
+        return None
+    return d if frequency == "daily" else _month_start(d)
+
+
+def arrival_status(deadline, arrived_at, now):
+    if arrived_at is None:
+        return "MISSING" if now > deadline else "PENDING"
+    return "ON_TIME" if arrived_at <= deadline else "LATE"
+
+
+def file_arrivals(c, files, now, first_seen=None):
+    """Compare the files that are due with the files that arrived.
+
+    files       {file_name: modified_at (UTC)} as listed in the landing folder now
+    first_seen  {file_name: arrived_at (UTC)} recorded by earlier runs. It wins over the listing, so a file that is
+                uploaded again (new modification time) or moved away after loading keeps its first arrival time.
+    Returns one dict per expected period: period, file_name, expected_by, arrived_at, status, late_minutes.
+    """
+    fr, src = c["monitors"]["freshness"], c["source"]
+    arrived = dict(files)
+    arrived.update(first_seen or {})
+    by_period = {}
+    for name, ts in arrived.items():
+        p = file_period(name, src, fr["frequency"])
+        if p is not None and (p not in by_period or ts < by_period[p][1]):   # two files for one period: earliest
+            by_period[p] = (name, ts)
+    out = []
+    for p in expected_periods(fr, now):
+        due = file_deadline(p, fr)
+        name, ts = by_period.get(p, (None, None))
+        status = arrival_status(due, ts, now)
+        late = int((ts - due).total_seconds() // 60) if status == "LATE" else 0
+        out.append(dict(period=p, file_name=name, expected_by=due, arrived_at=ts, status=status, late_minutes=late))
+    return out
 
 
 def edges_from_contracts(contracts):
@@ -214,8 +342,13 @@ def quarantine_table(c):
     return f"{CATALOG}.quarantine.{c['dataset']}"
 
 
+def utcnow():
+    """Current UTC time without tzinfo, the form the monitoring tables store (datetime.utcnow is deprecated)."""
+    return datetime.now(timezone.utc).replace(tzinfo=None)
+
+
 def new_run_id():
-    return datetime.utcnow().strftime("%Y%m%d%H%M%S") + "-" + uuid.uuid4().hex[:6]
+    return utcnow().strftime("%Y%m%d%H%M%S") + "-" + uuid.uuid4().hex[:6]
 
 
 # ======================================================================
@@ -481,7 +614,7 @@ INCIDENT_SCHEMA = StructType([
 
 def result_row(run_id, dataset, check, rule_id, dimension, scope, checked, failed, status, severity, detail, version):
     rate = 1.0 if not checked else max(0.0, 1.0 - float(failed) / float(checked))
-    return (run_id, datetime.utcnow(), dataset, check, rule_id, dimension, scope, int(checked), int(failed),
+    return (run_id, utcnow(), dataset, check, rule_id, dimension, scope, int(checked), int(failed),
             float(rate), status, severity, detail, version)
 
 
@@ -506,7 +639,7 @@ def sync_incidents(run_id, failing, checked):
         if k in open_keys or k in seen:
             continue
         seen.add(k)
-        new_rows.append((uuid.uuid4().hex[:12], k, datetime.utcnow(), None, "OPEN", d["dataset"], d["check"],
+        new_rows.append((uuid.uuid4().hex[:12], k, utcnow(), None, "OPEN", d["dataset"], d["check"],
                          d["pillar"], d["severity"], d["scope"], d["description"], d.get("impacted", ""),
                          run_id, None))
     if new_rows:
