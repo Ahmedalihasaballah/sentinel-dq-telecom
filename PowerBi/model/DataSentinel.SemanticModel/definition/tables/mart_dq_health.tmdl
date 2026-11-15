@@ -46,8 +46,10 @@ table mart_dq_health
 	column pass_rate
 		dataType: double
 		lineageTag: 68e57303-fa22-4134-baa6-9479a3c50047
-		summarizeBy: average
+		summarizeBy: sum
 		sourceColumn: pass_rate
+
+		annotation SummarizationSetBy = Automatic
 
 	column status
 		dataType: string
@@ -84,6 +86,11 @@ table mart_dq_health
 		lineageTag: d4a17cc5-39cd-41d5-a651-c295e630df25
 		summarizeBy: none
 		sourceColumn: run_ts
+
+		variation Variation
+			isDefault
+			relationship: 7f02f2c6-0afe-454d-a8ba-fe8085635582
+			defaultHierarchy: LocalDateTable_7510efb6-e5b1-492d-941c-aac17582b3dd.'Date Hierarchy'
 
 	partition mart_dq_health = m
 		mode: import

@@ -25,6 +25,11 @@ table mart_quarantine
 		summarizeBy: none
 		sourceColumn: oldest_quarantined_at
 
+		variation Variation
+			isDefault
+			relationship: b49d58f8-b14d-437d-b57b-2a4324ca0b9d
+			defaultHierarchy: LocalDateTable_7f931716-4026-464b-b29f-f984b75d0d51.'Date Hierarchy'
+
 	partition mart_quarantine = m
 		mode: import
 		source =

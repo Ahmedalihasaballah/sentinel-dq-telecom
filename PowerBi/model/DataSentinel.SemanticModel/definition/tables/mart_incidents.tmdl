@@ -61,11 +61,21 @@ table mart_incidents
 		summarizeBy: none
 		sourceColumn: opened_at
 
+		variation Variation
+			isDefault
+			relationship: 70686fd4-047c-4ad3-92ec-97bdbea17473
+			defaultHierarchy: LocalDateTable_74ed9fa7-2fa8-489b-b5cc-94eb7e5bb06d.'Date Hierarchy'
+
 	column closed_at
 		dataType: dateTime
 		lineageTag: bfa698f6-a1b6-4d20-9334-b67a84cc28f0
 		summarizeBy: none
 		sourceColumn: closed_at
+
+		variation Variation
+			isDefault
+			relationship: 5ef3ee91-eb9a-4157-a3f7-3e85689dcd98
+			defaultHierarchy: LocalDateTable_aa711a7a-2945-4abd-bae1-d54ebf07ca57.'Date Hierarchy'
 
 	column priority
 		dataType: string
@@ -91,11 +101,21 @@ table mart_incidents
 		summarizeBy: none
 		sourceColumn: due_at
 
+		variation Variation
+			isDefault
+			relationship: fe4f23c9-f785-4d0e-9ba9-a88ab8fdd160
+			defaultHierarchy: LocalDateTable_71778954-efac-4bd1-ada9-60f687bb7b6a.'Date Hierarchy'
+
 	column acknowledged_at
 		dataType: dateTime
 		lineageTag: b1f42194-434c-4ec0-8f58-04ad48e0cfc9
 		summarizeBy: none
 		sourceColumn: acknowledged_at
+
+		variation Variation
+			isDefault
+			relationship: c99c197b-4bec-463c-a789-a9e6e694805a
+			defaultHierarchy: LocalDateTable_5f650eda-723e-4e27-b350-94fff7c7a786.'Date Hierarchy'
 
 	column acknowledged_by
 		dataType: string
@@ -112,14 +132,18 @@ table mart_incidents
 	column open_hours
 		dataType: double
 		lineageTag: 59cafbce-65e9-438f-975c-40d5e09e48dd
-		summarizeBy: average
+		summarizeBy: sum
 		sourceColumn: open_hours
+
+		annotation SummarizationSetBy = Automatic
 
 	column minutes_to_ack
 		dataType: double
 		lineageTag: 8c542238-2fc7-495d-bdc7-401b1b9e922c
-		summarizeBy: average
+		summarizeBy: sum
 		sourceColumn: minutes_to_ack
+
+		annotation SummarizationSetBy = Automatic
 
 	column sla_status
 		dataType: string

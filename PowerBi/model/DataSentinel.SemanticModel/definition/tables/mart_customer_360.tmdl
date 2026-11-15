@@ -16,18 +16,6 @@ table mart_customer_360
 		summarizeBy: none
 		sourceColumn: customer_name
 
-	column first_name
-		dataType: string
-		lineageTag: 71fed7cf-2497-45ea-bae9-f1286678eac0
-		summarizeBy: none
-		sourceColumn: first_name
-
-	column last_name
-		dataType: string
-		lineageTag: 78f89882-e65e-45f7-9dd8-cc16c1e4bddf
-		summarizeBy: none
-		sourceColumn: last_name
-
 	column email
 		dataType: string
 		lineageTag: 09287d6a-bcea-41a9-adfe-4deae6b224e3
@@ -63,6 +51,11 @@ table mart_customer_360
 		lineageTag: 4bd053eb-6b0c-40c6-a05f-609369a054cd
 		summarizeBy: none
 		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: 031f2605-3e99-44ae-9236-716ee23c6051
+			defaultHierarchy: LocalDateTable_82b6c2cd-c5c1-49f8-a888-8cbb4fedc7e9.'Date Hierarchy'
 
 	column plan_name
 		dataType: string
@@ -123,6 +116,11 @@ table mart_customer_360
 		summarizeBy: none
 		sourceColumn: last_payment_at
 
+		variation Variation
+			isDefault
+			relationship: 41074c06-1021-401d-9fe3-526146551b31
+			defaultHierarchy: LocalDateTable_d91f4758-b4f4-44f6-a9aa-2353614f72c5.'Date Hierarchy'
+
 	column voice_minutes_used
 		dataType: double
 		lineageTag: 8726eb76-63b9-4f5b-b493-26bec2917eab
@@ -153,6 +151,11 @@ table mart_customer_360
 		summarizeBy: none
 		sourceColumn: last_network_activity_at
 
+		variation Variation
+			isDefault
+			relationship: f1f520a3-1021-4165-a8c9-bfadf6d3654a
+			defaultHierarchy: LocalDateTable_d6eb7c80-0134-4d1b-be73-0705fc674fcc.'Date Hierarchy'
+
 	column app_events
 		dataType: int64
 		lineageTag: cd671a9b-5d1a-49ef-bd2d-09bcc37ee014
@@ -177,6 +180,11 @@ table mart_customer_360
 		summarizeBy: none
 		sourceColumn: last_login_at
 
+		variation Variation
+			isDefault
+			relationship: a7e39fa1-f757-46e6-9ca6-d1dff414b265
+			defaultHierarchy: LocalDateTable_4fd88686-d91b-421d-8d89-5578e2ab43d1.'Date Hierarchy'
+
 	column partner_amount_eur
 		dataType: double
 		formatString: #,0.00
@@ -188,13 +196,27 @@ table mart_customer_360
 		dataType: int64
 		isHidden
 		lineageTag: f5b21c22-f0c5-440a-a04d-3ed5b974ee32
-		summarizeBy: none
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
 
 	column payment_age_band = SWITCH ( mart_customer_360[payment_age_order], 0, "Paid up", 1, "0-30 days", 2, "31-60 days", 3, "61-90 days", 4, "90+ days", "Never paid" )
 		dataType: string
 		lineageTag: aca62a01-0723-4cbc-8a6e-1bc5f580472a
 		summarizeBy: none
 		sortByColumn: payment_age_order
+
+	column first_name
+		dataType: string
+		lineageTag: 71fed7cf-2497-45ea-bae9-f1286678eac0
+		summarizeBy: none
+		sourceColumn: first_name
+
+	column last_name
+		dataType: string
+		lineageTag: 78f89882-e65e-45f7-9dd8-cc16c1e4bddf
+		summarizeBy: none
+		sourceColumn: last_name
 
 	partition mart_customer_360 = m
 		mode: import

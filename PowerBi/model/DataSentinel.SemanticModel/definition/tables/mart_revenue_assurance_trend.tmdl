@@ -13,6 +13,11 @@ table mart_revenue_assurance_trend
 		summarizeBy: none
 		sourceColumn: run_ts
 
+		variation Variation
+			isDefault
+			relationship: f864fd18-b9f2-4c6e-9589-ff5b2561d6ca
+			defaultHierarchy: LocalDateTable_633cbea0-79aa-4eae-9c96-1665f4a84819.'Date Hierarchy'
+
 	column check_id
 		dataType: string
 		lineageTag: 7cc6339a-34af-4fba-a0c2-bb695b75021f

@@ -36,6 +36,12 @@
     },
     {
       "name": "nw-menu-closed"
+    },
+    {
+      "name": "cp-menu-closed"
+    },
+    {
+      "name": "cp-menu-open"
     }
   ]
 }

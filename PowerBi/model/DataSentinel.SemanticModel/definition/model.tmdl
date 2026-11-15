@@ -13,7 +13,7 @@ annotation PBI_ProTooling = ["DevMode"]
 
 annotation SourceStatus = "Databricks mart partitions are configured; authenticate in Power BI Desktop and refresh to load data."
 
-annotation PBI_QueryOrder = ["mart_app_usage","mart_cell_quality","mart_customer_360","mart_dq_health","mart_dq_trend","mart_incidents","mart_network_daily","mart_partner_usage","mart_quarantine","mart_recon_mismatches","mart_revenue_assurance","mart_revenue_assurance_trend","_Measures"]
+annotation PBI_QueryOrder = ["mart_app_usage","mart_cell_quality","mart_customer_360","mart_dq_health","mart_dq_trend","mart_incidents","mart_network_daily","mart_partner_usage","mart_quarantine","mart_recon_mismatches","mart_revenue_assurance","mart_revenue_assurance_trend","_Measures","mart_rule_failures_30d"]
 
 ref table mart_app_usage
 ref table mart_cell_quality
@@ -34,6 +34,20 @@ ref table LocalDateTable_c243d746-ab21-4187-948c-9237978ab976
 ref table LocalDateTable_69f001bc-270d-4ca2-8f11-6346b0d0beb6
 ref table LocalDateTable_ecca7902-1083-4968-80c2-1f44d4e00dfa
 ref table Attention
+ref table mart_rule_failures_30d
+ref table LocalDateTable_82b6c2cd-c5c1-49f8-a888-8cbb4fedc7e9
+ref table LocalDateTable_d91f4758-b4f4-44f6-a9aa-2353614f72c5
+ref table LocalDateTable_d6eb7c80-0134-4d1b-be73-0705fc674fcc
+ref table LocalDateTable_4fd88686-d91b-421d-8d89-5578e2ab43d1
+ref table LocalDateTable_7510efb6-e5b1-492d-941c-aac17582b3dd
+ref table LocalDateTable_74ed9fa7-2fa8-489b-b5cc-94eb7e5bb06d
+ref table LocalDateTable_aa711a7a-2945-4abd-bae1-d54ebf07ca57
+ref table LocalDateTable_71778954-efac-4bd1-ada9-60f687bb7b6a
+ref table LocalDateTable_5f650eda-723e-4e27-b350-94fff7c7a786
+ref table LocalDateTable_7f931716-4026-464b-b29f-f984b75d0d51
+ref table LocalDateTable_019ec703-c2c2-440b-956c-8a6a995820c6
+ref table LocalDateTable_633cbea0-79aa-4eae-9c96-1665f4a84819
+ref table LocalDateTable_8468590b-9871-4532-bd04-2cd8f2fd9889
 
 ref cultureInfo en-US
 

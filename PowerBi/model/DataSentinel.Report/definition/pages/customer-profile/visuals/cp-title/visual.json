@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cp-title",
   "position": {
     "x": 94,
     "y": 32,
-    "z": 375,
-    "width": 900,
+    "z": 3000,
     "height": 40,
-    "tabOrder": 375
+    "width": 900,
+    "tabOrder": 24000
   },
   "visual": {
     "visualType": "textbox",

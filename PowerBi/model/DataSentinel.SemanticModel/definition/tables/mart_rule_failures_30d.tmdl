@@ -1,0 +1,165 @@
+table mart_rule_failures_30d
+	lineageTag: c9d32847-d207-4ecc-b2ec-d8173dbc7d8a
+
+	column dataset
+		dataType: string
+		lineageTag: b2f1a645-366b-469d-820d-2e91d2132708
+		summarizeBy: none
+		sourceColumn: dataset
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_id
+		dataType: string
+		lineageTag: d333f41f-25f5-4c2a-87ce-8747d5cbfaf6
+		summarizeBy: none
+		sourceColumn: rule_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_label
+		dataType: string
+		lineageTag: bd645f9b-78d1-46b9-9277-065c1a2d49a5
+		summarizeBy: none
+		sourceColumn: rule_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column action
+		dataType: string
+		lineageTag: ff4d10c0-45a2-45d3-8a0e-ff8989033a93
+		summarizeBy: none
+		sourceColumn: action
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: dd8404c2-ea2c-4191-8ac9-fc99cc6d0aa7
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 13737036-672f-4b63-8283-80f45608a076
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_team
+		dataType: string
+		lineageTag: 8b17c34d-a473-48c6-b93f-e6ba7d792ad5
+		summarizeBy: none
+		sourceColumn: owner_team
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner
+		dataType: string
+		lineageTag: 62ad9420-4f68-47b7-b7f6-2dd6b18674bc
+		summarizeBy: none
+		sourceColumn: owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_runs
+		dataType: int64
+		formatString: 0
+		lineageTag: 948bba16-100c-4972-a250-aaf447f24a69
+		summarizeBy: sum
+		sourceColumn: total_runs
+
+		annotation SummarizationSetBy = Automatic
+
+	column failed_runs
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c5c0032-94e6-41b7-8813-a394e673632d
+		summarizeBy: sum
+		sourceColumn: failed_runs
+
+		annotation SummarizationSetBy = Automatic
+
+	column fail_runs
+		dataType: int64
+		formatString: 0
+		lineageTag: 7958681f-e531-47a5-907e-33d46395301e
+		summarizeBy: sum
+		sourceColumn: fail_runs
+
+		annotation SummarizationSetBy = Automatic
+
+	column warn_runs
+		dataType: int64
+		formatString: 0
+		lineageTag: d99e66d7-1f1f-4f86-a029-5c423a59b258
+		summarizeBy: sum
+		sourceColumn: warn_runs
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows_checked
+		dataType: int64
+		formatString: 0
+		lineageTag: 3785ea99-9e9f-4526-beef-488d07a9e378
+		summarizeBy: sum
+		sourceColumn: rows_checked
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows_failed
+		dataType: int64
+		formatString: 0
+		lineageTag: d9becfb6-90a5-4be7-97bb-50ab55aa3ceb
+		summarizeBy: sum
+		sourceColumn: rows_failed
+
+		annotation SummarizationSetBy = Automatic
+
+	column pass_rate
+		dataType: double
+		lineageTag: ef07bf53-ef7d-4623-aa7a-e2ce1793af94
+		summarizeBy: sum
+		sourceColumn: pass_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_failed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3bb99e05-30b0-4aed-8b8a-78cc127f7180
+		summarizeBy: none
+		sourceColumn: last_failed_at
+
+		variation Variation
+			isDefault
+			relationship: 7b6d7526-2b3f-40ee-8cd8-6e6141d35d76
+			defaultHierarchy: LocalDateTable_8468590b-9871-4532-bd04-2cd8f2fd9889.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column failure_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c626da2-feb3-4a14-b3f5-70dd6eea9ee1
+		summarizeBy: sum
+		sourceColumn: failure_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition mart_rule_failures_30d = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-21b8c56c-c07d.cloud.databricks.com", "/sql/1.0/warehouses/551fe0674560cc7c", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", Protocol=null]),
+				    data_sentinel_Database = Source{[Name="data_sentinel",Kind="Database"]}[Data],
+				    gold_Schema = data_sentinel_Database{[Name="gold",Kind="Schema"]}[Data],
+				    mart_rule_failures_30d_Table = gold_Schema{[Name="mart_rule_failures_30d",Kind="Table"]}[Data]
+				in
+				    mart_rule_failures_30d_Table
+

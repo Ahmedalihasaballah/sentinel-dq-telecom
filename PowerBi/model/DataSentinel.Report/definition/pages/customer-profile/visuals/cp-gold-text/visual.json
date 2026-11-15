@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cp-gold-text",
   "position": {
     "x": 98,
     "y": 976,
-    "z": 50374,
-    "width": 198,
+    "z": 32000,
     "height": 70,
-    "tabOrder": 374
+    "width": 198,
+    "tabOrder": 23000
   },
   "visual": {
     "visualType": "textbox",

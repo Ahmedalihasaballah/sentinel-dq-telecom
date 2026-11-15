@@ -74,6 +74,11 @@ table mart_revenue_assurance
 		summarizeBy: none
 		sourceColumn: run_ts
 
+		variation Variation
+			isDefault
+			relationship: c14fb2bb-2f4e-4c1f-b67f-c477128d55f5
+			defaultHierarchy: LocalDateTable_019ec703-c2c2-440b-956c-8a6a995820c6.'Date Hierarchy'
+
 	column leak_type
 		dataType: string
 		lineageTag: 30255f38-1796-4289-b63f-7570fbe97a6f

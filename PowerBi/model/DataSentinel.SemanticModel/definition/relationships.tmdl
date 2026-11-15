@@ -26,3 +26,68 @@ relationship 6d1f0c52-1a7e-4c1b-9b1e-3c0a5f000002
 	fromColumn: mart_revenue_assurance_trend.check_id
 	toColumn: mart_revenue_assurance.check_id
 
+relationship 031f2605-3e99-44ae-9236-716ee23c6051
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_customer_360.created_at
+	toColumn: LocalDateTable_82b6c2cd-c5c1-49f8-a888-8cbb4fedc7e9.Date
+
+relationship 41074c06-1021-401d-9fe3-526146551b31
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_customer_360.last_payment_at
+	toColumn: LocalDateTable_d91f4758-b4f4-44f6-a9aa-2353614f72c5.Date
+
+relationship f1f520a3-1021-4165-a8c9-bfadf6d3654a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_customer_360.last_network_activity_at
+	toColumn: LocalDateTable_d6eb7c80-0134-4d1b-be73-0705fc674fcc.Date
+
+relationship a7e39fa1-f757-46e6-9ca6-d1dff414b265
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_customer_360.last_login_at
+	toColumn: LocalDateTable_4fd88686-d91b-421d-8d89-5578e2ab43d1.Date
+
+relationship 7f02f2c6-0afe-454d-a8ba-fe8085635582
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_dq_health.run_ts
+	toColumn: LocalDateTable_7510efb6-e5b1-492d-941c-aac17582b3dd.Date
+
+relationship 70686fd4-047c-4ad3-92ec-97bdbea17473
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_incidents.opened_at
+	toColumn: LocalDateTable_74ed9fa7-2fa8-489b-b5cc-94eb7e5bb06d.Date
+
+relationship 5ef3ee91-eb9a-4157-a3f7-3e85689dcd98
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_incidents.closed_at
+	toColumn: LocalDateTable_aa711a7a-2945-4abd-bae1-d54ebf07ca57.Date
+
+relationship fe4f23c9-f785-4d0e-9ba9-a88ab8fdd160
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_incidents.due_at
+	toColumn: LocalDateTable_71778954-efac-4bd1-ada9-60f687bb7b6a.Date
+
+relationship c99c197b-4bec-463c-a789-a9e6e694805a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_incidents.acknowledged_at
+	toColumn: LocalDateTable_5f650eda-723e-4e27-b350-94fff7c7a786.Date
+
+relationship b49d58f8-b14d-437d-b57b-2a4324ca0b9d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_quarantine.oldest_quarantined_at
+	toColumn: LocalDateTable_7f931716-4026-464b-b29f-f984b75d0d51.Date
+
+relationship c14fb2bb-2f4e-4c1f-b67f-c477128d55f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_revenue_assurance.run_ts
+	toColumn: LocalDateTable_019ec703-c2c2-440b-956c-8a6a995820c6.Date
+
+relationship f864fd18-b9f2-4c6e-9589-ff5b2561d6ca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_revenue_assurance_trend.run_ts
+	toColumn: LocalDateTable_633cbea0-79aa-4eae-9c96-1665f4a84819.Date
+
+relationship 7b6d7526-2b3f-40ee-8cd8-6e6141d35d76
+	joinOnDateBehavior: datePartOnly
+	fromColumn: mart_rule_failures_30d.last_failed_at
+	toColumn: LocalDateTable_8468590b-9871-4532-bd04-2cd8f2fd9889.Date
+
