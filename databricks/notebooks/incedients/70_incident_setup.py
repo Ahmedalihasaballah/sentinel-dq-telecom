@@ -37,23 +37,28 @@ spark.sql(f"""CREATE TABLE IF NOT EXISTS {T_ALERTS} (
 
 # COMMAND ----------
 
-# Who owns what. Replace the example names and addresses with real ones. '*' means any.
-CRM, BILL, NET, APP, PART, PLAT = "CRM team", "Billing team", "Network team", "Mobile app team", "Partner team", "Data platform"
-LEAD = "data-platform-lead"
-routing = [
-    ("crm_customers", "*", CRM, "crm-owner@telco.example", LEAD),
-    ("crm_plans", "*", CRM, "crm-owner@telco.example", LEAD),
-    ("billing_accounts", "*", BILL, "billing-owner@telco.example", LEAD),
-    ("billing_invoices", "*", BILL, "billing-owner@telco.example", LEAD),
-    ("billing_invoice_lines", "*", BILL, "billing-owner@telco.example", LEAD),
-    ("billing_payments", "*", BILL, "billing-owner@telco.example", LEAD),
-    ("invoices_file", "*", BILL, "billing-owner@telco.example", LEAD),
-    ("payments_file", "*", BILL, "billing-owner@telco.example", LEAD),
-    ("network_cdr", "*", NET, "network-owner@telco.example", LEAD),
-    ("app_events", "*", APP, "app-owner@telco.example", LEAD),
-    ("partner_usage", "*", PART, "partner-owner@telco.example", LEAD),
-    ("recon", "*", PLAT, "data-platform@telco.example", LEAD),
-    ("*", "*", PLAT, "data-platform@telco.example", LEAD),
+# Who owns what. The team comes from the `owner` field of each data contract, so the contracts are the
+# single source of truth and this table can never disagree with them. Only the e-mail per team is set here.
+# Replace the example addresses with real ones. '*' means any.
+PLAT, LEAD = "Data platform", "data-platform-lead"
+TEAM_EMAIL = {
+    "CRM team": "crm-owner@telco.example",
+    "Product team": "product-owner@telco.example",
+    "Billing team": "billing-owner@telco.example",
+    "Finance team": "finance-owner@telco.example",
+    "Network operations": "network-owner@telco.example",
+    "Digital team": "app-owner@telco.example",
+    "Partnerships team": "partner-owner@telco.example",
+    PLAT: "data-platform@telco.example",
+}
+contracts = load_contracts()
+missing = sorted({c["owner"] for c in contracts.values()} - set(TEAM_EMAIL))
+if missing:
+    raise Exception(f"Add an e-mail to TEAM_EMAIL for these contract owners: {missing}")
+routing = [(name, "*", c["owner"], TEAM_EMAIL[c["owner"]], LEAD) for name, c in sorted(contracts.items())]
+routing += [
+    ("recon", "*", PLAT, TEAM_EMAIL[PLAT], LEAD),
+    ("*", "*", PLAT, TEAM_EMAIL[PLAT], LEAD),
 ]
 spark.createDataFrame(routing, "dataset string, pillar string, team string, owner string, escalation_to string") \
     .write.mode("overwrite").saveAsTable(T_ROUTING)

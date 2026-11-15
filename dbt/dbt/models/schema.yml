@@ -23,11 +23,12 @@ models:
       - name: plan_key
         data_tests:
           - not_null
-          - relationships: {to: ref('dim_plan'), field: plan_key}
+          - relationships: {arguments: {to: ref('dim_plan'), field: plan_key}}
       - name: status
         data_tests:
           - accepted_values:
-              values: [ACTIVE, SUSPENDED, CHURNED, UNKNOWN]
+              arguments:
+                values: [ACTIVE, SUSPENDED, CHURNED, UNKNOWN]
 
   - name: fact_usage
     columns:
@@ -36,33 +37,33 @@ models:
       - name: customer_key
         data_tests:
           - not_null
-          - relationships: {to: ref('dim_customer'), field: customer_key}
+          - relationships: {arguments: {to: ref('dim_customer'), field: customer_key}}
       - name: usage_date_key
         data_tests:
-          - relationships: {to: ref('dim_date'), field: date_key}
+          - relationships: {arguments: {to: ref('dim_date'), field: date_key}}
       - name: event_type
         data_tests:
-          - accepted_values: {values: [VOICE, SMS, DATA]}
+          - accepted_values: {arguments: {values: [VOICE, SMS, DATA]}}
 
   - name: fact_invoice
     columns:
       - name: customer_key
         data_tests:
           - not_null
-          - relationships: {to: ref('dim_customer'), field: customer_key}
+          - relationships: {arguments: {to: ref('dim_customer'), field: customer_key}}
       - name: source
         data_tests:
-          - accepted_values: {values: [billing_db, billing_file]}
+          - accepted_values: {arguments: {values: [billing_db, billing_file]}}
 
   - name: fact_payment
     columns:
       - name: customer_key
         data_tests:
           - not_null
-          - relationships: {to: ref('dim_customer'), field: customer_key}
+          - relationships: {arguments: {to: ref('dim_customer'), field: customer_key}}
       - name: status
         data_tests:
-          - accepted_values: {values: [PAID, FAILED, REFUNDED]}
+          - accepted_values: {arguments: {values: [PAID, FAILED, REFUNDED]}}
 
   - name: fact_app_events
     columns:
@@ -71,10 +72,10 @@ models:
       - name: customer_key
         data_tests:
           - not_null
-          - relationships: {to: ref('dim_customer'), field: customer_key}
+          - relationships: {arguments: {to: ref('dim_customer'), field: customer_key}}
       - name: event_date_key
         data_tests:
-          - relationships: {to: ref('dim_date'), field: date_key}
+          - relationships: {arguments: {to: ref('dim_date'), field: date_key}}
 
   - name: fact_partner_usage
     columns:
@@ -83,7 +84,7 @@ models:
       - name: customer_key
         data_tests:
           - not_null
-          - relationships: {to: ref('dim_customer'), field: customer_key}
+          - relationships: {arguments: {to: ref('dim_customer'), field: customer_key}}
 
   - name: mart_customer_360
     columns:
@@ -94,3 +95,43 @@ models:
     columns:
       - name: check_id
         data_tests: [unique, not_null]
+
+
+  - name: mart_rule_failures_30d
+    description: >
+      Gate rule failures over the last 30 days, one row per dataset + rule that failed at least once,
+      with the owning team. failure_rank 1 = most failed rows = fix first. Feeds the "Top 10 failing rules" chart.
+    columns:
+      - name: rule_label
+        description: dataset + rule_id, the label shown in the chart (rule_id alone repeats across datasets).
+        data_tests: [unique, not_null]
+      - name: dataset
+        data_tests: [not_null]
+      - name: rule_id
+        data_tests: [not_null]
+      - name: failure_rank
+        description: 1 = most failed rows in the last 30 days; ties broken by failed_runs.
+        data_tests: [unique, not_null]
+      - name: action
+        description: What the gate did with the failed rows (from the latest failed run). flag = kept with a flag, reject / autofix = quarantined.
+        data_tests:
+          - not_null
+          - accepted_values: {arguments: {values: [flag, reject, autofix]}}
+      - name: severity
+        data_tests:
+          - accepted_values: {arguments: {values: [low, medium, high, critical]}}
+      - name: owner_team
+        description: Team that owns the dataset (monitoring.incident_routing, falls back to the '*' default row).
+        data_tests: [not_null]
+      - name: chart_label
+        description: rule_label plus severity and action, e.g. "network_cdr · NET_CELL_PRESENT  [LOW · flag]". Chart axis.
+        data_tests: [unique, not_null]
+      - name: priority_rank
+        description: >
+          Alternative ranking: rows_failed x severity_weight (critical 4, high 3, medium 2, low 1).
+          1 = biggest severity-weighted impact. failure_rank stays the main ranking.
+        data_tests: [unique, not_null]
+      - name: failed_runs
+        description: Number of runs in the window where the rule had at least one failed row.
+      - name: rows_failed
+        description: Total failed rows in the window. Used to rank the rules.

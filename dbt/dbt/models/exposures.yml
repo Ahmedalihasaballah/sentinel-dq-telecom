@@ -28,3 +28,14 @@ exposures:
     owner: {name: Network operations and digital team, email: ahmedzaki9393.1@gmail.com}
     description: Network load, dropped calls per cell, app events and crashes, partner usage.
     depends_on: [ref('mart_network_daily'), ref('mart_cell_quality'), ref('mart_app_usage'), ref('mart_partner_usage')]
+
+
+  - name: dashboard_rule_failures
+    label: Top 10 failing rules
+    type: dashboard
+    maturity: medium
+    owner: {name: Data quality team, email: ahmedzaki9393.1@gmail.com}
+    description: >
+      Which gate rules failed the most rows in the last 30 days, and which team owns each one?
+      Helps the team decide what to fix first. Power BI page "Rule Failures".
+    depends_on: [ref('mart_rule_failures_30d')]

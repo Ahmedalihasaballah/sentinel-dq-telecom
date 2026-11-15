@@ -4,9 +4,10 @@ sources:
   - name: silver
     description: Rows that passed the quality gate, with SCD2 history and customer_xref (built by the Silver notebooks).
     schema: silver
-    loaded_at_field: _loaded_at
-    freshness:
-      warn_after: {count: 2, period: day}
+    config:
+      loaded_at_field: _loaded_at
+      freshness:
+        warn_after: {count: 2, period: day}
     tables:
       - name: customer_history
       - name: plan_history
@@ -32,3 +33,6 @@ sources:
       - name: alerts
       - name: recon_results
       - name: recon_mismatches
+      - name: incident_routing
+        description: Owner of every dataset (dataset + pillar -> team, owner). Built by notebook 70.
+

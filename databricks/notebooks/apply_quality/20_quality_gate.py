@@ -14,21 +14,6 @@
 # Flag-only failures stay in validated with the rule names in _flags.
 # Circuit breaker: a file missing a required column is rejected as a whole, and a dataset whose
 # pass rate falls below circuit_breaker_min_pass_rate does not overwrite its validated table.
-
-# COMMAND ----------
-
-# Databricks notebook source
-# MAGIC %run ./11_dq_lib
-
-# COMMAND ----------
-
-# QUALITY GATE: test every Bronze row against its data contract.
-#   PASS    -> silver.<dataset>_validated
-#   REJECT  -> quarantine.<dataset>  (status REJECTED)
-#   AUTOFIX -> quarantine.<dataset>  (status PENDING_FIX, repaired by 21 and rechecked by 22)
-# Flag-only failures stay in validated with the rule names in _flags.
-# Circuit breaker: a file missing a required column is rejected as a whole, and a dataset whose
-# pass rate falls below circuit_breaker_min_pass_rate does not overwrite its validated table.
 # Pipeline circuit breaker: if max_reject_rate (default 50%) or more of ANY table's rows fail the gate
 # (rejected or sent to quarantine), that table keeps its old validated data, a critical 'circuit_breaker'
 # incident is opened, and after all tables are checked the notebook raises, so the Airflow tasks after the
